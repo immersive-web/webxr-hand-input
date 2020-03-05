@@ -41,11 +41,11 @@ let joint = inputSource.hand[XRJoint.MIDDLE_PHALANGE_PROXIMAL];
 
 Not all devices support all joints, this indexing getter will return `null` when accessing a joint that is not supported by the current user agent or device. This will not change for a given input source. If a joint is supported but not currently being tracked, the getter will still produce the `XRJoint`, with its associated `space` returning `null` when run through `getPose` (etc).
 
-Each joint has an `XRSpace` `space`, located at its center, with its `-Y` direction pointing perpendicular to the skin, outwards from the palm, and `+Z` direction pointing along their associated bone, away from the wrist. This space will return null poses when the joint loses tracking.
+Each joint has an `XRSpace` `space`, located at its center, with its `-Y` direction pointing perpendicular to the skin, outwards from the palm, and `-Z` direction pointing along their associated bone, away from the wrist. This space will return null poses when the joint loses tracking.
 
 Each joint has a `radius`, which is the distance from the joint to the surrounding skin, and can be used to render a hand skeleton.
 
-For `*_TIP` joints where there is no associated bone, the `+Z` direction is the same as that for the associated `DISTAL` joint, i.e. the direction is along that of the previous bone.
+For `*_TIP` joints where there is no associated bone, the `-Z` direction is the same as that for the associated `DISTAL` joint, i.e. the direction is along that of the previous bone.
 
 ## Displaying hand models using this API
 
@@ -147,7 +147,7 @@ function checkFistGesture(inputSource, frame, renderer) {
 }
 
 function checkOrientation(tipOrientation, metacarpalOrientation) {
-   let tipDirection = applyOrientation(tipOrientation, [0, 0, 1]); // Z axis of tip
+   let tipDirection = applyOrientation(tipOrientation, [0, 0, -1]); // -Z axis of tip
    let palmDirection = applyOrientation(metacarpalOrientation, [0, -1, 0]) // -Y axis of metacarpal
 
    if (1 - dotProduct(tipDirection, palmDirection) < minimumDeviation) {
