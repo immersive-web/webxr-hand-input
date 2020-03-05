@@ -59,7 +59,7 @@ const orderedJoints = [
    [XRJoint.INDEX_METACARPAL, XRJoint.INDEX_PHALANGE_PROXIMAL, XRJoint.INDEX_PHALANGE_INTERMEDIATE, XRJoint.INDEX_PHALANGE_DISTAL, XRJoint.INDEX_PHALANGE_TIP]
    [XRJoint.MIDDLE_METACARPAL, XRJoint.MIDDLE_PHALANGE_PROXIMAL, XRJoint.MIDDLE_PHALANGE_INTERMEDIATE, XRJoint.MIDDLE_PHALANGE_DISTAL, XRJoint.MIDDLE_PHALANGE_TIP]
    [XRJoint.RING_METACARPAL, XRJoint.RING_PHALANGE_PROXIMAL, XRJoint.RING_PHALANGE_INTERMEDIATE, XRJoint.RING_PHALANGE_DISTAL, XRJoint.RING_PHALANGE_TIP]
-   [XRJoint.PINKY_METACARPAL, XRJoint.PINKY_PHALANGE_PROXIMAL, XRJoint.PINKY_PHALANGE_INTERMEDIATE, XRJoint.PINKY_PHALANGE_DISTAL, XRJoint.PINKY_PHALANGE_TIP]
+   [XRJoint.LITTLE_METACARPAL, XRJoint.LITTLE_PHALANGE_PROXIMAL, XRJoint.LITTLE_PHALANGE_INTERMEDIATE, XRJoint.LITTLE_PHALANGE_DISTAL, XRJoint.LITTLE_PHALANGE_TIP]
 ];
 
 function renderSkeleton(inputSource, frame, renderer) {
@@ -133,7 +133,7 @@ function checkFistGesture(inputSource, frame, renderer) {
    for (finger of [[XRJoint.INDEX_PHALANGE_TIP, XRJoint.INDEX_METACARPAL],
                   [XRJoint.MIDDLE_PHALANGE_TIP, XRJoint.MIDDLE_METACARPAL],
                   [XRJoint.RING_PHALANGE_TIP, XRJoint.RING_METACARPAL],
-                  [XRJoint.PINKY_PHALANGE_TIP, XRJoint.PINKY_METACARPAL]]) {
+                  [XRJoint.LITTLE_PHALANGE_TIP, XRJoint.LITTLE_METACARPAL]]) {
       let tip = finger[0];
       let metacarpal = finger[1];
       let tipPose = frame.getPose(inputSource.hand[tip], renderer.referenceSpace);
@@ -199,10 +199,10 @@ interface XRJoint {
    const unsigned short RING_PHALANGE_DISTAL = ..;
    const unsigned short RING_PHALANGE_TIP = ..;
 
-   const unsigned short PINKY_METACARPAL = ..;
-   const unsigned short PINKY_PHALANGE_PROXIMAL = ..;
-   const unsigned short PINKY_PHALANGE_INTERMEDIATE = ..;
-   const unsigned short PINKY_PHALANGE_DISTAL = ..;
-   const unsigned short PINKY_PHALANGE_TIP = ..;
+   const unsigned short LITTLE_METACARPAL = ..;
+   const unsigned short LITTLE_PHALANGE_PROXIMAL = ..;
+   const unsigned short LITTLE_PHALANGE_INTERMEDIATE = ..;
+   const unsigned short LITTLE_PHALANGE_DISTAL = ..;
+   const unsigned short LITTLE_PHALANGE_TIP = ..;
 }
 ```
