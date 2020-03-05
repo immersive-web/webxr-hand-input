@@ -31,12 +31,12 @@ function renderFrame(session, frame) {
 
 ## Hands and joints
 
-Each hand is made up many bones, connected by _joints_. We name them with their connected bone, for example `INDEX_PHALANGE_DISTAL` is the joint closer to the wrist connected to the distal phalange bone of the index finger. The `*_PHALANGE_TIP` "joints" locate the tips of the fingers. The `WRIST` joint is located at the composite joint between the wrist and forearm.
+Each hand is made up many bones, connected by _joints_. We name them with their connected bone, for example `INDEX_PHALANX_DISTAL` is the joint closer to the wrist connected to the distal phalanx bone of the index finger. The `*_PHALANX_TIP` "joints" locate the tips of the fingers. The `WRIST` joint is located at the composite joint between the wrist and forearm.
 
 The joints can be accessed via indexing, for example to access the middle knuckle joint one would use:
 
 ```js
-let joint = inputSource.hand[XRJoint.MIDDLE_PHALANGE_PROXIMAL];
+let joint = inputSource.hand[XRJoint.MIDDLE_PHALANX_PROXIMAL];
 ```
 
 Not all devices support all joints, this indexing getter will return `null` when accessing a joint that is not supported by the current user agent or device. This will not change for a given input source. If a joint is supported but not currently being tracked, the getter will still produce the `XRJoint`, with its associated `space` returning `null` when run through `getPose` (etc).
@@ -55,11 +55,11 @@ A simple skeleton can be displayed as follows:
 
 ```js
 const orderedJoints = [
-   [XRJoint.THUMB_METACARPAL, XRJoint.THUMB_PHALANGE_PROXIMAL, XRJoint.THUMB_PHALANGE_DISTAL, XRJoint.THUMB_PHALANGE_TIP],
-   [XRJoint.INDEX_METACARPAL, XRJoint.INDEX_PHALANGE_PROXIMAL, XRJoint.INDEX_PHALANGE_INTERMEDIATE, XRJoint.INDEX_PHALANGE_DISTAL, XRJoint.INDEX_PHALANGE_TIP]
-   [XRJoint.MIDDLE_METACARPAL, XRJoint.MIDDLE_PHALANGE_PROXIMAL, XRJoint.MIDDLE_PHALANGE_INTERMEDIATE, XRJoint.MIDDLE_PHALANGE_DISTAL, XRJoint.MIDDLE_PHALANGE_TIP]
-   [XRJoint.RING_METACARPAL, XRJoint.RING_PHALANGE_PROXIMAL, XRJoint.RING_PHALANGE_INTERMEDIATE, XRJoint.RING_PHALANGE_DISTAL, XRJoint.RING_PHALANGE_TIP]
-   [XRJoint.LITTLE_METACARPAL, XRJoint.LITTLE_PHALANGE_PROXIMAL, XRJoint.LITTLE_PHALANGE_INTERMEDIATE, XRJoint.LITTLE_PHALANGE_DISTAL, XRJoint.LITTLE_PHALANGE_TIP]
+   [XRJoint.THUMB_METACARPAL, XRJoint.THUMB_PHALANX_PROXIMAL, XRJoint.THUMB_PHALANX_DISTAL, XRJoint.THUMB_PHALANX_TIP],
+   [XRJoint.INDEX_METACARPAL, XRJoint.INDEX_PHALANX_PROXIMAL, XRJoint.INDEX_PHALANX_INTERMEDIATE, XRJoint.INDEX_PHALANX_DISTAL, XRJoint.INDEX_PHALANX_TIP]
+   [XRJoint.MIDDLE_METACARPAL, XRJoint.MIDDLE_PHALANX_PROXIMAL, XRJoint.MIDDLE_PHALANX_INTERMEDIATE, XRJoint.MIDDLE_PHALANX_DISTAL, XRJoint.MIDDLE_PHALANX_TIP]
+   [XRJoint.RING_METACARPAL, XRJoint.RING_PHALANX_PROXIMAL, XRJoint.RING_PHALANX_INTERMEDIATE, XRJoint.RING_PHALANX_DISTAL, XRJoint.RING_PHALANX_TIP]
+   [XRJoint.LITTLE_METACARPAL, XRJoint.LITTLE_PHALANX_PROXIMAL, XRJoint.LITTLE_PHALANX_INTERMEDIATE, XRJoint.LITTLE_PHALANX_DISTAL, XRJoint.LITTLE_PHALANX_TIP]
 ];
 
 function renderSkeleton(inputSource, frame, renderer) {
@@ -98,7 +98,7 @@ const buttons = [
 ];
 
 function checkInteraction(button, inputSource, frame, renderer) {
-   let tip = frame.getPose(inputSource.hand[XRJoint.INDEX_PHALANGE_TIP], renderer.referenceSpace);
+   let tip = frame.getPose(inputSource.hand[XRJoint.INDEX_PHALANX_TIP], renderer.referenceSpace);
    let distance = calculateDistance(tip.transform.position, button.position);
    if (distance < button.radius) {
       if (!button.pressed) {
@@ -130,10 +130,10 @@ One can do gesture detection using the position and orientation values of the va
 
 ```js
 function checkFistGesture(inputSource, frame, renderer) {
-   for (finger of [[XRJoint.INDEX_PHALANGE_TIP, XRJoint.INDEX_METACARPAL],
-                  [XRJoint.MIDDLE_PHALANGE_TIP, XRJoint.MIDDLE_METACARPAL],
-                  [XRJoint.RING_PHALANGE_TIP, XRJoint.RING_METACARPAL],
-                  [XRJoint.LITTLE_PHALANGE_TIP, XRJoint.LITTLE_METACARPAL]]) {
+   for (finger of [[XRJoint.INDEX_PHALANX_TIP, XRJoint.INDEX_METACARPAL],
+                  [XRJoint.MIDDLE_PHALANX_TIP, XRJoint.MIDDLE_METACARPAL],
+                  [XRJoint.RING_PHALANX_TIP, XRJoint.RING_METACARPAL],
+                  [XRJoint.LITTLE_PHALANX_TIP, XRJoint.LITTLE_METACARPAL]]) {
       let tip = finger[0];
       let metacarpal = finger[1];
       let tipPose = frame.getPose(inputSource.hand[tip], renderer.referenceSpace);
@@ -177,32 +177,32 @@ interface XRJoint {
 
    // potentially: const unsigned short THUMB_TRAPEZIUM = ..;
    const unsigned short THUMB_METACARPAL = ..;
-   const unsigned short THUMB_PHALANGE_PROXIMAL = ..;
-   const unsigned short THUMB_PHALANGE_DISTAL = ..;
-   const unsigned short THUMB_PHALANGE_TIP = ..;
+   const unsigned short THUMB_PHALANX_PROXIMAL = ..;
+   const unsigned short THUMB_PHALANX_DISTAL = ..;
+   const unsigned short THUMB_PHALANX_TIP = ..;
 
    const unsigned short INDEX_METACARPAL = ..;
-   const unsigned short INDEX_PHALANGE_PROXIMAL = ..;
-   const unsigned short INDEX_PHALANGE_INTERMEDIATE = ..;
-   const unsigned short INDEX_PHALANGE_DISTAL = ..;
-   const unsigned short INDEX_PHALANGE_TIP = ..;
+   const unsigned short INDEX_PHALANX_PROXIMAL = ..;
+   const unsigned short INDEX_PHALANX_INTERMEDIATE = ..;
+   const unsigned short INDEX_PHALANX_DISTAL = ..;
+   const unsigned short INDEX_PHALANX_TIP = ..;
 
    const unsigned short MIDDLE_METACARPAL = ..;
-   const unsigned short MIDDLE_PHALANGE_PROXIMAL = ..;
-   const unsigned short MIDDLE_PHALANGE_INTERMEDIATE = ..;
-   const unsigned short MIDDLE_PHALANGE_DISTAL = ..;
-   const unsigned short MIDDLE_PHALANGE_TIP = ..;
+   const unsigned short MIDDLE_PHALANX_PROXIMAL = ..;
+   const unsigned short MIDDLE_PHALANX_INTERMEDIATE = ..;
+   const unsigned short MIDDLE_PHALANX_DISTAL = ..;
+   const unsigned short MIDDLE_PHALANX_TIP = ..;
 
    const unsigned short RING_METACARPAL = ..;
-   const unsigned short RING_PHALANGE_PROXIMAL = ..;
-   const unsigned short RING_PHALANGE_INTERMEDIATE = ..;
-   const unsigned short RING_PHALANGE_DISTAL = ..;
-   const unsigned short RING_PHALANGE_TIP = ..;
+   const unsigned short RING_PHALANX_PROXIMAL = ..;
+   const unsigned short RING_PHALANX_INTERMEDIATE = ..;
+   const unsigned short RING_PHALANX_DISTAL = ..;
+   const unsigned short RING_PHALANX_TIP = ..;
 
    const unsigned short LITTLE_METACARPAL = ..;
-   const unsigned short LITTLE_PHALANGE_PROXIMAL = ..;
-   const unsigned short LITTLE_PHALANGE_INTERMEDIATE = ..;
-   const unsigned short LITTLE_PHALANGE_DISTAL = ..;
-   const unsigned short LITTLE_PHALANGE_TIP = ..;
+   const unsigned short LITTLE_PHALANX_PROXIMAL = ..;
+   const unsigned short LITTLE_PHALANX_INTERMEDIATE = ..;
+   const unsigned short LITTLE_PHALANX_DISTAL = ..;
+   const unsigned short LITTLE_PHALANX_TIP = ..;
 }
 ```
