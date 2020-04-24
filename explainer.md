@@ -162,7 +162,7 @@ function checkOrientation(tipOrientation, metacarpalOrientation) {
 
 ```webidl
 partial interface XRInputSource {
-   XRHand? hand;
+   readonly attribute XRHand? hand;
 }
 
 interface XRHand {
@@ -170,8 +170,8 @@ interface XRHand {
 }
 
 interface XRJoint {
-   XRSpace space;
-   float? radius;
+   readonly attribute XRSpace space;
+   readonly attribute float? radius;
    
    const unsigned short WRIST = ..;
 
