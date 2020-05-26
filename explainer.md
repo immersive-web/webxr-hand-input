@@ -183,7 +183,7 @@ interface XRJointPose: XRPose {
     readonly attribute float? radius;
 }
 
-interface XRJointSpace: Space {}
+interface XRJointSpace: XRSpace {}
 
 interface XRHand {
     // needed for the getter
