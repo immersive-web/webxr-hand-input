@@ -190,37 +190,39 @@ interface XRHand {
     readonly attribute unsigned long length;
     getter XRJointSpace(unsigned long jointIndex);
 
-    const unsigned long WRIST = ..;
+    // Final spec should probably have increasing values for joints,
+    // frozen after release. Further joints can be appended at the end.
+    const unsigned long WRIST = 0;
 
     // potentially: const unsigned long THUMB_TRAPEZIUM = ..;
-    const unsigned long THUMB_METACARPAL = ..;
-    const unsigned long THUMB_PHALANX_PROXIMAL = ..;
-    const unsigned long THUMB_PHALANX_DISTAL = ..;
-    const unsigned long THUMB_PHALANX_TIP = ..;
+    const unsigned long THUMB_METACARPAL = 1;
+    const unsigned long THUMB_PHALANX_PROXIMAL = 2;
+    const unsigned long THUMB_PHALANX_DISTAL = 3;
+    const unsigned long THUMB_PHALANX_TIP = 4;
 
-    const unsigned long INDEX_METACARPAL = ..;
-    const unsigned long INDEX_PHALANX_PROXIMAL = ..;
-    const unsigned long INDEX_PHALANX_INTERMEDIATE = ..;
-    const unsigned long INDEX_PHALANX_DISTAL = ..;
-    const unsigned long INDEX_PHALANX_TIP = ..;
+    const unsigned long INDEX_METACARPAL = 5;
+    const unsigned long INDEX_PHALANX_PROXIMAL = 6;
+    const unsigned long INDEX_PHALANX_INTERMEDIATE = 7;
+    const unsigned long INDEX_PHALANX_DISTAL = 8;
+    const unsigned long INDEX_PHALANX_TIP = 9;
 
-    const unsigned long MIDDLE_METACARPAL = ..;
-    const unsigned long MIDDLE_PHALANX_PROXIMAL = ..;
-    const unsigned long MIDDLE_PHALANX_INTERMEDIATE = ..;
-    const unsigned long MIDDLE_PHALANX_DISTAL = ..;
-    const unsigned long MIDDLE_PHALANX_TIP = ..;
+    const unsigned long MIDDLE_METACARPAL = 10;
+    const unsigned long MIDDLE_PHALANX_PROXIMAL = 11;
+    const unsigned long MIDDLE_PHALANX_INTERMEDIATE = 12;
+    const unsigned long MIDDLE_PHALANX_DISTAL = 13;
+    const unsigned long MIDDLE_PHALANX_TIP = 14;
 
-    const unsigned long RING_METACARPAL = ..;
-    const unsigned long RING_PHALANX_PROXIMAL = ..;
-    const unsigned long RING_PHALANX_INTERMEDIATE = ..;
-    const unsigned long RING_PHALANX_DISTAL = ..;
-    const unsigned long RING_PHALANX_TIP = ..;
+    const unsigned long RING_METACARPAL = 15;
+    const unsigned long RING_PHALANX_PROXIMAL = 16;
+    const unsigned long RING_PHALANX_INTERMEDIATE = 17;
+    const unsigned long RING_PHALANX_DISTAL = 18;
+    const unsigned long RING_PHALANX_TIP = 19;
 
-    const unsigned long LITTLE_METACARPAL = ..;
-    const unsigned long LITTLE_PHALANX_PROXIMAL = ..;
-    const unsigned long LITTLE_PHALANX_INTERMEDIATE = ..;
-    const unsigned long LITTLE_PHALANX_DISTAL = ..;
-    const unsigned long LITTLE_PHALANX_TIP = ..;
+    const unsigned long LITTLE_METACARPAL = 20;
+    const unsigned long LITTLE_PHALANX_PROXIMAL = 21;
+    const unsigned long LITTLE_PHALANX_INTERMEDIATE = 22;
+    const unsigned long LITTLE_PHALANX_DISTAL = 23;
+    const unsigned long LITTLE_PHALANX_TIP = 24;
 }
 
 ```
