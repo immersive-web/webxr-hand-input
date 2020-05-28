@@ -176,7 +176,7 @@ partial interface XRInputSource {
 }
 
 partial interface XRFrame {
-    XRJointPose? getJointPose(XRJointSpace joint, )
+    XRJointPose? getJointPose(XRJointSpace joint, XRSpace relativeTo);
 }
 
 interface XRJointPose: XRPose {
