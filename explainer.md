@@ -51,7 +51,7 @@ For `*_TIP` joints where there is no associated bone, the `-Z` direction is the 
 If you wish to obtain a radius ("distance from skin") for a joint, instead of using `getPose()`, you can use `getJointPose()` on the joint space. The `radius` can be accessed on the joint pose.
 
 ```js
-let radius = frame.getJointPose(joint).radius;
+let radius = frame.getJointPose(joint, referenceSpace).radius;
 ```
 
 
