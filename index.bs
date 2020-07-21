@@ -87,6 +87,7 @@ Status Text: This WebXR Augmented Reality Module is designed as a module to be i
 <pre class="link-defaults">
 spec: webxr-1;
     type: dfn; text: xr device; for: /
+    type: dfn; text: xr device; for: XRSession
     type: dfn; text: native origin
     type: dfn; text: feature descriptor
 </pre>
@@ -99,11 +100,28 @@ Introduction {#intro}
 ============
 
 <section class="non-normative">
+On some [=/XR devices=], especially but not limited to AR devices, it is possible to get fully articulated information about tracked hands being used as input sources.
+
+This API exposes the poses of hand skeleton joints, which can be used to do gesture detection as well as render a hand model in VR scenarios.
+
 
 </section>
 
-WebXR Device API Integration {#webxr-device-api-integration}
-==============
+
+Initialization {#initialization}
+=============
+
+If an application wants to view articulated hand pose information during a session,
+the session MUST be requested with an appropriate [=feature descriptor=]. The string "<dfn for="feature descriptor">hand-tracking</dfn>" is introduced
+by this module as a new valid [=feature descriptor=] for articulated hand tracking.
+
+The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{XRSession}} its [=XRSession/XR device=] has [=physical hand input sources=] that [=supports hand tracking=].
+
+
+Physical Hand Input Sources {#physical-hand}
+=============
+
+An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input sources=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more skeleton joints defined in this specification.
 
 XRInputSource {#xrinputsource-interface}
 -------------
@@ -114,30 +132,10 @@ partial interface XRInputSource {
 };
 </pre>
 
-XRFrame {#xrframe-interface}
--------------
+The <dfn attribute for=XRInputSource>hand</dfn> attribute on a [=physical hand input source=] that [=supports hand tracking=] will be an {{XRHand}} object giving access to the underlying hand-tracking capabilities.
 
-<pre class="idl">
-partial interface XRFrame {
-    XRJointPose? getJointPose(XRJointSpace joint, XRSpace relativeTo);
-};
-</pre>
+If the {{XRInputSource}} belongs to an {{XRSession}} that has not been requested with the "[=hand-tracking=]" [=feature descriptor=], {{XRInputSource/hand}} MUST be <code>null</code>.
 
-XRJointPose {#xrjointpose-interface}
--------------
-
-<pre class="idl">
-interface XRJointPose: XRPose {
-    readonly attribute float? radius;
-};
-</pre>
-
-XRJointSpace {#xrjointspace-interface}
--------------
-
-<pre class="idl">
-interface XRJointSpace: XRSpace {};
-</pre>
 
 XRHand {#xrhand-interface}
 -------------
@@ -179,6 +177,35 @@ interface XRHand {
     const unsigned long LITTLE_PHALANX_TIP = 24;
 };
 </pre>
+
+Frame Loop {#frame-loop}
+==========
+
+XRFrame {#xrframe-interface}
+-------------
+
+<pre class="idl">
+partial interface XRFrame {
+    XRJointPose? getJointPose(XRJointSpace joint, XRSpace relativeTo);
+};
+</pre>
+
+XRJointPose {#xrjointpose-interface}
+-------------
+
+<pre class="idl">
+interface XRJointPose: XRPose {
+    readonly attribute float? radius;
+};
+</pre>
+
+XRJointSpace {#xrjointspace-interface}
+-------------
+
+<pre class="idl">
+interface XRJointSpace: XRSpace {};
+</pre>
+
 
 Privacy & Security Considerations {#privacy-security}
 =================================
