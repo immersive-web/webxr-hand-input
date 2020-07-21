@@ -90,6 +90,7 @@ spec: webxr-1;
     type: dfn; text: xr device; for: XRSession
     type: dfn; text: native origin
     type: dfn; text: feature descriptor
+spec:infra; type:dfn; text:list
 </pre>
 
 <pre class="anchors">
@@ -132,7 +133,7 @@ partial interface XRInputSource {
 };
 </pre>
 
-The <dfn attribute for=XRInputSource>hand</dfn> attribute on a [=physical hand input source=] that [=supports hand tracking=] will be an {{XRHand}} object giving access to the underlying hand-tracking capabilities.
+The <dfn attribute for=XRInputSource>hand</dfn> attribute on a [=physical hand input source=] that [=supports hand tracking=] will be an {{XRHand}} object giving access to the underlying hand-tracking capabilities. {{XRInputSource/hand}} will have its [=input source=] set to [=this=].
 
 If the {{XRInputSource}} belongs to an {{XRSession}} that has not been requested with the "[=hand-tracking=]" [=feature descriptor=], {{XRInputSource/hand}} MUST be <code>null</code>.
 
@@ -143,7 +144,7 @@ XRHand {#xrhand-interface}
 <pre class="idl">
 interface XRHand {
     readonly attribute unsigned long length;
-    getter XRJointSpace(unsigned long jointIndex);
+    getter XRJointSpace? joint(unsigned long jointIndex);
 
     const unsigned long WRIST = 0;
 
@@ -178,6 +179,43 @@ interface XRHand {
 };
 </pre>
 
+Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is the [=physical hand input source=] that it tracks.
+
+Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each skeleton joint it supports tracking. These all will have their [=XRJointSpace/hand=] set to [=this=].
+
+The <dfn attribute for=XRHand>length</dfn> attribute MUST return a number greater than the maximum skeleton joint index supported by the {{XRHand}}.
+
+Note: It is possible for there to be gaps in skeleton joints supported; the {{XRHand/length}} attribute is necessary to make indexed getters work.
+
+<div class="algorithm" data-algorithm="index-joint-space">
+The <dfn method for="XRJointSpace">joint(|jointIndex|)</dfn> method when invoked runs the following steps:
+
+  1. Look for an {{XRJointSpace}} in [=this=]'s [=list of joint spaces=] with [=XRJointSpace/joint index=] corresponding to |jointIndex|.
+  1. Handle the result of the search as follows:
+      <dl class="switch">
+      <dt>If found:</dt>
+      <dd>Return the {{XRJointSpace}}.
+      <dt>Otherwise:</dt>
+      <dd>Return <code>null</code></dd>
+      </dl>
+
+</div>
+
+</div>
+XRJointSpace {#xrjointspace-interface}
+-------------
+
+<pre class="idl">
+interface XRJointSpace: XRSpace {};
+</pre>
+
+The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying skeleton joint it tracks.
+
+Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>hand</dfn>, which is the {{XRHand}} that created it.
+
+Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>joint index</dfn>, which is the joint index corresponding to the joint it tracks.
+
+
 Frame Loop {#frame-loop}
 ==========
 
@@ -197,13 +235,6 @@ XRJointPose {#xrjointpose-interface}
 interface XRJointPose: XRPose {
     readonly attribute float? radius;
 };
-</pre>
-
-XRJointSpace {#xrjointspace-interface}
--------------
-
-<pre class="idl">
-interface XRJointSpace: XRSpace {};
 </pre>
 
 
