@@ -88,8 +88,11 @@ Status Text: This WebXR Augmented Reality Module is designed as a module to be i
 spec: webxr-1;
     type: dfn; text: xr device; for: /
     type: dfn; text: xr device; for: XRSession
+    type: dfn; text: animation frame; for: XRSession
     type: dfn; text: native origin
     type: dfn; text: feature descriptor
+    type: dfn; text: populate the pose
+    type: dfn; text: time; for: XRFrame
 spec:infra; type:dfn; text:list
 </pre>
 
@@ -142,7 +145,11 @@ Skeleton Joints {#skeleton-joints-section}
 
 A [=physical hand input source=] is made up of many <dfn>skeleton joints</dfn>.
 
-A [=skeleton joint=] can be uniquely identified by a <dfn>skeleton joint index</dfn>, which is a nonnegative integer.
+A [=skeleton joint=] for a given hand can be uniquely identified by a <dfn>skeleton joint index</dfn>, which is a nonnegative integer.
+
+A [=skeleton joint=] may have an <dfn>associated bone</dfn> used to orient its <code>-Z</code> axis. The [=associated bone=] of a [=skeleton joint=] is the bone that comes after the joint when moving towards the fingertips. The tip and wrist joints have no [=associated bones=].
+
+A [=skeleton joint=] has a <dfn for="skeleton joint">radius</dfn> which is the radius of a sphere placed at its center so that it roughly touches the skin on both sides of the hand.
 
 This specification defines the following [=skeleton joints=]:
 
@@ -232,6 +239,8 @@ Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is 
 
 Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] it supports tracking. These all will have their [=XRJointSpace/hand=] set to [=this=].
 
+The [=list of joint spaces=] MUST NOT change over the course of a session, even if a [=skeleton joint=] is temporarily obscured.
+
 The <dfn attribute for=XRHand>length</dfn> attribute MUST return a number greater than the maximum skeleton joint index supported by the {{XRHand}}.
 
 Note: It is possible for there to be gaps in skeleton joints supported; the {{XRHand/length}} attribute is necessary to make indexed getters work.
@@ -242,10 +251,10 @@ The <dfn method for="XRJointSpace">joint(|jointIndex|)</dfn> method when invoked
   1. Look for an {{XRJointSpace}} in [=this=]'s [=list of joint spaces=] with [=XRJointSpace/joint index=] corresponding to |jointIndex|.
   1. Handle the result of the search as follows:
       <dl class="switch">
-      <dt>If found:</dt>
-      <dd>Return the {{XRJointSpace}}.
-      <dt>Otherwise:</dt>
-      <dd>Return <code>null</code></dd>
+        <dt>If found:</dt>
+        <dd>Return the {{XRJointSpace}}.
+        <dt>Otherwise:</dt>
+        <dd>Return <code>null</code></dd>
       </dl>
 
 </div>
@@ -258,11 +267,17 @@ XRJointSpace {#xrjointspace-interface}
 interface XRJointSpace: XRSpace {};
 </pre>
 
-The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying [=skeleton joint=] corresponding to its [=XRJointSpace/joint index=].
+The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying [=XRJointSpace/joint=].
+
+The [=native origin=] has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.
+
+For tip [=skeleton joints=] where there is no [=associated bone=], the <code>-Z</code> direction is the same as that for the associated distal joint, i.e. the direction is along that of the previous bone. For wrist [=skeleton joints=] the <code>-Z</code> direction SHOULD point roughly towards the center of the palm.
 
 Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>hand</dfn>, which is the {{XRHand}} that created it.
 
 Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>joint index</dfn>, which is the joint index corresponding to the joint it tracks.
+
+Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>joint</dfn>, which is [=skeleton joint=] corresponding to its [=XRJointSpace/joint index=].
 
 
 Frame Loop {#frame-loop}
@@ -273,12 +288,36 @@ XRFrame {#xrframe-interface}
 
 <pre class="idl">
 partial interface XRFrame {
-    XRJointPose? getJointPose(XRJointSpace joint, XRSpace relativeTo);
+    XRJointPose? getJointPose(XRJointSpace joint, XRSpace baseSpace);
 };
 </pre>
 
+<div class="algorithm" data-algorithm="get-joint-pose">
+
+The <dfn method for="XRFrame">getJointPose(|joint|, |baseSpace|)</dfn> method provides the pose of |joint| relative to |baseSpace| as an {{XRJointPose}}, at the {{XRFrame}}'s [=XRFrame/time=].
+
+When this method is invoked, the user agent MUST run the following steps:
+
+  1. Let |frame| be [=this=].
+  1. Let |session| be |frame|'s {{XRFrame/session}} object.
+  1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
+  1. Let |pose| be a [=new=] {{XRJointPose}} object in the [=relevant realm=] of |session|.
+  1. [=Populate the pose=] of |joint| in |baseSpace| at the time represented by |frame| into |pose|, with <code>force emulation</code> set to <code>false</code>.
+  1. If |pose| is <code>null</code> return <code>null</code>.
+  1. Perform the following steps based on the ability to determine a [=skeleton joint/radius=]:
+      <dl class="switch">
+      <dt>If a [=skeleton joint/radius=] |r| can be determined or emulated for |joint|'s [=XRJointSpace/joint=]</dt>
+      <dd>Set |pose|'s {{XRJointPose/radius}} to |r|.
+      <dt>Otherwise:</dt>
+      <dd>Set |pose|'s {{XRJointPose/radius}} to <code>null</code></dd>
+      </dl>
+  1. Return |pose|.
+
+</div>
 XRJointPose {#xrjointpose-interface}
 -------------
+
+An {{XRJointPose}} is an {{XRPose}} with additional information about the size of the [=skeleton joint=] it represents.
 
 <pre class="idl">
 interface XRJointPose: XRPose {
@@ -286,6 +325,9 @@ interface XRJointPose: XRPose {
 };
 </pre>
 
+The <dfn attribute for=XRJointPose>radius</dfn> attribute returns the [=skeleton joint/radius=] of the [=skeleton joint=] in meters.
+
+The user-agent SHOULD set {{XRJointPose/radius}} to <code>null</code> if the [=/XR device=] does not have the capability of determining this value. If the [=/XR device=] is able to determine this value in general but is not able to in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured, it MAY return <code>null</code> or it MAY emulate a value.
 
 Privacy & Security Considerations {#privacy-security}
 =================================
