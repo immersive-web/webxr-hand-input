@@ -1,0 +1,337 @@
+<pre class="metadata">
+Shortname: webxr-hand-input
+Title: WebXR Hand Input Module - Level 1
+Group: immersivewebwg
+Status: ED
+ED: https://immersive-web.github.io/webxr-hands-input/
+Repository: immersive-web/webxr-hands-input
+Level: 1
+Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web/
+
+!Participate: <a href="https://github.com/immersive-web/webxr-hands-input/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/webxr-hands-input/issues">open issues</a>)
+!Participate: <a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
+!Participate: <a href="irc://irc.w3.org:6665/">W3C's #immersive-web IRC</a>
+
+Editor: Manish Goregaokar 109489, Mozilla http://mozilla.org/, manish@mozilla.com
+
+Abstract: The WebXR Hand Input module expands the <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a> with the functionality to track articulated hand poses.
+
+Warning: custom
+Custom Warning Title: Unstable API
+Custom Warning Text:
+  <b>The API represented in this document is under development and may change at any time.</b>
+  <p>For additional context on the use of this API please reference the <a href="https://github.com/immersive-web/webxr-hands-input/blob/master/explainer.md">Hand Input Module Explainer</a>.</p>
+Status Text: This WebXR Augmented Reality Module is designed as a module to be implemented in addition to <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>, and is originally included in WebXR Device API which was divided into core and modules. 
+</pre>
+
+
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="favicon-96x96.png">
+
+<style>
+  .unstable::before {
+    content: "This section is not stable";
+    display: block;
+    font-weight: bold;
+    text-align: right;
+    color: red;
+  }
+  .unstable {
+    border: thin solid pink;
+    border-radius: .5em;
+    padding: .5em;
+    margin: .5em calc(-0.5em - 1px);
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='290'><text transform='rotate(-45)' text-anchor='middle' font-family='sans-serif' font-weight='bold' font-size='70' y='210' opacity='.1'>Unstable</text></svg>");
+    background-repeat: repeat;
+    background-color: #FFF4F4;
+  }
+  .unstable h3:first-of-type {
+    margin-top: 0.5rem;
+  }
+
+  .unstable.example:not(.no-marker)::before {
+    content: "Example " counter(example) " (Unstable)";
+    float: none;
+  }
+
+  .non-normative::before {
+    content: "This section is non-normative.";
+    font-style: italic;
+  }
+  .tg {
+    border-collapse: collapse;
+    border-spacing: 0;
+  }
+  .tg th {
+    border-style: solid;
+    border-width: 1px;
+    background: #90b8de;
+    color: #fff;
+    font-family: sans-serif;
+    font-weight: bold;
+    border-color: grey;
+  }
+  .tg td {
+    padding: 4px 5px;
+    background-color: rgb(221, 238, 255);
+    font-family: monospace;
+    border-style: solid;
+    border-width: 1px;
+    border-color: grey;
+    overflow: hidden;
+    word-break: normal;
+  }
+</style>
+
+
+<pre class="link-defaults">
+spec: webxr-1;
+    type: dfn; text: xr device; for: /
+    type: dfn; text: xr device; for: XRSession
+    type: dfn; text: animation frame; for: XRSession
+    type: dfn; text: native origin
+    type: dfn; text: feature descriptor
+    type: dfn; text: populate the pose
+    type: dfn; text: time; for: XRFrame
+spec:infra; type:dfn; text:list
+</pre>
+
+<pre class="anchors">
+</pre>
+
+
+Introduction {#intro}
+============
+
+<section class="non-normative">
+On some [=/XR devices=], especially but not limited to AR devices, it is possible to get fully articulated information about tracked hands being used as input sources.
+
+This API exposes the poses of hand [=skeleton joint=]s, which can be used to do gesture detection as well as render a hand model in VR scenarios.
+
+
+</section>
+
+
+Initialization {#initialization}
+=============
+
+If an application wants to view articulated hand pose information during a session,
+the session MUST be requested with an appropriate [=feature descriptor=]. The string "<dfn for="feature descriptor">hand-tracking</dfn>" is introduced
+by this module as a new valid [=feature descriptor=] for articulated hand tracking.
+
+The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{XRSession}} its [=XRSession/XR device=] has [=physical hand input sources=] that [=supports hand tracking=].
+
+
+Physical Hand Input Sources {#physical-hand}
+=============
+
+An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input sources=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
+
+XRInputSource {#xrinputsource-interface}
+-------------
+
+<pre class="idl">
+partial interface XRInputSource {
+   readonly attribute XRHand? hand;
+};
+</pre>
+
+The <dfn attribute for=XRInputSource>hand</dfn> attribute on a [=physical hand input source=] that [=supports hand tracking=] will be an {{XRHand}} object giving access to the underlying hand-tracking capabilities. {{XRInputSource/hand}} will have its [=input source=] set to [=this=].
+
+If the {{XRInputSource}} belongs to an {{XRSession}} that has not been requested with the "[=hand-tracking=]" [=feature descriptor=], {{XRInputSource/hand}} MUST be <code>null</code>.
+
+Skeleton Joints {#skeleton-joints-section}
+-------------
+
+A [=physical hand input source=] is made up of many <dfn>skeleton joints</dfn>.
+
+A [=skeleton joint=] for a given hand can be uniquely identified by a <dfn>skeleton joint index</dfn>, which is a nonnegative integer.
+
+A [=skeleton joint=] may have an <dfn>associated bone</dfn> used to orient its <code>-Z</code> axis. The [=associated bone=] of a [=skeleton joint=] is the bone that comes after the joint when moving towards the fingertips. The tip and wrist joints have no [=associated bones=].
+
+A [=skeleton joint=] has a <dfn for="skeleton joint">radius</dfn> which is the radius of a sphere placed at its center so that it roughly touches the skin on both sides of the hand.
+
+This specification defines the following [=skeleton joints=]:
+
+<table class="tg">
+<thead>
+<tr><th colspan=2>[=Skeleton joint=]</th><th>[=Skeleton joint index=]</th></tr>
+</thead>
+<tbody>
+<tr><td colspan=2>Wrist</td><td>0</td></tr>
+<tr><td rowspan=4>Thumb</td>
+  <td>Metacarpal</td><td>1</td></tr>
+  <tr><td>Proximal Phalanx</td><td>2</td></tr>
+  <tr><td>Distal Phalanx</td><td>3</td></tr>
+  <tr><td>Tip</td><td>4</td></tr>
+<tr><td rowspan=5>Index finger</td>
+  <td>Metacarpal</td><td>5</td></tr>
+  <tr><td>Proximal Phalanx</td><td>6</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>7</td></tr>
+  <tr><td>Distal Phalanx</td><td>8</td></tr>
+  <tr><td>Tip</td><td>9</td></tr>
+<tr><td rowspan=5>Middle finger</td>
+  <td>Metacarpal</td><td>10</td></tr>
+  <tr><td>Proximal Phalanx</td><td>11</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>12</td></tr>
+  <tr><td>Distal Phalanx</td><td>13</td></tr>
+  <tr><td>Tip</td><td>14</td></tr>
+<tr><td rowspan=5>Ring finger</td>
+  <td>Metacarpal</td><td>15</td></tr>
+  <tr><td>Proximal Phalanx</td><td>16</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>17</td></tr>
+  <tr><td>Distal Phalanx</td><td>18</td></tr>
+  <tr><td>Tip</td><td>9</td></tr>
+<tr><td rowspan=5>Little finger</td>
+  <td>Metacarpal</td><td>20</td></tr>
+  <tr><td>Proximal Phalanx</td><td>21</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>22</td></tr>
+  <tr><td>Distal Phalanx</td><td>23</td></tr>
+  <tr><td>Tip</td><td>24</td></tr>
+</tbody>
+</table>
+
+
+TODO: Add diagram
+
+XRHand {#xrhand-interface}
+-------------
+
+<pre class="idl">
+interface XRHand {
+    readonly attribute unsigned long length;
+    getter XRJointSpace? joint(unsigned long jointIndex);
+
+    const unsigned long WRIST = 0;
+
+    const unsigned long THUMB_METACARPAL = 1;
+    const unsigned long THUMB_PHALANX_PROXIMAL = 2;
+    const unsigned long THUMB_PHALANX_DISTAL = 3;
+    const unsigned long THUMB_PHALANX_TIP = 4;
+
+    const unsigned long INDEX_METACARPAL = 5;
+    const unsigned long INDEX_PHALANX_PROXIMAL = 6;
+    const unsigned long INDEX_PHALANX_INTERMEDIATE = 7;
+    const unsigned long INDEX_PHALANX_DISTAL = 8;
+    const unsigned long INDEX_PHALANX_TIP = 9;
+
+    const unsigned long MIDDLE_METACARPAL = 10;
+    const unsigned long MIDDLE_PHALANX_PROXIMAL = 11;
+    const unsigned long MIDDLE_PHALANX_INTERMEDIATE = 12;
+    const unsigned long MIDDLE_PHALANX_DISTAL = 13;
+    const unsigned long MIDDLE_PHALANX_TIP = 14;
+
+    const unsigned long RING_METACARPAL = 15;
+    const unsigned long RING_PHALANX_PROXIMAL = 16;
+    const unsigned long RING_PHALANX_INTERMEDIATE = 17;
+    const unsigned long RING_PHALANX_DISTAL = 18;
+    const unsigned long RING_PHALANX_TIP = 19;
+
+    const unsigned long LITTLE_METACARPAL = 20;
+    const unsigned long LITTLE_PHALANX_PROXIMAL = 21;
+    const unsigned long LITTLE_PHALANX_INTERMEDIATE = 22;
+    const unsigned long LITTLE_PHALANX_DISTAL = 23;
+    const unsigned long LITTLE_PHALANX_TIP = 24;
+};
+</pre>
+
+Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is the [=physical hand input source=] that it tracks.
+
+Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] it supports tracking. These all will have their [=XRJointSpace/hand=] set to [=this=].
+
+The [=list of joint spaces=] MUST NOT change over the course of a session, even if a [=skeleton joint=] is temporarily obscured.
+
+The <dfn attribute for=XRHand>length</dfn> attribute MUST return a number greater than the maximum skeleton joint index supported by the {{XRHand}}.
+
+Note: It is possible for there to be gaps in skeleton joints supported; the {{XRHand/length}} attribute is necessary to make indexed getters work.
+
+<div class="algorithm" data-algorithm="index-joint-space">
+The <dfn method for="XRJointSpace">joint(|jointIndex|)</dfn> method when invoked runs the following steps:
+
+  1. Look for an {{XRJointSpace}} in [=this=]'s [=list of joint spaces=] with [=XRJointSpace/joint index=] corresponding to |jointIndex|.
+  1. Handle the result of the search as follows:
+      <dl class="switch">
+        <dt>If found:</dt>
+        <dd>Return the {{XRJointSpace}}.
+        <dt>Otherwise:</dt>
+        <dd>Return <code>null</code></dd>
+      </dl>
+
+</div>
+
+</div>
+XRJointSpace {#xrjointspace-interface}
+-------------
+
+<pre class="idl">
+interface XRJointSpace: XRSpace {};
+</pre>
+
+The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying [=XRJointSpace/joint=].
+
+The [=native origin=] has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.
+
+For tip [=skeleton joints=] where there is no [=associated bone=], the <code>-Z</code> direction is the same as that for the associated distal joint, i.e. the direction is along that of the previous bone. For wrist [=skeleton joints=] the <code>-Z</code> direction SHOULD point roughly towards the center of the palm.
+
+Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>hand</dfn>, which is the {{XRHand}} that created it.
+
+Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>joint index</dfn>, which is the joint index corresponding to the joint it tracks.
+
+Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>joint</dfn>, which is [=skeleton joint=] corresponding to its [=XRJointSpace/joint index=].
+
+
+Frame Loop {#frame-loop}
+==========
+
+XRFrame {#xrframe-interface}
+-------------
+
+<pre class="idl">
+partial interface XRFrame {
+    XRJointPose? getJointPose(XRJointSpace joint, XRSpace baseSpace);
+};
+</pre>
+
+<div class="algorithm" data-algorithm="get-joint-pose">
+
+The <dfn method for="XRFrame">getJointPose(|joint|, |baseSpace|)</dfn> method provides the pose of |joint| relative to |baseSpace| as an {{XRJointPose}}, at the {{XRFrame}}'s [=XRFrame/time=].
+
+When this method is invoked, the user agent MUST run the following steps:
+
+  1. Let |frame| be [=this=].
+  1. Let |session| be |frame|'s {{XRFrame/session}} object.
+  1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
+  1. Let |pose| be a [=new=] {{XRJointPose}} object in the [=relevant realm=] of |session|.
+  1. [=Populate the pose=] of |joint| in |baseSpace| at the time represented by |frame| into |pose|, with <code>force emulation</code> set to <code>false</code>.
+  1. If |pose| is <code>null</code> return <code>null</code>.
+  1. Perform the following steps based on the ability to determine a [=skeleton joint/radius=]:
+      <dl class="switch">
+      <dt>If a [=skeleton joint/radius=] |r| can be determined or emulated for |joint|'s [=XRJointSpace/joint=]</dt>
+      <dd>Set |pose|'s {{XRJointPose/radius}} to |r|.
+      <dt>Otherwise:</dt>
+      <dd>Set |pose|'s {{XRJointPose/radius}} to <code>null</code></dd>
+      </dl>
+  1. Return |pose|.
+
+</div>
+XRJointPose {#xrjointpose-interface}
+-------------
+
+An {{XRJointPose}} is an {{XRPose}} with additional information about the size of the [=skeleton joint=] it represents.
+
+<pre class="idl">
+interface XRJointPose: XRPose {
+    readonly attribute float? radius;
+};
+</pre>
+
+The <dfn attribute for=XRJointPose>radius</dfn> attribute returns the [=skeleton joint/radius=] of the [=skeleton joint=] in meters.
+
+The user-agent SHOULD set {{XRJointPose/radius}} to <code>null</code> if the [=/XR device=] does not have the capability of determining this value. If the [=/XR device=] is able to determine this value in general but is not able to in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured, it MAY return <code>null</code> or it MAY emulate a value.
+
+Privacy & Security Considerations {#privacy-security}
+=================================
+
+TODO
+
+
