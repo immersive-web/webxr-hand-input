@@ -103,7 +103,7 @@ Introduction {#intro}
 <section class="non-normative">
 On some [=/XR devices=], especially but not limited to AR devices, it is possible to get fully articulated information about tracked hands being used as input sources.
 
-This API exposes the poses of hand skeleton joints, which can be used to do gesture detection as well as render a hand model in VR scenarios.
+This API exposes the poses of hand [=skeleton joint=]s, which can be used to do gesture detection as well as render a hand model in VR scenarios.
 
 
 </section>
@@ -122,7 +122,7 @@ The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{X
 Physical Hand Input Sources {#physical-hand}
 =============
 
-An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input sources=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more skeleton joints defined in this specification.
+An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input sources=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
 
 XRInputSource {#xrinputsource-interface}
 -------------
@@ -137,6 +137,55 @@ The <dfn attribute for=XRInputSource>hand</dfn> attribute on a [=physical hand i
 
 If the {{XRInputSource}} belongs to an {{XRSession}} that has not been requested with the "[=hand-tracking=]" [=feature descriptor=], {{XRInputSource/hand}} MUST be <code>null</code>.
 
+Skeleton Joints {#skeleton-joints-section}
+-------------
+
+A [=physical hand input source=] is made up of many <dfn>skeleton joints</dfn>.
+
+A [=skeleton joint=] can be uniquely identified by a <dfn>skeleton joint index</dfn>, which is a nonnegative integer.
+
+This specification defines the following [=skeleton joints=]:
+
+<table class="tg">
+<thead>
+<tr><th colspan=2>[=Skeleton joint=]</th><th>[=Skeleton joint index=]</th></tr>
+</thead>
+<tbody>
+<tr><td colspan=2>Wrist</td><td>0</td></tr>
+<tr><td rowspan=4>Thumb</td>
+  <td>Metacarpal</td><td>1</td></tr>
+  <tr><td>Proximal Phalanx</td><td>2</td></tr>
+  <tr><td>Distal Phalanx</td><td>3</td></tr>
+  <tr><td>Tip</td><td>4</td></tr>
+<tr><td rowspan=5>Index finger</td>
+  <td>Metacarpal</td><td>5</td></tr>
+  <tr><td>Proximal Phalanx</td><td>6</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>7</td></tr>
+  <tr><td>Distal Phalanx</td><td>8</td></tr>
+  <tr><td>Tip</td><td>9</td></tr>
+<tr><td rowspan=5>Middle finger</td>
+  <td>Metacarpal</td><td>10</td></tr>
+  <tr><td>Proximal Phalanx</td><td>11</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>12</td></tr>
+  <tr><td>Distal Phalanx</td><td>13</td></tr>
+  <tr><td>Tip</td><td>14</td></tr>
+<tr><td rowspan=5>Ring finger</td>
+  <td>Metacarpal</td><td>15</td></tr>
+  <tr><td>Proximal Phalanx</td><td>16</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>17</td></tr>
+  <tr><td>Distal Phalanx</td><td>18</td></tr>
+  <tr><td>Tip</td><td>9</td></tr>
+<tr><td rowspan=5>Little finger</td>
+  <td>Metacarpal</td><td>20</td></tr>
+  <tr><td>Proximal Phalanx</td><td>21</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>22</td></tr>
+  <tr><td>Distal Phalanx</td><td>23</td></tr>
+  <tr><td>Tip</td><td>24</td></tr>
+</tbody>
+</table>
+
+
+TODO: Add diagram
 
 XRHand {#xrhand-interface}
 -------------
@@ -181,7 +230,7 @@ interface XRHand {
 
 Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is the [=physical hand input source=] that it tracks.
 
-Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each skeleton joint it supports tracking. These all will have their [=XRJointSpace/hand=] set to [=this=].
+Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] it supports tracking. These all will have their [=XRJointSpace/hand=] set to [=this=].
 
 The <dfn attribute for=XRHand>length</dfn> attribute MUST return a number greater than the maximum skeleton joint index supported by the {{XRHand}}.
 
@@ -209,7 +258,7 @@ XRJointSpace {#xrjointspace-interface}
 interface XRJointSpace: XRSpace {};
 </pre>
 
-The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying skeleton joint it tracks.
+The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying [=skeleton joint=] corresponding to its [=XRJointSpace/joint index=].
 
 Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>hand</dfn>, which is the {{XRHand}} that created it.
 
