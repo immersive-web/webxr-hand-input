@@ -21,7 +21,7 @@ Custom Warning Title: Unstable API
 Custom Warning Text:
   <b>The API represented in this document is under development and may change at any time.</b>
   <p>For additional context on the use of this API please reference the <a href="https://github.com/immersive-web/webxr-hand-input/blob/master/explainer.md">Hand Input Module Explainer</a>.</p>
-Status Text: This WebXR Augmented Reality Module is designed as a module to be implemented in addition to <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>, and is originally included in WebXR Device API which was divided into core and modules. 
+Status Text: This WebXR Augmented Reality Module is designed as a module to be implemented in addition to <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>, and is originally included in WebXR Device API which was divided into core and modules.
 </pre>
 
 
@@ -92,7 +92,9 @@ spec: webxr-1;
     type: dfn; text: native origin
     type: dfn; text: feature descriptor
     type: dfn; text: populate the pose
+    type: dfn; text: session; for: XRFrame
     type: dfn; text: time; for: XRFrame
+    type: dfn; text: session; for: XRSpace
 spec:infra; type:dfn; text:list
 </pre>
 
@@ -104,16 +106,15 @@ Introduction {#intro}
 ============
 
 <section class="non-normative">
-On some [=/XR devices=], especially but not limited to AR devices, it is possible to get fully articulated information about tracked hands being used as input sources.
+On some [=/XR devices=] it is possible to get fully articulated information about the user's hands when they are use as input sources.
 
-This API exposes the poses of hand [=skeleton joint=]s, which can be used to do gesture detection as well as render a hand model in VR scenarios.
-
+This API exposes the poses of each of the users' hand [=skeleton joint=]s. This can be used to do gesture detection or to render a hand model in VR scenarios.
 
 </section>
 
 
 Initialization {#initialization}
-=============
+==============
 
 If an application wants to view articulated hand pose information during a session,
 the session MUST be requested with an appropriate [=feature descriptor=]. The string "<dfn for="feature descriptor">hand-tracking</dfn>" is introduced
@@ -123,7 +124,7 @@ The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{X
 
 
 Physical Hand Input Sources {#physical-hand}
-=============
+===========================
 
 An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input sources=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
 
@@ -141,7 +142,7 @@ The <dfn attribute for=XRInputSource>hand</dfn> attribute on a [=physical hand i
 If the {{XRInputSource}} belongs to an {{XRSession}} that has not been requested with the "[=hand-tracking=]" [=feature descriptor=], {{XRInputSource/hand}} MUST be <code>null</code>.
 
 Skeleton Joints {#skeleton-joints-section}
--------------
+---------------
 
 A [=physical hand input source=] is made up of many <dfn>skeleton joints</dfn>.
 
@@ -195,7 +196,7 @@ This specification defines the following [=skeleton joints=]:
 TODO: Add diagram
 
 XRHand {#xrhand-interface}
--------------
+------
 
 <pre class="idl">
 interface XRHand {
@@ -284,7 +285,7 @@ Frame Loop {#frame-loop}
 ==========
 
 XRFrame {#xrframe-interface}
--------------
+-------
 
 <pre class="idl">
 partial interface XRFrame {
@@ -301,21 +302,23 @@ When this method is invoked, the user agent MUST run the following steps:
   1. Let |frame| be [=this=].
   1. Let |session| be |frame|'s {{XRFrame/session}} object.
   1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
+  1. If |baseSpace|'s [=XRSpace/session=] or |joint|'s [=XRSpace/session=] are different from [=this=] {{XRFrame/session}}, throw an {{InvalidStateError}} and abort these steps.
   1. Let |pose| be a [=new=] {{XRJointPose}} object in the [=relevant realm=] of |session|.
   1. [=Populate the pose=] of |joint| in |baseSpace| at the time represented by |frame| into |pose|, with <code>force emulation</code> set to <code>false</code>.
   1. If |pose| is <code>null</code> return <code>null</code>.
   1. Perform the following steps based on the ability to determine a [=skeleton joint/radius=]:
       <dl class="switch">
       <dt>If a [=skeleton joint/radius=] |r| can be determined or emulated for |joint|'s [=XRJointSpace/joint=]</dt>
-      <dd>Set |pose|'s {{XRJointPose/radius}} to |r|.
-      <dt>Otherwise:</dt>
-      <dd>Set |pose|'s {{XRJointPose/radius}} to <code>null</code></dd>
+        <dd>Set |pose|'s {{XRJointPose/radius}} to |r|.
+      <dt>Otherwise</dt>
+        <dd>Set |pose|'s {{XRJointPose/radius}} to <code>null</code></dd>
       </dl>
   1. Return |pose|.
 
 </div>
+
 XRJointPose {#xrjointpose-interface}
--------------
+-----------
 
 An {{XRJointPose}} is an {{XRPose}} with additional information about the size of the [=skeleton joint=] it represents.
 
@@ -327,11 +330,9 @@ interface XRJointPose: XRPose {
 
 The <dfn attribute for=XRJointPose>radius</dfn> attribute returns the [=skeleton joint/radius=] of the [=skeleton joint=] in meters.
 
-The user-agent SHOULD set {{XRJointPose/radius}} to <code>null</code> if the [=/XR device=] does not have the capability of determining this value. If the [=/XR device=] is able to determine this value in general but is not able to in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured, it MAY return <code>null</code> or it MAY emulate a value.
+The user-agent SHOULD set {{XRJointPose/radius}} to <code>null</code> if the [=/XR device=] does not have the capability of determining this value. If the [=/XR device=] is able to determine this value in general but is not able to in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured), it MAY return <code>null</code> or it MAY emulate a value.
 
 Privacy & Security Considerations {#privacy-security}
 =================================
 
 TODO
-
-
