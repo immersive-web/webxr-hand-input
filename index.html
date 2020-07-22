@@ -1628,8 +1628,8 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <main>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
    <section class="non-normative">
-     On some <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device">XR devices</a>, especially but not limited to AR devices, it is possible to get fully articulated information about tracked hands being used as input sources. 
-    <p>This API exposes the poses of hand <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints">skeleton joint</a>s, which can be used to do gesture detection as well as render a hand model in VR scenarios.</p>
+     On some <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device">XR devices</a> it is possible to get fully articulated information about the user’s hands when they are use as input sources. 
+    <p>This API exposes the poses of each of the users' hand <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints">skeleton joint</a>s. This can be used to do gesture detection or to render a hand model in VR scenarios.</p>
    </section>
    <h2 class="heading settled" data-level="2" id="initialization"><span class="secno">2. </span><span class="content">Initialization</span><a class="self-link" href="#initialization"></a></h2>
    <p>If an application wants to view articulated hand pose information during a session,
@@ -1822,6 +1822,8 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
      <li data-md>
       <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://w3c.github.io/ServiceWorker/#extendableevent-active" id="ref-for-extendableevent-active">active</a> boolean is <code>false</code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
+      <p>If <var>baseSpace</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session">session</a> or <var>joint</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session①">session</a> are different from <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this④">this</a> <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a></code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code> and abort these steps.</p>
+     <li data-md>
       <p>Let <var>pose</var> be a <a data-link-type="dfn" href="https://heycam.github.io/webidl/#new" id="ref-for-new">new</a> <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose②">XRJointPose</a></code> object in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm">relevant realm</a> of <var>session</var>.</p>
      <li data-md>
       <p><a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#populate-the-pose" id="ref-for-populate-the-pose">Populate the pose</a> of <var>joint</var> in <var>baseSpace</var> at the time represented by <var>frame</var> into <var>pose</var>, with <code>force emulation</code> set to <code>false</code>.</p>
@@ -1832,7 +1834,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
       <dl class="switch">
        <dt>If a <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius①">radius</a> <var>r</var> can be determined or emulated for <var>joint</var>’s <a data-link-type="dfn" href="#xrjointspace-joint" id="ref-for-xrjointspace-joint①">joint</a>
        <dd>Set <var>pose</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius">radius</a></code> to <var>r</var>. 
-       <dt>Otherwise:
+       <dt>Otherwise
        <dd>Set <var>pose</var>’s <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius①">radius</a></code> to <code>null</code>
       </dl>
      <li data-md>
@@ -1846,7 +1848,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
 };
 </pre>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius②">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①④">skeleton joint</a> in meters.</p>
-   <p>The user-agent SHOULD set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius③">radius</a></code> to <code>null</code> if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value. If the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device②">XR device</a> is able to determine this value in general but is not able to in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⑤">skeleton joint</a> is partially obscured, it MAY return <code>null</code> or it MAY emulate a value.</p>
+   <p>The user-agent SHOULD set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius③">radius</a></code> to <code>null</code> if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value. If the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device②">XR device</a> is able to determine this value in general but is not able to in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⑤">skeleton joint</a> is partially obscured), it MAY return <code>null</code> or it MAY emulate a value.</p>
    <h2 class="heading settled" data-level="5" id="privacy-security"><span class="secno">5. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
    <p>TODO</p>
    <p id="back-to-top" role="navigation"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
@@ -1935,7 +1937,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
   <aside class="dfn-panel" data-for="term-for-invalidstateerror">
    <a href="https://heycam.github.io/webidl/#invalidstateerror">https://heycam.github.io/webidl/#invalidstateerror</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-invalidstateerror">4.1. XRFrame</a>
+    <li><a href="#ref-for-invalidstateerror">4.1. XRFrame</a> <a href="#ref-for-invalidstateerror①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-idl-float">
@@ -1955,7 +1957,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
    <ul>
     <li><a href="#ref-for-this">3.1. XRInputSource</a>
     <li><a href="#ref-for-this①">3.3. XRHand</a> <a href="#ref-for-this②">(2)</a>
-    <li><a href="#ref-for-this③">4.1. XRFrame</a>
+    <li><a href="#ref-for-this③">4.1. XRFrame</a> <a href="#ref-for-this④">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-idl-unsigned-long">
@@ -2022,10 +2024,10 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
     <li><a href="#ref-for-populate-the-pose">4.1. XRFrame</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrframe-session">
-   <a href="https://immersive-web.github.io/webxr/#dom-xrframe-session">https://immersive-web.github.io/webxr/#dom-xrframe-session</a><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="term-for-xrspace-session">
+   <a href="https://immersive-web.github.io/webxr/#xrspace-session">https://immersive-web.github.io/webxr/#xrspace-session</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-xrframe-session">4.1. XRFrame</a>
+    <li><a href="#ref-for-xrspace-session">4.1. XRFrame</a> <a href="#ref-for-xrspace-session①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-xrframe-time">
@@ -2078,7 +2080,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
      <li><span class="dfn-paneled" id="term-for-feature-descriptor" style="color:initial">feature descriptor</span>
      <li><span class="dfn-paneled" id="term-for-xrspace-native-origin" style="color:initial">native origin</span>
      <li><span class="dfn-paneled" id="term-for-populate-the-pose" style="color:initial">populate the pose</span>
-     <li><span class="dfn-paneled" id="term-for-dom-xrframe-session" style="color:initial">session</span>
+     <li><span class="dfn-paneled" id="term-for-xrspace-session" style="color:initial">session <small>(for XRSpace)</small></span>
      <li><span class="dfn-paneled" id="term-for-xrframe-time" style="color:initial">time</span>
      <li><span class="dfn-paneled" id="term-for-xrsession-xr-device" style="color:initial">xr device <small>(for XRSession)</small></span>
     </ul>
