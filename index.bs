@@ -3,12 +3,12 @@ Shortname: webxr-hand-input
 Title: WebXR Hand Input Module - Level 1
 Group: immersivewebwg
 Status: ED
-ED: https://immersive-web.github.io/webxr-hands-input/
-Repository: immersive-web/webxr-hands-input
+ED: https://immersive-web.github.io/webxr-hand-input/
+Repository: immersive-web/webxr-hand-input
 Level: 1
 Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web/
 
-!Participate: <a href="https://github.com/immersive-web/webxr-hands-input/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/webxr-hands-input/issues">open issues</a>)
+!Participate: <a href="https://github.com/immersive-web/webxr-hand-input/issues/new">File an issue</a> (<a href="https://github.com/immersive-web/webxr-hand-input/issues">open issues</a>)
 !Participate: <a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
 !Participate: <a href="irc://irc.w3.org:6665/">W3C's #immersive-web IRC</a>
 
@@ -20,7 +20,7 @@ Warning: custom
 Custom Warning Title: Unstable API
 Custom Warning Text:
   <b>The API represented in this document is under development and may change at any time.</b>
-  <p>For additional context on the use of this API please reference the <a href="https://github.com/immersive-web/webxr-hands-input/blob/master/explainer.md">Hand Input Module Explainer</a>.</p>
+  <p>For additional context on the use of this API please reference the <a href="https://github.com/immersive-web/webxr-hand-input/blob/master/explainer.md">Hand Input Module Explainer</a>.</p>
 Status Text: This WebXR Augmented Reality Module is designed as a module to be implemented in addition to <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>, and is originally included in WebXR Device API which was divided into core and modules. 
 </pre>
 

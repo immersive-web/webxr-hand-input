@@ -1,4 +1,4 @@
-# WebXR Hands Input
+# WebXR Hand Input
 
 This is a feature incubation repo for working on hand input support in WebXR.
 
