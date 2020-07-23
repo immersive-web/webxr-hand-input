@@ -95,6 +95,7 @@ spec: webxr-1;
     type: dfn; text: session; for: XRFrame
     type: dfn; text: time; for: XRFrame
     type: dfn; text: session; for: XRSpace
+    type: dfn; text: input profile name; for: XRInputSource
 spec:infra; type:dfn; text:list
 </pre>
 
@@ -127,6 +128,8 @@ Physical Hand Input Sources {#physical-hand}
 ===========================
 
 An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input sources=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
+
+[=Physical hand input sources=] SHOULD include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profile}}.
 
 XRInputSource {#xrinputsource-interface}
 -------------
