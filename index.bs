@@ -297,13 +297,19 @@ partial interface XRFrame {
 
 The <dfn method for="XRFrame">getJointPose(|joint|, |baseSpace|)</dfn> method provides the pose of |joint| relative to |baseSpace| as an {{XRJointPose}}, at the {{XRFrame}}'s [=XRFrame/time=].
 
-When this method is invoked, the user agent MUST run the following steps:
+When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
 
   1. Let |frame| be [=this=].
   1. Let |session| be |frame|'s {{XRFrame/session}} object.
   1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
-  1. If |baseSpace|'s [=XRSpace/session=] or |joint|'s [=XRSpace/session=] are different from [=this=] {{XRFrame/session}}, throw an {{InvalidStateError}} and abort these steps.
-  1. Let |pose| be a [=new=] {{XRJointPose}} object in the [=relevant realm=] of |session|.
+  1. If |baseSpace|'s [=XRSpace/session=] or |joint|'s [=XRSpace/session=] are different from |frame|'s {{XRFrame/session}}, throw an {{InvalidStateError}} and abort these steps.
+  1. Initialize |pose| as follows:
+    <dl class="switch">
+      <dt> If {{XRFrame/getJointPose()}} was called previously with the same |frame|, |joint| and |baseSpace|, the user agent MAY:
+        <dd> Let |pose| be the same {{XRJointPose}} object as returned by an earlier call with the same arguments.
+      <dt> Otherwise
+        <dd> Let |pose| be a [=new=] {{XRJointPose}} object in the [=relevant realm=] of |session|.
+    </dl>
   1. [=Populate the pose=] of |joint| in |baseSpace| at the time represented by |frame| into |pose|, with <code>force emulation</code> set to <code>false</code>.
   1. If |pose| is <code>null</code> return <code>null</code>.
   1. Perform the following steps based on the ability to determine a [=skeleton joint/radius=]:
