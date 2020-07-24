@@ -89,6 +89,7 @@ spec: webxr-1;
     type: dfn; text: xr device; for: /
     type: dfn; text: xr device; for: XRSession
     type: dfn; text: animation frame; for: XRSession
+    type: dfn; text: explicit consent
     type: dfn; text: native origin
     type: dfn; text: feature descriptor
     type: dfn; text: populate the pose
@@ -96,6 +97,7 @@ spec: webxr-1;
     type: dfn; text: time; for: XRFrame
     type: dfn; text: session; for: XRSpace
 spec:infra; type:dfn; text:list
+spec:webxr-ar-module-1; type:enum-value; text:"immersive-ar"
 </pre>
 
 <pre class="anchors">
@@ -334,5 +336,13 @@ The user-agent SHOULD set {{XRJointPose/radius}} to <code>null</code> if the [=/
 
 Privacy & Security Considerations {#privacy-security}
 =================================
+The WebXR Hand Input API is a powerful feature with that carries significant privacy risks.
 
-TODO
+Since this feature returns new sensor data, the User Agent MUST ask for [=explicit consent=] from the user at session creation time.
+
+Data returned from this API, MUST NOT be so specific that one can detect individual users.
+If the underlying hardware returns data that is too precise, the User Agent MUST anonymize this data
+(ie by adding noise or rounding) before revealing it through the WebXR Hand Input API.
+
+This API is only supported in XRSessions created with XRSessionMode of {{XRSessionMode/"immersive-vr"}}
+or {{XRSessionMode/"immersive-ar"}}. {{XRSessionMode/"inline"}} sessions MUST not support this API.
