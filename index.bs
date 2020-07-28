@@ -96,6 +96,7 @@ spec: webxr-1;
     type: dfn; text: session; for: XRFrame
     type: dfn; text: time; for: XRFrame
     type: dfn; text: session; for: XRSpace
+    type: dfn; text: input profile name; for: XRInputSource
 spec:infra; type:dfn; text:list
 spec:webxr-ar-module-1; type:enum-value; text:"immersive-ar"
 </pre>
@@ -128,7 +129,9 @@ The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{X
 Physical Hand Input Sources {#physical-hand}
 ===========================
 
-An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input sources=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
+An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input source=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
+
+[=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profile}}.
 
 XRInputSource {#xrinputsource-interface}
 -------------
