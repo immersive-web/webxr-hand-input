@@ -275,6 +275,12 @@ interface XRJointSpace: XRSpace {};
 
 The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying [=XRJointSpace/joint=].
 
+The [=native origin=] of the {{XRJointSpace}} may only be reported when [=native origins=] of all other {{XRJointSpace}}s on the same [=XRJointSpace/hand=] are being reported. When a hand is partially obscured the user agent MAY emulate the obscured joints, or it MAY report <code>null</code> poses for all of the joints.
+
+Note: This means that when fetching poses you will either get an entire hand or none of it.
+
+Issue: This by default precludes faithfully exposing polydactyl/oligodactyl hands, however for fingerprinting concerns it will likely need to be a separate opt-in, anyway. See <a href=https://github.com/immersive-web/webxr-hand-input/issues/11>Issue 11</a> for more details.
+
 The [=native origin=] has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.
 
 For tip [=skeleton joints=] where there is no [=associated bone=], the <code>-Z</code> direction is the same as that for the associated distal joint, i.e. the direction is along that of the previous bone. For wrist [=skeleton joints=] the <code>-Z</code> direction SHOULD point roughly towards the center of the palm.
