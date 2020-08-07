@@ -131,7 +131,7 @@ Physical Hand Input Sources {#physical-hand}
 
 An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input source=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
 
-[=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profile}}.
+[=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profiles}}.
 
 XRInputSource {#xrinputsource-interface}
 -------------
