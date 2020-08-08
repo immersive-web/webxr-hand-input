@@ -1222,7 +1222,7 @@ Possible extra rowspan handling
 	}
 </style>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 7c63c139, updated Fri Jul 17 17:12:19 2020 -0700" name="generator">
+  <meta content="Bikeshed version c05ebec3, updated Fri Jul 31 13:58:05 2020 -0700" name="generator">
   <link href="https://immersive-web.github.io/webxr-hand-input/" rel="canonical">
   <link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
   <link href="favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
@@ -1537,13 +1537,14 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Hand Input Module - Level 1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-07-28">28 July 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-08-08">8 August 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
      <dd><a class="u-url" href="https://immersive-web.github.io/webxr-hand-input/">https://immersive-web.github.io/webxr-hand-input/</a>
      <dt>Issue Tracking:
      <dd><a href="https://github.com/immersive-web/webxr-hand-input/issues/">GitHub</a>
+     <dd><a href="#issues-index">Inline In Spec</a>
      <dt class="editor">Editors:
      <dd class="editor p-author h-card vcard" data-editor-id="109489"><a class="p-name fn u-email email" href="mailto:manish@mozilla.com">Manish Goregaokar</a> (<a class="p-org org" href="http://mozilla.org/">Mozilla</a>)
      <dd class="editor p-author h-card vcard"><span class="p-name fn"></span>
@@ -1623,6 +1624,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
       <li><a href="#normative"><span class="secno"></span> <span class="content">Normative References</span></a>
      </ol>
     <li><a href="#idl-index"><span class="secno"></span> <span class="content">IDL Index</span></a>
+    <li><a href="#issues-index"><span class="secno"></span> <span class="content">Issues Index</span></a>
    </ol>
   </nav>
   <main>
@@ -1638,7 +1640,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
    <p>The "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor②">feature descriptor</a> should only be granted for an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession">XRSession</a></code> its <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device">XR device</a> has <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source">physical hand input sources</a> that <a data-link-type="dfn" href="#supports-hand-tracking" id="ref-for-supports-hand-tracking">supports hand tracking</a>.</p>
    <h2 class="heading settled" data-level="3" id="physical-hand"><span class="secno">3. </span><span class="content">Physical Hand Input Sources</span><a class="self-link" href="#physical-hand"></a></h2>
    <p>An <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource">XRInputSource</a></code> is a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="physical-hand-input-source">physical hand input source</dfn> if it tracks a physical hand. A <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source①">physical hand input source</a> <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="supports-hand-tracking">supports hand tracking</dfn> if it supports reporting the poses of one or more <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①">skeleton joint</a>s defined in this specification.</p>
-   <p><a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source②">Physical hand input sources</a> MUST include the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrinputsource-input-profile-name" id="ref-for-xrinputsource-input-profile-name">input profile name</a> of "generic-hand-select" in their <code class="idl"><a data-link-type="idl">profile</a></code>.</p>
+   <p><a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source②">Physical hand input sources</a> MUST include the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrinputsource-input-profile-name" id="ref-for-xrinputsource-input-profile-name">input profile name</a> of "generic-hand-select" in their <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles" id="ref-for-dom-xrinputsource-profiles">profiles</a></code>.</p>
    <h3 class="heading settled" data-level="3.1" id="xrinputsource-interface"><span class="secno">3.1. </span><span class="content">XRInputSource</span><a class="self-link" href="#xrinputsource-interface"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource①"><c- g>XRInputSource</c-></a> {
    <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#xrhand" id="ref-for-xrhand"><c- n>XRHand</c-></a>? <a class="idl-code" data-link-type="attribute" data-readonly data-type="XRHand?" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand"><c- g>hand</c-></a>;
@@ -1742,8 +1744,9 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
    <p><img alt="Visual aid demonstrating joint layout" src="images/hand-layout.svg"></p>
    <h3 class="heading settled" data-level="3.3" id="xrhand-interface"><span class="secno">3.3. </span><span class="content">XRHand</span><a class="self-link" href="#xrhand-interface"></a></h3>
 <pre class="idl highlight def"><c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrhand"><code><c- g>XRHand</c-></code></dfn> {
+    <c- b>iterable</c->&lt;<a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace"><c- n>XRJointSpace</c-></a>>;
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="unsigned long" href="#dom-xrhand-length" id="ref-for-dom-xrhand-length"><c- g>length</c-></a>;
-    <c- b>getter</c-> <a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace"><c- n>XRJointSpace</c-></a>? <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="method" data-export data-lt="joint(jointIndex)" id="dom-xrhand-joint"><code><c- g>joint</c-></code><a class="self-link" href="#dom-xrhand-joint"></a></dfn>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand/joint(jointIndex)" data-dfn-type="argument" data-export id="dom-xrhand-joint-jointindex-jointindex"><code><c- g>jointIndex</c-></code><a class="self-link" href="#dom-xrhand-joint-jointindex-jointindex"></a></dfn>);
+    <c- b>getter</c-> <a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①"><c- n>XRJointSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="method" data-export data-lt="joint(jointIndex)" id="dom-xrhand-joint"><code><c- g>joint</c-></code><a class="self-link" href="#dom-xrhand-joint"></a></dfn>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand/joint(jointIndex)" data-dfn-type="argument" data-export id="dom-xrhand-joint-jointindex-jointindex"><code><c- g>jointIndex</c-></code><a class="self-link" href="#dom-xrhand-joint-jointindex-jointindex"></a></dfn>);
 
     <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-wrist"><code><c- g>WRIST</c-></code><a class="self-link" href="#dom-xrhand-wrist"></a></dfn> = 0;
 
@@ -1778,20 +1781,20 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
 };
 </pre>
    <p>Every <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand②">XRHand</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRHand" data-dfn-type="dfn" data-noexport id="xrhand-input-source">input source</dfn>, which is the <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source⑤">physical hand input source</a> that it tracks.</p>
-   <p>Each <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand③">XRHand</a></code> has a <dfn class="dfn-paneled" data-dfn-for="XRHand" data-dfn-type="dfn" data-noexport id="xrhand-list-of-joint-spaces">list of joint spaces</dfn> which is a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list">list</a> of <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace①">XRJointSpace</a></code>s corresponding to each <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑧">skeleton joint</a> it supports tracking. These all will have their <a data-link-type="dfn" href="#xrjointspace-hand" id="ref-for-xrjointspace-hand">hand</a> set to <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this①">this</a>.</p>
-   <p>The <a data-link-type="dfn" href="#xrhand-list-of-joint-spaces" id="ref-for-xrhand-list-of-joint-spaces">list of joint spaces</a> MUST NOT change over the course of a session, even if a <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑨">skeleton joint</a> is temporarily obscured.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRHand" data-dfn-type="attribute" data-export id="dom-xrhand-length"><code>length</code></dfn> attribute MUST return a number greater than the maximum skeleton joint index supported by the <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand④">XRHand</a></code>.</p>
-   <p class="note" role="note"><span>Note:</span> It is possible for there to be gaps in skeleton joints supported; the <code class="idl"><a data-link-type="idl" href="#dom-xrhand-length" id="ref-for-dom-xrhand-length①">length</a></code> attribute is necessary to make indexed getters work.</p>
+   <p>Each <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand③">XRHand</a></code> has a <dfn class="dfn-paneled" data-dfn-for="XRHand" data-dfn-type="dfn" data-noexport id="xrhand-list-of-joint-spaces">list of joint spaces</dfn> which is a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list">list</a> of <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace②">XRJointSpace</a></code>s corresponding to each <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑧">skeleton joint</a> defined in this specification. These all will have their <a data-link-type="dfn" href="#xrjointspace-hand" id="ref-for-xrjointspace-hand">hand</a> set to <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this①">this</a>.</p>
+   <p>If an individual device does not support a joint defined in this specification, it MUST emulate it instead.</p>
+   <p>The <a data-link-type="dfn" href="#xrhand-list-of-joint-spaces" id="ref-for-xrhand-list-of-joint-spaces">list of joint spaces</a> MUST NOT change over the course of a session.</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRHand" data-dfn-type="attribute" data-export id="dom-xrhand-length"><code>length</code></dfn> attribute MUST return the number <code>25</code></p>
    <div class="algorithm" data-algorithm="index-joint-space">
-     The <dfn class="idl-code" data-dfn-for="XRJointSpace" data-dfn-type="method" data-export id="dom-xrjointspace-joint"><code>joint(<var>jointIndex</var>)</code><a class="self-link" href="#dom-xrjointspace-joint"></a></dfn> method when invoked runs the following steps: 
+     The <dfn class="idl-code" data-dfn-for="XRJointSpace" data-dfn-type="method" data-export id="dom-xrjointspace-joint"><code>joint(<var>jointIndex</var>)</code><a class="self-link" href="#dom-xrjointspace-joint"></a></dfn> getter when invoked runs the following steps: 
     <ol>
      <li data-md>
-      <p>Look for an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace②">XRJointSpace</a></code> in <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this②">this</a>'s <a data-link-type="dfn" href="#xrhand-list-of-joint-spaces" id="ref-for-xrhand-list-of-joint-spaces①">list of joint spaces</a> with <a data-link-type="dfn" href="#xrjointspace-joint-index" id="ref-for-xrjointspace-joint-index">joint index</a> corresponding to <var>jointIndex</var>.</p>
+      <p>Look for an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace③">XRJointSpace</a></code> in <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this②">this</a>'s <a data-link-type="dfn" href="#xrhand-list-of-joint-spaces" id="ref-for-xrhand-list-of-joint-spaces①">list of joint spaces</a> with <a data-link-type="dfn" href="#xrjointspace-joint-index" id="ref-for-xrjointspace-joint-index">joint index</a> corresponding to <var>jointIndex</var>.</p>
      <li data-md>
       <p>Handle the result of the search as follows:</p>
       <dl class="switch">
        <dt>If found:
-       <dd>Return the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace③">XRJointSpace</a></code>. 
+       <dd>Return the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace④">XRJointSpace</a></code>. 
        <dt>Otherwise:
        <dd>Return <code>null</code>
       </dl>
@@ -1800,16 +1803,19 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
    <h3 class="heading settled" data-level="3.4" id="xrjointspace-interface"><span class="secno">3.4. </span><span class="content">XRJointSpace</span><a class="self-link" href="#xrjointspace-interface"></a></h3>
 <pre class="idl highlight def"><c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrjointspace"><code><c- g>XRJointSpace</c-></code></dfn>: <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace"><c- n>XRSpace</c-></a> {};
 </pre>
-   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin">native origin</a> of an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace④">XRJointSpace</a></code> is the position and orientation of the underlying <a data-link-type="dfn" href="#xrjointspace-joint" id="ref-for-xrjointspace-joint">joint</a>.</p>
-   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin①">native origin</a> has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.</p>
-   <p>For tip <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⓪">skeleton joints</a> where there is no <a data-link-type="dfn" href="#associated-bone" id="ref-for-associated-bone②">associated bone</a>, the <code>-Z</code> direction is the same as that for the associated distal joint, i.e. the direction is along that of the previous bone. For wrist <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①①">skeleton joints</a> the <code>-Z</code> direction SHOULD point roughly towards the center of the palm.</p>
-   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑤">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-hand">hand</dfn>, which is the <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑤">XRHand</a></code> that created it.</p>
-   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑥">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-joint-index">joint index</dfn>, which is the joint index corresponding to the joint it tracks.</p>
-   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑦">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-joint">joint</dfn>, which is <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①②">skeleton joint</a> corresponding to its <a data-link-type="dfn" href="#xrjointspace-joint-index" id="ref-for-xrjointspace-joint-index①">joint index</a>.</p>
+   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin">native origin</a> of an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑤">XRJointSpace</a></code> is the position and orientation of the underlying <a data-link-type="dfn" href="#xrjointspace-joint" id="ref-for-xrjointspace-joint">joint</a>.</p>
+   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin①">native origin</a> of the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑥">XRJointSpace</a></code> may only be reported when <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin②">native origins</a> of all other <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑦">XRJointSpace</a></code>s on the same <a data-link-type="dfn" href="#xrjointspace-hand" id="ref-for-xrjointspace-hand①">hand</a> are being reported. When a hand is partially obscured the user agent MAY emulate the obscured joints, or it MAY report <code>null</code> poses for all of the joints.</p>
+   <p class="note" role="note"><span>Note:</span> This means that when fetching poses you will either get an entire hand or none of it.</p>
+   <p class="issue" id="issue-9a52d08f"><a class="self-link" href="#issue-9a52d08f"></a> This by default precludes faithfully exposing polydactyl/oligodactyl hands, however for fingerprinting concerns it will likely need to be a separate opt-in, anyway. See <a href="https://github.com/immersive-web/webxr-hand-input/issues/11">Issue 11</a> for more details.</p>
+   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin③">native origin</a> has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.</p>
+   <p>For tip <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑨">skeleton joints</a> where there is no <a data-link-type="dfn" href="#associated-bone" id="ref-for-associated-bone②">associated bone</a>, the <code>-Z</code> direction is the same as that for the associated distal joint, i.e. the direction is along that of the previous bone. For wrist <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⓪">skeleton joints</a> the <code>-Z</code> direction SHOULD point roughly towards the center of the palm.</p>
+   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑧">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-hand">hand</dfn>, which is the <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand④">XRHand</a></code> that created it.</p>
+   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑨">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-joint-index">joint index</dfn>, which is the joint index corresponding to the joint it tracks.</p>
+   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace①⓪">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-joint">joint</dfn>, which is <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①①">skeleton joint</a> corresponding to its <a data-link-type="dfn" href="#xrjointspace-joint-index" id="ref-for-xrjointspace-joint-index①">joint index</a>.</p>
    <h2 class="heading settled" data-level="4" id="frame-loop"><span class="secno">4. </span><span class="content">Frame Loop</span><a class="self-link" href="#frame-loop"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="xrframe-interface"><span class="secno">4.1. </span><span class="content">XRFrame</span><a class="self-link" href="#xrframe-interface"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe"><c- g>XRFrame</c-></a> {
-    <a class="n" data-link-type="idl-name" href="#xrjointpose" id="ref-for-xrjointpose"><c- n>XRJointPose</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-xrframe-getjointpose" id="ref-for-dom-xrframe-getjointpose"><c- g>getJointPose</c-></a>(<a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace⑧"><c- n>XRJointSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-joint"><code><c- g>joint</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-joint"></a></dfn>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-basespace"><code><c- g>baseSpace</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-basespace"></a></dfn>);
+    <a class="n" data-link-type="idl-name" href="#xrjointpose" id="ref-for-xrjointpose"><c- n>XRJointPose</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-xrframe-getjointpose" id="ref-for-dom-xrframe-getjointpose"><c- g>getJointPose</c-></a>(<a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①①"><c- n>XRJointSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-joint"><code><c- g>joint</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-joint"></a></dfn>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-basespace"><code><c- g>baseSpace</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-basespace"></a></dfn>);
 };
 </pre>
    <div class="algorithm" data-algorithm="get-joint-pose">
@@ -1843,13 +1849,13 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
     </ol>
    </div>
    <h3 class="heading settled" data-level="4.2" id="xrjointpose-interface"><span class="secno">4.2. </span><span class="content">XRJointPose</span><a class="self-link" href="#xrjointpose-interface"></a></h3>
-   <p>An <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose③">XRJointPose</a></code> is an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrpose" id="ref-for-xrpose">XRPose</a></code> with additional information about the size of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①③">skeleton joint</a> it represents.</p>
+   <p>An <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose③">XRJointPose</a></code> is an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrpose" id="ref-for-xrpose">XRPose</a></code> with additional information about the size of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①②">skeleton joint</a> it represents.</p>
 <pre class="idl highlight def"><c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrjointpose"><code><c- g>XRJointPose</c-></code></dfn>: <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrpose" id="ref-for-xrpose①"><c- n>XRPose</c-></a> {
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-float" id="ref-for-idl-float"><c- b>float</c-></a>? <a class="idl-code" data-link-type="attribute" data-readonly data-type="float?" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius②"><c- g>radius</c-></a>;
 };
 </pre>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius②">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①④">skeleton joint</a> in meters.</p>
-   <p>The user-agent SHOULD set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius③">radius</a></code> to <code>null</code> if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value. If the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device②">XR device</a> is able to determine this value in general but is not able to in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⑤">skeleton joint</a> is partially obscured), it MAY return <code>null</code> or it MAY emulate a value.</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius②">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①③">skeleton joint</a> in meters.</p>
+   <p>The user-agent SHOULD set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius③">radius</a></code> to <code>null</code> if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value. If the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device②">XR device</a> is able to determine this value in general but is not able to in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①④">skeleton joint</a> is partially obscured), it MAY return <code>null</code> or it MAY emulate a value.</p>
    <h2 class="heading settled" data-level="5" id="privacy-security"><span class="secno">5. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
     The WebXR Hand Input API is a powerful feature with that carries significant privacy risks. 
    <p>Since this feature returns new sensor data, the User Agent MUST ask for <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#explicit-consent" id="ref-for-explicit-consent">explicit consent</a> from the user at session creation time.</p>
@@ -2045,13 +2051,19 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
   <aside class="dfn-panel" data-for="term-for-xrspace-native-origin">
    <a href="https://immersive-web.github.io/webxr/#xrspace-native-origin">https://immersive-web.github.io/webxr/#xrspace-native-origin</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrspace-native-origin">3.4. XRJointSpace</a> <a href="#ref-for-xrspace-native-origin①">(2)</a>
+    <li><a href="#ref-for-xrspace-native-origin">3.4. XRJointSpace</a> <a href="#ref-for-xrspace-native-origin①">(2)</a> <a href="#ref-for-xrspace-native-origin②">(3)</a> <a href="#ref-for-xrspace-native-origin③">(4)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-populate-the-pose">
    <a href="https://immersive-web.github.io/webxr/#populate-the-pose">https://immersive-web.github.io/webxr/#populate-the-pose</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-populate-the-pose">4.1. XRFrame</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dom-xrinputsource-profiles">
+   <a href="https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles">https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrinputsource-profiles">3. Physical Hand Input Sources</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-xrspace-session">
@@ -2120,6 +2132,7 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
      <li><span class="dfn-paneled" id="term-for-xrinputsource-input-profile-name" style="color:initial">input profile name</span>
      <li><span class="dfn-paneled" id="term-for-xrspace-native-origin" style="color:initial">native origin</span>
      <li><span class="dfn-paneled" id="term-for-populate-the-pose" style="color:initial">populate the pose</span>
+     <li><span class="dfn-paneled" id="term-for-dom-xrinputsource-profiles" style="color:initial">profiles</span>
      <li><span class="dfn-paneled" id="term-for-xrspace-session" style="color:initial">session <small>(for XRSpace)</small></span>
      <li><span class="dfn-paneled" id="term-for-xrframe-time" style="color:initial">time</span>
      <li><span class="dfn-paneled" id="term-for-xrsession-xr-device" style="color:initial">xr device <small>(for XRSession)</small></span>
@@ -2142,7 +2155,7 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <dt id="biblio-webidl">[WebIDL]
    <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/">Web IDL</a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-webxr">[WEBXR]
-   <dd>Brandon Jones; Nell Waliczek. <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>. 10 October 2019. WD. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a>
+   <dd>Brandon Jones; Manish Goregaokar; Nell Waliczek. <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>. 24 July 2020. WD. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a>
    <dt id="biblio-webxr-ar-module-1">[WEBXR-AR-MODULE-1]
    <dd>Brandon Jones; Nell Waliczek; Manish Goregaokar. <a href="https://www.w3.org/TR/webxr-ar-module-1/">WebXR Augmented Reality Module - Level 1</a>. 10 October 2019. WD. URL: <a href="https://www.w3.org/TR/webxr-ar-module-1/">https://www.w3.org/TR/webxr-ar-module-1/</a>
   </dl>
@@ -2152,8 +2165,9 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
 };
 
 <c- b>interface</c-> <a href="#xrhand"><code><c- g>XRHand</c-></code></a> {
+    <c- b>iterable</c->&lt;<a class="n" data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a>>;
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="unsigned long" href="#dom-xrhand-length"><c- g>length</c-></a>;
-    <c- b>getter</c-> <a class="n" data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a>? <a href="#dom-xrhand-joint"><code><c- g>joint</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-joint-jointindex-jointindex"><code><c- g>jointIndex</c-></code></a>);
+    <c- b>getter</c-> <a class="n" data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a> <a href="#dom-xrhand-joint"><code><c- g>joint</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-joint-jointindex-jointindex"><code><c- g>jointIndex</c-></code></a>);
 
     <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-wrist"><code><c- g>WRIST</c-></code></a> = 0;
 
@@ -2198,6 +2212,10 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
 };
 
 </pre>
+  <h2 class="no-num no-ref heading settled" id="issues-index"><span class="content">Issues Index</span><a class="self-link" href="#issues-index"></a></h2>
+  <div style="counter-reset:issue">
+   <div class="issue"> This by default precludes faithfully exposing polydactyl/oligodactyl hands, however for fingerprinting concerns it will likely need to be a separate opt-in, anyway. See <a href="https://github.com/immersive-web/webxr-hand-input/issues/11">Issue 11</a> for more details.<a href="#issue-9a52d08f"> ↵ </a></div>
+  </div>
   <aside class="dfn-panel" data-for="feature-descriptor-hand-tracking">
    <b><a href="#feature-descriptor-hand-tracking">#feature-descriptor-hand-tracking</a></b><b>Referenced in:</b>
    <ul>
@@ -2234,9 +2252,9 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
     <li><a href="#ref-for-skeleton-joints">1. Introduction</a>
     <li><a href="#ref-for-skeleton-joints①">3. Physical Hand Input Sources</a>
     <li><a href="#ref-for-skeleton-joints②">3.2. Skeleton Joints</a> <a href="#ref-for-skeleton-joints③">(2)</a> <a href="#ref-for-skeleton-joints④">(3)</a> <a href="#ref-for-skeleton-joints⑤">(4)</a> <a href="#ref-for-skeleton-joints⑥">(5)</a> <a href="#ref-for-skeleton-joints⑦">(6)</a>
-    <li><a href="#ref-for-skeleton-joints⑧">3.3. XRHand</a> <a href="#ref-for-skeleton-joints⑨">(2)</a>
-    <li><a href="#ref-for-skeleton-joints①⓪">3.4. XRJointSpace</a> <a href="#ref-for-skeleton-joints①①">(2)</a> <a href="#ref-for-skeleton-joints①②">(3)</a>
-    <li><a href="#ref-for-skeleton-joints①③">4.2. XRJointPose</a> <a href="#ref-for-skeleton-joints①④">(2)</a> <a href="#ref-for-skeleton-joints①⑤">(3)</a>
+    <li><a href="#ref-for-skeleton-joints⑧">3.3. XRHand</a>
+    <li><a href="#ref-for-skeleton-joints⑨">3.4. XRJointSpace</a> <a href="#ref-for-skeleton-joints①⓪">(2)</a> <a href="#ref-for-skeleton-joints①①">(3)</a>
+    <li><a href="#ref-for-skeleton-joints①②">4.2. XRJointPose</a> <a href="#ref-for-skeleton-joints①③">(2)</a> <a href="#ref-for-skeleton-joints①④">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="skeleton-joint-index">
@@ -2263,8 +2281,8 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <b><a href="#xrhand">#xrhand</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrhand">3.1. XRInputSource</a> <a href="#ref-for-xrhand①">(2)</a>
-    <li><a href="#ref-for-xrhand②">3.3. XRHand</a> <a href="#ref-for-xrhand③">(2)</a> <a href="#ref-for-xrhand④">(3)</a>
-    <li><a href="#ref-for-xrhand⑤">3.4. XRJointSpace</a>
+    <li><a href="#ref-for-xrhand②">3.3. XRHand</a> <a href="#ref-for-xrhand③">(2)</a>
+    <li><a href="#ref-for-xrhand④">3.4. XRJointSpace</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrhand-input-source">
@@ -2282,21 +2300,22 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
   <aside class="dfn-panel" data-for="dom-xrhand-length">
    <b><a href="#dom-xrhand-length">#dom-xrhand-length</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-xrhand-length">3.3. XRHand</a> <a href="#ref-for-dom-xrhand-length①">(2)</a>
+    <li><a href="#ref-for-dom-xrhand-length">3.3. XRHand</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrjointspace">
    <b><a href="#xrjointspace">#xrjointspace</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrjointspace">3.3. XRHand</a> <a href="#ref-for-xrjointspace①">(2)</a> <a href="#ref-for-xrjointspace②">(3)</a> <a href="#ref-for-xrjointspace③">(4)</a>
-    <li><a href="#ref-for-xrjointspace④">3.4. XRJointSpace</a> <a href="#ref-for-xrjointspace⑤">(2)</a> <a href="#ref-for-xrjointspace⑥">(3)</a> <a href="#ref-for-xrjointspace⑦">(4)</a>
-    <li><a href="#ref-for-xrjointspace⑧">4.1. XRFrame</a>
+    <li><a href="#ref-for-xrjointspace">3.3. XRHand</a> <a href="#ref-for-xrjointspace①">(2)</a> <a href="#ref-for-xrjointspace②">(3)</a> <a href="#ref-for-xrjointspace③">(4)</a> <a href="#ref-for-xrjointspace④">(5)</a>
+    <li><a href="#ref-for-xrjointspace⑤">3.4. XRJointSpace</a> <a href="#ref-for-xrjointspace⑥">(2)</a> <a href="#ref-for-xrjointspace⑦">(3)</a> <a href="#ref-for-xrjointspace⑧">(4)</a> <a href="#ref-for-xrjointspace⑨">(5)</a> <a href="#ref-for-xrjointspace①⓪">(6)</a>
+    <li><a href="#ref-for-xrjointspace①①">4.1. XRFrame</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrjointspace-hand">
    <b><a href="#xrjointspace-hand">#xrjointspace-hand</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrjointspace-hand">3.3. XRHand</a>
+    <li><a href="#ref-for-xrjointspace-hand①">3.4. XRJointSpace</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrjointspace-joint-index">

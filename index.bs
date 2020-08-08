@@ -131,7 +131,7 @@ Physical Hand Input Sources {#physical-hand}
 
 An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input source=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
 
-[=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profile}}.
+[=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profiles}}.
 
 XRInputSource {#xrinputsource-interface}
 -------------
@@ -204,8 +204,9 @@ XRHand {#xrhand-interface}
 
 <pre class="idl">
 interface XRHand {
+    iterable&lt;XRJointSpace>;
     readonly attribute unsigned long length;
-    getter XRJointSpace? joint(unsigned long jointIndex);
+    getter XRJointSpace joint(unsigned long jointIndex);
 
     const unsigned long WRIST = 0;
 
@@ -242,16 +243,16 @@ interface XRHand {
 
 Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is the [=physical hand input source=] that it tracks.
 
-Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] it supports tracking. These all will have their [=XRJointSpace/hand=] set to [=this=].
+Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] defined in this specification. These all will have their [=XRJointSpace/hand=] set to [=this=].
 
-The [=list of joint spaces=] MUST NOT change over the course of a session, even if a [=skeleton joint=] is temporarily obscured.
+If an individual device does not support a joint defined in this specification, it MUST emulate it instead.
 
-The <dfn attribute for=XRHand>length</dfn> attribute MUST return a number greater than the maximum skeleton joint index supported by the {{XRHand}}.
+The [=list of joint spaces=] MUST NOT change over the course of a session.
 
-Note: It is possible for there to be gaps in skeleton joints supported; the {{XRHand/length}} attribute is necessary to make indexed getters work.
+The <dfn attribute for=XRHand>length</dfn> attribute MUST return the number <code>25</code>
 
 <div class="algorithm" data-algorithm="index-joint-space">
-The <dfn method for="XRJointSpace">joint(|jointIndex|)</dfn> method when invoked runs the following steps:
+The <dfn method for="XRJointSpace">joint(|jointIndex|)</dfn> getter when invoked runs the following steps:
 
   1. Look for an {{XRJointSpace}} in [=this=]'s [=list of joint spaces=] with [=XRJointSpace/joint index=] corresponding to |jointIndex|.
   1. Handle the result of the search as follows:
@@ -273,6 +274,12 @@ interface XRJointSpace: XRSpace {};
 </pre>
 
 The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying [=XRJointSpace/joint=].
+
+The [=native origin=] of the {{XRJointSpace}} may only be reported when [=native origins=] of all other {{XRJointSpace}}s on the same [=XRJointSpace/hand=] are being reported. When a hand is partially obscured the user agent MAY emulate the obscured joints, or it MAY report <code>null</code> poses for all of the joints.
+
+Note: This means that when fetching poses you will either get an entire hand or none of it.
+
+Issue: This by default precludes faithfully exposing polydactyl/oligodactyl hands, however for fingerprinting concerns it will likely need to be a separate opt-in, anyway. See <a href=https://github.com/immersive-web/webxr-hand-input/issues/11>Issue 11</a> for more details.
 
 The [=native origin=] has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.
 
