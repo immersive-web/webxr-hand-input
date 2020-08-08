@@ -245,7 +245,7 @@ Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is 
 
 Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] defined in this specification. These all will have their [=XRJointSpace/hand=] set to [=this=].
 
-Note: If an individual device does not support a joint defined in this specification, it must emulate it instead.
+If an individual device does not support a joint defined in this specification, it MUST emulate it instead.
 
 The [=list of joint spaces=] MUST NOT change over the course of a session.
 
