@@ -301,12 +301,13 @@ XRFrame {#xrframe-interface}
 <pre class="idl">
 partial interface XRFrame {
     XRJointPose? getJointPose(XRJointSpace joint, XRSpace baseSpace);
+    void fillJointRadii(sequence&lt;XRJointSpace&gt; jointSpaces, Float32Array radii);
 };
 </pre>
 
 <div class="algorithm" data-algorithm="get-joint-pose">
 
-The <dfn method for="XRFrame">getJointPose(|joint|, |baseSpace|)</dfn> method provides the pose of |joint| relative to |baseSpace| as an {{XRJointPose}}, at the {{XRFrame}}'s [=XRFrame/time=].
+The <dfn method for="XRFrame">getJointPose(XRJointSpace |joint|, XRSpace |baseSpace|)</dfn> method provides the pose of |joint| relative to |baseSpace| as an {{XRJointPose}}, at the {{XRFrame}}'s [=XRFrame/time=].
 
 When this method is invoked, the user agent MUST run the following steps:
 
@@ -325,6 +326,26 @@ When this method is invoked, the user agent MUST run the following steps:
         <dd>Set |pose|'s {{XRJointPose/radius}} to <code>null</code></dd>
       </dl>
   1. Return |pose|.
+
+</div>
+
+<div class="algorithm" data-algorithm="fill-joint-radii">
+
+The <dfn method for="XRFrame">fillJointRadii(sequence&lt;XRJointSpace&gt; |jointSpaces|, Float32Array |radii|)</dfn> method populates |radii| with the radii of the |jointSpaces|.
+
+When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
+
+  1. Let |frame| be [=this=].
+  1. Let |session| be |frame|'s {{XRFrame/session}} object.
+  1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
+  1. For each |joint| in the |jointSpaces|:
+    1. If |joint|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
+  1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw an {{DataError}} and abort these steps.
+  1. let |offset| be a new number with the initial value of <code>0</code>.
+  1. For each |joint| in the |jointSpaces|:
+    1. Set the float value of |radii| at |offset| to <code>NaN</code>.
+    1. If the user agent can determine the [=skeleton joint/radius=] of |joint|, set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
+    1. Increase |offset| by <code>1</code>.
 
 </div>
 
