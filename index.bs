@@ -302,6 +302,8 @@ XRFrame {#xrframe-interface}
 partial interface XRFrame {
     XRJointPose? getJointPose(XRJointSpace joint, XRSpace baseSpace);
     void fillJointRadii(sequence&lt;XRJointSpace&gt; jointSpaces, Float32Array radii);
+
+    void fillPoses(sequence&lt;XRSpace&gt; spaces, XRSpace baseSpace, Float32Array transforms);
 };
 </pre>
 
@@ -340,12 +342,42 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
   1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
   1. For each |joint| in the |jointSpaces|:
     1. If |joint|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
-  1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw an {{DataError}} and abort these steps.
+  1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw a {{DataError}} and abort these steps.
   1. let |offset| be a new number with the initial value of <code>0</code>.
   1. For each |joint| in the |jointSpaces|:
     1. Set the float value of |radii| at |offset| to <code>NaN</code>.
     1. If the user agent can determine the [=skeleton joint/radius=] of |joint|, set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
     1. Increase |offset| by <code>1</code>.
+
+</div>
+
+<div class="algorithm" data-algorithm="fill-poses">
+
+The <dfn method for="XRFrame">fillPoses(sequence&lt;XRSpace&gt; |spaces|, XRSpace |baseSpace|, Float32Array |transforms|)</dfn> method populates |transforms|
+with the matrices of the poses of the |spaces| relative to the |baseSpace|.
+
+When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
+
+  1. Let |frame| be [=this=].
+  1. Let |session| be |frame|'s {{XRFrame/session}} object.
+  1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
+  1. For each |space| in the |spaces| sequence:
+    1. If |space|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
+  1. If |baseSpace|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
+  1. If the length of |spaces| multiplied by <code>16</code> is larger than the number of elements in |transforms|, throw a {{DataError}} and abort these steps.
+  1. let |offset| be a new number with the initial value of <code>0</code>.
+  1. Initialize |pose| as follows:
+    <dl class="switch">
+      <dt> If {{XRFrame/fillPoses()}} was called previously, the user agent MAY:
+        <dd> Let |pose| be the same object as used by an earlier call.
+      <dt> Otherwise
+        <dd> Let |pose| be a [=new=] {{XRPose}} object in the [=relevant realm=] of |session|.
+    </dl>
+  1. For each |space| in the |spaces| sequence:
+    1. [=Populate the pose=] of |space| in |baseSpace| at the time represented by |frame| into |pose|.
+    1. If |pose| is <code>null</code>, set <code>16</code> consecutive elements of the |transforms| array starting at |offset| to <code>NaN</code>.
+    1. If |pose| is not <code>null</code>, copy all elements from |pose|'s {{XRRigidTransform/matrix}} member to the |transforms| array starting at |offset|.
+    1. Increase |offset| by <code>16</code>.
 
 </div>
 
