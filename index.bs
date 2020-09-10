@@ -342,7 +342,7 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
   1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
   1. For each |joint| in the |jointSpaces|:
     1. If |joint|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
-  1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw a {{DataError}} and abort these steps.
+  1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw a {{TypeError}} and abort these steps.
   1. let |offset| be a new number with the initial value of <code>0</code>.
   1. For each |joint| in the |jointSpaces|:
     1. Set the float value of |radii| at |offset| to <code>NaN</code>.
@@ -364,7 +364,7 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
   1. For each |space| in the |spaces| sequence:
     1. If |space|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
   1. If |baseSpace|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
-  1. If the length of |spaces| multiplied by <code>16</code> is larger than the number of elements in |transforms|, throw a {{DataError}} and abort these steps.
+  1. If the length of |spaces| multiplied by <code>16</code> is larger than the number of elements in |transforms|, throw a {{TypeError}} and abort these steps.
   1. let |offset| be a new number with the initial value of <code>0</code>.
   1. Initialize |pose| as follows:
     <dl class="switch">
