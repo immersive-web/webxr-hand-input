@@ -301,9 +301,9 @@ XRFrame {#xrframe-interface}
 <pre class="idl">
 partial interface XRFrame {
     XRJointPose? getJointPose(XRJointSpace joint, XRSpace baseSpace);
-    void fillJointRadii(sequence&lt;XRJointSpace&gt; jointSpaces, Float32Array radii);
+    boolean fillJointRadii(sequence&lt;XRJointSpace&gt; jointSpaces, Float32Array radii);
 
-    void fillPoses(sequence&lt;XRSpace&gt; spaces, XRSpace baseSpace, Float32Array transforms);
+    boolean fillPoses(sequence&lt;XRSpace&gt; spaces, XRSpace baseSpace, Float32Array transforms);
 };
 </pre>
 
@@ -333,7 +333,7 @@ When this method is invoked, the user agent MUST run the following steps:
 
 <div class="algorithm" data-algorithm="fill-joint-radii">
 
-The <dfn method for="XRFrame">fillJointRadii(sequence&lt;XRJointSpace&gt; |jointSpaces|, Float32Array |radii|)</dfn> method populates |radii| with the radii of the |jointSpaces|.
+The <dfn method for="XRFrame">fillJointRadii(sequence&lt;XRJointSpace&gt; |jointSpaces|, Float32Array |radii|)</dfn> method populates |radii| with the radii of the |jointSpaces|, and returns a boolean indicating whether any radius value was determined.
 
 When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
 
@@ -344,17 +344,21 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
     1. If |joint|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
   1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw a {{TypeError}} and abort these steps.
   1. let |offset| be a new number with the initial value of <code>0</code>.
+  1. Let |containsRadius| be <code>false</code>.
   1. For each |joint| in the |jointSpaces|:
     1. Set the float value of |radii| at |offset| to <code>NaN</code>.
-    1. If the user agent can determine the [=skeleton joint/radius=] of |joint|, set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
+    1. If the user agent can determine the [=skeleton joint/radius=] of |joint|, perform the following steps:
+      1. Set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
+      1. Set |containsRadius| to <code>true</code>.
     1. Increase |offset| by <code>1</code>.
+  1. Return |containsRadius|.
 
 </div>
 
 <div class="algorithm" data-algorithm="fill-poses">
 
 The <dfn method for="XRFrame">fillPoses(sequence&lt;XRSpace&gt; |spaces|, XRSpace |baseSpace|, Float32Array |transforms|)</dfn> method populates |transforms|
-with the matrices of the poses of the |spaces| relative to the |baseSpace|.
+with the matrices of the poses of the |spaces| relative to the |baseSpace|, and returns a boolean indicating whether any of the spaces had a non-<code>null</code> pose. 
 
 When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
 
@@ -373,11 +377,15 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
       <dt> Otherwise
         <dd> Let |pose| be a [=new=] {{XRPose}} object in the [=relevant realm=] of |session|.
     </dl>
+  1. Let |containsPose| be <code>false</code>.
   1. For each |space| in the |spaces| sequence:
     1. [=Populate the pose=] of |space| in |baseSpace| at the time represented by |frame| into |pose|.
     1. If |pose| is <code>null</code>, set <code>16</code> consecutive elements of the |transforms| array starting at |offset| to <code>NaN</code>.
-    1. If |pose| is not <code>null</code>, copy all elements from |pose|'s {{XRRigidTransform/matrix}} member to the |transforms| array starting at |offset|.
+    1. If |pose| is not <code>null</code>, perform the following steps:
+        1. Copy all elements from |pose|'s {{XRRigidTransform/matrix}} member to the |transforms| array starting at |offset|.
+        1. Set |containsPose| to <code>true</code>.
     1. Increase |offset| by <code>16</code>.
+  1. Return |containsPose|.
 
 </div>
 
