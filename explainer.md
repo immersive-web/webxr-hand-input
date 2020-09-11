@@ -168,6 +168,14 @@ function checkOrientation(tipOrientation, metacarpalOrientation) {
 }
 ```
 
+## Privacy and Security Considerations
+
+Exposing hand input poses a risk to both a user's identity and their sensitive characteristics. This API exposes details of hand, finger, and joint size, which could be used to uniquely identify a user. Beyond exposing details of hand size, this API is intended to enable gesture recognition. Gestures have been used in authentication mechanisms as a behavioral biometric, and are likely to expose uniquely identifying information about users.
+
+Medical conditions that produce tremors in the hands may be exposed by this API, as well as whether a user is missing fingers or parts of fingers. Additionally, hand size can reveal age, and possibly gender. Finally, there's the possibility that someone might misuse this API in an attempt to infer ethnic background from hand size, which amounts to hand-based phrenology.
+
+This API can also potentially capture sensitive inputs, e.g. capturing typed input.
+
 ## Appendix: Proposed IDL
 
 ```webidl
