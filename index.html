@@ -1537,7 +1537,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Hand Input Module - Level 1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-09-11">11 September 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-09-15">15 September 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -1587,7 +1587,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     includes instructions for disclosing a patent. An individual who has actual knowledge of a
     patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential
     Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/2019/Process-20190301/" id="w3c_process_revision">1 March 2019 W3C Process Document</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2020/Process-20200915/" id="w3c_process_revision">15 September 2020 W3C Process Document</a>. </p>
    <p></p>
    <p>This WebXR Augmented Reality Module is designed as a module to be implemented in addition to <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>, and is originally included in WebXR Device API which was divided into core and modules.</p>
   </div>
@@ -1816,9 +1816,9 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
    <h3 class="heading settled" data-level="4.1" id="xrframe-interface"><span class="secno">4.1. </span><span class="content">XRFrame</span><a class="self-link" href="#xrframe-interface"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe"><c- g>XRFrame</c-></a> {
     <a class="n" data-link-type="idl-name" href="#xrjointpose" id="ref-for-xrjointpose"><c- n>XRJointPose</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-xrframe-getjointpose" id="ref-for-dom-xrframe-getjointpose"><c- g>getJointPose</c-></a>(<a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①①"><c- n>XRJointSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-joint"><code><c- g>joint</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-joint"></a></dfn>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-basespace"><code><c- g>baseSpace</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-basespace"></a></dfn>);
-    <a class="n" data-link-type="idl-name"><c- n>void</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-filljointradii" id="ref-for-dom-xrframe-filljointradii"><c- g>fillJointRadii</c-></a>(<c- b>sequence</c->&lt;<a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①②"><c- n>XRJointSpace</c-></a>> <dfn class="idl-code" data-dfn-for="XRFrame/fillJointRadii(jointSpaces, radii)" data-dfn-type="argument" data-export id="dom-xrframe-filljointradii-jointspaces-radii-jointspaces"><code><c- g>jointSpaces</c-></code><a class="self-link" href="#dom-xrframe-filljointradii-jointspaces-radii-jointspaces"></a></dfn>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array" id="ref-for-idl-Float32Array"><c- b>Float32Array</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillJointRadii(jointSpaces, radii)" data-dfn-type="argument" data-export id="dom-xrframe-filljointradii-jointspaces-radii-radii"><code><c- g>radii</c-></code><a class="self-link" href="#dom-xrframe-filljointradii-jointspaces-radii-radii"></a></dfn>);
+    <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-filljointradii" id="ref-for-dom-xrframe-filljointradii"><c- g>fillJointRadii</c-></a>(<c- b>sequence</c->&lt;<a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①②"><c- n>XRJointSpace</c-></a>> <dfn class="idl-code" data-dfn-for="XRFrame/fillJointRadii(jointSpaces, radii)" data-dfn-type="argument" data-export id="dom-xrframe-filljointradii-jointspaces-radii-jointspaces"><code><c- g>jointSpaces</c-></code><a class="self-link" href="#dom-xrframe-filljointradii-jointspaces-radii-jointspaces"></a></dfn>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array" id="ref-for-idl-Float32Array"><c- b>Float32Array</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillJointRadii(jointSpaces, radii)" data-dfn-type="argument" data-export id="dom-xrframe-filljointradii-jointspaces-radii-radii"><code><c- g>radii</c-></code><a class="self-link" href="#dom-xrframe-filljointradii-jointspaces-radii-radii"></a></dfn>);
 
-    <a class="n" data-link-type="idl-name"><c- n>void</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-fillposes" id="ref-for-dom-xrframe-fillposes"><c- g>fillPoses</c-></a>(<c- b>sequence</c->&lt;<a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace②"><c- n>XRSpace</c-></a>> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-spaces"><code><c- g>spaces</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-spaces"></a></dfn>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace③"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-basespace"><code><c- g>baseSpace</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-basespace"></a></dfn>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array" id="ref-for-idl-Float32Array①"><c- b>Float32Array</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-transforms"><code><c- g>transforms</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-transforms"></a></dfn>);
+    <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean①"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-fillposes" id="ref-for-dom-xrframe-fillposes"><c- g>fillPoses</c-></a>(<c- b>sequence</c->&lt;<a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace②"><c- n>XRSpace</c-></a>> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-spaces"><code><c- g>spaces</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-spaces"></a></dfn>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace③"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-basespace"><code><c- g>baseSpace</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-basespace"></a></dfn>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array" id="ref-for-idl-Float32Array①"><c- b>Float32Array</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-transforms"><code><c- g>transforms</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-transforms"></a></dfn>);
 };
 </pre>
    <div class="algorithm" data-algorithm="get-joint-pose">
@@ -1852,7 +1852,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
     </ol>
    </div>
    <div class="algorithm" data-algorithm="fill-joint-radii">
-    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="fillJointRadii(jointSpaces, radii)" id="dom-xrframe-filljointradii"><code>fillJointRadii(sequence&lt;XRJointSpace> <var>jointSpaces</var>, Float32Array <var>radii</var>)</code></dfn> method populates <var>radii</var> with the radii of the <var>jointSpaces</var>.</p>
+    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="fillJointRadii(jointSpaces, radii)" id="dom-xrframe-filljointradii"><code>fillJointRadii(sequence&lt;XRJointSpace> <var>jointSpaces</var>, Float32Array <var>radii</var>)</code></dfn> method populates <var>radii</var> with the radii of the <var>jointSpaces</var>, and returns a boolean indicating whether all of the spaces have a valid radius.</p>
     <p>When this method is invoked on an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe②">XRFrame</a></code> <var>frame</var>, the user agent MUST run the following steps:</p>
     <ol>
      <li data-md>
@@ -1872,6 +1872,8 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
      <li data-md>
       <p>let <var>offset</var> be a new number with the initial value of <code>0</code>.</p>
      <li data-md>
+      <p>Let <var>allValid</var> be <code>true</code>.</p>
+     <li data-md>
       <p>For each <var>joint</var> in the <var>jointSpaces</var>:</p>
       <ol>
        <li data-md>
@@ -1879,12 +1881,16 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
        <li data-md>
         <p>If the user agent can determine the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius②">radius</a> of <var>joint</var>, set the float value of <var>radii</var> at <var>offset</var> to that <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius③">radius</a>.</p>
        <li data-md>
+        <p>If the user agent cannot determine the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius④">radius</a> of <var>joint</var>, set <var>allValid</var> to <code>false</code>.</p>
+       <li data-md>
         <p>Increase <var>offset</var> by <code>1</code>.</p>
       </ol>
+     <li data-md>
+      <p>Return <var>allValid</var>.</p>
     </ol>
    </div>
    <div class="algorithm" data-algorithm="fill-poses">
-    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="fillPoses(spaces, baseSpace, transforms)" id="dom-xrframe-fillposes"><code>fillPoses(sequence&lt;XRSpace> <var>spaces</var>, XRSpace <var>baseSpace</var>, Float32Array <var>transforms</var>)</code></dfn> method populates <var>transforms</var> with the matrices of the poses of the <var>spaces</var> relative to the <var>baseSpace</var>.</p>
+    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="fillPoses(spaces, baseSpace, transforms)" id="dom-xrframe-fillposes"><code>fillPoses(sequence&lt;XRSpace> <var>spaces</var>, XRSpace <var>baseSpace</var>, Float32Array <var>transforms</var>)</code></dfn> method populates <var>transforms</var> with the matrices of the poses of the <var>spaces</var> relative to the <var>baseSpace</var>, and returns a boolean indicating whether all of the spaces have a valid pose.</p>
     <p>When this method is invoked on an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe③">XRFrame</a></code> <var>frame</var>, the user agent MUST run the following steps:</p>
     <ol>
      <li data-md>
@@ -1914,17 +1920,25 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
        <dd> Let <var>pose</var> be a <a data-link-type="dfn" href="https://heycam.github.io/webidl/#new" id="ref-for-new①">new</a> <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrpose" id="ref-for-xrpose">XRPose</a></code> object in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm①">relevant realm</a> of <var>session</var>. 
       </dl>
      <li data-md>
+      <p>Let <var>allValid</var> be <code>true</code>.</p>
+     <li data-md>
       <p>For each <var>space</var> in the <var>spaces</var> sequence:</p>
       <ol>
        <li data-md>
         <p><a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#populate-the-pose" id="ref-for-populate-the-pose①">Populate the pose</a> of <var>space</var> in <var>baseSpace</var> at the time represented by <var>frame</var> into <var>pose</var>.</p>
        <li data-md>
-        <p>If <var>pose</var> is <code>null</code>, set <code>16</code> consecutive elements of the <var>transforms</var> array starting at <var>offset</var> to <code>NaN</code>.</p>
+        <p>If <var>pose</var> is <code>null</code>, perform the following steps:</p>
+       <li data-md>
+        <p>Set <code>16</code> consecutive elements of the <var>transforms</var> array starting at <var>offset</var> to <code>NaN</code>.</p>
+       <li data-md>
+        <p>Set <var>allValid</var> to <code>false</code>.</p>
        <li data-md>
         <p>If <var>pose</var> is not <code>null</code>, copy all elements from <var>pose</var>’s <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrrigidtransform-matrix" id="ref-for-dom-xrrigidtransform-matrix">matrix</a></code> member to the <var>transforms</var> array starting at <var>offset</var>.</p>
        <li data-md>
         <p>Increase <var>offset</var> by <code>16</code>.</p>
       </ol>
+     <li data-md>
+      <p>Return <var>allValid</var>.</p>
     </ol>
    </div>
    <h3 class="heading settled" data-level="4.2" id="xrjointpose-interface"><span class="secno">4.2. </span><span class="content">XRJointPose</span><a class="self-link" href="#xrjointpose-interface"></a></h3>
@@ -1933,7 +1947,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-float" id="ref-for-idl-float"><c- b>float</c-></a>? <a class="idl-code" data-link-type="attribute" data-readonly data-type="float?" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius②"><c- g>radius</c-></a>;
 };
 </pre>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius④">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①③">skeleton joint</a> in meters.</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius⑤">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①③">skeleton joint</a> in meters.</p>
    <p>The user-agent SHOULD set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius③">radius</a></code> to <code>null</code> if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value. If the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device②">XR device</a> is able to determine this value in general but is not able to in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①④">skeleton joint</a> is partially obscured), it MAY return <code>null</code> or it MAY emulate a value.</p>
    <h2 class="heading settled" data-level="5" id="privacy-security"><span class="secno">5. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
     The WebXR Hand Input API is a powerful feature with that carries significant privacy risks. 
@@ -2043,6 +2057,12 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <a href="https://heycam.github.io/webidl/#exceptiondef-typeerror">https://heycam.github.io/webidl/#exceptiondef-typeerror</a><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-exceptiondef-typeerror">4.1. XRFrame</a> <a href="#ref-for-exceptiondef-typeerror①">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-idl-boolean">
+   <a href="https://heycam.github.io/webidl/#idl-boolean">https://heycam.github.io/webidl/#idl-boolean</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-idl-boolean">4.1. XRFrame</a> <a href="#ref-for-idl-boolean①">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-idl-float">
@@ -2213,6 +2233,7 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
      <li><span class="dfn-paneled" id="term-for-idl-Float32Array" style="color:initial">Float32Array</span>
      <li><span class="dfn-paneled" id="term-for-invalidstateerror" style="color:initial">InvalidStateError</span>
      <li><span class="dfn-paneled" id="term-for-exceptiondef-typeerror" style="color:initial">TypeError</span>
+     <li><span class="dfn-paneled" id="term-for-idl-boolean" style="color:initial">boolean</span>
      <li><span class="dfn-paneled" id="term-for-idl-float" style="color:initial">float</span>
      <li><span class="dfn-paneled" id="term-for-new" style="color:initial">new</span>
      <li><span class="dfn-paneled" id="term-for-this" style="color:initial">this</span>
@@ -2308,9 +2329,9 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe"><c- g>XRFrame</c-></a> {
     <a class="n" data-link-type="idl-name" href="#xrjointpose"><c- n>XRJointPose</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-xrframe-getjointpose"><c- g>getJointPose</c-></a>(<a class="n" data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a> <a href="#dom-xrframe-getjointpose-joint-basespace-joint"><code><c- g>joint</c-></code></a>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a href="#dom-xrframe-getjointpose-joint-basespace-basespace"><code><c- g>baseSpace</c-></code></a>);
-    <a class="n" data-link-type="idl-name"><c- n>void</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-filljointradii"><c- g>fillJointRadii</c-></a>(<c- b>sequence</c->&lt;<a class="n" data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a>> <a href="#dom-xrframe-filljointradii-jointspaces-radii-jointspaces"><code><c- g>jointSpaces</c-></code></a>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array"><c- b>Float32Array</c-></a> <a href="#dom-xrframe-filljointradii-jointspaces-radii-radii"><code><c- g>radii</c-></code></a>);
+    <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-filljointradii"><c- g>fillJointRadii</c-></a>(<c- b>sequence</c->&lt;<a class="n" data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a>> <a href="#dom-xrframe-filljointradii-jointspaces-radii-jointspaces"><code><c- g>jointSpaces</c-></code></a>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array"><c- b>Float32Array</c-></a> <a href="#dom-xrframe-filljointradii-jointspaces-radii-radii"><code><c- g>radii</c-></code></a>);
 
-    <a class="n" data-link-type="idl-name"><c- n>void</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-fillposes"><c- g>fillPoses</c-></a>(<c- b>sequence</c->&lt;<a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a>> <a href="#dom-xrframe-fillposes-spaces-basespace-transforms-spaces"><code><c- g>spaces</c-></code></a>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a href="#dom-xrframe-fillposes-spaces-basespace-transforms-basespace"><code><c- g>baseSpace</c-></code></a>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array"><c- b>Float32Array</c-></a> <a href="#dom-xrframe-fillposes-spaces-basespace-transforms-transforms"><code><c- g>transforms</c-></code></a>);
+    <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-fillposes"><c- g>fillPoses</c-></a>(<c- b>sequence</c->&lt;<a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a>> <a href="#dom-xrframe-fillposes-spaces-basespace-transforms-spaces"><code><c- g>spaces</c-></code></a>, <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a href="#dom-xrframe-fillposes-spaces-basespace-transforms-basespace"><code><c- g>baseSpace</c-></code></a>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array"><c- b>Float32Array</c-></a> <a href="#dom-xrframe-fillposes-spaces-basespace-transforms-transforms"><code><c- g>transforms</c-></code></a>);
 };
 
 <c- b>interface</c-> <a href="#xrjointpose"><code><c- g>XRJointPose</c-></code></a>: <a class="n" data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrpose"><c- n>XRPose</c-></a> {
@@ -2379,8 +2400,8 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
   <aside class="dfn-panel" data-for="skeleton-joint-radius">
    <b><a href="#skeleton-joint-radius">#skeleton-joint-radius</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-skeleton-joint-radius">4.1. XRFrame</a> <a href="#ref-for-skeleton-joint-radius①">(2)</a> <a href="#ref-for-skeleton-joint-radius②">(3)</a> <a href="#ref-for-skeleton-joint-radius③">(4)</a>
-    <li><a href="#ref-for-skeleton-joint-radius④">4.2. XRJointPose</a>
+    <li><a href="#ref-for-skeleton-joint-radius">4.1. XRFrame</a> <a href="#ref-for-skeleton-joint-radius①">(2)</a> <a href="#ref-for-skeleton-joint-radius②">(3)</a> <a href="#ref-for-skeleton-joint-radius③">(4)</a> <a href="#ref-for-skeleton-joint-radius④">(5)</a>
+    <li><a href="#ref-for-skeleton-joint-radius⑤">4.2. XRJointPose</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrhand">
