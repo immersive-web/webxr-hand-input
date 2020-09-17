@@ -320,20 +320,14 @@ When this method is invoked, the user agent MUST run the following steps:
   1. Let |pose| be a [=new=] {{XRJointPose}} object in the [=relevant realm=] of |session|.
   1. [=Populate the pose=] of |joint| in |baseSpace| at the time represented by |frame| into |pose|, with <code>force emulation</code> set to <code>false</code>.
   1. If |pose| is <code>null</code> return <code>null</code>.
-  1. Perform the following steps based on the ability to determine a [=skeleton joint/radius=]:
-      <dl class="switch">
-      <dt>If a [=skeleton joint/radius=] |r| can be determined or emulated for |joint|'s [=XRJointSpace/joint=]</dt>
-        <dd>Set |pose|'s {{XRJointPose/radius}} to |r|.
-      <dt>Otherwise</dt>
-        <dd>Set |pose|'s {{XRJointPose/radius}} to <code>null</code></dd>
-      </dl>
+  1. Set |pose|'s {{XRJointPose/radius}} to the [=skeleton joint/radius=] of |joint|, emulating it if necessary.
   1. Return |pose|.
 
 </div>
 
 <div class="algorithm" data-algorithm="fill-joint-radii">
 
-The <dfn method for="XRFrame">fillJointRadii(sequence&lt;XRJointSpace&gt; |jointSpaces|, Float32Array |radii|)</dfn> method populates |radii| with the radii of the |jointSpaces|, and returns a boolean indicating whether all of the spaces have a valid radius.
+The <dfn method for="XRFrame">fillJointRadii(sequence&lt;XRJointSpace&gt; |jointSpaces|, Float32Array |radii|)</dfn> method populates |radii| with the radii of the |jointSpaces|, and returns a boolean indicating whether all of the spaces have a valid pose.
 
 When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
 
@@ -347,8 +341,8 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
   1. Let |allValid| be <code>true</code>.
   1. For each |joint| in the |jointSpaces|:
     1. Set the float value of |radii| at |offset| to <code>NaN</code>.
-    1. If the user agent can determine the [=skeleton joint/radius=] of |joint|, set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
-    1. If the user agent cannot determine the [=skeleton joint/radius=] of |joint|, set |allValid| to <code>false</code>.
+    1. If the user agent can determine the pose of |joint|, set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
+    1. If the user agent cannot determine the pose of |joint|, set |allValid| to <code>false</code>.
     1. Increase |offset| by <code>1</code>.
   1. Return |allValid|.
 
@@ -394,13 +388,13 @@ An {{XRJointPose}} is an {{XRPose}} with additional information about the size o
 
 <pre class="idl">
 interface XRJointPose: XRPose {
-    readonly attribute float? radius;
+    readonly attribute float radius;
 };
 </pre>
 
 The <dfn attribute for=XRJointPose>radius</dfn> attribute returns the [=skeleton joint/radius=] of the [=skeleton joint=] in meters.
 
-The user-agent SHOULD set {{XRJointPose/radius}} to <code>null</code> if the [=/XR device=] does not have the capability of determining this value. If the [=/XR device=] is able to determine this value in general but is not able to in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured), it MAY return <code>null</code> or it MAY emulate a value.
+The user-agent MUST set {{XRJointPose/radius}} to an emulated value if the [=/XR device=] does not have the capability of determining this value, either in general or in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured).
 
 Privacy & Security Considerations {#privacy-security}
 =================================
