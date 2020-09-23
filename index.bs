@@ -125,6 +125,9 @@ by this module as a new valid [=feature descriptor=] for articulated hand tracki
 
 The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{XRSession}} its [=XRSession/XR device=] has [=physical hand input sources=] that [=supports hand tracking=].
 
+The user agent MAY gate support for hand based {{XRInputSource|XRInputSources}} based upon this [=feature descriptor=].
+
+NOTE: This means that if an {{XRSession}} does not request the "[=hand-tracking=]" [=feature descriptor=], the user agent may choose to not support input controllers that are hand based.
 
 Physical Hand Input Sources {#physical-hand}
 ===========================
