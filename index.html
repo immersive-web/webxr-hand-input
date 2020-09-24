@@ -74,6 +74,13 @@
 /*                                   Body                                     */
 /******************************************************************************/
 
+	html {
+		color: black;
+		color: var(--text);
+		background-color: white;
+		background-color: var(--bg);
+	}
+
 	body {
 		counter-reset: example figure issue;
 
@@ -92,11 +99,7 @@
 		overflow-wrap: break-word;
 		hyphens: auto;
 
-		/* Colors */
-		color: black;
-		color: var(--text);
-		background: white top left fixed no-repeat;
-		background-color: var(--bg);
+		background: transparent top left fixed no-repeat;
 		background-size: 25px auto;
 	}
 
@@ -1442,6 +1445,12 @@ pre .property::before, pre .property::after {
 <style>/* style-colors */
 
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
+html {
+    color: black;
+    color: var(--text);
+    background-color: white;
+    background-color: var(--bg);
+}
 :root {
     color-scheme: light dark;
 
@@ -1752,7 +1761,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 @media (prefers-color-scheme: dark) {
     :root {
         --text: #ddd;
-        --bg: #111;
+        --bg: black;
 
         --logo-bg: #1a5e9a;
         --logo-active-bg: #c00;
@@ -1865,180 +1874,6 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     }
 }
 @media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
-    :root {
-        --dfnpanel-bg: #222;
-        --dfnpanel-text: var(--text);
-    }
-}
-@media (prefers-color-scheme: dark) {
     .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
 
     c-[a] { color: #d33682 } /* Keyword.Declaration */
@@ -2105,7 +1940,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Hand Input Module - Level 1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-09-16">16 September 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-09-24">24 September 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -2206,16 +2041,18 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
 the session MUST be requested with an appropriate <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor">feature descriptor</a>. The string "<dfn class="dfn-paneled" data-dfn-for="feature descriptor" data-dfn-type="dfn" data-noexport id="feature-descriptor-hand-tracking">hand-tracking</dfn>" is introduced
 by this module as a new valid <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor①">feature descriptor</a> for articulated hand tracking.</p>
    <p>The "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor②">feature descriptor</a> should only be granted for an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession">XRSession</a></code> its <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device">XR device</a> has <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source">physical hand input sources</a> that <a data-link-type="dfn" href="#supports-hand-tracking" id="ref-for-supports-hand-tracking">supports hand tracking</a>.</p>
+   <p>The user agent MAY gate support for hand based <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource">XRInputSources</a></code> based upon this <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor③">feature descriptor</a>.</p>
+   <p class="note" role="note"><span>NOTE:</span> This means that if an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession①">XRSession</a></code> does not request the "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking①">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor④">feature descriptor</a>, the user agent may choose to not support input controllers that are hand based.</p>
    <h2 class="heading settled" data-level="3" id="physical-hand"><span class="secno">3. </span><span class="content">Physical Hand Input Sources</span><a class="self-link" href="#physical-hand"></a></h2>
-   <p>An <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource">XRInputSource</a></code> is a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="physical-hand-input-source">physical hand input source</dfn> if it tracks a physical hand. A <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source①">physical hand input source</a> <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="supports-hand-tracking">supports hand tracking</dfn> if it supports reporting the poses of one or more <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①">skeleton joint</a>s defined in this specification.</p>
+   <p>An <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource①">XRInputSource</a></code> is a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="physical-hand-input-source">physical hand input source</dfn> if it tracks a physical hand. A <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source①">physical hand input source</a> <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="supports-hand-tracking">supports hand tracking</dfn> if it supports reporting the poses of one or more <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①">skeleton joint</a>s defined in this specification.</p>
    <p><a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source②">Physical hand input sources</a> MUST include the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrinputsource-input-profile-name" id="ref-for-xrinputsource-input-profile-name">input profile name</a> of "generic-hand-select" in their <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles" id="ref-for-dom-xrinputsource-profiles">profiles</a></code>.</p>
    <h3 class="heading settled" data-level="3.1" id="xrinputsource-interface"><span class="secno">3.1. </span><span class="content">XRInputSource</span><a class="self-link" href="#xrinputsource-interface"></a></h3>
-<pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource①"><c- g>XRInputSource</c-></a> {
+<pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource②"><c- g>XRInputSource</c-></a> {
    <c- b>readonly</c-> <c- b>attribute</c-> <a class="n" data-link-type="idl-name" href="#xrhand" id="ref-for-xrhand"><c- n>XRHand</c-></a>? <a class="idl-code" data-link-type="attribute" data-readonly data-type="XRHand?" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand"><c- g>hand</c-></a>;
 };
 </pre>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRInputSource" data-dfn-type="attribute" data-export id="dom-xrinputsource-hand"><code>hand</code></dfn> attribute on a <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source③">physical hand input source</a> that <a data-link-type="dfn" href="#supports-hand-tracking" id="ref-for-supports-hand-tracking①">supports hand tracking</a> will be an <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand①">XRHand</a></code> object giving access to the underlying hand-tracking capabilities. <code class="idl"><a data-link-type="idl" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand①">hand</a></code> will have its <a data-link-type="dfn" href="#xrhand-input-source" id="ref-for-xrhand-input-source">input source</a> set to <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this">this</a>.</p>
-   <p>If the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource②">XRInputSource</a></code> belongs to an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession①">XRSession</a></code> that has not been requested with the "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking①">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor③">feature descriptor</a>, <code class="idl"><a data-link-type="idl" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand②">hand</a></code> MUST be <code>null</code>.</p>
+   <p>If the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource③">XRInputSource</a></code> belongs to an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession②">XRSession</a></code> that has not been requested with the "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking②">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor⑤">feature descriptor</a>, <code class="idl"><a data-link-type="idl" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand②">hand</a></code> MUST be <code>null</code>.</p>
    <h3 class="heading settled" data-level="3.2" id="skeleton-joints-section"><span class="secno">3.2. </span><span class="content">Skeleton Joints</span><a class="self-link" href="#skeleton-joints-section"></a></h3>
    <p>A <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source④">physical hand input source</a> is made up of many <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="skeleton-joints">skeleton joints</dfn>.</p>
    <p>A <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints②">skeleton joint</a> for a given hand can be uniquely identified by a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="skeleton-joint-index">skeleton joint index</dfn>, which is a nonnegative integer.</p>
@@ -2674,8 +2511,9 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
   <aside class="dfn-panel" data-for="term-for-xrinputsource">
    <a href="https://immersive-web.github.io/webxr/#xrinputsource">https://immersive-web.github.io/webxr/#xrinputsource</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrinputsource">3. Physical Hand Input Sources</a>
-    <li><a href="#ref-for-xrinputsource①">3.1. XRInputSource</a> <a href="#ref-for-xrinputsource②">(2)</a>
+    <li><a href="#ref-for-xrinputsource">2. Initialization</a>
+    <li><a href="#ref-for-xrinputsource①">3. Physical Hand Input Sources</a>
+    <li><a href="#ref-for-xrinputsource②">3.1. XRInputSource</a> <a href="#ref-for-xrinputsource③">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-xrpose">
@@ -2688,8 +2526,8 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
   <aside class="dfn-panel" data-for="term-for-xrsession">
    <a href="https://immersive-web.github.io/webxr/#xrsession">https://immersive-web.github.io/webxr/#xrsession</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrsession">2. Initialization</a>
-    <li><a href="#ref-for-xrsession①">3.1. XRInputSource</a>
+    <li><a href="#ref-for-xrsession">2. Initialization</a> <a href="#ref-for-xrsession①">(2)</a>
+    <li><a href="#ref-for-xrsession②">3.1. XRInputSource</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-xrspace">
@@ -2714,8 +2552,8 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
   <aside class="dfn-panel" data-for="term-for-feature-descriptor">
    <a href="https://immersive-web.github.io/webxr/#feature-descriptor">https://immersive-web.github.io/webxr/#feature-descriptor</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-feature-descriptor">2. Initialization</a> <a href="#ref-for-feature-descriptor①">(2)</a> <a href="#ref-for-feature-descriptor②">(3)</a>
-    <li><a href="#ref-for-feature-descriptor③">3.1. XRInputSource</a>
+    <li><a href="#ref-for-feature-descriptor">2. Initialization</a> <a href="#ref-for-feature-descriptor①">(2)</a> <a href="#ref-for-feature-descriptor②">(3)</a> <a href="#ref-for-feature-descriptor③">(4)</a> <a href="#ref-for-feature-descriptor④">(5)</a>
+    <li><a href="#ref-for-feature-descriptor⑤">3.1. XRInputSource</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-xrinputsource-input-profile-name">
@@ -2908,8 +2746,8 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
   <aside class="dfn-panel" data-for="feature-descriptor-hand-tracking">
    <b><a href="#feature-descriptor-hand-tracking">#feature-descriptor-hand-tracking</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-feature-descriptor-hand-tracking">2. Initialization</a>
-    <li><a href="#ref-for-feature-descriptor-hand-tracking①">3.1. XRInputSource</a>
+    <li><a href="#ref-for-feature-descriptor-hand-tracking">2. Initialization</a> <a href="#ref-for-feature-descriptor-hand-tracking①">(2)</a>
+    <li><a href="#ref-for-feature-descriptor-hand-tracking②">3.1. XRInputSource</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="physical-hand-input-source">
