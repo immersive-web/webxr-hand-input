@@ -65,19 +65,19 @@ Status Text: This WebXR Augmented Reality Module is designed as a module to be i
   .tg th {
     border-style: solid;
     border-width: 1px;
-    background: #90b8de;
+    background: var(--def-bg);
     color: #fff;
     font-family: sans-serif;
     font-weight: bold;
-    border-color: grey;
+    border-color: var(--def-border);
   }
   .tg td {
     padding: 4px 5px;
-    background-color: rgb(221, 238, 255);
+    background-color: var(--def-bg);
     font-family: monospace;
     border-style: solid;
     border-width: 1px;
-    border-color: grey;
+    border-color: var(--def-border);
     overflow: hidden;
     word-break: normal;
   }
@@ -200,7 +200,7 @@ This specification defines the following [=skeleton joints=]:
 </tbody>
 </table>
 
-<img src="images/hand-layout.svg" alt="Visual aid demonstrating joint layout">
+<img src="images/hand-layout.svg" style="background-color: transparent" alt="Visual aid demonstrating joint layout">
 
 XRHand {#xrhand-interface}
 ------

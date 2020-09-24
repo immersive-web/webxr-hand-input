@@ -1363,19 +1363,19 @@ Possible extra rowspan handling
   .tg th {
     border-style: solid;
     border-width: 1px;
-    background: #90b8de;
+    background: var(--def-bg);
     color: #fff;
     font-family: sans-serif;
     font-weight: bold;
-    border-color: grey;
+    border-color: var(--def-border);
   }
   .tg td {
     padding: 4px 5px;
-    background-color: rgb(221, 238, 255);
+    background-color: var(--def-bg);
     font-family: monospace;
     border-style: solid;
     border-width: 1px;
-    border-color: grey;
+    border-color: var(--def-border);
     overflow: hidden;
     word-break: normal;
   }
@@ -2146,7 +2146,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
       <td>Tip
       <td>24
    </table>
-   <p><img alt="Visual aid demonstrating joint layout" src="images/hand-layout.svg"></p>
+   <p><img alt="Visual aid demonstrating joint layout" src="images/hand-layout.svg" style="background-color: transparent"></p>
    <h3 class="heading settled" data-level="3.3" id="xrhand-interface"><span class="secno">3.3. </span><span class="content">XRHand</span><a class="self-link" href="#xrhand-interface"></a></h3>
 <pre class="idl highlight def"><c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrhand"><code><c- g>XRHand</c-></code></dfn> {
     <c- b>iterable</c->&lt;<a class="n" data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace"><c- n>XRJointSpace</c-></a>>;
