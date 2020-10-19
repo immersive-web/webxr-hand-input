@@ -206,6 +206,7 @@ XRHand {#xrhand-interface}
 ------
 
 <pre class="idl">
+[Exposed=Window]
 interface XRHand {
     iterable&lt;XRJointSpace>;
     readonly attribute unsigned long length;
@@ -273,6 +274,7 @@ XRJointSpace {#xrjointspace-interface}
 -------------
 
 <pre class="idl">
+[Exposed=Window]
 interface XRJointSpace: XRSpace {};
 </pre>
 
@@ -390,6 +392,7 @@ XRJointPose {#xrjointpose-interface}
 An {{XRJointPose}} is an {{XRPose}} with additional information about the size of the [=skeleton joint=] it represents.
 
 <pre class="idl">
+[Exposed=Window]
 interface XRJointPose: XRPose {
     readonly attribute float radius;
 };
