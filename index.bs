@@ -3,7 +3,9 @@ Shortname: webxr-hand-input
 Title: WebXR Hand Input Module - Level 1
 Group: immersivewebwg
 Status: ED
+TR: https://www.w3.org/TR/webxr-hand-input-1/
 ED: https://immersive-web.github.io/webxr-hand-input/
+Previous Version: https://www.w3.org/TR/2020/WD-webxr-hand-input-1-20201022/
 Repository: immersive-web/webxr-hand-input
 Level: 1
 Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web/
@@ -12,7 +14,7 @@ Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web
 !Participate: <a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
 !Participate: <a href="irc://irc.w3.org:6665/">W3C's #immersive-web IRC</a>
 
-Editor: Manish Goregaokar 109489, Mozilla http://mozilla.org/, manish@mozilla.com
+Editor: Manish Goregaokar 109489, Invited Expert [Mozilla until 2020], manishsmail@gmail.com
 
 Abstract: The WebXR Hand Input module expands the <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a> with the functionality to track articulated hand poses.
 
