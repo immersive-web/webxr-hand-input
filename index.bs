@@ -138,6 +138,8 @@ An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a p
 
 [=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profiles}}.
 
+For many [=physical hand input sources=], there can be overlap between the gestures used for the [=primary action=] and the squeeze action. For example, a pinch gesture may indicate both a "select" and "squeeze" event, depending on whether you are interacting with nearby or far away objects. Since content may assume that these are independent events, user agents MAY, instead of surfacing the squeeze action as the [=primary squeeze action=], surface it as an additional "grasp button", using an input profile derived from the "generic-hand-select-grasp" profile.
+
 XRInputSource {#xrinputsource-interface}
 -------------
 
