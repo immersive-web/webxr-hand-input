@@ -39,7 +39,7 @@ The joint spaces can be accessed via indexing, for example to access the middle 
 let joint = inputSource.hand[XRHand.MIDDLE_PHALANX_PROXIMAL];
 ```
 
-Not all devices support all joints, this indexing getter will return `null` when accessing a joint that is not supported by the current user agent or device. This will not change for a given input source. If a joint is supported but not currently being tracked, the getter will still produce the `XRJointSpace`, but it will return `null` when run through `getPose` (etc).
+All devices which support hand tracking will support or emulate all joints, so this indexing operation will always return a valid object as long as it is supplied with a valid joint index. If a joint is supported but not currently being tracked, the getter will still produce the `XRJointSpace`, but it will return `null` when run through `getPose` (etc).
 
 Each joint space is an `XRSpace`, with its `-Y` direction pointing perpendicular to the skin, outwards from the palm, and `-Z` direction pointing along their associated bone, away from the wrist. This space will return null poses when the joint loses tracking.
 
@@ -167,6 +167,32 @@ function checkOrientation(tipOrientation, metacarpalOrientation) {
    }
 }
 ```
+
+## Efficiently obtaining hand poses
+
+Each use of  `getPose()` allocates one short-lived `XRPose` object, one `XRRigidTransform` object, and at least one `DOMPointReadOnly` or `Float32Array`. For 25 joints per hand and two hands, this is 150-250 objects created per frame. This can have noticeable performance implications, especially around garbage collection.
+
+To avoid that, we provide a `fillPoses()` (and `fillJointRadii`) API which can be used to efficiently obtain all the transforms for a hand at once.
+
+```js
+let poses1 = new Float32Array(16 * 25);
+let radii1 = new Float32Array(25);
+function onFrame(frame, renderer) {
+  let hand1 = frame.session.inputSources[0].hand;
+  frame.fillPoses(hand1, renderer.referenceSpace, poses1);
+  frame.fillJointRadii(hand1, radii1);
+  renderer.drawHand(poses1, radii1);
+  // do something similar for second hand
+}
+```
+
+## Privacy and Security Considerations
+
+Exposing hand input poses a risk to both a user's identity and their sensitive characteristics. This API exposes details of hand, finger, and joint size, which could be used to uniquely identify a user. Beyond exposing details of hand size, this API is intended to enable gesture recognition. Gestures have been used in authentication mechanisms as a behavioral biometric, and are likely to expose uniquely identifying information about users.
+
+Medical conditions that produce tremors in the hands may be exposed by this API, as well as whether a user is missing fingers or parts of fingers. Additionally, hand size can reveal age, and possibly gender. Finally, there's the possibility that someone might misuse this API in an attempt to infer ethnic background from hand size, which amounts to hand-based phrenology.
+
+This API can also potentially capture sensitive inputs, e.g. capturing typed input.
 
 ## Appendix: Proposed IDL
 

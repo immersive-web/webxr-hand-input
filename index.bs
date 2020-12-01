@@ -3,7 +3,9 @@ Shortname: webxr-hand-input
 Title: WebXR Hand Input Module - Level 1
 Group: immersivewebwg
 Status: ED
+TR: https://www.w3.org/TR/webxr-hand-input-1/
 ED: https://immersive-web.github.io/webxr-hand-input/
+Previous Version: https://www.w3.org/TR/2020/WD-webxr-hand-input-1-20201022/
 Repository: immersive-web/webxr-hand-input
 Level: 1
 Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web/
@@ -12,7 +14,7 @@ Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web
 !Participate: <a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
 !Participate: <a href="irc://irc.w3.org:6665/">W3C's #immersive-web IRC</a>
 
-Editor: Manish Goregaokar 109489, Mozilla http://mozilla.org/, manish@mozilla.com
+Editor: Manish Goregaokar 109489, Invited Expert [Mozilla until 2020], manishsmail@gmail.com
 
 Abstract: The WebXR Hand Input module expands the <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a> with the functionality to track articulated hand poses.
 
@@ -65,19 +67,19 @@ Status Text: This WebXR Augmented Reality Module is designed as a module to be i
   .tg th {
     border-style: solid;
     border-width: 1px;
-    background: #90b8de;
+    background: var(--def-bg);
     color: #fff;
     font-family: sans-serif;
     font-weight: bold;
-    border-color: grey;
+    border-color: var(--def-border);
   }
   .tg td {
     padding: 4px 5px;
-    background-color: rgb(221, 238, 255);
+    background-color: var(--def-bg);
     font-family: monospace;
     border-style: solid;
     border-width: 1px;
-    border-color: grey;
+    border-color: var(--def-border);
     overflow: hidden;
     word-break: normal;
   }
@@ -125,6 +127,9 @@ by this module as a new valid [=feature descriptor=] for articulated hand tracki
 
 The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{XRSession}} its [=XRSession/XR device=] has [=physical hand input sources=] that [=supports hand tracking=].
 
+The user agent MAY gate support for hand based {{XRInputSource|XRInputSources}} based upon this [=feature descriptor=].
+
+NOTE: This means that if an {{XRSession}} does not request the "[=hand-tracking=]" [=feature descriptor=], the user agent may choose to not support input controllers that are hand based.
 
 Physical Hand Input Sources {#physical-hand}
 ===========================
@@ -132,6 +137,8 @@ Physical Hand Input Sources {#physical-hand}
 An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input source=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
 
 [=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profiles}}.
+
+For many [=physical hand input sources=], there can be overlap between the gestures used for the [=primary action=] and the squeeze action. For example, a pinch gesture may indicate both a "select" and "squeeze" event, depending on whether you are interacting with nearby or far away objects. Since content may assume that these are independent events, user agents MAY, instead of surfacing the squeeze action as the [=primary squeeze action=], surface it as an additional "grasp button", using an input profile derived from the "generic-hand-select-grasp" profile.
 
 XRInputSource {#xrinputsource-interface}
 -------------
@@ -197,12 +204,13 @@ This specification defines the following [=skeleton joints=]:
 </tbody>
 </table>
 
-<img src="images/hand-layout.svg" alt="Visual aid demonstrating joint layout">
+<img src="images/hand-layout.svg" style="background-color: transparent" alt="Visual aid demonstrating joint layout">
 
 XRHand {#xrhand-interface}
 ------
 
 <pre class="idl">
+[Exposed=Window]
 interface XRHand {
     iterable&lt;XRJointSpace>;
     readonly attribute unsigned long length;
@@ -270,6 +278,7 @@ XRJointSpace {#xrjointspace-interface}
 -------------
 
 <pre class="idl">
+[Exposed=Window]
 interface XRJointSpace: XRSpace {};
 </pre>
 
@@ -301,12 +310,15 @@ XRFrame {#xrframe-interface}
 <pre class="idl">
 partial interface XRFrame {
     XRJointPose? getJointPose(XRJointSpace joint, XRSpace baseSpace);
+    boolean fillJointRadii(sequence&lt;XRJointSpace&gt; jointSpaces, Float32Array radii);
+
+    boolean fillPoses(sequence&lt;XRSpace&gt; spaces, XRSpace baseSpace, Float32Array transforms);
 };
 </pre>
 
 <div class="algorithm" data-algorithm="get-joint-pose">
 
-The <dfn method for="XRFrame">getJointPose(|joint|, |baseSpace|)</dfn> method provides the pose of |joint| relative to |baseSpace| as an {{XRJointPose}}, at the {{XRFrame}}'s [=XRFrame/time=].
+The <dfn method for="XRFrame">getJointPose(XRJointSpace |joint|, XRSpace |baseSpace|)</dfn> method provides the pose of |joint| relative to |baseSpace| as an {{XRJointPose}}, at the {{XRFrame}}'s [=XRFrame/time=].
 
 When this method is invoked, the user agent MUST run the following steps:
 
@@ -317,14 +329,64 @@ When this method is invoked, the user agent MUST run the following steps:
   1. Let |pose| be a [=new=] {{XRJointPose}} object in the [=relevant realm=] of |session|.
   1. [=Populate the pose=] of |joint| in |baseSpace| at the time represented by |frame| into |pose|, with <code>force emulation</code> set to <code>false</code>.
   1. If |pose| is <code>null</code> return <code>null</code>.
-  1. Perform the following steps based on the ability to determine a [=skeleton joint/radius=]:
-      <dl class="switch">
-      <dt>If a [=skeleton joint/radius=] |r| can be determined or emulated for |joint|'s [=XRJointSpace/joint=]</dt>
-        <dd>Set |pose|'s {{XRJointPose/radius}} to |r|.
-      <dt>Otherwise</dt>
-        <dd>Set |pose|'s {{XRJointPose/radius}} to <code>null</code></dd>
-      </dl>
+  1. Set |pose|'s {{XRJointPose/radius}} to the [=skeleton joint/radius=] of |joint|, emulating it if necessary.
   1. Return |pose|.
+
+</div>
+
+<div class="algorithm" data-algorithm="fill-joint-radii">
+
+The <dfn method for="XRFrame">fillJointRadii(sequence&lt;XRJointSpace&gt; |jointSpaces|, Float32Array |radii|)</dfn> method populates |radii| with the radii of the |jointSpaces|, and returns a boolean indicating whether all of the spaces have a valid pose.
+
+When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
+
+  1. Let |frame| be [=this=].
+  1. Let |session| be |frame|'s {{XRFrame/session}} object.
+  1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
+  1. For each |joint| in the |jointSpaces|:
+    1. If |joint|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
+  1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw a {{TypeError}} and abort these steps.
+  1. let |offset| be a new number with the initial value of <code>0</code>.
+  1. Let |allValid| be <code>true</code>.
+  1. For each |joint| in the |jointSpaces|:
+    1. Set the float value of |radii| at |offset| to <code>NaN</code>.
+    1. If the user agent can determine the pose of |joint|, set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
+    1. If the user agent cannot determine the pose of |joint|, set |allValid| to <code>false</code>.
+    1. Increase |offset| by <code>1</code>.
+  1. Return |allValid|.
+
+</div>
+
+<div class="algorithm" data-algorithm="fill-poses">
+
+The <dfn method for="XRFrame">fillPoses(sequence&lt;XRSpace&gt; |spaces|, XRSpace |baseSpace|, Float32Array |transforms|)</dfn> method populates |transforms| with the matrices of the poses of the |spaces| relative to the |baseSpace|, and returns a boolean indicating whether all of the spaces have a valid pose. 
+
+When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
+
+  1. Let |frame| be [=this=].
+  1. Let |session| be |frame|'s {{XRFrame/session}} object.
+  1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
+  1. For each |space| in the |spaces| sequence:
+    1. If |space|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
+  1. If |baseSpace|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
+  1. If the length of |spaces| multiplied by <code>16</code> is larger than the number of elements in |transforms|, throw a {{TypeError}} and abort these steps.
+  1. let |offset| be a new number with the initial value of <code>0</code>.
+  1. Initialize |pose| as follows:
+    <dl class="switch">
+      <dt> If {{XRFrame/fillPoses()}} was called previously, the user agent MAY:
+        <dd> Let |pose| be the same object as used by an earlier call.
+      <dt> Otherwise
+        <dd> Let |pose| be a [=new=] {{XRPose}} object in the [=relevant realm=] of |session|.
+    </dl>
+  1. Let |allValid| be <code>true</code>.
+  1. For each |space| in the |spaces| sequence:
+    1. [=Populate the pose=] of |space| in |baseSpace| at the time represented by |frame| into |pose|.
+    1. If |pose| is <code>null</code>, perform the following steps:
+      1. Set <code>16</code> consecutive elements of the |transforms| array starting at |offset| to <code>NaN</code>.
+      1. Set |allValid| to <code>false</code>.
+    1. If |pose| is not <code>null</code>, copy all elements from |pose|'s {{XRRigidTransform/matrix}} member to the |transforms| array starting at |offset|.
+    1. Increase |offset| by <code>16</code>.
+  1. Return |allValid|.
 
 </div>
 
@@ -334,14 +396,15 @@ XRJointPose {#xrjointpose-interface}
 An {{XRJointPose}} is an {{XRPose}} with additional information about the size of the [=skeleton joint=] it represents.
 
 <pre class="idl">
+[Exposed=Window]
 interface XRJointPose: XRPose {
-    readonly attribute float? radius;
+    readonly attribute float radius;
 };
 </pre>
 
 The <dfn attribute for=XRJointPose>radius</dfn> attribute returns the [=skeleton joint/radius=] of the [=skeleton joint=] in meters.
 
-The user-agent SHOULD set {{XRJointPose/radius}} to <code>null</code> if the [=/XR device=] does not have the capability of determining this value. If the [=/XR device=] is able to determine this value in general but is not able to in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured), it MAY return <code>null</code> or it MAY emulate a value.
+The user-agent MUST set {{XRJointPose/radius}} to an emulated value if the [=/XR device=] does not have the capability of determining this value, either in general or in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured).
 
 Privacy & Security Considerations {#privacy-security}
 =================================
