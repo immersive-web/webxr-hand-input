@@ -104,7 +104,7 @@ It's useful to be able to use individual fingers for interacting with objects. F
 const buttons = [
    {position: [1, 0, 0, 1], radius: 0.1, pressed: false,
     onpress: function() { ... }, onrelease: function() { ... }},
-   // ...  
+   // ...
 ];
 
 function checkInteraction(button, inputSource, frame, renderer) {
@@ -188,11 +188,15 @@ function onFrame(frame, renderer) {
 
 ## Privacy and Security Considerations
 
-Exposing hand input poses a risk to both a user's identity and their sensitive characteristics. This API exposes details of hand, finger, and joint size, which could be used to uniquely identify a user. Beyond exposing details of hand size, this API is intended to enable gesture recognition. Gestures have been used in authentication mechanisms as a behavioral biometric, and are likely to expose uniquely identifying information about users.
+The concept of exposing hand input could pose a risk to users’ privacy. For example, data produced by some hand-tracking systems could potentially enable sites to infer users’ gestural behaviors or approximate hand size, make it apparent to sites that a user is missing fingers or parts of fingers, or allow detection of tremors or other medical conditions.
 
-Medical conditions that produce tremors in the hands may be exposed by this API, as well as whether a user is missing fingers or parts of fingers. Additionally, hand size can reveal age, and possibly gender. Finally, there's the possibility that someone might misuse this API in an attempt to infer ethnic background from hand size, which amounts to hand-based phrenology.
+Implementations are required to employ strategies to mitigate these risks, such as:
+- Reducing the precision and sampling rate of data
+- Adding noise or rounding data
+- Return the same hand geometry/size for all users
+- Emulating values for joints if the implementation isn’t capable of detecting them or the user does not have them.
 
-This API can also potentially capture sensitive inputs, e.g. capturing typed input.
+This specification requires implementations to include sufficient mitigations to protect users’ privacy.
 
 ## Appendix: Proposed IDL
 
