@@ -245,11 +245,9 @@ enum XRHandJoint {
 
 [Exposed=Window]
 interface XRHand {
-    iterable&lt;XRJointSpace>;
+    iterable&lt;XRHandJoint, XRJointSpace>;
     readonly attribute unsigned long length;
-    getter XRJointSpace(unsigned long jointIndex);
-
-    XRJointSpace getJoint(XRHandJoint jointName);
+    getter XRJointSpace(XRHandJoint joint);
 };
 </pre>
 
@@ -257,33 +255,19 @@ The {{XRHandJoint}} enum defines the various joints that an {{XRHand}} contains.
 
 Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is the [=physical hand input source=] that it tracks.
 
-Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] defined in this specification. These all will have their [=XRJointSpace/hand=] set to [=this=].
-This list MUST be in the order given by the [=list of joints=] under [=skeleton joints=].
+Each {{XRHand}} has a <dfn for=XRHand>dictionary of joint names and spaces</dfn> which is a [=dictionary=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] defined in this specification. These all will have their [=XRJointSpace/hand=] set to [=this=].
+This dictionary MUST be in the order given by the [=list of joints=] under [=skeleton joints=].
 
 If an individual device does not support a joint defined in this specification, it MUST emulate it instead.
 
-The [=list of joint spaces=] MUST NOT change over the course of a session.
+The [=dictionary of joint names and spaces=] MUST NOT change over the course of a session.
 
 The <dfn attribute for=XRHand>length</dfn> attribute MUST return the number <code>25</code>
 
 <div class="algorithm" data-algorithm="index-joint-space">
-The <dfn method for="XRHand">getter(|jointIndex|)</dfn> method when invoked runs the following steps:
+The <dfn method for="XRHand">getter(|jointName|)</dfn> method when invoked runs the following steps:
 
-  1. Look for an {{XRHandJoint}} in the [=list of joints=] with index |jointIndex|.
-  1. Handle the result of the search as follows:
-      <dl class="switch">
-        <dt>If found:</dt>
-        <dd>Return the result of calling {{XRHand/getJoint()}} with {{XRHandJoint}}.
-        <dt>Otherwise:</dt>
-        <dd>Return <code>null</code></dd>
-      </dl>
-
-</div>
-
-<div class="algorithm" data-algorithm="joint-name-joint-space">
-The <dfn method for="XRHand">getJoint(|jointName|)</dfn> method when invoked runs the following steps:
-
-  1. Look for an {{XRJointSpace}} in [=this=]'s [=list of joint spaces=] with [=XRJointSpace/jointName=] corresponding to |jointName|.
+  1. Look for an {{XRJointSpace}} in [=this=]'s [=dictionary of joint names and spaces=] with [=XRJointSpace/jointName=] corresponding to |jointName|.
   1. Return the {{XRJointSpace}}.
 
 </div>
