@@ -173,33 +173,33 @@ This <dfn>list of joints</dfn> defines the following [=skeleton joints=] and the
 <tbody>
 <tr><td colspan=2>Wrist</td><td>{{XRHandJoint/wrist}}</td><td>0</td></tr>
 <tr><td rowspan=4>Thumb</td>
-  <td>Metacarpal</td><td>{{XRHandJoint/thumb-palm}}</td><td>1</td></tr>
-  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/thumb-base}}</td><td>2</td></tr>
-  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/thumb-upper}}</td><td>3</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/thumb-metacarpal}}</td><td>1</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/thumb-phalanx-proximal}}</td><td>2</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/thumb-phalanx-distal}}</td><td>3</td></tr>
   <tr><td>Tip</td><td>{{XRHandJoint/thumb-tip}}</td><td>4</td></tr>
 <tr><td rowspan=5>Index finger</td>
-  <td>Metacarpal</td><td>{{XRHandJoint/index-finger-palm}}</td><td>5</td></tr>
-  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/index-finger-base}}</td><td>6</td></tr>
-  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/index-finger-lower}}</td><td>7</td></tr>
-  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/index-finger-upper}}</td><td>8</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/index-finger-metacarpal}}</td><td>5</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/index-finger-phalanx-proximal}}</td><td>6</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/index-finger-phalanx-intermediate}}</td><td>7</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/index-finger-phalanx-distal}}</td><td>8</td></tr>
   <tr><td>Tip</td><td>{{XRHandJoint/index-finger-tip}}</td><td>9</td></tr>
 <tr><td rowspan=5>Middle finger</td>
-  <td>Metacarpal</td><td>{{XRHandJoint/middle-finger-palm}}</td><td>10</td></tr>
-  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/middle-finger-base}}</td><td>11</td></tr>
-  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/middle-finger-lower}}</td><td>12</td></tr>
-  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/middle-finger-upper}}</td><td>13</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/middle-finger-metacarpal}}</td><td>10</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/middle-finger-phalanx-proximal}}</td><td>11</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/middle-finger-phalanx-intermediate}}</td><td>12</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/middle-finger-phalanx-distal}}</td><td>13</td></tr>
   <tr><td>Tip</td><td>{{XRHandJoint/middle-finger-tip}}</td><td>14</td></tr>
 <tr><td rowspan=5>Ring finger</td>
-  <td>Metacarpal</td><td>{{XRHandJoint/ring-finger-palm}}</td><td>15</td></tr>
-  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/ring-finger-base}}</td><td>16</td></tr>
-  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/ring-finger-lower}}</td><td>17</td></tr>
-  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/ring-finger-upper}}</td><td>18</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/ring-finger-metacarpal}}</td><td>15</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/ring-finger-phalanx-proximal}}</td><td>16</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/ring-finger-phalanx-intermediate}}</td><td>17</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/ring-finger-phalanx-distal}}</td><td>18</td></tr>
   <tr><td>Tip</td><td>{{XRHandJoint/ring-finger-tip}}</td><td>19</td></tr>
 <tr><td rowspan=5>Little finger</td>
-  <td>Metacarpal</td><td>{{XRHandJoint/pinky-finger-palm}}</td><td>20</td></tr>
-  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/pinky-finger-base}}</td><td>21</td></tr>
-  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/pinky-finger-lower}}</td><td>22</td></tr>
-  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/pinky-finger-upper}}</td><td>23</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/pinky-finger-metacarpal}}</td><td>20</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/pinky-finger-phalanx-proximal}}</td><td>21</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/pinky-finger-phalanx-intermediate}}</td><td>22</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/pinky-finger-phalanx-distal}}</td><td>23</td></tr>
   <tr><td>Tip</td><td>{{XRHandJoint/pinky-finger-tip}}</td><td>24</td></tr>
 </tbody>
 </table>
@@ -213,41 +213,42 @@ XRHand {#xrhand-interface}
 enum XRHandJoint {
   "wrist",
 
-  "thumb-palm",
-  "thumb-base",
-  "thumb-upper",
+  "thumb-metacarpal",
+  "thumb-phalanx-proximal",
+  "thumb-phalanx-distal",
   "thumb-tip",
 
-  "index-finger-palm",
-  "index-finger-base",
-  "index-finger-lower",
-  "index-finger-upper",
+  "index-finger-metacarpal",
+  "index-finger-phalanx-proximal",
+  "index-finger-phalanx-intermediate",
+  "index-finger-phalanx-distal",
   "index-finger-tip",
 
-  "middle-finger-palm",
-  "middle-finger-base",
-  "middle-finger-lower",
-  "middle-finger-upper",
+  "middle-finger-metacarpal",
+  "middle-finger-phalanx-proximal",
+  "middle-finger-phalanx-intermediate",
+  "middle-finger-phalanx-distal",
   "middle-finger-tip",
 
-  "ring-finger-palm",
-  "ring-finger-base",
-  "ring-finger-lower",
-  "ring-finger-upper",
+  "ring-finger-metacarpal",
+  "ring-finger-phalanx-proximal",
+  "ring-finger-phalanx-intermediate",
+  "ring-finger-phalanx-distal",
   "ring-finger-tip",
 
-  "pinky-finger-palm",
-  "pinky-finger-base",
-  "pinky-finger-lower",
-  "pinky-finger-upper",
-  "pinky-finger-tip",
+  "pinky-finger-metacarpal",
+  "pinky-finger-phalanx-proximal",
+  "pinky-finger-phalanx-intermediate",
+  "pinky-finger-phalanx-distal",
+  "pinky-finger-tip"
 };
 
 [Exposed=Window]
 interface XRHand {
     iterable&lt;XRHandJoint, XRJointSpace>;
-    readonly attribute unsigned long length;
-    getter XRJointSpace(XRHandJoint joint);
+
+    readonly attribute unsigned long size;
+    XRJointSpace get(XRHandJoint key);
 };
 </pre>
 
@@ -262,17 +263,16 @@ If an individual device does not support a joint defined in this specification, 
 
 The [=dictionary of joint names and spaces=] MUST NOT change over the course of a session.
 
-The <dfn attribute for=XRHand>length</dfn> attribute MUST return the number <code>25</code>
+The <dfn attribute for=XRHand>size</dfn> attribute MUST return the number <code>25</code>
 
 <div class="algorithm" data-algorithm="index-joint-space">
-The <dfn method for="XRHand">getter(|jointName|)</dfn> method when invoked runs the following steps:
+The <dfn method for="XRHand">get(|jointName|)</dfn> method when invoked runs the following steps:
 
   1. Look for an {{XRJointSpace}} in [=this=]'s [=dictionary of joint names and spaces=] with [=XRJointSpace/jointName=] corresponding to |jointName|.
   1. Return the {{XRJointSpace}}.
 
 </div>
 
-</div>
 XRJointSpace {#xrjointspace-interface}
 -------------
 
