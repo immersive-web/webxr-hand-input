@@ -101,6 +101,8 @@ spec: webxr-1;
     type: dfn; text: input profile name; for: XRInputSource
 spec:infra; type:dfn; text:list
 spec:webxr-ar-module-1; type:enum-value; text:"immersive-ar"
+spec:webidl;
+    type:dfn; text:value pairs
 </pre>
 
 <pre class="anchors">
@@ -252,24 +254,34 @@ interface XRHand {
 };
 </pre>
 
-The {{XRHandJoint}} enum defines the various joints that an {{XRHand}} contains.
+The {{XRHandJoint}} enum defines the various joints that each {{XRHand}} MUST contain.
 
 Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is the [=physical hand input source=] that it tracks.
 
-Each {{XRHand}} has a <dfn for=XRHand>dictionary of joint names and spaces</dfn> which is a [=dictionary=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] defined in this specification. These all will have their [=XRJointSpace/hand=] set to [=this=].
-This dictionary MUST be in the order given by the [=list of joints=] under [=skeleton joints=].
+<div algorithm="XRHand.[[joints]]">
+    Each {{XRHand}} object has a <dfn attribute for="XRHand">\[[joints]]</dfn> internal slot,
+    which is an [=ordered map=] of pairs with the key of type {{XRHandJoint}} and the value of type {{XRJointSpace}}.
+
+    The ordering of the {{[[joints]]}} internal slot is given by the [=list of joints=] under [=skeleton joints=].
+
+    {{[[joints]]}} MUST NOT change over the course of a session.
+</div>
+
+<div algorithm="XRHand.iterator">
+    The [=value pairs to iterate over=] for an {{XRHand}} object are the list of [=value pairs=] with the key being
+    the {{XRHandJoint}} and the value being the {{XRJointSpace}} corresponding to that {{XRHandJoint}}, ordered by [=list of joints=]
+    under [=skeleton joints=].
+</div>
 
 If an individual device does not support a joint defined in this specification, it MUST emulate it instead.
 
-The [=dictionary of joint names and spaces=] MUST NOT change over the course of a session.
-
-The <dfn attribute for=XRHand>size</dfn> attribute MUST return the number <code>25</code>
+The <dfn attribute for=XRHand>size</dfn> attribute MUST return the number <code>25</code>.
 
 <div class="algorithm" data-algorithm="index-joint-space">
-The <dfn method for="XRHand">get(|jointName|)</dfn> method when invoked runs the following steps:
+The <dfn method for="XRHand">get(|jointName|)</dfn> method when invoked on an {{XRHand}} [=this=] MUST run the following steps:
 
-  1. Look for an {{XRJointSpace}} in [=this=]'s [=dictionary of joint names and spaces=] with [=XRJointSpace/jointName=] corresponding to |jointName|.
-  1. Return the {{XRJointSpace}}.
+  1. Let |joints| be the value of [=this=]'s {{[[joints]]}} internal slot.
+  2. Return |joints|[|jointName|].
 
 </div>
 
