@@ -101,6 +101,8 @@ spec: webxr-1;
     type: dfn; text: input profile name; for: XRInputSource
 spec:infra; type:dfn; text:list
 spec:webxr-ar-module-1; type:enum-value; text:"immersive-ar"
+spec:webidl;
+    type:dfn; text:value pairs
 </pre>
 
 <pre class="anchors">
@@ -158,49 +160,49 @@ Skeleton Joints {#skeleton-joints-section}
 
 A [=physical hand input source=] is made up of many <dfn>skeleton joints</dfn>.
 
-A [=skeleton joint=] for a given hand can be uniquely identified by a <dfn>skeleton joint index</dfn>, which is a nonnegative integer.
+A [=skeleton joint=] for a given hand can be uniquely identified by a <dfn>skeleton joint name</dfn>, which is an enum of type {{XRHandJoint}}.
 
 A [=skeleton joint=] may have an <dfn>associated bone</dfn> that it is named after and used to orient its <code>-Z</code> axis. The [=associated bone=] of a [=skeleton joint=] is the bone that comes after the joint when moving towards the fingertips. The tip and wrist joints have no [=associated bones=].
 
 A [=skeleton joint=] has a <dfn for="skeleton joint">radius</dfn> which is the radius of a sphere placed at its center so that it roughly touches the skin on both sides of the hand.
 
-This specification defines the following [=skeleton joints=]:
+This <dfn>list of joints</dfn> defines the following [=skeleton joints=] and their order:
 
 <table class="tg">
 <thead>
-<tr><th colspan=2>[=Skeleton joint=]</th><th>[=Skeleton joint index=]</th></tr>
+<tr><th colspan=2>[=Skeleton joint=]</th><th>[=Skeleton joint name=]</th><th>Index</th></tr>
 </thead>
 <tbody>
-<tr><td colspan=2>Wrist</td><td>0</td></tr>
+<tr><td colspan=2>Wrist</td><td>{{XRHandJoint/wrist}}</td><td>0</td></tr>
 <tr><td rowspan=4>Thumb</td>
-  <td>Metacarpal</td><td>1</td></tr>
-  <tr><td>Proximal Phalanx</td><td>2</td></tr>
-  <tr><td>Distal Phalanx</td><td>3</td></tr>
-  <tr><td>Tip</td><td>4</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/thumb-metacarpal}}</td><td>1</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/thumb-phalanx-proximal}}</td><td>2</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/thumb-phalanx-distal}}</td><td>3</td></tr>
+  <tr><td>Tip</td><td>{{XRHandJoint/thumb-tip}}</td><td>4</td></tr>
 <tr><td rowspan=5>Index finger</td>
-  <td>Metacarpal</td><td>5</td></tr>
-  <tr><td>Proximal Phalanx</td><td>6</td></tr>
-  <tr><td>Intermediate Phalanx</td><td>7</td></tr>
-  <tr><td>Distal Phalanx</td><td>8</td></tr>
-  <tr><td>Tip</td><td>9</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/index-finger-metacarpal}}</td><td>5</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/index-finger-phalanx-proximal}}</td><td>6</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/index-finger-phalanx-intermediate}}</td><td>7</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/index-finger-phalanx-distal}}</td><td>8</td></tr>
+  <tr><td>Tip</td><td>{{XRHandJoint/index-finger-tip}}</td><td>9</td></tr>
 <tr><td rowspan=5>Middle finger</td>
-  <td>Metacarpal</td><td>10</td></tr>
-  <tr><td>Proximal Phalanx</td><td>11</td></tr>
-  <tr><td>Intermediate Phalanx</td><td>12</td></tr>
-  <tr><td>Distal Phalanx</td><td>13</td></tr>
-  <tr><td>Tip</td><td>14</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/middle-finger-metacarpal}}</td><td>10</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/middle-finger-phalanx-proximal}}</td><td>11</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/middle-finger-phalanx-intermediate}}</td><td>12</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/middle-finger-phalanx-distal}}</td><td>13</td></tr>
+  <tr><td>Tip</td><td>{{XRHandJoint/middle-finger-tip}}</td><td>14</td></tr>
 <tr><td rowspan=5>Ring finger</td>
-  <td>Metacarpal</td><td>15</td></tr>
-  <tr><td>Proximal Phalanx</td><td>16</td></tr>
-  <tr><td>Intermediate Phalanx</td><td>17</td></tr>
-  <tr><td>Distal Phalanx</td><td>18</td></tr>
-  <tr><td>Tip</td><td>9</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/ring-finger-metacarpal}}</td><td>15</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/ring-finger-phalanx-proximal}}</td><td>16</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/ring-finger-phalanx-intermediate}}</td><td>17</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/ring-finger-phalanx-distal}}</td><td>18</td></tr>
+  <tr><td>Tip</td><td>{{XRHandJoint/ring-finger-tip}}</td><td>19</td></tr>
 <tr><td rowspan=5>Little finger</td>
-  <td>Metacarpal</td><td>20</td></tr>
-  <tr><td>Proximal Phalanx</td><td>21</td></tr>
-  <tr><td>Intermediate Phalanx</td><td>22</td></tr>
-  <tr><td>Distal Phalanx</td><td>23</td></tr>
-  <tr><td>Tip</td><td>24</td></tr>
+  <td>Metacarpal</td><td>{{XRHandJoint/pinky-finger-metacarpal}}</td><td>20</td></tr>
+  <tr><td>Proximal Phalanx</td><td>{{XRHandJoint/pinky-finger-phalanx-proximal}}</td><td>21</td></tr>
+  <tr><td>Intermediate Phalanx</td><td>{{XRHandJoint/pinky-finger-phalanx-intermediate}}</td><td>22</td></tr>
+  <tr><td>Distal Phalanx</td><td>{{XRHandJoint/pinky-finger-phalanx-distal}}</td><td>23</td></tr>
+  <tr><td>Tip</td><td>{{XRHandJoint/pinky-finger-tip}}</td><td>24</td></tr>
 </tbody>
 </table>
 
@@ -210,76 +212,87 @@ XRHand {#xrhand-interface}
 ------
 
 <pre class="idl">
+enum XRHandJoint {
+  "wrist",
+
+  "thumb-metacarpal",
+  "thumb-phalanx-proximal",
+  "thumb-phalanx-distal",
+  "thumb-tip",
+
+  "index-finger-metacarpal",
+  "index-finger-phalanx-proximal",
+  "index-finger-phalanx-intermediate",
+  "index-finger-phalanx-distal",
+  "index-finger-tip",
+
+  "middle-finger-metacarpal",
+  "middle-finger-phalanx-proximal",
+  "middle-finger-phalanx-intermediate",
+  "middle-finger-phalanx-distal",
+  "middle-finger-tip",
+
+  "ring-finger-metacarpal",
+  "ring-finger-phalanx-proximal",
+  "ring-finger-phalanx-intermediate",
+  "ring-finger-phalanx-distal",
+  "ring-finger-tip",
+
+  "pinky-finger-metacarpal",
+  "pinky-finger-phalanx-proximal",
+  "pinky-finger-phalanx-intermediate",
+  "pinky-finger-phalanx-distal",
+  "pinky-finger-tip"
+};
+
 [Exposed=Window]
 interface XRHand {
-    iterable&lt;XRJointSpace>;
-    readonly attribute unsigned long length;
-    getter XRJointSpace joint(unsigned long jointIndex);
+    iterable&lt;XRHandJoint, XRJointSpace>;
 
-    const unsigned long WRIST = 0;
-
-    const unsigned long THUMB_METACARPAL = 1;
-    const unsigned long THUMB_PHALANX_PROXIMAL = 2;
-    const unsigned long THUMB_PHALANX_DISTAL = 3;
-    const unsigned long THUMB_PHALANX_TIP = 4;
-
-    const unsigned long INDEX_METACARPAL = 5;
-    const unsigned long INDEX_PHALANX_PROXIMAL = 6;
-    const unsigned long INDEX_PHALANX_INTERMEDIATE = 7;
-    const unsigned long INDEX_PHALANX_DISTAL = 8;
-    const unsigned long INDEX_PHALANX_TIP = 9;
-
-    const unsigned long MIDDLE_METACARPAL = 10;
-    const unsigned long MIDDLE_PHALANX_PROXIMAL = 11;
-    const unsigned long MIDDLE_PHALANX_INTERMEDIATE = 12;
-    const unsigned long MIDDLE_PHALANX_DISTAL = 13;
-    const unsigned long MIDDLE_PHALANX_TIP = 14;
-
-    const unsigned long RING_METACARPAL = 15;
-    const unsigned long RING_PHALANX_PROXIMAL = 16;
-    const unsigned long RING_PHALANX_INTERMEDIATE = 17;
-    const unsigned long RING_PHALANX_DISTAL = 18;
-    const unsigned long RING_PHALANX_TIP = 19;
-
-    const unsigned long LITTLE_METACARPAL = 20;
-    const unsigned long LITTLE_PHALANX_PROXIMAL = 21;
-    const unsigned long LITTLE_PHALANX_INTERMEDIATE = 22;
-    const unsigned long LITTLE_PHALANX_DISTAL = 23;
-    const unsigned long LITTLE_PHALANX_TIP = 24;
+    readonly attribute unsigned long size;
+    XRJointSpace get(XRHandJoint key);
 };
 </pre>
 
+The {{XRHandJoint}} enum defines the various joints that each {{XRHand}} MUST contain.
+
 Every {{XRHand}} has an associated <dfn for=XRHand>input source</dfn>, which is the [=physical hand input source=] that it tracks.
 
-Each {{XRHand}} has a <dfn for=XRHand>list of joint spaces</dfn> which is a [=list=] of {{XRJointSpace}}s corresponding to each [=skeleton joint=] defined in this specification. These all will have their [=XRJointSpace/hand=] set to [=this=].
+<div algorithm="XRHand.[[joints]]">
+    Each {{XRHand}} object has a <dfn attribute for="XRHand">\[[joints]]</dfn> internal slot,
+    which is an [=ordered map=] of pairs with the key of type {{XRHandJoint}} and the value of type {{XRJointSpace}}.
+
+    The ordering of the {{[[joints]]}} internal slot is given by the [=list of joints=] under [=skeleton joints=].
+
+    {{[[joints]]}} MUST NOT change over the course of a session.
+</div>
+
+<div algorithm="XRHand.iterator">
+    The [=value pairs to iterate over=] for an {{XRHand}} object are the list of [=value pairs=] with the key being
+    the {{XRHandJoint}} and the value being the {{XRJointSpace}} corresponding to that {{XRHandJoint}}, ordered by [=list of joints=]
+    under [=skeleton joints=].
+</div>
 
 If an individual device does not support a joint defined in this specification, it MUST emulate it instead.
 
-The [=list of joint spaces=] MUST NOT change over the course of a session.
-
-The <dfn attribute for=XRHand>length</dfn> attribute MUST return the number <code>25</code>
+The <dfn attribute for=XRHand>size</dfn> attribute MUST return the number <code>25</code>.
 
 <div class="algorithm" data-algorithm="index-joint-space">
-The <dfn method for="XRJointSpace">joint(|jointIndex|)</dfn> getter when invoked runs the following steps:
+The <dfn method for="XRHand">get(|jointName|)</dfn> method when invoked on an {{XRHand}} [=this=] MUST run the following steps:
 
-  1. Look for an {{XRJointSpace}} in [=this=]'s [=list of joint spaces=] with [=XRJointSpace/joint index=] corresponding to |jointIndex|.
-  1. Handle the result of the search as follows:
-      <dl class="switch">
-        <dt>If found:</dt>
-        <dd>Return the {{XRJointSpace}}.
-        <dt>Otherwise:</dt>
-        <dd>Return <code>null</code></dd>
-      </dl>
+  1. Let |joints| be the value of [=this=]'s {{[[joints]]}} internal slot.
+  2. Return |joints|[|jointName|].
 
 </div>
 
-</div>
 XRJointSpace {#xrjointspace-interface}
 -------------
 
 <pre class="idl">
 [Exposed=Window]
-interface XRJointSpace: XRSpace {};
+interface XRJointSpace: XRSpace {
+  readonly attribute XRHandJoint jointName;
+};
 </pre>
 
 The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying [=XRJointSpace/joint=].
@@ -296,9 +309,9 @@ For tip [=skeleton joints=] where there is no [=associated bone=], the <code>-Z<
 
 Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>hand</dfn>, which is the {{XRHand}} that created it.
 
-Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>joint index</dfn>, which is the joint index corresponding to the joint it tracks.
+<dfn for=XRJointSpace>jointName</dfn> returns the joint name of the joint it tracks.
 
-Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>joint</dfn>, which is [=skeleton joint=] corresponding to its [=XRJointSpace/joint index=].
+Every {{XRJointSpace}} has an associated <dfn for=XRJointSpace>joint</dfn>, which is the [=skeleton joint=] corresponding to the [=XRJointSpace/jointName=].
 
 
 Frame Loop {#frame-loop}
@@ -359,7 +372,7 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
 
 <div class="algorithm" data-algorithm="fill-poses">
 
-The <dfn method for="XRFrame">fillPoses(sequence&lt;XRSpace&gt; |spaces|, XRSpace |baseSpace|, Float32Array |transforms|)</dfn> method populates |transforms| with the matrices of the poses of the |spaces| relative to the |baseSpace|, and returns a boolean indicating whether all of the spaces have a valid pose. 
+The <dfn method for="XRFrame">fillPoses(sequence&lt;XRSpace&gt; |spaces|, XRSpace |baseSpace|, Float32Array |transforms|)</dfn> method populates |transforms| with the matrices of the poses of the |spaces| relative to the |baseSpace|, and returns a boolean indicating whether all of the spaces have a valid pose.
 
 When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run the following steps:
 

@@ -633,7 +633,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Hand Input Module - Level 1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-12-03">3 December 2020</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2020-12-16">16 December 2020</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -753,175 +753,207 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
    <p>If the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource③">XRInputSource</a></code> belongs to an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession②">XRSession</a></code> that has not been requested with the "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking②">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor⑤">feature descriptor</a>, <code class="idl"><a data-link-type="idl" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand②">hand</a></code> MUST be <code>null</code>.</p>
    <h3 class="heading settled" data-level="3.2" id="skeleton-joints-section"><span class="secno">3.2. </span><span class="content">Skeleton Joints</span><a class="self-link" href="#skeleton-joints-section"></a></h3>
    <p>A <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source⑤">physical hand input source</a> is made up of many <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="skeleton-joints">skeleton joints</dfn>.</p>
-   <p>A <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints②">skeleton joint</a> for a given hand can be uniquely identified by a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="skeleton-joint-index">skeleton joint index</dfn>, which is a nonnegative integer.</p>
+   <p>A <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints②">skeleton joint</a> for a given hand can be uniquely identified by a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="skeleton-joint-name">skeleton joint name</dfn>, which is an enum of type <code class="idl"><a data-link-type="idl" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint">XRHandJoint</a></code>.</p>
    <p>A <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints③">skeleton joint</a> may have an <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="associated-bone">associated bone</dfn> that it is named after and used to orient its <code>-Z</code> axis. The <a data-link-type="dfn" href="#associated-bone" id="ref-for-associated-bone">associated bone</a> of a <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints④">skeleton joint</a> is the bone that comes after the joint when moving towards the fingertips. The tip and wrist joints have no <a data-link-type="dfn" href="#associated-bone" id="ref-for-associated-bone①">associated bones</a>.</p>
    <p>A <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑤">skeleton joint</a> has a <dfn class="dfn-paneled" data-dfn-for="skeleton joint" data-dfn-type="dfn" data-noexport id="skeleton-joint-radius">radius</dfn> which is the radius of a sphere placed at its center so that it roughly touches the skin on both sides of the hand.</p>
-   <p>This specification defines the following <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑥">skeleton joints</a>:</p>
+   <p>This <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="list-of-joints">list of joints</dfn> defines the following <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑥">skeleton joints</a> and their order:</p>
    <table class="tg">
     <thead>
      <tr>
       <th colspan="2"><a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑦">Skeleton joint</a>
-      <th><a data-link-type="dfn" href="#skeleton-joint-index" id="ref-for-skeleton-joint-index">Skeleton joint index</a>
+      <th><a data-link-type="dfn" href="#skeleton-joint-name" id="ref-for-skeleton-joint-name">Skeleton joint name</a>
+      <th>Index
     <tbody>
      <tr>
       <td colspan="2">Wrist
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-wrist" id="ref-for-dom-xrhandjoint-wrist">wrist</a></code>
       <td>0
      <tr>
       <td rowspan="4">Thumb
       <td>Metacarpal
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-thumb-metacarpal" id="ref-for-dom-xrhandjoint-thumb-metacarpal">thumb-metacarpal</a></code>
       <td>1
      <tr>
       <td>Proximal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-thumb-phalanx-proximal" id="ref-for-dom-xrhandjoint-thumb-phalanx-proximal">thumb-phalanx-proximal</a></code>
       <td>2
      <tr>
       <td>Distal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-thumb-phalanx-distal" id="ref-for-dom-xrhandjoint-thumb-phalanx-distal">thumb-phalanx-distal</a></code>
       <td>3
      <tr>
       <td>Tip
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-thumb-tip" id="ref-for-dom-xrhandjoint-thumb-tip">thumb-tip</a></code>
       <td>4
      <tr>
       <td rowspan="5">Index finger
       <td>Metacarpal
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-index-finger-metacarpal" id="ref-for-dom-xrhandjoint-index-finger-metacarpal">index-finger-metacarpal</a></code>
       <td>5
      <tr>
       <td>Proximal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-index-finger-phalanx-proximal" id="ref-for-dom-xrhandjoint-index-finger-phalanx-proximal">index-finger-phalanx-proximal</a></code>
       <td>6
      <tr>
       <td>Intermediate Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-index-finger-phalanx-intermediate" id="ref-for-dom-xrhandjoint-index-finger-phalanx-intermediate">index-finger-phalanx-intermediate</a></code>
       <td>7
      <tr>
       <td>Distal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-index-finger-phalanx-distal" id="ref-for-dom-xrhandjoint-index-finger-phalanx-distal">index-finger-phalanx-distal</a></code>
       <td>8
      <tr>
       <td>Tip
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-index-finger-tip" id="ref-for-dom-xrhandjoint-index-finger-tip">index-finger-tip</a></code>
       <td>9
      <tr>
       <td rowspan="5">Middle finger
       <td>Metacarpal
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-middle-finger-metacarpal" id="ref-for-dom-xrhandjoint-middle-finger-metacarpal">middle-finger-metacarpal</a></code>
       <td>10
      <tr>
       <td>Proximal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-middle-finger-phalanx-proximal" id="ref-for-dom-xrhandjoint-middle-finger-phalanx-proximal">middle-finger-phalanx-proximal</a></code>
       <td>11
      <tr>
       <td>Intermediate Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-middle-finger-phalanx-intermediate" id="ref-for-dom-xrhandjoint-middle-finger-phalanx-intermediate">middle-finger-phalanx-intermediate</a></code>
       <td>12
      <tr>
       <td>Distal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-middle-finger-phalanx-distal" id="ref-for-dom-xrhandjoint-middle-finger-phalanx-distal">middle-finger-phalanx-distal</a></code>
       <td>13
      <tr>
       <td>Tip
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-middle-finger-tip" id="ref-for-dom-xrhandjoint-middle-finger-tip">middle-finger-tip</a></code>
       <td>14
      <tr>
       <td rowspan="5">Ring finger
       <td>Metacarpal
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-ring-finger-metacarpal" id="ref-for-dom-xrhandjoint-ring-finger-metacarpal">ring-finger-metacarpal</a></code>
       <td>15
      <tr>
       <td>Proximal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-ring-finger-phalanx-proximal" id="ref-for-dom-xrhandjoint-ring-finger-phalanx-proximal">ring-finger-phalanx-proximal</a></code>
       <td>16
      <tr>
       <td>Intermediate Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-ring-finger-phalanx-intermediate" id="ref-for-dom-xrhandjoint-ring-finger-phalanx-intermediate">ring-finger-phalanx-intermediate</a></code>
       <td>17
      <tr>
       <td>Distal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-ring-finger-phalanx-distal" id="ref-for-dom-xrhandjoint-ring-finger-phalanx-distal">ring-finger-phalanx-distal</a></code>
       <td>18
      <tr>
       <td>Tip
-      <td>9
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-ring-finger-tip" id="ref-for-dom-xrhandjoint-ring-finger-tip">ring-finger-tip</a></code>
+      <td>19
      <tr>
       <td rowspan="5">Little finger
       <td>Metacarpal
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-pinky-finger-metacarpal" id="ref-for-dom-xrhandjoint-pinky-finger-metacarpal">pinky-finger-metacarpal</a></code>
       <td>20
      <tr>
       <td>Proximal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-pinky-finger-phalanx-proximal" id="ref-for-dom-xrhandjoint-pinky-finger-phalanx-proximal">pinky-finger-phalanx-proximal</a></code>
       <td>21
      <tr>
       <td>Intermediate Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-pinky-finger-phalanx-intermediate" id="ref-for-dom-xrhandjoint-pinky-finger-phalanx-intermediate">pinky-finger-phalanx-intermediate</a></code>
       <td>22
      <tr>
       <td>Distal Phalanx
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-pinky-finger-phalanx-distal" id="ref-for-dom-xrhandjoint-pinky-finger-phalanx-distal">pinky-finger-phalanx-distal</a></code>
       <td>23
      <tr>
       <td>Tip
+      <td><code class="idl"><a data-link-type="idl" href="#dom-xrhandjoint-pinky-finger-tip" id="ref-for-dom-xrhandjoint-pinky-finger-tip">pinky-finger-tip</a></code>
       <td>24
    </table>
    <p><img alt="Visual aid demonstrating joint layout" src="images/hand-layout.svg" style="background-color: transparent"></p>
    <h3 class="heading settled" data-level="3.3" id="xrhand-interface"><span class="secno">3.3. </span><span class="content">XRHand</span><a class="self-link" href="#xrhand-interface"></a></h3>
-<pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+<pre class="idl highlight def"><c- b>enum</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="enum" data-export id="enumdef-xrhandjoint"><code><c- g>XRHandJoint</c-></code></dfn> {
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-wrist"><code><c- s>"wrist"</c-></code></dfn>,
+
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-thumb-metacarpal"><code><c- s>"thumb-metacarpal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-thumb-phalanx-proximal"><code><c- s>"thumb-phalanx-proximal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-thumb-phalanx-distal"><code><c- s>"thumb-phalanx-distal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-thumb-tip"><code><c- s>"thumb-tip"</c-></code></dfn>,
+
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-index-finger-metacarpal"><code><c- s>"index-finger-metacarpal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-index-finger-phalanx-proximal"><code><c- s>"index-finger-phalanx-proximal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-index-finger-phalanx-intermediate"><code><c- s>"index-finger-phalanx-intermediate"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-index-finger-phalanx-distal"><code><c- s>"index-finger-phalanx-distal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-index-finger-tip"><code><c- s>"index-finger-tip"</c-></code></dfn>,
+
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-middle-finger-metacarpal"><code><c- s>"middle-finger-metacarpal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-middle-finger-phalanx-proximal"><code><c- s>"middle-finger-phalanx-proximal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-middle-finger-phalanx-intermediate"><code><c- s>"middle-finger-phalanx-intermediate"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-middle-finger-phalanx-distal"><code><c- s>"middle-finger-phalanx-distal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-middle-finger-tip"><code><c- s>"middle-finger-tip"</c-></code></dfn>,
+
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-ring-finger-metacarpal"><code><c- s>"ring-finger-metacarpal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-ring-finger-phalanx-proximal"><code><c- s>"ring-finger-phalanx-proximal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-ring-finger-phalanx-intermediate"><code><c- s>"ring-finger-phalanx-intermediate"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-ring-finger-phalanx-distal"><code><c- s>"ring-finger-phalanx-distal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-ring-finger-tip"><code><c- s>"ring-finger-tip"</c-></code></dfn>,
+
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-pinky-finger-metacarpal"><code><c- s>"pinky-finger-metacarpal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-pinky-finger-phalanx-proximal"><code><c- s>"pinky-finger-phalanx-proximal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-pinky-finger-phalanx-intermediate"><code><c- s>"pinky-finger-phalanx-intermediate"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-pinky-finger-phalanx-distal"><code><c- s>"pinky-finger-phalanx-distal"</c-></code></dfn>,
+  <dfn class="dfn-paneled idl-code" data-dfn-for="XRHandJoint" data-dfn-type="enum-value" data-export id="dom-xrhandjoint-pinky-finger-tip"><code><c- s>"pinky-finger-tip"</c-></code></dfn>
+};
+
+[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrhand"><code><c- g>XRHand</c-></code></dfn> {
-    <c- b>iterable</c->&lt;<a data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace"><c- n>XRJointSpace</c-></a>>;
-    <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="unsigned long" href="#dom-xrhand-length" id="ref-for-dom-xrhand-length"><c- g>length</c-></a>;
-    <c- b>getter</c-> <a data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①"><c- n>XRJointSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="method" data-export data-lt="joint(jointIndex)" id="dom-xrhand-joint"><code><c- g>joint</c-></code><a class="self-link" href="#dom-xrhand-joint"></a></dfn>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand/joint(jointIndex)" data-dfn-type="argument" data-export id="dom-xrhand-joint-jointindex-jointindex"><code><c- g>jointIndex</c-></code><a class="self-link" href="#dom-xrhand-joint-jointindex-jointindex"></a></dfn>);
+    <c- b>iterable</c->&lt;<a data-link-type="idl-name" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint①"><c- n>XRHandJoint</c-></a>, <a data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace"><c- n>XRJointSpace</c-></a>>;
 
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-wrist"><code><c- g>WRIST</c-></code><a class="self-link" href="#dom-xrhand-wrist"></a></dfn> = 0;
-
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long③"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-thumb_metacarpal"><code><c- g>THUMB_METACARPAL</c-></code><a class="self-link" href="#dom-xrhand-thumb_metacarpal"></a></dfn> = 1;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long④"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-thumb_phalanx_proximal"><code><c- g>THUMB_PHALANX_PROXIMAL</c-></code><a class="self-link" href="#dom-xrhand-thumb_phalanx_proximal"></a></dfn> = 2;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long⑤"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-thumb_phalanx_distal"><code><c- g>THUMB_PHALANX_DISTAL</c-></code><a class="self-link" href="#dom-xrhand-thumb_phalanx_distal"></a></dfn> = 3;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long⑥"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-thumb_phalanx_tip"><code><c- g>THUMB_PHALANX_TIP</c-></code><a class="self-link" href="#dom-xrhand-thumb_phalanx_tip"></a></dfn> = 4;
-
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long⑦"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-index_metacarpal"><code><c- g>INDEX_METACARPAL</c-></code><a class="self-link" href="#dom-xrhand-index_metacarpal"></a></dfn> = 5;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long⑧"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-index_phalanx_proximal"><code><c- g>INDEX_PHALANX_PROXIMAL</c-></code><a class="self-link" href="#dom-xrhand-index_phalanx_proximal"></a></dfn> = 6;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long⑨"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-index_phalanx_intermediate"><code><c- g>INDEX_PHALANX_INTERMEDIATE</c-></code><a class="self-link" href="#dom-xrhand-index_phalanx_intermediate"></a></dfn> = 7;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①⓪"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-index_phalanx_distal"><code><c- g>INDEX_PHALANX_DISTAL</c-></code><a class="self-link" href="#dom-xrhand-index_phalanx_distal"></a></dfn> = 8;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①①"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-index_phalanx_tip"><code><c- g>INDEX_PHALANX_TIP</c-></code><a class="self-link" href="#dom-xrhand-index_phalanx_tip"></a></dfn> = 9;
-
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①②"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-middle_metacarpal"><code><c- g>MIDDLE_METACARPAL</c-></code><a class="self-link" href="#dom-xrhand-middle_metacarpal"></a></dfn> = 10;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①③"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-middle_phalanx_proximal"><code><c- g>MIDDLE_PHALANX_PROXIMAL</c-></code><a class="self-link" href="#dom-xrhand-middle_phalanx_proximal"></a></dfn> = 11;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①④"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-middle_phalanx_intermediate"><code><c- g>MIDDLE_PHALANX_INTERMEDIATE</c-></code><a class="self-link" href="#dom-xrhand-middle_phalanx_intermediate"></a></dfn> = 12;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①⑤"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-middle_phalanx_distal"><code><c- g>MIDDLE_PHALANX_DISTAL</c-></code><a class="self-link" href="#dom-xrhand-middle_phalanx_distal"></a></dfn> = 13;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①⑥"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-middle_phalanx_tip"><code><c- g>MIDDLE_PHALANX_TIP</c-></code><a class="self-link" href="#dom-xrhand-middle_phalanx_tip"></a></dfn> = 14;
-
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①⑦"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-ring_metacarpal"><code><c- g>RING_METACARPAL</c-></code><a class="self-link" href="#dom-xrhand-ring_metacarpal"></a></dfn> = 15;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①⑧"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-ring_phalanx_proximal"><code><c- g>RING_PHALANX_PROXIMAL</c-></code><a class="self-link" href="#dom-xrhand-ring_phalanx_proximal"></a></dfn> = 16;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long①⑨"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-ring_phalanx_intermediate"><code><c- g>RING_PHALANX_INTERMEDIATE</c-></code><a class="self-link" href="#dom-xrhand-ring_phalanx_intermediate"></a></dfn> = 17;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②⓪"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-ring_phalanx_distal"><code><c- g>RING_PHALANX_DISTAL</c-></code><a class="self-link" href="#dom-xrhand-ring_phalanx_distal"></a></dfn> = 18;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②①"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-ring_phalanx_tip"><code><c- g>RING_PHALANX_TIP</c-></code><a class="self-link" href="#dom-xrhand-ring_phalanx_tip"></a></dfn> = 19;
-
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②②"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-little_metacarpal"><code><c- g>LITTLE_METACARPAL</c-></code><a class="self-link" href="#dom-xrhand-little_metacarpal"></a></dfn> = 20;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②③"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-little_phalanx_proximal"><code><c- g>LITTLE_PHALANX_PROXIMAL</c-></code><a class="self-link" href="#dom-xrhand-little_phalanx_proximal"></a></dfn> = 21;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②④"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-little_phalanx_intermediate"><code><c- g>LITTLE_PHALANX_INTERMEDIATE</c-></code><a class="self-link" href="#dom-xrhand-little_phalanx_intermediate"></a></dfn> = 22;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②⑤"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-little_phalanx_distal"><code><c- g>LITTLE_PHALANX_DISTAL</c-></code><a class="self-link" href="#dom-xrhand-little_phalanx_distal"></a></dfn> = 23;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long②⑥"><c- b>unsigned</c-> <c- b>long</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="const" data-export id="dom-xrhand-little_phalanx_tip"><code><c- g>LITTLE_PHALANX_TIP</c-></code><a class="self-link" href="#dom-xrhand-little_phalanx_tip"></a></dfn> = 24;
+    <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long" id="ref-for-idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="unsigned long" href="#dom-xrhand-size" id="ref-for-dom-xrhand-size"><c- g>size</c-></a>;
+    <a data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①"><c- n>XRJointSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="method" data-export data-lt="get(key)" id="dom-xrhand-get"><code><c- g>get</c-></code><a class="self-link" href="#dom-xrhand-get"></a></dfn>(<a data-link-type="idl-name" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint②"><c- n>XRHandJoint</c-></a> <dfn class="idl-code" data-dfn-for="XRHand/get(key)" data-dfn-type="argument" data-export id="dom-xrhand-get-key-key"><code><c- g>key</c-></code><a class="self-link" href="#dom-xrhand-get-key-key"></a></dfn>);
 };
 </pre>
-   <p>Every <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand②">XRHand</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRHand" data-dfn-type="dfn" data-noexport id="xrhand-input-source">input source</dfn>, which is the <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source⑥">physical hand input source</a> that it tracks.</p>
-   <p>Each <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand③">XRHand</a></code> has a <dfn class="dfn-paneled" data-dfn-for="XRHand" data-dfn-type="dfn" data-noexport id="xrhand-list-of-joint-spaces">list of joint spaces</dfn> which is a <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#list" id="ref-for-list">list</a> of <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace②">XRJointSpace</a></code>s corresponding to each <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑧">skeleton joint</a> defined in this specification. These all will have their <a data-link-type="dfn" href="#xrjointspace-hand" id="ref-for-xrjointspace-hand">hand</a> set to <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this①">this</a>.</p>
+   <p>The <code class="idl"><a data-link-type="idl" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint③">XRHandJoint</a></code> enum defines the various joints that each <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand②">XRHand</a></code> MUST contain.</p>
+   <p>Every <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand③">XRHand</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRHand" data-dfn-type="dfn" data-noexport id="xrhand-input-source">input source</dfn>, which is the <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source⑥">physical hand input source</a> that it tracks.</p>
+   <div class="algorithm" data-algorithm="XRHand.[[joints]]">
+     Each <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand④">XRHand</a></code> object has a <dfn class="dfn-paneled idl-code" data-dfn-for="XRHand" data-dfn-type="attribute" data-export id="dom-xrhand-joints-slot"><code>[[joints]]</code></dfn> internal slot,
+    which is an <a data-link-type="dfn" href="https://infra.spec.whatwg.org/#ordered-map" id="ref-for-ordered-map">ordered map</a> of pairs with the key of type <code class="idl"><a data-link-type="idl" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint④">XRHandJoint</a></code> and the value of type <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace②">XRJointSpace</a></code>. 
+    <p>The ordering of the <code class="idl"><a data-link-type="idl" href="#dom-xrhand-joints-slot" id="ref-for-dom-xrhand-joints-slot">[[joints]]</a></code> internal slot is given by the <a data-link-type="dfn" href="#list-of-joints" id="ref-for-list-of-joints">list of joints</a> under <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑧">skeleton joints</a>.</p>
+    <p><code class="idl"><a data-link-type="idl" href="#dom-xrhand-joints-slot" id="ref-for-dom-xrhand-joints-slot①">[[joints]]</a></code> MUST NOT change over the course of a session.</p>
+   </div>
+   <div class="algorithm" data-algorithm="XRHand.iterator"> The <a data-link-type="dfn" href="https://heycam.github.io/webidl/#dfn-value-pairs-to-iterate-over" id="ref-for-dfn-value-pairs-to-iterate-over">value pairs to iterate over</a> for an <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑤">XRHand</a></code> object are the list of <a data-link-type="dfn" href="https://heycam.github.io/webidl/#value-pair" id="ref-for-value-pair">value pairs</a> with the key being
+    the <code class="idl"><a data-link-type="idl" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint⑤">XRHandJoint</a></code> and the value being the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace③">XRJointSpace</a></code> corresponding to that <code class="idl"><a data-link-type="idl" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint⑥">XRHandJoint</a></code>, ordered by <a data-link-type="dfn" href="#list-of-joints" id="ref-for-list-of-joints①">list of joints</a> under <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑨">skeleton joints</a>. </div>
    <p>If an individual device does not support a joint defined in this specification, it MUST emulate it instead.</p>
-   <p>The <a data-link-type="dfn" href="#xrhand-list-of-joint-spaces" id="ref-for-xrhand-list-of-joint-spaces">list of joint spaces</a> MUST NOT change over the course of a session.</p>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRHand" data-dfn-type="attribute" data-export id="dom-xrhand-length"><code>length</code></dfn> attribute MUST return the number <code>25</code></p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRHand" data-dfn-type="attribute" data-export id="dom-xrhand-size"><code>size</code></dfn> attribute MUST return the number <code>25</code>.</p>
    <div class="algorithm" data-algorithm="index-joint-space">
-     The <dfn class="idl-code" data-dfn-for="XRJointSpace" data-dfn-type="method" data-export id="dom-xrjointspace-joint"><code>joint(<var>jointIndex</var>)</code><a class="self-link" href="#dom-xrjointspace-joint"></a></dfn> getter when invoked runs the following steps: 
+     The <dfn class="idl-code" data-dfn-for="XRHand" data-dfn-type="method" data-export id="dom-xrhand-get-jointname"><code>get(<var>jointName</var>)</code><a class="self-link" href="#dom-xrhand-get-jointname"></a></dfn> method when invoked on an <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑥">XRHand</a></code> <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this①">this</a> MUST run the following steps: 
     <ol>
      <li data-md>
-      <p>Look for an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace③">XRJointSpace</a></code> in <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this②">this</a>'s <a data-link-type="dfn" href="#xrhand-list-of-joint-spaces" id="ref-for-xrhand-list-of-joint-spaces①">list of joint spaces</a> with <a data-link-type="dfn" href="#xrjointspace-joint-index" id="ref-for-xrjointspace-joint-index">joint index</a> corresponding to <var>jointIndex</var>.</p>
+      <p>Let <var>joints</var> be the value of <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this②">this</a>'s <code class="idl"><a data-link-type="idl" href="#dom-xrhand-joints-slot" id="ref-for-dom-xrhand-joints-slot②">[[joints]]</a></code> internal slot.</p>
      <li data-md>
-      <p>Handle the result of the search as follows:</p>
-      <dl class="switch">
-       <dt>If found:
-       <dd>Return the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace④">XRJointSpace</a></code>. 
-       <dt>Otherwise:
-       <dd>Return <code>null</code>
-      </dl>
+      <p>Return <var>joints</var>[<var>jointName</var>].</p>
     </ol>
    </div>
    <h3 class="heading settled" data-level="3.4" id="xrjointspace-interface"><span class="secno">3.4. </span><span class="content">XRJointSpace</span><a class="self-link" href="#xrjointspace-interface"></a></h3>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed①"><c- g>Exposed</c-></a>=<c- n>Window</c->]
-<c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrjointspace"><code><c- g>XRJointSpace</c-></code></dfn>: <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace"><c- n>XRSpace</c-></a> {};
+<c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrjointspace"><code><c- g>XRJointSpace</c-></code></dfn>: <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace"><c- n>XRSpace</c-></a> {
+  <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint⑦"><c- n>XRHandJoint</c-></a> <dfn class="idl-code" data-dfn-for="XRJointSpace" data-dfn-type="attribute" data-export data-readonly data-type="XRHandJoint" id="dom-xrjointspace-jointname"><code><c- g>jointName</c-></code><a class="self-link" href="#dom-xrjointspace-jointname"></a></dfn>;
+};
 </pre>
-   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin">native origin</a> of an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑤">XRJointSpace</a></code> is the position and orientation of the underlying <a data-link-type="dfn" href="#xrjointspace-joint" id="ref-for-xrjointspace-joint">joint</a>.</p>
-   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin①">native origin</a> of the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑥">XRJointSpace</a></code> may only be reported when <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin②">native origins</a> of all other <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑦">XRJointSpace</a></code>s on the same <a data-link-type="dfn" href="#xrjointspace-hand" id="ref-for-xrjointspace-hand①">hand</a> are being reported. When a hand is partially obscured the user agent MAY emulate the obscured joints, or it MAY report <code>null</code> poses for all of the joints.</p>
+   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin">native origin</a> of an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace④">XRJointSpace</a></code> is the position and orientation of the underlying <a data-link-type="dfn" href="#xrjointspace-joint" id="ref-for-xrjointspace-joint">joint</a>.</p>
+   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin①">native origin</a> of the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑤">XRJointSpace</a></code> may only be reported when <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin②">native origins</a> of all other <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑥">XRJointSpace</a></code>s on the same <a data-link-type="dfn" href="#xrjointspace-hand" id="ref-for-xrjointspace-hand">hand</a> are being reported. When a hand is partially obscured the user agent MAY emulate the obscured joints, or it MAY report <code>null</code> poses for all of the joints.</p>
    <p class="note" role="note"><span>Note:</span> This means that when fetching poses you will either get an entire hand or none of it.</p>
    <p class="issue" id="issue-9a52d08f"><a class="self-link" href="#issue-9a52d08f"></a> This by default precludes faithfully exposing polydactyl/oligodactyl hands, however for fingerprinting concerns it will likely need to be a separate opt-in, anyway. See <a href="https://github.com/immersive-web/webxr-hand-input/issues/11">Issue 11</a> for more details.</p>
    <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin③">native origin</a> has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.</p>
-   <p>For tip <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints⑨">skeleton joints</a> where there is no <a data-link-type="dfn" href="#associated-bone" id="ref-for-associated-bone②">associated bone</a>, the <code>-Z</code> direction is the same as that for the associated distal joint, i.e. the direction is along that of the previous bone. For wrist <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⓪">skeleton joints</a> the <code>-Z</code> direction SHOULD point roughly towards the center of the palm.</p>
-   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑧">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-hand">hand</dfn>, which is the <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand④">XRHand</a></code> that created it.</p>
-   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑨">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-joint-index">joint index</dfn>, which is the joint index corresponding to the joint it tracks.</p>
-   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace①⓪">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-joint">joint</dfn>, which is <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①①">skeleton joint</a> corresponding to its <a data-link-type="dfn" href="#xrjointspace-joint-index" id="ref-for-xrjointspace-joint-index①">joint index</a>.</p>
+   <p>For tip <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⓪">skeleton joints</a> where there is no <a data-link-type="dfn" href="#associated-bone" id="ref-for-associated-bone②">associated bone</a>, the <code>-Z</code> direction is the same as that for the associated distal joint, i.e. the direction is along that of the previous bone. For wrist <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①①">skeleton joints</a> the <code>-Z</code> direction SHOULD point roughly towards the center of the palm.</p>
+   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑦">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-hand">hand</dfn>, which is the <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑦">XRHand</a></code> that created it.</p>
+   <p><dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-jointname">jointName</dfn> returns the joint name of the joint it tracks.</p>
+   <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑧">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-joint">joint</dfn>, which is the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①②">skeleton joint</a> corresponding to the <a data-link-type="dfn" href="#xrjointspace-jointname" id="ref-for-xrjointspace-jointname">jointName</a>.</p>
    <h2 class="heading settled" data-level="4" id="frame-loop"><span class="secno">4. </span><span class="content">Frame Loop</span><a class="self-link" href="#frame-loop"></a></h2>
    <h3 class="heading settled" data-level="4.1" id="xrframe-interface"><span class="secno">4.1. </span><span class="content">XRFrame</span><a class="self-link" href="#xrframe-interface"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe"><c- g>XRFrame</c-></a> {
-    <a data-link-type="idl-name" href="#xrjointpose" id="ref-for-xrjointpose"><c- n>XRJointPose</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-xrframe-getjointpose" id="ref-for-dom-xrframe-getjointpose"><c- g>getJointPose</c-></a>(<a data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①①"><c- n>XRJointSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-joint"><code><c- g>joint</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-joint"></a></dfn>, <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-basespace"><code><c- g>baseSpace</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-basespace"></a></dfn>);
-    <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-filljointradii" id="ref-for-dom-xrframe-filljointradii"><c- g>fillJointRadii</c-></a>(<a data-link-type="dfn" href="https://heycam.github.io/webidl/#idl-sequence" id="ref-for-idl-sequence"><c- b>sequence</c-></a>&lt;<a data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①②"><c- n>XRJointSpace</c-></a>> <dfn class="idl-code" data-dfn-for="XRFrame/fillJointRadii(jointSpaces, radii)" data-dfn-type="argument" data-export id="dom-xrframe-filljointradii-jointspaces-radii-jointspaces"><code><c- g>jointSpaces</c-></code><a class="self-link" href="#dom-xrframe-filljointradii-jointspaces-radii-jointspaces"></a></dfn>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array" id="ref-for-idl-Float32Array"><c- b>Float32Array</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillJointRadii(jointSpaces, radii)" data-dfn-type="argument" data-export id="dom-xrframe-filljointradii-jointspaces-radii-radii"><code><c- g>radii</c-></code><a class="self-link" href="#dom-xrframe-filljointradii-jointspaces-radii-radii"></a></dfn>);
+    <a data-link-type="idl-name" href="#xrjointpose" id="ref-for-xrjointpose"><c- n>XRJointPose</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-xrframe-getjointpose" id="ref-for-dom-xrframe-getjointpose"><c- g>getJointPose</c-></a>(<a data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace⑨"><c- n>XRJointSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-joint"><code><c- g>joint</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-joint"></a></dfn>, <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace①"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/getJointPose(joint, baseSpace)" data-dfn-type="argument" data-export id="dom-xrframe-getjointpose-joint-basespace-basespace"><code><c- g>baseSpace</c-></code><a class="self-link" href="#dom-xrframe-getjointpose-joint-basespace-basespace"></a></dfn>);
+    <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-filljointradii" id="ref-for-dom-xrframe-filljointradii"><c- g>fillJointRadii</c-></a>(<a data-link-type="dfn" href="https://heycam.github.io/webidl/#idl-sequence" id="ref-for-idl-sequence"><c- b>sequence</c-></a>&lt;<a data-link-type="idl-name" href="#xrjointspace" id="ref-for-xrjointspace①⓪"><c- n>XRJointSpace</c-></a>> <dfn class="idl-code" data-dfn-for="XRFrame/fillJointRadii(jointSpaces, radii)" data-dfn-type="argument" data-export id="dom-xrframe-filljointradii-jointspaces-radii-jointspaces"><code><c- g>jointSpaces</c-></code><a class="self-link" href="#dom-xrframe-filljointradii-jointspaces-radii-jointspaces"></a></dfn>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array" id="ref-for-idl-Float32Array"><c- b>Float32Array</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillJointRadii(jointSpaces, radii)" data-dfn-type="argument" data-export id="dom-xrframe-filljointradii-jointspaces-radii-radii"><code><c- g>radii</c-></code><a class="self-link" href="#dom-xrframe-filljointradii-jointspaces-radii-radii"></a></dfn>);
 
     <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-boolean" id="ref-for-idl-boolean①"><c- b>boolean</c-></a> <a class="idl-code" data-link-type="method" href="#dom-xrframe-fillposes" id="ref-for-dom-xrframe-fillposes"><c- g>fillPoses</c-></a>(<a data-link-type="dfn" href="https://heycam.github.io/webidl/#idl-sequence" id="ref-for-idl-sequence①"><c- b>sequence</c-></a>&lt;<a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace②"><c- n>XRSpace</c-></a>> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-spaces"><code><c- g>spaces</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-spaces"></a></dfn>, <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace" id="ref-for-xrspace③"><c- n>XRSpace</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-basespace"><code><c- g>baseSpace</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-basespace"></a></dfn>, <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-Float32Array" id="ref-for-idl-Float32Array①"><c- b>Float32Array</c-></a> <dfn class="idl-code" data-dfn-for="XRFrame/fillPoses(spaces, baseSpace, transforms)" data-dfn-type="argument" data-export id="dom-xrframe-fillposes-spaces-basespace-transforms-transforms"><code><c- g>transforms</c-></code><a class="self-link" href="#dom-xrframe-fillposes-spaces-basespace-transforms-transforms"></a></dfn>);
 };
@@ -1041,14 +1073,14 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
     </ol>
    </div>
    <h3 class="heading settled" data-level="4.2" id="xrjointpose-interface"><span class="secno">4.2. </span><span class="content">XRJointPose</span><a class="self-link" href="#xrjointpose-interface"></a></h3>
-   <p>An <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose③">XRJointPose</a></code> is an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrpose" id="ref-for-xrpose①">XRPose</a></code> with additional information about the size of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①②">skeleton joint</a> it represents.</p>
+   <p>An <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose③">XRJointPose</a></code> is an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrpose" id="ref-for-xrpose①">XRPose</a></code> with additional information about the size of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①③">skeleton joint</a> it represents.</p>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed" id="ref-for-Exposed②"><c- g>Exposed</c-></a>=<c- n>Window</c->]
 <c- b>interface</c-> <dfn class="dfn-paneled idl-code" data-dfn-type="interface" data-export id="xrjointpose"><code><c- g>XRJointPose</c-></code></dfn>: <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrpose" id="ref-for-xrpose②"><c- n>XRPose</c-></a> {
     <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-float" id="ref-for-idl-float"><c- b>float</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="float" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius①"><c- g>radius</c-></a>;
 };
 </pre>
-   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius②">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①③">skeleton joint</a> in meters.</p>
-   <p>The user-agent MUST set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius②">radius</a></code> to an emulated value if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value, either in general or in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①④">skeleton joint</a> is partially obscured).</p>
+   <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius②">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①④">skeleton joint</a> in meters.</p>
+   <p>The user-agent MUST set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius②">radius</a></code> to an emulated value if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value, either in general or in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⑤">skeleton joint</a> is partially obscured).</p>
    <h2 class="heading settled" data-level="5" id="privacy-security"><span class="secno">5. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
     The WebXR Hand Input API is a powerful feature with that carries significant privacy risks. 
    <p>Since this feature returns new sensor data, the User Agent MUST ask for <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#explicit-consent" id="ref-for-explicit-consent">explicit consent</a> from the user at session creation time.</p>
@@ -1065,7 +1097,9 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <li><a href="#associated-bone">associated bone</a><span>, in §3.2</span>
    <li><a href="#dom-xrframe-filljointradii">fillJointRadii(jointSpaces, radii)</a><span>, in §4.1</span>
    <li><a href="#dom-xrframe-fillposes">fillPoses(spaces, baseSpace, transforms)</a><span>, in §4.1</span>
+   <li><a href="#dom-xrhand-get-jointname">get(jointName)</a><span>, in §3.3</span>
    <li><a href="#dom-xrframe-getjointpose">getJointPose(joint, baseSpace)</a><span>, in §4.1</span>
+   <li><a href="#dom-xrhand-get">get(key)</a><span>, in §3.3</span>
    <li>
     hand
     <ul>
@@ -1073,53 +1107,54 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
      <li><a href="#xrjointspace-hand">dfn for XRJointSpace</a><span>, in §3.4</span>
     </ul>
    <li><a href="#feature-descriptor-hand-tracking">hand-tracking</a><span>, in §2</span>
-   <li><a href="#dom-xrhand-index_metacarpal">INDEX_METACARPAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-index_phalanx_distal">INDEX_PHALANX_DISTAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-index_phalanx_intermediate">INDEX_PHALANX_INTERMEDIATE</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-index_phalanx_proximal">INDEX_PHALANX_PROXIMAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-index_phalanx_tip">INDEX_PHALANX_TIP</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-index-finger-metacarpal">"index-finger-metacarpal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-index-finger-phalanx-distal">"index-finger-phalanx-distal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-index-finger-phalanx-intermediate">"index-finger-phalanx-intermediate"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-index-finger-phalanx-proximal">"index-finger-phalanx-proximal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-index-finger-tip">"index-finger-tip"</a><span>, in §3.3</span>
    <li><a href="#xrhand-input-source">input source</a><span>, in §3.3</span>
    <li><a href="#xrjointspace-joint">joint</a><span>, in §3.4</span>
-   <li><a href="#xrjointspace-joint-index">joint index</a><span>, in §3.4</span>
    <li>
-    joint(jointIndex)
+    jointName
     <ul>
-     <li><a href="#dom-xrhand-joint">method for XRHand</a><span>, in §3.3</span>
-     <li><a href="#dom-xrjointspace-joint">method for XRJointSpace</a><span>, in §3.3</span>
+     <li><a href="#dom-xrjointspace-jointname">attribute for XRJointSpace</a><span>, in §3.4</span>
+     <li><a href="#xrjointspace-jointname">dfn for XRJointSpace</a><span>, in §3.4</span>
     </ul>
-   <li><a href="#dom-xrhand-length">length</a><span>, in §3.3</span>
-   <li><a href="#xrhand-list-of-joint-spaces">list of joint spaces</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-little_metacarpal">LITTLE_METACARPAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-little_phalanx_distal">LITTLE_PHALANX_DISTAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-little_phalanx_intermediate">LITTLE_PHALANX_INTERMEDIATE</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-little_phalanx_proximal">LITTLE_PHALANX_PROXIMAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-little_phalanx_tip">LITTLE_PHALANX_TIP</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-middle_metacarpal">MIDDLE_METACARPAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-middle_phalanx_distal">MIDDLE_PHALANX_DISTAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-middle_phalanx_intermediate">MIDDLE_PHALANX_INTERMEDIATE</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-middle_phalanx_proximal">MIDDLE_PHALANX_PROXIMAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-middle_phalanx_tip">MIDDLE_PHALANX_TIP</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhand-joints-slot">[[joints]]</a><span>, in §3.3</span>
+   <li><a href="#list-of-joints">list of joints</a><span>, in §3.2</span>
+   <li><a href="#dom-xrhandjoint-middle-finger-metacarpal">"middle-finger-metacarpal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-middle-finger-phalanx-distal">"middle-finger-phalanx-distal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-middle-finger-phalanx-intermediate">"middle-finger-phalanx-intermediate"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-middle-finger-phalanx-proximal">"middle-finger-phalanx-proximal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-middle-finger-tip">"middle-finger-tip"</a><span>, in §3.3</span>
    <li><a href="#physical-hand-input-source">physical hand input source</a><span>, in §3</span>
+   <li><a href="#dom-xrhandjoint-pinky-finger-metacarpal">"pinky-finger-metacarpal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-pinky-finger-phalanx-distal">"pinky-finger-phalanx-distal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-pinky-finger-phalanx-intermediate">"pinky-finger-phalanx-intermediate"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-pinky-finger-phalanx-proximal">"pinky-finger-phalanx-proximal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-pinky-finger-tip">"pinky-finger-tip"</a><span>, in §3.3</span>
    <li>
     radius
     <ul>
      <li><a href="#dom-xrjointpose-radius">attribute for XRJointPose</a><span>, in §4.2</span>
      <li><a href="#skeleton-joint-radius">dfn for skeleton joint</a><span>, in §3.2</span>
     </ul>
-   <li><a href="#dom-xrhand-ring_metacarpal">RING_METACARPAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-ring_phalanx_distal">RING_PHALANX_DISTAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-ring_phalanx_intermediate">RING_PHALANX_INTERMEDIATE</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-ring_phalanx_proximal">RING_PHALANX_PROXIMAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-ring_phalanx_tip">RING_PHALANX_TIP</a><span>, in §3.3</span>
-   <li><a href="#skeleton-joint-index">skeleton joint index</a><span>, in §3.2</span>
+   <li><a href="#dom-xrhandjoint-ring-finger-metacarpal">"ring-finger-metacarpal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-ring-finger-phalanx-distal">"ring-finger-phalanx-distal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-ring-finger-phalanx-intermediate">"ring-finger-phalanx-intermediate"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-ring-finger-phalanx-proximal">"ring-finger-phalanx-proximal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-ring-finger-tip">"ring-finger-tip"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhand-size">size</a><span>, in §3.3</span>
+   <li><a href="#skeleton-joint-name">skeleton joint name</a><span>, in §3.2</span>
    <li><a href="#skeleton-joints">skeleton joints</a><span>, in §3.2</span>
    <li><a href="#supports-hand-tracking">supports hand tracking</a><span>, in §3</span>
-   <li><a href="#dom-xrhand-thumb_metacarpal">THUMB_METACARPAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-thumb_phalanx_distal">THUMB_PHALANX_DISTAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-thumb_phalanx_proximal">THUMB_PHALANX_PROXIMAL</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-thumb_phalanx_tip">THUMB_PHALANX_TIP</a><span>, in §3.3</span>
-   <li><a href="#dom-xrhand-wrist">WRIST</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-thumb-metacarpal">"thumb-metacarpal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-thumb-phalanx-distal">"thumb-phalanx-distal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-thumb-phalanx-proximal">"thumb-phalanx-proximal"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-thumb-tip">"thumb-tip"</a><span>, in §3.3</span>
+   <li><a href="#dom-xrhandjoint-wrist">"wrist"</a><span>, in §3.3</span>
    <li><a href="#xrhand">XRHand</a><span>, in §3.3</span>
+   <li><a href="#enumdef-xrhandjoint">XRHandJoint</a><span>, in §3.3</span>
    <li><a href="#xrjointpose">XRJointPose</a><span>, in §4.2</span>
    <li><a href="#xrjointspace">XRJointSpace</a><span>, in §3.4</span>
   </ul>
@@ -1129,10 +1164,10 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
     <li><a href="#ref-for-concept-relevant-realm">4.1. XRFrame</a> <a href="#ref-for-concept-relevant-realm①">(2)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-list">
-   <a href="https://infra.spec.whatwg.org/#list">https://infra.spec.whatwg.org/#list</a><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="term-for-ordered-map">
+   <a href="https://infra.spec.whatwg.org/#ordered-map">https://infra.spec.whatwg.org/#ordered-map</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-list">3.3. XRHand</a>
+    <li><a href="#ref-for-ordered-map">3.3. XRHand</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-media-prefers-color-scheme-active">
@@ -1202,7 +1237,19 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
   <aside class="dfn-panel" data-for="term-for-idl-unsigned-long">
    <a href="https://heycam.github.io/webidl/#idl-unsigned-long">https://heycam.github.io/webidl/#idl-unsigned-long</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-idl-unsigned-long">3.3. XRHand</a> <a href="#ref-for-idl-unsigned-long①">(2)</a> <a href="#ref-for-idl-unsigned-long②">(3)</a> <a href="#ref-for-idl-unsigned-long③">(4)</a> <a href="#ref-for-idl-unsigned-long④">(5)</a> <a href="#ref-for-idl-unsigned-long⑤">(6)</a> <a href="#ref-for-idl-unsigned-long⑥">(7)</a> <a href="#ref-for-idl-unsigned-long⑦">(8)</a> <a href="#ref-for-idl-unsigned-long⑧">(9)</a> <a href="#ref-for-idl-unsigned-long⑨">(10)</a> <a href="#ref-for-idl-unsigned-long①⓪">(11)</a> <a href="#ref-for-idl-unsigned-long①①">(12)</a> <a href="#ref-for-idl-unsigned-long①②">(13)</a> <a href="#ref-for-idl-unsigned-long①③">(14)</a> <a href="#ref-for-idl-unsigned-long①④">(15)</a> <a href="#ref-for-idl-unsigned-long①⑤">(16)</a> <a href="#ref-for-idl-unsigned-long①⑥">(17)</a> <a href="#ref-for-idl-unsigned-long①⑦">(18)</a> <a href="#ref-for-idl-unsigned-long①⑧">(19)</a> <a href="#ref-for-idl-unsigned-long①⑨">(20)</a> <a href="#ref-for-idl-unsigned-long②⓪">(21)</a> <a href="#ref-for-idl-unsigned-long②①">(22)</a> <a href="#ref-for-idl-unsigned-long②②">(23)</a> <a href="#ref-for-idl-unsigned-long②③">(24)</a> <a href="#ref-for-idl-unsigned-long②④">(25)</a> <a href="#ref-for-idl-unsigned-long②⑤">(26)</a> <a href="#ref-for-idl-unsigned-long②⑥">(27)</a>
+    <li><a href="#ref-for-idl-unsigned-long">3.3. XRHand</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-value-pair">
+   <a href="https://heycam.github.io/webidl/#value-pair">https://heycam.github.io/webidl/#value-pair</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-value-pair">3.3. XRHand</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="term-for-dfn-value-pairs-to-iterate-over">
+   <a href="https://heycam.github.io/webidl/#dfn-value-pairs-to-iterate-over">https://heycam.github.io/webidl/#dfn-value-pairs-to-iterate-over</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dfn-value-pairs-to-iterate-over">3.3. XRHand</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-dom-xrsessionmode-immersive-vr">
@@ -1335,7 +1382,7 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-list">list</span>
+     <li><span class="dfn-paneled" id="term-for-ordered-map">ordered map</span>
     </ul>
    <li>
     <a data-link-type="biblio">[mediaqueries-5]</a> defines the following terms:
@@ -1355,6 +1402,8 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
      <li><span class="dfn-paneled" id="term-for-idl-sequence">sequence</span>
      <li><span class="dfn-paneled" id="term-for-this">this</span>
      <li><span class="dfn-paneled" id="term-for-idl-unsigned-long">unsigned long</span>
+     <li><span class="dfn-paneled" id="term-for-value-pair">value pair</span>
+     <li><span class="dfn-paneled" id="term-for-dfn-value-pairs-to-iterate-over">value pairs to iterate over</span>
     </ul>
    <li>
     <a data-link-type="biblio">[webxr]</a> defines the following terms:
@@ -1405,46 +1454,51 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#xrhand"><c- n>XRHand</c-></a>? <a class="idl-code" data-link-type="attribute" data-readonly data-type="XRHand?" href="#dom-xrinputsource-hand"><c- g>hand</c-></a>;
 };
 
-[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
-<c- b>interface</c-> <a href="#xrhand"><code><c- g>XRHand</c-></code></a> {
-    <c- b>iterable</c->&lt;<a data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a>>;
-    <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="unsigned long" href="#dom-xrhand-length"><c- g>length</c-></a>;
-    <c- b>getter</c-> <a data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a> <a href="#dom-xrhand-joint"><code><c- g>joint</c-></code></a>(<a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-joint-jointindex-jointindex"><code><c- g>jointIndex</c-></code></a>);
+<c- b>enum</c-> <a href="#enumdef-xrhandjoint"><code><c- g>XRHandJoint</c-></code></a> {
+  <a href="#dom-xrhandjoint-wrist"><code><c- s>"wrist"</c-></code></a>,
 
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-wrist"><code><c- g>WRIST</c-></code></a> = 0;
+  <a href="#dom-xrhandjoint-thumb-metacarpal"><code><c- s>"thumb-metacarpal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-thumb-phalanx-proximal"><code><c- s>"thumb-phalanx-proximal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-thumb-phalanx-distal"><code><c- s>"thumb-phalanx-distal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-thumb-tip"><code><c- s>"thumb-tip"</c-></code></a>,
 
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-thumb_metacarpal"><code><c- g>THUMB_METACARPAL</c-></code></a> = 1;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-thumb_phalanx_proximal"><code><c- g>THUMB_PHALANX_PROXIMAL</c-></code></a> = 2;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-thumb_phalanx_distal"><code><c- g>THUMB_PHALANX_DISTAL</c-></code></a> = 3;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-thumb_phalanx_tip"><code><c- g>THUMB_PHALANX_TIP</c-></code></a> = 4;
+  <a href="#dom-xrhandjoint-index-finger-metacarpal"><code><c- s>"index-finger-metacarpal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-index-finger-phalanx-proximal"><code><c- s>"index-finger-phalanx-proximal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-index-finger-phalanx-intermediate"><code><c- s>"index-finger-phalanx-intermediate"</c-></code></a>,
+  <a href="#dom-xrhandjoint-index-finger-phalanx-distal"><code><c- s>"index-finger-phalanx-distal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-index-finger-tip"><code><c- s>"index-finger-tip"</c-></code></a>,
 
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-index_metacarpal"><code><c- g>INDEX_METACARPAL</c-></code></a> = 5;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-index_phalanx_proximal"><code><c- g>INDEX_PHALANX_PROXIMAL</c-></code></a> = 6;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-index_phalanx_intermediate"><code><c- g>INDEX_PHALANX_INTERMEDIATE</c-></code></a> = 7;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-index_phalanx_distal"><code><c- g>INDEX_PHALANX_DISTAL</c-></code></a> = 8;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-index_phalanx_tip"><code><c- g>INDEX_PHALANX_TIP</c-></code></a> = 9;
+  <a href="#dom-xrhandjoint-middle-finger-metacarpal"><code><c- s>"middle-finger-metacarpal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-middle-finger-phalanx-proximal"><code><c- s>"middle-finger-phalanx-proximal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-middle-finger-phalanx-intermediate"><code><c- s>"middle-finger-phalanx-intermediate"</c-></code></a>,
+  <a href="#dom-xrhandjoint-middle-finger-phalanx-distal"><code><c- s>"middle-finger-phalanx-distal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-middle-finger-tip"><code><c- s>"middle-finger-tip"</c-></code></a>,
 
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-middle_metacarpal"><code><c- g>MIDDLE_METACARPAL</c-></code></a> = 10;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-middle_phalanx_proximal"><code><c- g>MIDDLE_PHALANX_PROXIMAL</c-></code></a> = 11;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-middle_phalanx_intermediate"><code><c- g>MIDDLE_PHALANX_INTERMEDIATE</c-></code></a> = 12;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-middle_phalanx_distal"><code><c- g>MIDDLE_PHALANX_DISTAL</c-></code></a> = 13;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-middle_phalanx_tip"><code><c- g>MIDDLE_PHALANX_TIP</c-></code></a> = 14;
+  <a href="#dom-xrhandjoint-ring-finger-metacarpal"><code><c- s>"ring-finger-metacarpal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-ring-finger-phalanx-proximal"><code><c- s>"ring-finger-phalanx-proximal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-ring-finger-phalanx-intermediate"><code><c- s>"ring-finger-phalanx-intermediate"</c-></code></a>,
+  <a href="#dom-xrhandjoint-ring-finger-phalanx-distal"><code><c- s>"ring-finger-phalanx-distal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-ring-finger-tip"><code><c- s>"ring-finger-tip"</c-></code></a>,
 
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-ring_metacarpal"><code><c- g>RING_METACARPAL</c-></code></a> = 15;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-ring_phalanx_proximal"><code><c- g>RING_PHALANX_PROXIMAL</c-></code></a> = 16;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-ring_phalanx_intermediate"><code><c- g>RING_PHALANX_INTERMEDIATE</c-></code></a> = 17;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-ring_phalanx_distal"><code><c- g>RING_PHALANX_DISTAL</c-></code></a> = 18;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-ring_phalanx_tip"><code><c- g>RING_PHALANX_TIP</c-></code></a> = 19;
-
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-little_metacarpal"><code><c- g>LITTLE_METACARPAL</c-></code></a> = 20;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-little_phalanx_proximal"><code><c- g>LITTLE_PHALANX_PROXIMAL</c-></code></a> = 21;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-little_phalanx_intermediate"><code><c- g>LITTLE_PHALANX_INTERMEDIATE</c-></code></a> = 22;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-little_phalanx_distal"><code><c- g>LITTLE_PHALANX_DISTAL</c-></code></a> = 23;
-    <c- b>const</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a href="#dom-xrhand-little_phalanx_tip"><code><c- g>LITTLE_PHALANX_TIP</c-></code></a> = 24;
+  <a href="#dom-xrhandjoint-pinky-finger-metacarpal"><code><c- s>"pinky-finger-metacarpal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-pinky-finger-phalanx-proximal"><code><c- s>"pinky-finger-phalanx-proximal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-pinky-finger-phalanx-intermediate"><code><c- s>"pinky-finger-phalanx-intermediate"</c-></code></a>,
+  <a href="#dom-xrhandjoint-pinky-finger-phalanx-distal"><code><c- s>"pinky-finger-phalanx-distal"</c-></code></a>,
+  <a href="#dom-xrhandjoint-pinky-finger-tip"><code><c- s>"pinky-finger-tip"</c-></code></a>
 };
 
 [<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
-<c- b>interface</c-> <a href="#xrjointspace"><code><c- g>XRJointSpace</c-></code></a>: <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> {};
+<c- b>interface</c-> <a href="#xrhand"><code><c- g>XRHand</c-></code></a> {
+    <c- b>iterable</c->&lt;<a data-link-type="idl-name" href="#enumdef-xrhandjoint"><c- n>XRHandJoint</c-></a>, <a data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a>>;
+
+    <c- b>readonly</c-> <c- b>attribute</c-> <a class="idl-code" data-link-type="interface" href="https://heycam.github.io/webidl/#idl-unsigned-long"><c- b>unsigned</c-> <c- b>long</c-></a> <a class="idl-code" data-link-type="attribute" data-readonly data-type="unsigned long" href="#dom-xrhand-size"><c- g>size</c-></a>;
+    <a data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a> <a href="#dom-xrhand-get"><code><c- g>get</c-></code></a>(<a data-link-type="idl-name" href="#enumdef-xrhandjoint"><c- n>XRHandJoint</c-></a> <a href="#dom-xrhand-get-key-key"><code><c- g>key</c-></code></a>);
+};
+
+[<a class="idl-code" data-link-type="extended-attribute" href="https://heycam.github.io/webidl/#Exposed"><c- g>Exposed</c-></a>=<c- n>Window</c->]
+<c- b>interface</c-> <a href="#xrjointspace"><code><c- g>XRJointSpace</c-></code></a>: <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> {
+  <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#enumdef-xrhandjoint"><c- n>XRHandJoint</c-></a> <a data-readonly data-type="XRHandJoint" href="#dom-xrjointspace-jointname"><code><c- g>jointName</c-></code></a>;
+};
 
 <c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrframe"><c- g>XRFrame</c-></a> {
     <a data-link-type="idl-name" href="#xrjointpose"><c- n>XRJointPose</c-></a>? <a class="idl-code" data-link-type="method" href="#dom-xrframe-getjointpose"><c- g>getJointPose</c-></a>(<a data-link-type="idl-name" href="#xrjointspace"><c- n>XRJointSpace</c-></a> <a href="#dom-xrframe-getjointpose-joint-basespace-joint"><code><c- g>joint</c-></code></a>, <a data-link-type="idl-name" href="https://immersive-web.github.io/webxr/#xrspace"><c- n>XRSpace</c-></a> <a href="#dom-xrframe-getjointpose-joint-basespace-basespace"><code><c- g>baseSpace</c-></code></a>);
@@ -1499,15 +1553,15 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
     <li><a href="#ref-for-skeleton-joints">1. Introduction</a>
     <li><a href="#ref-for-skeleton-joints①">3. Physical Hand Input Sources</a>
     <li><a href="#ref-for-skeleton-joints②">3.2. Skeleton Joints</a> <a href="#ref-for-skeleton-joints③">(2)</a> <a href="#ref-for-skeleton-joints④">(3)</a> <a href="#ref-for-skeleton-joints⑤">(4)</a> <a href="#ref-for-skeleton-joints⑥">(5)</a> <a href="#ref-for-skeleton-joints⑦">(6)</a>
-    <li><a href="#ref-for-skeleton-joints⑧">3.3. XRHand</a>
-    <li><a href="#ref-for-skeleton-joints⑨">3.4. XRJointSpace</a> <a href="#ref-for-skeleton-joints①⓪">(2)</a> <a href="#ref-for-skeleton-joints①①">(3)</a>
-    <li><a href="#ref-for-skeleton-joints①②">4.2. XRJointPose</a> <a href="#ref-for-skeleton-joints①③">(2)</a> <a href="#ref-for-skeleton-joints①④">(3)</a>
+    <li><a href="#ref-for-skeleton-joints⑧">3.3. XRHand</a> <a href="#ref-for-skeleton-joints⑨">(2)</a>
+    <li><a href="#ref-for-skeleton-joints①⓪">3.4. XRJointSpace</a> <a href="#ref-for-skeleton-joints①①">(2)</a> <a href="#ref-for-skeleton-joints①②">(3)</a>
+    <li><a href="#ref-for-skeleton-joints①③">4.2. XRJointPose</a> <a href="#ref-for-skeleton-joints①④">(2)</a> <a href="#ref-for-skeleton-joints①⑤">(3)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="skeleton-joint-index">
-   <b><a href="#skeleton-joint-index">#skeleton-joint-index</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="skeleton-joint-name">
+   <b><a href="#skeleton-joint-name">#skeleton-joint-name</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-skeleton-joint-index">3.2. Skeleton Joints</a>
+    <li><a href="#ref-for-skeleton-joint-name">3.2. Skeleton Joints</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="associated-bone">
@@ -1524,12 +1578,176 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
     <li><a href="#ref-for-skeleton-joint-radius②">4.2. XRJointPose</a>
    </ul>
   </aside>
+  <aside class="dfn-panel" data-for="list-of-joints">
+   <b><a href="#list-of-joints">#list-of-joints</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-list-of-joints">3.3. XRHand</a> <a href="#ref-for-list-of-joints①">(2)</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="enumdef-xrhandjoint">
+   <b><a href="#enumdef-xrhandjoint">#enumdef-xrhandjoint</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-enumdef-xrhandjoint">3.2. Skeleton Joints</a>
+    <li><a href="#ref-for-enumdef-xrhandjoint①">3.3. XRHand</a> <a href="#ref-for-enumdef-xrhandjoint②">(2)</a> <a href="#ref-for-enumdef-xrhandjoint③">(3)</a> <a href="#ref-for-enumdef-xrhandjoint④">(4)</a> <a href="#ref-for-enumdef-xrhandjoint⑤">(5)</a> <a href="#ref-for-enumdef-xrhandjoint⑥">(6)</a>
+    <li><a href="#ref-for-enumdef-xrhandjoint⑦">3.4. XRJointSpace</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-wrist">
+   <b><a href="#dom-xrhandjoint-wrist">#dom-xrhandjoint-wrist</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-wrist">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-thumb-metacarpal">
+   <b><a href="#dom-xrhandjoint-thumb-metacarpal">#dom-xrhandjoint-thumb-metacarpal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-thumb-metacarpal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-thumb-phalanx-proximal">
+   <b><a href="#dom-xrhandjoint-thumb-phalanx-proximal">#dom-xrhandjoint-thumb-phalanx-proximal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-thumb-phalanx-proximal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-thumb-phalanx-distal">
+   <b><a href="#dom-xrhandjoint-thumb-phalanx-distal">#dom-xrhandjoint-thumb-phalanx-distal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-thumb-phalanx-distal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-thumb-tip">
+   <b><a href="#dom-xrhandjoint-thumb-tip">#dom-xrhandjoint-thumb-tip</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-thumb-tip">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-metacarpal">
+   <b><a href="#dom-xrhandjoint-index-finger-metacarpal">#dom-xrhandjoint-index-finger-metacarpal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-index-finger-metacarpal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-phalanx-proximal">
+   <b><a href="#dom-xrhandjoint-index-finger-phalanx-proximal">#dom-xrhandjoint-index-finger-phalanx-proximal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-index-finger-phalanx-proximal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-phalanx-intermediate">
+   <b><a href="#dom-xrhandjoint-index-finger-phalanx-intermediate">#dom-xrhandjoint-index-finger-phalanx-intermediate</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-index-finger-phalanx-intermediate">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-phalanx-distal">
+   <b><a href="#dom-xrhandjoint-index-finger-phalanx-distal">#dom-xrhandjoint-index-finger-phalanx-distal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-index-finger-phalanx-distal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-tip">
+   <b><a href="#dom-xrhandjoint-index-finger-tip">#dom-xrhandjoint-index-finger-tip</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-index-finger-tip">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-metacarpal">
+   <b><a href="#dom-xrhandjoint-middle-finger-metacarpal">#dom-xrhandjoint-middle-finger-metacarpal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-metacarpal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-phalanx-proximal">
+   <b><a href="#dom-xrhandjoint-middle-finger-phalanx-proximal">#dom-xrhandjoint-middle-finger-phalanx-proximal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-phalanx-proximal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-phalanx-intermediate">
+   <b><a href="#dom-xrhandjoint-middle-finger-phalanx-intermediate">#dom-xrhandjoint-middle-finger-phalanx-intermediate</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-phalanx-intermediate">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-phalanx-distal">
+   <b><a href="#dom-xrhandjoint-middle-finger-phalanx-distal">#dom-xrhandjoint-middle-finger-phalanx-distal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-phalanx-distal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-tip">
+   <b><a href="#dom-xrhandjoint-middle-finger-tip">#dom-xrhandjoint-middle-finger-tip</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-tip">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-metacarpal">
+   <b><a href="#dom-xrhandjoint-ring-finger-metacarpal">#dom-xrhandjoint-ring-finger-metacarpal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-metacarpal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-phalanx-proximal">
+   <b><a href="#dom-xrhandjoint-ring-finger-phalanx-proximal">#dom-xrhandjoint-ring-finger-phalanx-proximal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-phalanx-proximal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-phalanx-intermediate">
+   <b><a href="#dom-xrhandjoint-ring-finger-phalanx-intermediate">#dom-xrhandjoint-ring-finger-phalanx-intermediate</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-phalanx-intermediate">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-phalanx-distal">
+   <b><a href="#dom-xrhandjoint-ring-finger-phalanx-distal">#dom-xrhandjoint-ring-finger-phalanx-distal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-phalanx-distal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-tip">
+   <b><a href="#dom-xrhandjoint-ring-finger-tip">#dom-xrhandjoint-ring-finger-tip</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-tip">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-metacarpal">
+   <b><a href="#dom-xrhandjoint-pinky-finger-metacarpal">#dom-xrhandjoint-pinky-finger-metacarpal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-metacarpal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-phalanx-proximal">
+   <b><a href="#dom-xrhandjoint-pinky-finger-phalanx-proximal">#dom-xrhandjoint-pinky-finger-phalanx-proximal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-phalanx-proximal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-phalanx-intermediate">
+   <b><a href="#dom-xrhandjoint-pinky-finger-phalanx-intermediate">#dom-xrhandjoint-pinky-finger-phalanx-intermediate</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-phalanx-intermediate">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-phalanx-distal">
+   <b><a href="#dom-xrhandjoint-pinky-finger-phalanx-distal">#dom-xrhandjoint-pinky-finger-phalanx-distal</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-phalanx-distal">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
+  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-tip">
+   <b><a href="#dom-xrhandjoint-pinky-finger-tip">#dom-xrhandjoint-pinky-finger-tip</a></b><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-tip">3.2. Skeleton Joints</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="xrhand">
    <b><a href="#xrhand">#xrhand</a></b><b>Referenced in:</b>
    <ul>
     <li><a href="#ref-for-xrhand">3.1. XRInputSource</a> <a href="#ref-for-xrhand①">(2)</a>
-    <li><a href="#ref-for-xrhand②">3.3. XRHand</a> <a href="#ref-for-xrhand③">(2)</a>
-    <li><a href="#ref-for-xrhand④">3.4. XRJointSpace</a>
+    <li><a href="#ref-for-xrhand②">3.3. XRHand</a> <a href="#ref-for-xrhand③">(2)</a> <a href="#ref-for-xrhand④">(3)</a> <a href="#ref-for-xrhand⑤">(4)</a> <a href="#ref-for-xrhand⑥">(5)</a>
+    <li><a href="#ref-for-xrhand⑦">3.4. XRJointSpace</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrhand-input-source">
@@ -1538,38 +1756,36 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
     <li><a href="#ref-for-xrhand-input-source">3.1. XRInputSource</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xrhand-list-of-joint-spaces">
-   <b><a href="#xrhand-list-of-joint-spaces">#xrhand-list-of-joint-spaces</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-xrhand-joints-slot">
+   <b><a href="#dom-xrhand-joints-slot">#dom-xrhand-joints-slot</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrhand-list-of-joint-spaces">3.3. XRHand</a> <a href="#ref-for-xrhand-list-of-joint-spaces①">(2)</a>
+    <li><a href="#ref-for-dom-xrhand-joints-slot">3.3. XRHand</a> <a href="#ref-for-dom-xrhand-joints-slot①">(2)</a> <a href="#ref-for-dom-xrhand-joints-slot②">(3)</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="dom-xrhand-length">
-   <b><a href="#dom-xrhand-length">#dom-xrhand-length</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="dom-xrhand-size">
+   <b><a href="#dom-xrhand-size">#dom-xrhand-size</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-dom-xrhand-length">3.3. XRHand</a>
+    <li><a href="#ref-for-dom-xrhand-size">3.3. XRHand</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrjointspace">
    <b><a href="#xrjointspace">#xrjointspace</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrjointspace">3.3. XRHand</a> <a href="#ref-for-xrjointspace①">(2)</a> <a href="#ref-for-xrjointspace②">(3)</a> <a href="#ref-for-xrjointspace③">(4)</a> <a href="#ref-for-xrjointspace④">(5)</a>
-    <li><a href="#ref-for-xrjointspace⑤">3.4. XRJointSpace</a> <a href="#ref-for-xrjointspace⑥">(2)</a> <a href="#ref-for-xrjointspace⑦">(3)</a> <a href="#ref-for-xrjointspace⑧">(4)</a> <a href="#ref-for-xrjointspace⑨">(5)</a> <a href="#ref-for-xrjointspace①⓪">(6)</a>
-    <li><a href="#ref-for-xrjointspace①①">4.1. XRFrame</a> <a href="#ref-for-xrjointspace①②">(2)</a>
+    <li><a href="#ref-for-xrjointspace">3.3. XRHand</a> <a href="#ref-for-xrjointspace①">(2)</a> <a href="#ref-for-xrjointspace②">(3)</a> <a href="#ref-for-xrjointspace③">(4)</a>
+    <li><a href="#ref-for-xrjointspace④">3.4. XRJointSpace</a> <a href="#ref-for-xrjointspace⑤">(2)</a> <a href="#ref-for-xrjointspace⑥">(3)</a> <a href="#ref-for-xrjointspace⑦">(4)</a> <a href="#ref-for-xrjointspace⑧">(5)</a>
+    <li><a href="#ref-for-xrjointspace⑨">4.1. XRFrame</a> <a href="#ref-for-xrjointspace①⓪">(2)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrjointspace-hand">
    <b><a href="#xrjointspace-hand">#xrjointspace-hand</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrjointspace-hand">3.3. XRHand</a>
-    <li><a href="#ref-for-xrjointspace-hand①">3.4. XRJointSpace</a>
+    <li><a href="#ref-for-xrjointspace-hand">3.4. XRJointSpace</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="xrjointspace-joint-index">
-   <b><a href="#xrjointspace-joint-index">#xrjointspace-joint-index</a></b><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="xrjointspace-jointname">
+   <b><a href="#xrjointspace-jointname">#xrjointspace-jointname</a></b><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-xrjointspace-joint-index">3.3. XRHand</a>
-    <li><a href="#ref-for-xrjointspace-joint-index①">3.4. XRJointSpace</a>
+    <li><a href="#ref-for-xrjointspace-jointname">3.4. XRJointSpace</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="xrjointspace-joint">
