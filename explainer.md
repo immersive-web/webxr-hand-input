@@ -31,19 +31,19 @@ function renderFrame(session, frame) {
 
 ## Hands and joints
 
-Each hand is made up many bones, connected by _joints_. We name them with their connected bone, for example `INDEX_PHALANX_DISTAL` is the joint closer to the wrist connected to the distal phalanx bone of the index finger. The `*_PHALANX_TIP` "joints" locate the tips of the fingers. The `WRIST` joint is located at the composite joint between the wrist and forearm.
+Each hand is made up many bones, connected by _joints_. We name them with their connected bone, for example `index-finger-phalanx-distal` is the joint closer to the wrist connected to the distal phalanx bone of the index finger. The `*-phalanx-tip` "joints" locate the tips of the fingers. The `wrist` joint is located at the composite joint between the wrist and forearm.
 
 The joint spaces can be accessed via indexing, for example to access the middle knuckle joint one would use:
 
 ```js
-let joint = inputSource.hand[XRHand.MIDDLE_PHALANX_PROXIMAL];
+let joint = inputSource.hand["middle-finger-phalanx-distal"];
 ```
 
 All devices which support hand tracking will support or emulate all joints, so this indexing operation will always return a valid object as long as it is supplied with a valid joint index. If a joint is supported but not currently being tracked, the getter will still produce the `XRJointSpace`, but it will return `null` when run through `getPose` (etc).
 
 Each joint space is an `XRSpace`, with its `-Y` direction pointing perpendicular to the skin, outwards from the palm, and `-Z` direction pointing along their associated bone, away from the wrist. This space will return null poses when the joint loses tracking.
 
-For `*_TIP` joints where there is no associated bone, the `-Z` direction is the same as that for the associated `DISTAL` joint, i.e. the direction is along that of the previous bone.
+For `*-tip` joints where there is no associated bone, the `-Z` direction is the same as that for the associated `distal` joint, i.e. the direction is along that of the previous bone.
 
 
 ## Obtaining radii
@@ -63,15 +63,15 @@ A simple skeleton can be displayed as follows:
 
 ```js
 const orderedJoints = [
-   [XRHand.THUMB_METACARPAL, XRHand.THUMB_PHALANX_PROXIMAL, XRHand.THUMB_PHALANX_DISTAL, XRHand.THUMB_PHALANX_TIP],
-   [XRHand.INDEX_METACARPAL, XRHand.INDEX_PHALANX_PROXIMAL, XRHand.INDEX_PHALANX_INTERMEDIATE, XRHand.INDEX_PHALANX_DISTAL, XRHand.INDEX_PHALANX_TIP]
-   [XRHand.MIDDLE_METACARPAL, XRHand.MIDDLE_PHALANX_PROXIMAL, XRHand.MIDDLE_PHALANX_INTERMEDIATE, XRHand.MIDDLE_PHALANX_DISTAL, XRHand.MIDDLE_PHALANX_TIP]
-   [XRHand.RING_METACARPAL, XRHand.RING_PHALANX_PROXIMAL, XRHand.RING_PHALANX_INTERMEDIATE, XRHand.RING_PHALANX_DISTAL, XRHand.RING_PHALANX_TIP]
-   [XRHand.LITTLE_METACARPAL, XRHand.LITTLE_PHALANX_PROXIMAL, XRHand.LITTLE_PHALANX_INTERMEDIATE, XRHand.LITTLE_PHALANX_DISTAL, XRHand.LITTLE_PHALANX_TIP]
+   ["thumb-metacarpal", "thumb-phalanx-proximal", "thumb-phalanx-distal", "thumb-phalanx-tip"],
+   ["index-finger-metacarpal", "index-finger-phalanx-proximal", "index-finger-phalanx-intermediate", "index-finger-phalanx-distal", "index-finger-phalanx-tip"]
+   ["index-finger-metacarpal", "index-finger-phalanx-proximal", "index-finger-phalanx-intermediate", "index-finger-phalanx-distal", "index-finger-phalanx-tip"]
+   ["ring-finger-metacarpal", "ring-finger-phalanx-proximal", "ring-finger-phalanx-intermediate", "ring-finger-phalanx-distal", "ring-finger-phalanx-tip"]
+   ["pinky-finger-metacarpal", "pinky-finger-phalanx-proximal", "pinky-finger-phalanx-intermediate", "pinky-finger-phalanx-distal", "pinky-finger-phalanx-tip"]
 ];
 
 function renderSkeleton(inputSource, frame, renderer) {
-   let wrist = inputSource.hand[XRHand.WRIST];
+   let wrist = inputSource.hand["wrist"];
    if (!wrist) {
       // this code is written to assume that the wrist joint is exposed
       return;
@@ -108,7 +108,7 @@ const buttons = [
 ];
 
 function checkInteraction(button, inputSource, frame, renderer) {
-   let tip = frame.getPose(inputSource.hand[XRHand.INDEX_PHALANX_TIP], renderer.referenceSpace);
+   let tip = frame.getPose(inputSource.hand["index-finger-phalanx-tip"], renderer.referenceSpace);
    let distance = calculateDistance(tip.transform.position, button.position);
    if (distance < button.radius) {
       if (!button.pressed) {
@@ -140,10 +140,10 @@ One can do gesture detection using the position and orientation values of the va
 
 ```js
 function checkFistGesture(inputSource, frame, renderer) {
-   for (finger of [[XRHand.INDEX_PHALANX_TIP, XRHand.INDEX_METACARPAL],
-                  [XRHand.MIDDLE_PHALANX_TIP, XRHand.MIDDLE_METACARPAL],
-                  [XRHand.RING_PHALANX_TIP, XRHand.RING_METACARPAL],
-                  [XRHand.LITTLE_PHALANX_TIP, XRHand.LITTLE_METACARPAL]]) {
+   for (finger of [["index-finger-phalanx-tip", "index-finger-metacarpal"],
+                  ["index-finger-phalanx-tip", "index-finger-metacarpal"],
+                  ["ring-finger-phalanx-tip", "ring-finger-metacarpal"],
+                  ["pinky-finger-phalanx-tip", "pinky-finger-metacarpal"]]) {
       let tip = finger[0];
       let metacarpal = finger[1];
       let tipPose = frame.getPose(inputSource.hand[tip], renderer.referenceSpace);
@@ -179,8 +179,8 @@ let poses1 = new Float32Array(16 * 25);
 let radii1 = new Float32Array(25);
 function onFrame(frame, renderer) {
   let hand1 = frame.session.inputSources[0].hand;
-  frame.fillPoses(hand1, renderer.referenceSpace, poses1);
-  frame.fillJointRadii(hand1, radii1);
+  frame.fillPoses(hand1.values(), renderer.referenceSpace, poses1);
+  frame.fillJointRadii(hand1.values(), radii1);
   renderer.drawHand(poses1, radii1);
   // do something similar for second hand
 }
@@ -206,53 +206,58 @@ partial interface XRInputSource {
 }
 
 partial interface XRFrame {
-    XRJointPose? getJointPose(XRJointSpace joint, XRSpace relativeTo);
+   XRJointPose? getJointPose(XRJointSpace joint, XRSpace relativeTo);
+   boolean fillJointRadii(sequence<XRJointSpace> jointSpaces, Float32Array radii);
+   boolean fillPoses(sequence<XRSpace> spaces, XRSpace baseSpace, Float32Array transforms);
 }
 
 interface XRJointPose: XRPose {
-    readonly attribute float? radius;
+   readonly attribute float? radius;
 }
 
-interface XRJointSpace: XRSpace {}
+interface XRJointSpace: XRSpace {
+   readonly attribute XRHandJoint jointName;
+}
+
+enum XRHandJoint {
+   "wrist",
+
+   "thumb-metacarpal",
+   "thumb-phalanx-proximal",
+   "thumb-phalanx-distal",
+   "thumb-tip",
+
+   "index-finger-metacarpal",
+   "index-finger-phalanx-proximal",
+   "index-finger-phalanx-intermediate",
+   "index-finger-phalanx-distal",
+   "index-finger-tip",
+
+   "middle-finger-metacarpal",
+   "middle-finger-phalanx-proximal",
+   "middle-finger-phalanx-intermediate",
+   "middle-finger-phalanx-distal",
+   "middle-finger-tip",
+
+   "ring-finger-metacarpal",
+   "ring-finger-phalanx-proximal",
+   "ring-finger-phalanx-intermediate",
+   "ring-finger-phalanx-distal",
+   "ring-finger-tip",
+
+   "pinky-finger-metacarpal",
+   "pinky-finger-phalanx-proximal",
+   "pinky-finger-phalanx-intermediate",
+   "pinky-finger-phalanx-distal",
+   "pinky-finger-tip"
+};
 
 interface XRHand {
-    // needed for the getter
-    readonly attribute unsigned long length;
-    getter XRJointSpace(unsigned long jointIndex);
+   iterable<XRHandJoint, XRJointSpace>;
 
-    // Final spec should probably have increasing values for joints,
-    // frozen after release. Further joints can be appended at the end.
-    const unsigned long WRIST = 0;
+   readonly attribute unsigned long size;
+   XRJointSpace get(XRHandJoint key);
+};
 
-    // potentially: const unsigned long THUMB_TRAPEZIUM = ..;
-    const unsigned long THUMB_METACARPAL = 1;
-    const unsigned long THUMB_PHALANX_PROXIMAL = 2;
-    const unsigned long THUMB_PHALANX_DISTAL = 3;
-    const unsigned long THUMB_PHALANX_TIP = 4;
-
-    const unsigned long INDEX_METACARPAL = 5;
-    const unsigned long INDEX_PHALANX_PROXIMAL = 6;
-    const unsigned long INDEX_PHALANX_INTERMEDIATE = 7;
-    const unsigned long INDEX_PHALANX_DISTAL = 8;
-    const unsigned long INDEX_PHALANX_TIP = 9;
-
-    const unsigned long MIDDLE_METACARPAL = 10;
-    const unsigned long MIDDLE_PHALANX_PROXIMAL = 11;
-    const unsigned long MIDDLE_PHALANX_INTERMEDIATE = 12;
-    const unsigned long MIDDLE_PHALANX_DISTAL = 13;
-    const unsigned long MIDDLE_PHALANX_TIP = 14;
-
-    const unsigned long RING_METACARPAL = 15;
-    const unsigned long RING_PHALANX_PROXIMAL = 16;
-    const unsigned long RING_PHALANX_INTERMEDIATE = 17;
-    const unsigned long RING_PHALANX_DISTAL = 18;
-    const unsigned long RING_PHALANX_TIP = 19;
-
-    const unsigned long LITTLE_METACARPAL = 20;
-    const unsigned long LITTLE_PHALANX_PROXIMAL = 21;
-    const unsigned long LITTLE_PHALANX_INTERMEDIATE = 22;
-    const unsigned long LITTLE_PHALANX_DISTAL = 23;
-    const unsigned long LITTLE_PHALANX_TIP = 24;
-}
 
 ```
