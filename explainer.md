@@ -33,13 +33,13 @@ function renderFrame(session, frame) {
 
 Each hand is made up many bones, connected by _joints_. We name them with their connected bone, for example `index-finger-phalanx-distal` is the joint closer to the wrist connected to the distal phalanx bone of the index finger. The `*-phalanx-tip` "joints" locate the tips of the fingers. The `wrist` joint is located at the composite joint between the wrist and forearm.
 
-The joint spaces can be accessed via indexing, for example to access the middle knuckle joint one would use:
+The joint spaces can be accessed via `XRHand.get()`, for example to access the middle knuckle joint one would use:
 
 ```js
-let joint = inputSource.hand["middle-finger-phalanx-distal"];
+let joint = inputSource.hand.get("middle-finger-phalanx-distal");
 ```
 
-All devices which support hand tracking will support or emulate all joints, so this indexing operation will always return a valid object as long as it is supplied with a valid joint index. If a joint is supported but not currently being tracked, the getter will still produce the `XRJointSpace`, but it will return `null` when run through `getPose` (etc).
+All devices which support hand tracking will support or emulate all joints, so this method will always return a valid object as long as it is supplied with a valid joint name. If a joint is supported but not currently being tracked, the getter will still produce the `XRJointSpace`, but it will return `null` when run through `getPose` (etc).
 
 Each joint space is an `XRSpace`, with its `-Y` direction pointing perpendicular to the skin, outwards from the palm, and `-Z` direction pointing along their associated bone, away from the wrist. This space will return null poses when the joint loses tracking.
 
@@ -71,7 +71,7 @@ const orderedJoints = [
 ];
 
 function renderSkeleton(inputSource, frame, renderer) {
-   let wrist = inputSource.hand["wrist"];
+   let wrist = inputSource.hand.get("wrist");
    if (!wrist) {
       // this code is written to assume that the wrist joint is exposed
       return;
@@ -81,7 +81,7 @@ function renderSkeleton(inputSource, frame, renderer) {
    for (finger of orderedJoints) {
       let previous = wristPose;
       for (joint of finger) {
-         let joint = inputSource.hand[joint];
+         let joint = inputSource.hand.get(joint);
          if (joint) {
             let pose = frame.getJointPose(joint, renderer.referenceSpace);
             drawSphere(frame, pose.transform, pose.radius);
@@ -108,7 +108,7 @@ const buttons = [
 ];
 
 function checkInteraction(button, inputSource, frame, renderer) {
-   let tip = frame.getPose(inputSource.hand["index-finger-phalanx-tip"], renderer.referenceSpace);
+   let tip = frame.getPose(inputSource.hand.get("index-finger-phalanx-tip"), renderer.referenceSpace);
    let distance = calculateDistance(tip.transform.position, button.position);
    if (distance < button.radius) {
       if (!button.pressed) {
@@ -146,8 +146,8 @@ function checkFistGesture(inputSource, frame, renderer) {
                   ["pinky-finger-phalanx-tip", "pinky-finger-metacarpal"]]) {
       let tip = finger[0];
       let metacarpal = finger[1];
-      let tipPose = frame.getPose(inputSource.hand[tip], renderer.referenceSpace);
-      let metacarpalPose = frame.getPose(inputSource.hand[metacarpal], renderer.referenceSpace)
+      let tipPose = frame.getPose(inputSource.hand.get(tip), renderer.referenceSpace);
+      let metacarpalPose = frame.getPose(inputSource.hand.get(metacarpal), renderer.referenceSpace)
       if (calculateDistance(tipPose.position, metacarpalPose.position) > minimumDistance ||
           !checkOrientation(tipPose.orientation, metacarpalPose.orientation)) {
          return false
