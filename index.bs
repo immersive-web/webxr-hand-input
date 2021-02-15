@@ -281,7 +281,7 @@ The <dfn attribute for=XRHand>size</dfn> attribute MUST return the number <code>
 The <dfn method for="XRHand">get(|jointName|)</dfn> method when invoked on an {{XRHand}} [=this=] MUST run the following steps:
 
   1. Let |joints| be the value of [=this=]'s {{[[joints]]}} internal slot.
-  2. Return |joints|[|jointName|]. (This implies returning <code>undefined</code> for unknown |jointName|.)
+  2. Return |joints|[|jointName|].
 
 </div>
 
