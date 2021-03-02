@@ -4,7 +4,7 @@
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
   <title>WebXR Hand Input Module - Level 1</title>
   <link href="https://www.w3.org/StyleSheets/TR/2016/W3C-ED" rel="stylesheet" type="text/css">
-  <meta content="Bikeshed version 4e8dd937, updated Fri Nov 13 16:49:31 2020 -0800" name="generator">
+  <meta content="Bikeshed version b94c7e755, updated Fri Feb 19 16:28:59 2021 -0800" name="generator">
   <link href="https://www.w3.org/TR/webxr-hand-input-1/" rel="canonical">
   <link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
   <link href="favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
@@ -633,7 +633,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2016/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Hand Input Module - Level 1</h1>
-   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-02-15">15 February 2021</time></span></h2>
+   <h2 class="no-num no-toc no-ref heading settled" id="subtitle"><span class="content">Editor’s Draft, <time class="dt-updated" datetime="2021-03-02">2 March 2021</time></span></h2>
    <div data-fill-with="spec-metadata">
     <dl>
      <dt>This version:
@@ -929,7 +929,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
      <li data-md>
       <p>Let <var>joints</var> be the value of <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this②">this</a>'s <code class="idl"><a data-link-type="idl" href="#dom-xrhand-joints-slot" id="ref-for-dom-xrhand-joints-slot②">[[joints]]</a></code> internal slot.</p>
      <li data-md>
-      <p>Return <var>joints</var>[<var>jointName</var>].</p>
+      <p>Return <var>joints</var>[<var>jointName</var>]. (This implies returning <code>undefined</code> for unknown <var>jointName</var>.)</p>
     </ol>
    </div>
    <h3 class="heading settled" data-level="3.4" id="xrjointspace-interface"><span class="secno">3.4. </span><span class="content">XRJointSpace</span><a class="self-link" href="#xrjointspace-interface"></a></h3>
@@ -965,7 +965,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
      <li data-md>
       <p>Let <var>session</var> be <var>frame</var>’s <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session">session</a></code> object.</p>
      <li data-md>
-      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/mediaqueries-5/#media-prefers-color-scheme-active" id="ref-for-media-prefers-color-scheme-active">active</a> boolean is <code>false</code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code> and abort these steps.</p>
+      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://w3c.github.io/ServiceWorker/#extendableevent-active" id="ref-for-extendableevent-active">active</a> boolean is <code>false</code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
       <p>If <var>baseSpace</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session">session</a> or <var>joint</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session①">session</a> are different from <a data-link-type="dfn" href="https://heycam.github.io/webidl/#this" id="ref-for-this④">this</a> <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a></code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
@@ -989,7 +989,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
      <li data-md>
       <p>Let <var>session</var> be <var>frame</var>’s <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session②">session</a></code> object.</p>
      <li data-md>
-      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/mediaqueries-5/#media-prefers-color-scheme-active" id="ref-for-media-prefers-color-scheme-active①">active</a> boolean is <code>false</code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code> and abort these steps.</p>
+      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://w3c.github.io/ServiceWorker/#extendableevent-active" id="ref-for-extendableevent-active①">active</a> boolean is <code>false</code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror②">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
       <p>For each <var>joint</var> in the <var>jointSpaces</var>:</p>
       <ol>
@@ -1027,7 +1027,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
      <li data-md>
       <p>Let <var>session</var> be <var>frame</var>’s <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session③">session</a></code> object.</p>
      <li data-md>
-      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://drafts.csswg.org/mediaqueries-5/#media-prefers-color-scheme-active" id="ref-for-media-prefers-color-scheme-active②">active</a> boolean is <code>false</code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code> and abort these steps.</p>
+      <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://w3c.github.io/ServiceWorker/#extendableevent-active" id="ref-for-extendableevent-active②">active</a> boolean is <code>false</code>, throw an <code class="idl"><a data-link-type="idl" href="https://heycam.github.io/webidl/#invalidstateerror" id="ref-for-invalidstateerror④">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
       <p>For each <var>space</var> in the <var>spaces</var> sequence:</p>
       <ol>
@@ -1080,12 +1080,33 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius②">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①④">skeleton joint</a> in meters.</p>
    <p>The user-agent MUST set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius②">radius</a></code> to an emulated value if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value, either in general or in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⑤">skeleton joint</a> is partially obscured).</p>
    <h2 class="heading settled" data-level="5" id="privacy-security"><span class="secno">5. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
-    The WebXR Hand Input API is a powerful feature with that carries significant privacy risks. 
+    The WebXR Hand Input API is a powerful feature that carries significant privacy risks. 
    <p>Since this feature returns new sensor data, the User Agent MUST ask for <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#explicit-consent" id="ref-for-explicit-consent">explicit consent</a> from the user at session creation time.</p>
    <p>Data returned from this API, MUST NOT be so specific that one can detect individual users.
 If the underlying hardware returns data that is too precise, the User Agent MUST anonymize this data
-(ie by adding noise or rounding) before revealing it through the WebXR Hand Input API.</p>
-   <p>This API is only supported in XRSessions created with XRSessionMode of <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr" id="ref-for-dom-xrsessionmode-immersive-vr">"immersive-vr"</a></code> or <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar" id="ref-for-dom-xrsessionmode-immersive-ar">"immersive-ar"</a></code>. <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-inline" id="ref-for-dom-xrsessionmode-inline">"inline"</a></code> sessions MUST not support this API.</p>
+before revealing it through the WebXR Hand Input API.</p>
+   <p>This API MUST only be supported in XRSessions created with XRSessionMode of <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr" id="ref-for-dom-xrsessionmode-immersive-vr">"immersive-vr"</a></code> or <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar" id="ref-for-dom-xrsessionmode-immersive-ar">"immersive-ar"</a></code>. <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-inline" id="ref-for-dom-xrsessionmode-inline">"inline"</a></code> sessions MUST not support this API.</p>
+   <div class="note" role="note">
+     When anonymizing the hands data, the UA can follow these guidelines: 
+    <ul>
+     <li data-md>
+      <p>Noising is discouraged in favour of rounding.</p>
+     <li data-md>
+      <p>If the UA uses rounding, each joint must not be rounded independently. Instead the correct way to round is to map each hand to a static hand-model.</p>
+     <li data-md>
+      <p>If noising, the noised data must not reveal any information over time:</p>
+      <ul>
+       <li data-md>
+        <p>Each new WebXR session in the same <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#browsing-context" id="ref-for-browsing-context">browsing context</a> must use the same noise to make sure that the data cannot be de-noised by creating multiple sessions.</p>
+       <li data-md>
+        <p>Each new <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/browsers.html#browsing-context" id="ref-for-browsing-context①">browsing context</a> must use a different noise vector.</p>
+       <li data-md>
+        <p>Any seed used to initialize the noise must not be predictable.</p>
+      </ul>
+     <li data-md>
+      <p>Anonymization must be done in a trusted environment.</p>
+    </ul>
+   </div>
    <p id="back-to-top" role="navigation"><a href="#toc"><abbr title="Back to Top">↑</abbr></a></p>
 <script src="https://www.w3.org/scripts/TR/2016/fixup.js"></script>
   </main>
@@ -1156,6 +1177,12 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <li><a href="#xrjointpose">XRJointPose</a><span>, in §4.2</span>
    <li><a href="#xrjointspace">XRJointSpace</a><span>, in §3.4</span>
   </ul>
+  <aside class="dfn-panel" data-for="term-for-browsing-context">
+   <a href="https://html.spec.whatwg.org/multipage/browsers.html#browsing-context">https://html.spec.whatwg.org/multipage/browsers.html#browsing-context</a><b>Referenced in:</b>
+   <ul>
+    <li><a href="#ref-for-browsing-context">5. Privacy &amp; Security Considerations</a> <a href="#ref-for-browsing-context①">(2)</a>
+   </ul>
+  </aside>
   <aside class="dfn-panel" data-for="term-for-concept-relevant-realm">
    <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm">https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm</a><b>Referenced in:</b>
    <ul>
@@ -1168,10 +1195,10 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
     <li><a href="#ref-for-ordered-map">3.3. XRHand</a>
    </ul>
   </aside>
-  <aside class="dfn-panel" data-for="term-for-media-prefers-color-scheme-active">
-   <a href="https://drafts.csswg.org/mediaqueries-5/#media-prefers-color-scheme-active">https://drafts.csswg.org/mediaqueries-5/#media-prefers-color-scheme-active</a><b>Referenced in:</b>
+  <aside class="dfn-panel" data-for="term-for-extendableevent-active">
+   <a href="https://w3c.github.io/ServiceWorker/#extendableevent-active">https://w3c.github.io/ServiceWorker/#extendableevent-active</a><b>Referenced in:</b>
    <ul>
-    <li><a href="#ref-for-media-prefers-color-scheme-active">4.1. XRFrame</a> <a href="#ref-for-media-prefers-color-scheme-active①">(2)</a> <a href="#ref-for-media-prefers-color-scheme-active②">(3)</a>
+    <li><a href="#ref-for-extendableevent-active">4.1. XRFrame</a> <a href="#ref-for-extendableevent-active①">(2)</a> <a href="#ref-for-extendableevent-active②">(3)</a>
    </ul>
   </aside>
   <aside class="dfn-panel" data-for="term-for-Exposed">
@@ -1375,6 +1402,7 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
+     <li><span class="dfn-paneled" id="term-for-browsing-context">browsing context</span>
      <li><span class="dfn-paneled" id="term-for-concept-relevant-realm">relevant realm</span>
     </ul>
    <li>
@@ -1383,9 +1411,9 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
      <li><span class="dfn-paneled" id="term-for-ordered-map">ordered map</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[mediaqueries-5]</a> defines the following terms:
+    <a data-link-type="biblio">[service-workers-1]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-media-prefers-color-scheme-active">active</span>
+     <li><span class="dfn-paneled" id="term-for-extendableevent-active">active</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WebIDL]</a> defines the following terms:
@@ -1438,8 +1466,8 @@ If the underlying hardware returns data that is too precise, the User Agent MUST
    <dd>Anne van Kesteren; et al. <a href="https://html.spec.whatwg.org/multipage/">HTML Standard</a>. Living Standard. URL: <a href="https://html.spec.whatwg.org/multipage/">https://html.spec.whatwg.org/multipage/</a>
    <dt id="biblio-infra">[INFRA]
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/">Infra Standard</a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
-   <dt id="biblio-mediaqueries-5">[MEDIAQUERIES-5]
-   <dd>Dean Jackson; Florian Rivoal; Tab Atkins Jr.. <a href="https://www.w3.org/TR/mediaqueries-5/">Media Queries Level 5</a>. 31 July 2020. WD. URL: <a href="https://www.w3.org/TR/mediaqueries-5/">https://www.w3.org/TR/mediaqueries-5/</a>
+   <dt id="biblio-service-workers-1">[SERVICE-WORKERS-1]
+   <dd>Alex Russell; et al. <a href="https://www.w3.org/TR/service-workers-1/">Service Workers 1</a>. 19 November 2019. CR. URL: <a href="https://www.w3.org/TR/service-workers-1/">https://www.w3.org/TR/service-workers-1/</a>
    <dt id="biblio-webidl">[WebIDL]
    <dd>Boris Zbarsky. <a href="https://heycam.github.io/webidl/">Web IDL</a>. 15 December 2016. ED. URL: <a href="https://heycam.github.io/webidl/">https://heycam.github.io/webidl/</a>
    <dt id="biblio-webxr">[WEBXR]
