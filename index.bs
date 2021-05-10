@@ -14,7 +14,7 @@ Mailing List Archives: https://lists.w3.org/Archives/Public/public-immersive-web
 !Participate: <a href="https://lists.w3.org/Archives/Public/public-immersive-web/">Mailing list archive</a>
 !Participate: <a href="irc://irc.w3.org:6665/">W3C's #immersive-web IRC</a>
 
-Editor: Manish Goregaokar 109489, Invited Expert [Mozilla until 2020], manishsmail@gmail.com
+Editor: Manish Goregaokar 109489, Google [Mozilla until 2020], manishsmail@gmail.com
 
 Abstract: The WebXR Hand Input module expands the <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a> with the functionality to track articulated hand poses.
 
