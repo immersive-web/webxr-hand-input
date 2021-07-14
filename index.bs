@@ -149,7 +149,7 @@ XRInputSource {#xrinputsource-interface}
 
 <pre class="idl">
 partial interface XRInputSource {
-   readonly attribute XRHand? hand;
+   [SameObject] readonly attribute XRHand? hand;
 };
 </pre>
 
@@ -372,6 +372,8 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
 
 </div>
 
+NOTE: if the user agent can't determine the pose of any of the spaces belonging to the same {{XRHand}}, all the spaces of that {{XRHand}} must also not have a pose.
+
 <div class="algorithm" data-algorithm="fill-poses">
 
 The <dfn method for="XRFrame">fillPoses(sequence&lt;XRSpace&gt; |spaces|, XRSpace |baseSpace|, Float32Array |transforms|)</dfn> method populates |transforms| with the matrices of the poses of the |spaces| relative to the |baseSpace|, and returns a boolean indicating whether all of the spaces have a valid pose.
@@ -404,6 +406,8 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
   1. Return |allValid|.
 
 </div>
+
+NOTE: if any of the spaces belonging to the same {{XRHand}} return <code>null</null> when [=populate the pose|populating the pose=], all the spaces of that {{XRHand}} must also return <code>null</null> when [=populate the pose|populating the pose=]
 
 XRJointPose {#xrjointpose-interface}
 -----------
