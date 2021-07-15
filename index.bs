@@ -454,7 +454,7 @@ This module replaces the steps given by "[=populate the pose=]" from the WebXR s
   1. If |space| is a {{XRJointSpace}}, perform the following steps:
     1. Let |jointSpaces| be the result of calling "values()" on |space|'s [=XRJointSpace/hand=].
     1. For each |jointSpace| in |jointSpaces|:
-        1. If the tracking system can't provide [=6DoF=] poses for |jointSpace| at the |frame|'s [=XRFrame/time=], set |pose| to `null` and abort these steps..
+        1. If the tracking system can't provide or emulate [=6DoF=] poses for |jointSpace| at the |frame|'s [=XRFrame/time=], set |pose| to `null` and abort these steps..
   1. Query the [=/XR device=]'s tracking system for |space|'s pose relative to |baseSpace| at the |frame|'s [=XRFrame/time=], then perform the following steps:
     <dl class="switch">
 
