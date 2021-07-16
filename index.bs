@@ -99,6 +99,8 @@ spec: webxr-1;
     type: dfn; text: time; for: XRFrame
     type: dfn; text: session; for: XRSpace
     type: dfn; text: input profile name; for: XRInputSource
+    type: dfn; text: primary action; for: /
+    type: dfn; text: primary squeeze action; for: /
 spec:infra; type:dfn; text:list
 spec:webxr-ar-module-1; type:enum-value; text:"immersive-ar"
 spec:webidl;
@@ -149,7 +151,7 @@ XRInputSource {#xrinputsource-interface}
 
 <pre class="idl">
 partial interface XRInputSource {
-   readonly attribute XRHand? hand;
+   [SameObject] readonly attribute XRHand? hand;
 };
 </pre>
 
@@ -299,7 +301,7 @@ interface XRJointSpace: XRSpace {
 
 The [=native origin=] of an {{XRJointSpace}} is the position and orientation of the underlying [=XRJointSpace/joint=].
 
-The [=native origin=] of the {{XRJointSpace}} may only be reported when [=native origins=] of all other {{XRJointSpace}}s on the same [=XRJointSpace/hand=] are being reported. When a hand is partially obscured the user agent MAY emulate the obscured joints, or it MAY report <code>null</code> poses for all of the joints.
+The [=native origin=] of the {{XRJointSpace}} may only be reported when [=native origins=] of all other {{XRJointSpace}}s on the same [=XRJointSpace/hand=] are being reported. When a hand is partially obscured the user agent MUST either emulate the obscured joints, or report null poses for all of the joints.
 
 Note: This means that when fetching poses you will either get an entire hand or none of it.
 
@@ -364,13 +366,20 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
   1. let |offset| be a new number with the initial value of <code>0</code>.
   1. Let |allValid| be <code>true</code>.
   1. For each |joint| in the |jointSpaces|:
-    1. Set the float value of |radii| at |offset| to <code>NaN</code>.
-    1. If the user agent can determine the pose of |joint|, set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
-    1. If the user agent cannot determine the pose of |joint|, set |allValid| to <code>false</code>.
+    1. Set the float value of |radii| at |offset| as follows:
+        <dl class="switch">
+          <dt> If the user agent can determine the poses of all the joints belonging to the |joint|'s [=XRJointSpace/hand=]:
+            <dd> Set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
+          <dt> Otherwise
+            <dd> Set the float value of |radii| at |offset| to <code>NaN</code>.
+            <dd> Set |allValid| to <code>false</code>.
+        </dl>
     1. Increase |offset| by <code>1</code>.
   1. Return |allValid|.
 
 </div>
+
+NOTE: if the user agent can't determine the pose of any of the spaces belonging to the same {{XRHand}}, all the spaces of that {{XRHand}} must also not have a pose.
 
 <div class="algorithm" data-algorithm="fill-poses">
 
@@ -404,6 +413,8 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
   1. Return |allValid|.
 
 </div>
+
+NOTE: if any of the spaces belonging to the same {{XRHand}} return <code>null</null> when [=Populate the pose|populating the pose=], all the spaces of that {{XRHand}} must also return <code>null</null> when [=Populate the pose|populating the pose=]
 
 XRJointPose {#xrjointpose-interface}
 -----------
