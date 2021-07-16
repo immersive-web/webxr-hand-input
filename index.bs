@@ -371,13 +371,21 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
     1. If |joint|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
   1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw a {{TypeError}} and abort these steps.
   1. let |offset| be a new number with the initial value of <code>0</code>.
-  1. Let |allValid| be <code>true</code>.
-  1. For each |joint| in the |jointSpaces|:
-    1. Set the float value of |radii| at |offset| to <code>NaN</code>.
-    1. If the user agent can determine the pose of |joint|, set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
-    1. If the user agent cannot determine the pose of |joint|, set |allValid| to <code>false</code>.
-    1. Increase |offset| by <code>1</code>.
-  1. Return |allValid|.
+  1. Initialize |radii| as follows:
+    <dl class="switch">
+      <dt> If the user agent can determine the poses of all the joints belonging to the |joint|'s [=XRJointSpace/hand=]:
+        <dd> For each |joint| in the |jointSpaces|:
+          1. Set the float value of |radii| at |offset| to that |joint|'s [=skeleton joint/radius=].
+          1. Increase |offset| by <code>1</code>.
+
+        <dd> Return `true`.
+      <dt> Otherwise
+        <dd> For each |joint| in the |jointSpaces|:
+          1. Set the float value of |radii| at |offset| to <code>NaN</code>.
+          1. Increase |offset| by <code>1</code>.
+
+        <dd> Return `false`.
+    </dl>
 
 </div>
 
