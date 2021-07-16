@@ -101,13 +101,6 @@ spec: webxr-1;
     type: dfn; text: input profile name; for: XRInputSource
     type: dfn; text: primary action; for: /
     type: dfn; text: primary squeeze action; for: /
-    type: dfn; text: active; for: XRFrame
-    type: dfn; text: poses may be reported; for: /
-    type: dfn; text: poses must be limited; for: /
-    type: dfn; text: 3dof; for: /
-    type: dfn; text: 6dof; for: /
-    type: dfn; text: coordinate system; for: XRSpace
-    type: dfn; text: effective origin; for: XRSpace
 spec:infra; type:dfn; text:list
 spec:webxr-ar-module-1; type:enum-value; text:"immersive-ar"
 spec:webidl;
@@ -351,7 +344,7 @@ When this method is invoked, the user agent MUST run the following steps:
   1. If |frame|'s [=active=] boolean is <code>false</code>, throw an {{InvalidStateError}} and abort these steps.
   1. If |baseSpace|'s [=XRSpace/session=] or |joint|'s [=XRSpace/session=] are different from [=this=] {{XRFrame/session}}, throw an {{InvalidStateError}} and abort these steps.
   1. Let |pose| be a [=new=] {{XRJointPose}} object in the [=relevant realm=] of |session|.
-  1. [=hands/Populate the pose=] of |joint| in |baseSpace| at the time represented by |frame| into |pose|, with <code>force emulation</code> set to <code>false</code>.
+  1. [=Populate the pose=] of |joint| in |baseSpace| at the time represented by |frame| into |pose|, with <code>force emulation</code> set to <code>false</code>.
   1. If |pose| is <code>null</code> return <code>null</code>.
   1. Set |pose|'s {{XRJointPose/radius}} to the [=skeleton joint/radius=] of |joint|, emulating it if necessary.
   1. Return |pose|.
@@ -371,21 +364,18 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
     1. If |joint|'s [=XRSpace/session=] is different from |session|, throw an {{InvalidStateError}} and abort these steps.
   1. If the length of |jointSpaces| is larger than the number of elements in |radii|, throw a {{TypeError}} and abort these steps.
   1. let |offset| be a new number with the initial value of <code>0</code>.
-  1. Initialize |radii| as follows:
-    <dl class="switch">
-      <dt> If the user agent can determine the poses of all the joints belonging to the |joint|'s [=XRJointSpace/hand=]:
-        <dd> For each |joint| in the |jointSpaces|:
-          1. Set the float value of |radii| at |offset| to that |joint|'s [=skeleton joint/radius=].
-          1. Increase |offset| by <code>1</code>.
-
-        <dd> Return `true`.
-      <dt> Otherwise
-        <dd> For each |joint| in the |jointSpaces|:
-          1. Set the float value of |radii| at |offset| to <code>NaN</code>.
-          1. Increase |offset| by <code>1</code>.
-
-        <dd> Return `false`.
-    </dl>
+  1. Let |allValid| be <code>true</code>.
+  1. For each |joint| in the |jointSpaces|:
+    1. Set the float value of |radii| at |offset| as follows:
+        <dl class="switch">
+          <dt> If the user agent can determine the poses of all the joints belonging to the |joint|'s [=XRJointSpace/hand=]:
+            <dd> Set the float value of |radii| at |offset| to that [=skeleton joint/radius=].
+          <dt> Otherwise
+            <dd> Set the float value of |radii| at |offset| to <code>NaN</code>.
+            <dd> Set |allValid| to <code>false</code>.
+        </dl>
+    1. Increase |offset| by <code>1</code>.
+  1. Return |allValid|.
 
 </div>
 
@@ -414,7 +404,7 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
     </dl>
   1. Let |allValid| be <code>true</code>.
   1. For each |space| in the |spaces| sequence:
-    1. [=hands/Populate the pose=] of |space| in |baseSpace| at the time represented by |frame| into |pose|.
+    1. [=Populate the pose=] of |space| in |baseSpace| at the time represented by |frame| into |pose|.
     1. If |pose| is <code>null</code>, perform the following steps:
       1. Set <code>16</code> consecutive elements of the |transforms| array starting at |offset| to <code>NaN</code>.
       1. Set |allValid| to <code>false</code>.
@@ -424,7 +414,7 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
 
 </div>
 
-NOTE: if any of the spaces belonging to the same {{XRHand}} return <code>null</null> when [=hands/populate the pose|populating the pose=], all the spaces of that {{XRHand}} must also return <code>null</null> when [=hands/populate the pose|populating the pose=]
+NOTE: if any of the spaces belonging to the same {{XRHand}} return <code>null</null> when [=Populate the pose|populating the pose=], all the spaces of that {{XRHand}} must also return <code>null</null> when [=Populate the pose|populating the pose=]
 
 XRJointPose {#xrjointpose-interface}
 -----------
@@ -441,56 +431,6 @@ interface XRJointPose: XRPose {
 The <dfn attribute for=XRJointPose>radius</dfn> attribute returns the [=skeleton joint/radius=] of the [=skeleton joint=] in meters.
 
 The user-agent MUST set {{XRJointPose/radius}} to an emulated value if the [=/XR device=] does not have the capability of determining this value, either in general or in the current [=XRSession/animation frame=] (e.g. when the [=skeleton joint=] is partially obscured).
-
-WebXR Device API Integration {#webxrintegration}
-============================
-
-{{XRSpace}} changes {#xrspacechanges}
--------------------
-<div class="algorithm" data-algorithm="populate-the-pose-for-hands">
-
-This module replaces the steps given by "[=populate the pose=]" from the WebXR specification. Instead when the user agent will
-<dfn dfn-for="hands">populate the pose</dfn> of an {{XRSpace}} |space| in an {{XRSpace}} |baseSpace| at the time represented by an {{XRFrame}} |frame| into an {{XRPose}} |pose|, with an optional |force emulation| flag, the user agent MUST run the following steps:
-
-  1. If |frame|'s [=XRFrame/active=] boolean is `false`, throw an {{InvalidStateError}} and abort these steps.
-  1. Let |session| be |frame|'s {{XRFrame/session}} object.
-  1. If |space|'s [=XRSpace/session=] does not equal |session|, throw an {{InvalidStateError}} and abort these steps.
-  1. If |baseSpace|'s [=XRSpace/session=] does not equal |session|, throw an {{InvalidStateError}} and abort these steps.
-  1. Check if [=poses may be reported=] and, if not, throw a {{SecurityError}} and abort these steps.
-  1. Let |limit| be the result of whether [=poses must be limited=] between |space| and |baseSpace|.
-  1. Let |transform| be |pose|'s {{XRPose/transform}}.
-  1. If |space| is a {{XRJointSpace}}, perform the following steps:
-    1. Let |jointSpaces| be the result of calling "values()" on |space|'s [=XRJointSpace/hand=].
-    1. For each |jointSpace| in |jointSpaces|:
-        1. If the tracking system can't provide or emulate [=6DoF=] poses for |jointSpace| at the |frame|'s [=XRFrame/time=], set |pose| to `null` and abort these steps..
-  1. Query the [=/XR device=]'s tracking system for |space|'s pose relative to |baseSpace| at the |frame|'s [=XRFrame/time=], then perform the following steps:
-    <dl class="switch">
-
-      : If |limit| is `false` and the tracking system provides a [=6DoF=] pose whose position is actively tracked or statically known for |space|'s pose relative to |baseSpace|:
-      :: Set |transform|'s {{XRRigidTransform/orientation}} to the orientation of |space|'s [=effective origin=] in |baseSpace|'s [=coordinate system=].
-      :: Set |transform|'s {{XRRigidTransform/position}} to the position of |space|'s [=effective origin=] in |baseSpace|'s [=coordinate system=].
-      :: If supported, set |pose|'s {{XRPose/linearVelocity}} to the linear velocity of |space|'s [=effective origin=] compared to |baseSpace|'s [=coordinate system=].
-      :: If supported, set |pose|'s {{XRPose/angularVelocity}} to the angular velocity of |space|'s [=effective origin=] compared to |baseSpace|'s [=coordinate system=].
-      :: Set |pose|'s {{XRPose/emulatedPosition}} to `false`.
-
-      : Else if |limit| is `false` and the tracking system provides a [=3DoF=] pose or a [=6DoF=] pose whose position is neither actively tracked nor statically known for |space|'s pose relative to |baseSpace|:
-      :: Set |transform|'s {{XRRigidTransform/orientation}} to the orientation of |space|'s [=effective origin=] in |baseSpace|'s [=coordinate system=].
-      :: Set |transform|'s {{XRRigidTransform/position}} to the tracking system's best estimate of the position of |space|'s [=effective origin=] in |baseSpace|'s [=coordinate system=]. This MAY include a computed offset such as a neck or arm model. If a position estimate is not available, the last known position MUST be used.
-      :: Set |pose|'s {{XRPose/linearVelocity}} to `null`.
-      :: Set |pose|'s {{XRPose/angularVelocity}} to `null`.
-      :: Set |pose|'s {{XRPose/emulatedPosition}} to `true`.
-
-      : Else if |space|'s pose relative to |baseSpace| has been determined in the past and |force emulation| is `true`:
-      :: Set |transform|'s {{XRRigidTransform/position}} to the last known position of |space|'s [=effective origin=] in |baseSpace|'s [=coordinate system=].
-      :: Set |transform|'s {{XRRigidTransform/orientation}} to the last known orientation of |space|'s [=effective origin=] in |baseSpace|'s [=coordinate system=].
-      :: Set |pose|'s {{XRPose/linearVelocity}} to `null`.
-      :: Set |pose|'s {{XRPose/angularVelocity}} to `null`.
-      :: Set |pose|'s {{XRPose/emulatedPosition}} boolean to `true`.
-
-      : Otherwise:
-      :: Set |pose| to `null`.
-
-    </dl>
 
 Privacy & Security Considerations {#privacy-security}
 =================================
