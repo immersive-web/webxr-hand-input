@@ -117,9 +117,9 @@ Introduction {#intro}
 ============
 
 <section class="non-normative">
-On some [=/XR devices=] it is possible to get fully articulated information about the user's hands when they are use as input sources.
+On some [=/XR devices=] it is possible to get fully articulated information about the user's hands when they are used as input sources.
 
-This API exposes the poses of each of the users' hand [=skeleton joint=]s. This can be used to do gesture detection or to render a hand model in VR scenarios.
+This API exposes the poses of each of the users' hand [=skeleton joints=]. This can be used to do gesture detection or to render a hand model in VR scenarios.
 
 </section>
 
@@ -131,7 +131,7 @@ If an application wants to view articulated hand pose information during a sessi
 the session MUST be requested with an appropriate [=feature descriptor=]. The string "<dfn for="feature descriptor">hand-tracking</dfn>" is introduced
 by this module as a new valid [=feature descriptor=] for articulated hand tracking.
 
-The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{XRSession}} its [=XRSession/XR device=] has [=physical hand input sources=] that [=supports hand tracking=].
+The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{XRSession}} when its [=XRSession/XR device=] has [=physical hand input sources=] that [=support hand tracking=].
 
 The user agent MAY gate support for hand based {{XRInputSource|XRInputSources}} based upon this [=feature descriptor=].
 
@@ -140,7 +140,7 @@ NOTE: This means that if an {{XRSession}} does not request the "[=hand-tracking=
 Physical Hand Input Sources {#physical-hand}
 ===========================
 
-An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input source=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joint=]s defined in this specification.
+An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input source=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joints=] defined in this specification.
 
 [=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profiles}}.
 
