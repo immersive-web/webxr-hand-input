@@ -414,7 +414,7 @@ When this method is invoked on an {{XRFrame}} |frame|, the user agent MUST run t
 
 </div>
 
-NOTE: if any of the spaces belonging to the same {{XRHand}} return <code>null</null> when [=Populate the pose|populating the pose=], all the spaces of that {{XRHand}} must also return <code>null</null> when [=Populate the pose|populating the pose=]
+NOTE: if any of the spaces belonging to the same {{XRHand}} return <code>null</code> when [=Populate the pose|populating the pose=], all the spaces of that {{XRHand}} must also return <code>null</code> when [=Populate the pose|populating the pose=]
 
 XRJointPose {#xrjointpose-interface}
 -----------
