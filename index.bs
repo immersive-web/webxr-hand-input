@@ -18,11 +18,6 @@ Editor: Manish Goregaokar 109489, Google [Mozilla until 2020], manishsmail@gmail
 
 Abstract: The WebXR Hand Input module expands the <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a> with the functionality to track articulated hand poses.
 
-Warning: custom
-Custom Warning Title: Unstable API
-Custom Warning Text:
-  <b>The API represented in this document is under development and may change at any time.</b>
-  <p>For additional context on the use of this API please reference the <a href="https://github.com/immersive-web/webxr-hand-input/blob/master/explainer.md">Hand Input Module Explainer</a>.</p>
 Status Text: This WebXR Augmented Reality Module is designed as a module to be implemented in addition to <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>, and is originally included in WebXR Device API which was divided into core and modules.
 </pre>
 
