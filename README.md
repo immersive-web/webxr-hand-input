@@ -19,6 +19,8 @@ Feature lead is Manish Goregaokar ([@Manishearth](https://github.com/Manishearth
 ### Related specifications
 * [WebXR Device API - Level 1][webxrspec]: Main specification for JavaScript API for accessing VR and AR devices, including sensors and head-mounted displays.
 
+See also [list of all specifications with detailed status in Working Group and Community Group](https://www.w3.org/immersive-web/list_spec.html). 
+
 ## Relevant Links
 
 * [Immersive Web Community Group][webxrcg]
