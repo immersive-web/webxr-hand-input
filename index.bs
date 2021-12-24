@@ -205,7 +205,7 @@ This <dfn>list of joints</dfn> defines the following [=skeleton joints=] and the
 </tbody>
 </table>
 
-<img src="images/hand-layout.svg" style="background-color: transparent" alt="Visual aid demonstrating joint layout">
+<img src="images/hand-layout.svg" width="104" height="143" style="background-color: transparent; width: 390px; height: auto;" alt="Visual aid demonstrating joint layout">
 
 XRHand {#xrhand-interface}
 ------
