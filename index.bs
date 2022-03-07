@@ -162,7 +162,7 @@ A [=skeleton joint=] for a given hand can be uniquely identified by a <dfn>skele
 
 A [=skeleton joint=] may have an <dfn>associated bone</dfn> that it is named after and used to orient its <code>-Z</code> axis. The [=associated bone=] of a [=skeleton joint=] is the bone that comes after the joint when moving towards the fingertips. The tip and wrist joints have no [=associated bones=].
 
-A [=skeleton joint=] has a <dfn for="skeleton joint">radius</dfn> which is the radius of a sphere placed at its center so that it roughly touches the skin on both sides of the hand.
+A [=skeleton joint=] has a <dfn for="skeleton joint">radius</dfn> which is the radius of a sphere placed at its center so that it roughly touches the skin on both sides of the hand. The "tip" [=skeleton joints=] SHOULD have an appropriate nonzero radius so that collisions with the fingertip may work. Implementations MAY offset the origin of the tip joint so that it can have a spherical shape with nonzero radius.
 
 This <dfn>list of joints</dfn> defines the following [=skeleton joints=] and their order:
 
