@@ -450,3 +450,16 @@ When anonymizing the hands data, the UA can follow these guidelines:
  * Anonymization must be done in a trusted environment.
 
 </div>
+
+
+<h2 id="changes" class="no-num">
+Changes</h2>
+
+<h3 id="changes-from-20201022" class="no-num">
+Changes from the <a href="https://www.w3.org/TR/2020/WD-webxr-hand-input-1-20201022/">First Public Working Draft 22 October 2020</a></h3>
+
+- Mention grasp profile (<a href="https://github.com/immersive-web/webxr-hand-input/pull/68">GitHub #68</a>)
+- Change from constants to enums + change XRHand into a map (<a href="https://github.com/immersive-web/webxr-hand-input/pull/71">GitHub #71</a>)
+- Added additional clarification in security section (<a href="https://github.com/immersive-web/webxr-hand-input/pull/87">GitHub #87</a>)
+- Marked hand as sameobject + added a clarifying note (<a href="https://github.com/immersive-web/webxr-hand-input/pull/93">GitHub #93</a>)
+- Nonzero radius for tip (<a href="https://github.com/immersive-web/webxr-hand-input/pull/111">GitHub #111</a>)
