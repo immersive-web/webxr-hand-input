@@ -65,7 +65,7 @@ A simple skeleton can be displayed as follows:
 const orderedJoints = [
    ["thumb-metacarpal", "thumb-phalanx-proximal", "thumb-phalanx-distal", "thumb-phalanx-tip"],
    ["index-finger-metacarpal", "index-finger-phalanx-proximal", "index-finger-phalanx-intermediate", "index-finger-phalanx-distal", "index-finger-phalanx-tip"]
-   ["index-finger-metacarpal", "index-finger-phalanx-proximal", "index-finger-phalanx-intermediate", "index-finger-phalanx-distal", "index-finger-phalanx-tip"]
+   ["middle-finger-metacarpal", "middle-finger-phalanx-proximal", "middle-finger-phalanx-intermediate", "middle-finger-phalanx-distal", "middle-finger-phalanx-tip"]
    ["ring-finger-metacarpal", "ring-finger-phalanx-proximal", "ring-finger-phalanx-intermediate", "ring-finger-phalanx-distal", "ring-finger-phalanx-tip"]
    ["pinky-finger-metacarpal", "pinky-finger-phalanx-proximal", "pinky-finger-phalanx-intermediate", "pinky-finger-phalanx-distal", "pinky-finger-phalanx-tip"]
 ];
@@ -141,7 +141,7 @@ One can do gesture detection using the position and orientation values of the va
 ```js
 function checkFistGesture(inputSource, frame, renderer) {
    for (finger of [["index-finger-phalanx-tip", "index-finger-metacarpal"],
-                  ["index-finger-phalanx-tip", "index-finger-metacarpal"],
+                  ["middle-finger-phalanx-tip", "middle-finger-metacarpal"],
                   ["ring-finger-phalanx-tip", "ring-finger-metacarpal"],
                   ["pinky-finger-phalanx-tip", "pinky-finger-metacarpal"]]) {
       let tip = finger[0];
