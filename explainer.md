@@ -31,7 +31,7 @@ function renderFrame(session, frame) {
 
 ## Hands and joints
 
-Each hand is made up many bones, connected by _joints_. We name them with their connected bone, for example `index-finger-phalanx-distal` is the joint closer to the wrist connected to the distal phalanx bone of the index finger. The `*-phalanx-tip` "joints" locate the tips of the fingers. The `wrist` joint is located at the composite joint between the wrist and forearm.
+Each hand is made up many bones, connected by _joints_. We name them with their connected bone, for example `index-finger-phalanx-distal` is the joint closer to the wrist connected to the distal phalanx bone of the index finger. The `*-tip` "joints" locate the tips of the fingers. The `wrist` joint is located at the composite joint between the wrist and forearm.
 
 The joint spaces can be accessed via `XRHand.get()`, for example to access the middle knuckle joint one would use:
 
@@ -63,11 +63,11 @@ A simple skeleton can be displayed as follows:
 
 ```js
 const orderedJoints = [
-   ["thumb-metacarpal", "thumb-phalanx-proximal", "thumb-phalanx-distal", "thumb-phalanx-tip"],
-   ["index-finger-metacarpal", "index-finger-phalanx-proximal", "index-finger-phalanx-intermediate", "index-finger-phalanx-distal", "index-finger-phalanx-tip"]
-   ["middle-finger-metacarpal", "middle-finger-phalanx-proximal", "middle-finger-phalanx-intermediate", "middle-finger-phalanx-distal", "middle-finger-phalanx-tip"]
-   ["ring-finger-metacarpal", "ring-finger-phalanx-proximal", "ring-finger-phalanx-intermediate", "ring-finger-phalanx-distal", "ring-finger-phalanx-tip"]
-   ["pinky-finger-metacarpal", "pinky-finger-phalanx-proximal", "pinky-finger-phalanx-intermediate", "pinky-finger-phalanx-distal", "pinky-finger-phalanx-tip"]
+   ["thumb-metacarpal", "thumb-phalanx-proximal", "thumb-phalanx-distal", "thumb-tip"],
+   ["index-finger-metacarpal", "index-finger-phalanx-proximal", "index-finger-phalanx-intermediate", "index-finger-phalanx-distal", "index-finger-tip"]
+   ["middle-finger-metacarpal", "middle-finger-phalanx-proximal", "middle-finger-phalanx-intermediate", "middle-finger-phalanx-distal", "middle-finger-tip"]
+   ["ring-finger-metacarpal", "ring-finger-phalanx-proximal", "ring-finger-phalanx-intermediate", "ring-finger-phalanx-distal", "ring-finger-tip"]
+   ["pinky-finger-metacarpal", "pinky-finger-phalanx-proximal", "pinky-finger-phalanx-intermediate", "pinky-finger-phalanx-distal", "pinky-finger-tip"]
 ];
 
 function renderSkeleton(inputSource, frame, renderer) {
@@ -108,7 +108,7 @@ const buttons = [
 ];
 
 function checkInteraction(button, inputSource, frame, renderer) {
-   let tip = frame.getPose(inputSource.hand.get("index-finger-phalanx-tip"), renderer.referenceSpace);
+   let tip = frame.getPose(inputSource.hand.get("index-finger-tip"), renderer.referenceSpace);
    let distance = calculateDistance(tip.transform.position, button.position);
    if (distance < button.radius) {
       if (!button.pressed) {
@@ -140,10 +140,10 @@ One can do gesture detection using the position and orientation values of the va
 
 ```js
 function checkFistGesture(inputSource, frame, renderer) {
-   for (finger of [["index-finger-phalanx-tip", "index-finger-metacarpal"],
-                  ["middle-finger-phalanx-tip", "middle-finger-metacarpal"],
-                  ["ring-finger-phalanx-tip", "ring-finger-metacarpal"],
-                  ["pinky-finger-phalanx-tip", "pinky-finger-metacarpal"]]) {
+   for (finger of [["index-finger-tip", "index-finger-metacarpal"],
+                  ["middle-finger-tip", "middle-finger-metacarpal"],
+                  ["ring-finger-tip", "ring-finger-metacarpal"],
+                  ["pinky-finger-tip", "pinky-finger-metacarpal"]]) {
       let tip = finger[0];
       let metacarpal = finger[1];
       let tipPose = frame.getPose(inputSource.hand.get(tip), renderer.referenceSpace);
