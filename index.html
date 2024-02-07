@@ -5,10 +5,9 @@
   <title>WebXR Hand Input Module - Level 1</title>
   <meta content="ED" name="w3c-status">
   <link href="https://www.w3.org/StyleSheets/TR/2021/W3C-ED" rel="stylesheet">
-  <link href="https://www.w3.org/2008/site/images/favicon.ico" rel="icon">
-  <meta content="Bikeshed version fb1e763a4, updated Tue Mar 1 13:13:50 2022 -0800" name="generator">
+  <meta content="Bikeshed version 82ce88815, updated Thu Sep 7 16:33:55 2023 -0700" name="generator">
   <link href="https://www.w3.org/TR/webxr-hand-input-1/" rel="canonical">
-  <meta content="4c24109a71fd88f88e57755c0f4ff9e0ddd3ee57" name="document-revision">
+  <meta content="16b03715d08c6bd3edb3dc2717ff3db01a346052" name="document-revision">
   <link href="favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
   <link href="favicon-96x96.png" rel="icon" sizes="96x96" type="image/png">
 <style>
@@ -64,8 +63,7 @@
     word-break: normal;
   }
 </style>
-<style>/* style-autolinks */
-
+<style>/* Boilerplate: style-autolinks */
 .css.css, .property.property, .descriptor.descriptor {
     color: var(--a-normal-text);
     font-size: inherit;
@@ -125,8 +123,17 @@ pre .property::before, pre .property::after {
 
 [data-link-type=biblio] {
     white-space: pre;
-}</style>
-<style>/* style-colors */
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --selflink-text: black;
+        --selflink-bg: silver;
+        --selflink-hover-text: white;
+    }
+}
+</style>
+<style>/* Boilerplate: style-colors */
 
 /* Any --*-text not paired with a --*-bg is assumed to have a transparent bg */
 :root {
@@ -234,224 +241,7 @@ pre .property::before, pre .property::after {
     --outdated-shadow: red;
 
     --editedrec-bg: darkorange;
-}</style>
-<style>/* style-counters */
-
-body {
-    counter-reset: example figure issue;
 }
-.issue {
-    counter-increment: issue;
-}
-.issue:not(.no-marker)::before {
-    content: "Issue " counter(issue);
-}
-
-.example {
-    counter-increment: example;
-}
-.example:not(.no-marker)::before {
-    content: "Example " counter(example);
-}
-.invalid.example:not(.no-marker)::before,
-.illegal.example:not(.no-marker)::before {
-    content: "Invalid Example" counter(example);
-}
-
-figcaption {
-    counter-increment: figure;
-}
-figcaption:not(.no-marker)::before {
-    content: "Figure " counter(figure) " ";
-}</style>
-<style>/* style-dfn-panel */
-
-:root {
-    --dfnpanel-bg: #ddd;
-    --dfnpanel-text: var(--text);
-}
-.dfn-panel {
-    position: absolute;
-    z-index: 35;
-    height: auto;
-    width: -webkit-fit-content;
-    width: fit-content;
-    max-width: 300px;
-    max-height: 500px;
-    overflow: auto;
-    padding: 0.5em 0.75em;
-    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
-    background: var(--dfnpanel-bg);
-    color: var(--dfnpanel-text);
-    border: outset 0.2em;
-}
-.dfn-panel:not(.on) { display: none; }
-.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
-.dfn-panel > b { display: block; }
-.dfn-panel a { color: var(--dfnpanel-text); }
-.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
-.dfn-panel > b + b { margin-top: 0.25em; }
-.dfn-panel ul { padding: 0; }
-.dfn-panel li { list-style: inside; }
-.dfn-panel.activated {
-    display: inline-block;
-    position: fixed;
-    left: .5em;
-    bottom: 2em;
-    margin: 0 auto;
-    max-width: calc(100vw - 1.5em - .4em - .5em);
-    max-height: 30vh;
-}
-
-.dfn-paneled { cursor: pointer; }
-</style>
-<style>/* style-issues */
-
-a[href].issue-return {
-    float: right;
-    float: inline-end;
-    color: var(--issueheading-text);
-    font-weight: bold;
-    text-decoration: none;
-}
-</style>
-<style>/* style-md-lists */
-
-/* This is a weird hack for me not yet following the commonmark spec
-   regarding paragraph and lists. */
-[data-md] > :first-child {
-    margin-top: 0;
-}
-[data-md] > :last-child {
-    margin-bottom: 0;
-}</style>
-<style>/* style-selflinks */
-
-:root {
-    --selflink-text: white;
-    --selflink-bg: gray;
-    --selflink-hover-text: black;
-}
-.heading, .issue, .note, .example, li, dt {
-    position: relative;
-}
-a.self-link {
-    position: absolute;
-    top: 0;
-    left: calc(-1 * (3.5rem - 26px));
-    width: calc(3.5rem - 26px);
-    height: 2em;
-    text-align: center;
-    border: none;
-    transition: opacity .2s;
-    opacity: .5;
-}
-a.self-link:hover {
-    opacity: 1;
-}
-.heading > a.self-link {
-    font-size: 83%;
-}
-li > a.self-link {
-    left: calc(-1 * (3.5rem - 26px) - 2em);
-}
-dfn > a.self-link {
-    top: auto;
-    left: auto;
-    opacity: 0;
-    width: 1.5em;
-    height: 1.5em;
-    background: var(--selflink-bg);
-    color: var(--selflink-text);
-    font-style: normal;
-    transition: opacity .2s, background-color .2s, color .2s;
-}
-dfn:hover > a.self-link {
-    opacity: 1;
-}
-dfn > a.self-link:hover {
-    color: var(--selflink-hover-text);
-}
-
-a.self-link::before            { content: "¶"; }
-.heading > a.self-link::before { content: "§"; }
-dfn > a.self-link::before      { content: "#"; }
-</style>
-<style>/* style-syntax-highlighting */
-
-            pre.idl.highlight {
-                background: var(--borderedblock-bg, var(--def-bg));
-            }
-            
-code.highlight { padding: .1em; border-radius: .3em; }
-pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
-
-.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
-c-[a] { color: #990055 } /* Keyword.Declaration */
-c-[b] { color: #990055 } /* Keyword.Type */
-c-[c] { color: #708090 } /* Comment */
-c-[d] { color: #708090 } /* Comment.Multiline */
-c-[e] { color: #0077aa } /* Name.Attribute */
-c-[f] { color: #669900 } /* Name.Tag */
-c-[g] { color: #222222 } /* Name.Variable */
-c-[k] { color: #990055 } /* Keyword */
-c-[l] { color: #000000 } /* Literal */
-c-[m] { color: #000000 } /* Literal.Number */
-c-[n] { color: #0077aa } /* Name */
-c-[o] { color: #999999 } /* Operator */
-c-[p] { color: #999999 } /* Punctuation */
-c-[s] { color: #a67f59 } /* Literal.String */
-c-[t] { color: #a67f59 } /* Literal.String.Single */
-c-[u] { color: #a67f59 } /* Literal.String.Double */
-c-[cp] { color: #708090 } /* Comment.Preproc */
-c-[c1] { color: #708090 } /* Comment.Single */
-c-[cs] { color: #708090 } /* Comment.Special */
-c-[kc] { color: #990055 } /* Keyword.Constant */
-c-[kn] { color: #990055 } /* Keyword.Namespace */
-c-[kp] { color: #990055 } /* Keyword.Pseudo */
-c-[kr] { color: #990055 } /* Keyword.Reserved */
-c-[ld] { color: #000000 } /* Literal.Date */
-c-[nc] { color: #0077aa } /* Name.Class */
-c-[no] { color: #0077aa } /* Name.Constant */
-c-[nd] { color: #0077aa } /* Name.Decorator */
-c-[ni] { color: #0077aa } /* Name.Entity */
-c-[ne] { color: #0077aa } /* Name.Exception */
-c-[nf] { color: #0077aa } /* Name.Function */
-c-[nl] { color: #0077aa } /* Name.Label */
-c-[nn] { color: #0077aa } /* Name.Namespace */
-c-[py] { color: #0077aa } /* Name.Property */
-c-[ow] { color: #999999 } /* Operator.Word */
-c-[mb] { color: #000000 } /* Literal.Number.Bin */
-c-[mf] { color: #000000 } /* Literal.Number.Float */
-c-[mh] { color: #000000 } /* Literal.Number.Hex */
-c-[mi] { color: #000000 } /* Literal.Number.Integer */
-c-[mo] { color: #000000 } /* Literal.Number.Oct */
-c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
-c-[sc] { color: #a67f59 } /* Literal.String.Char */
-c-[sd] { color: #a67f59 } /* Literal.String.Doc */
-c-[se] { color: #a67f59 } /* Literal.String.Escape */
-c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
-c-[si] { color: #a67f59 } /* Literal.String.Interpol */
-c-[sx] { color: #a67f59 } /* Literal.String.Other */
-c-[sr] { color: #a67f59 } /* Literal.String.Regex */
-c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
-c-[vc] { color: #0077aa } /* Name.Variable.Class */
-c-[vg] { color: #0077aa } /* Name.Variable.Global */
-c-[vi] { color: #0077aa } /* Name.Variable.Instance */
-c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
-</style>
-<style>/* style-var-click-highlighting */
-
-    var { cursor: pointer; }
-    var.selected0 { background-color: #F4D200; box-shadow: 0 0 0 2px #F4D200; }
-    var.selected1 { background-color: #FF87A2; box-shadow: 0 0 0 2px #FF87A2; }
-    var.selected2 { background-color: #96E885; box-shadow: 0 0 0 2px #96E885; }
-    var.selected3 { background-color: #3EEED2; box-shadow: 0 0 0 2px #3EEED2; }
-    var.selected4 { background-color: #EACFB6; box-shadow: 0 0 0 2px #EACFB6; }
-    var.selected5 { background-color: #82DDFF; box-shadow: 0 0 0 2px #82DDFF; }
-    var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
-    </style>
-<style>/* style-darkmode */
 
 @media (prefers-color-scheme: dark) {
     :root {
@@ -564,20 +354,508 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
        which is quite common in practice... */
     img { background: white; }
 }
-@media (prefers-color-scheme: dark) {
-    :root {
-        --selflink-text: black;
-        --selflink-bg: silver;
-        --selflink-hover-text: white;
-    }
+</style>
+<style>/* Boilerplate: style-counters */
+body {
+    counter-reset: example figure issue;
+}
+.issue {
+    counter-increment: issue;
+}
+.issue:not(.no-marker)::before {
+    content: "Issue " counter(issue);
 }
 
+.example {
+    counter-increment: example;
+}
+.example:not(.no-marker)::before {
+    content: "Example " counter(example);
+}
+.invalid.example:not(.no-marker)::before,
+.illegal.example:not(.no-marker)::before {
+    content: "Invalid Example" counter(example);
+}
+
+figcaption {
+    counter-increment: figure;
+}
+figcaption:not(.no-marker)::before {
+    content: "Figure " counter(figure) " ";
+}
+</style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+}
 @media (prefers-color-scheme: dark) {
     :root {
         --dfnpanel-bg: #222;
         --dfnpanel-text: var(--text);
     }
 }
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    white-space: pre;
+    display: inline-block;
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled[role="button"] { cursor: pointer; }
+</style>
+<style>/* Boilerplate: style-dfn-panel */
+:root {
+    --dfnpanel-bg: #ddd;
+    --dfnpanel-text: var(--text);
+}
+@media (prefers-color-scheme: dark) {
+    :root {
+        --dfnpanel-bg: #222;
+        --dfnpanel-text: var(--text);
+    }
+}
+.dfn-panel {
+    position: absolute;
+    z-index: 35;
+    width: 20em;
+    width: 300px;
+    height: auto;
+    max-height: 500px;
+    overflow: auto;
+    padding: 0.5em 0.75em;
+    font: small Helvetica Neue, sans-serif, Droid Sans Fallback;
+    background: var(--dfnpanel-bg);
+    color: var(--dfnpanel-text);
+    border: outset 0.2em;
+    white-space: normal; /* in case it's moved into a pre */
+}
+.dfn-panel:not(.on) { display: none; }
+.dfn-panel * { margin: 0; padding: 0; text-indent: 0; }
+.dfn-panel > b { display: block; }
+.dfn-panel a { color: var(--dfnpanel-text); }
+.dfn-panel a:not(:hover) { text-decoration: none !important; border-bottom: none !important; }
+.dfn-panel > b + b { margin-top: 0.25em; }
+.dfn-panel ul { padding: 0 0 0 1em; list-style: none; }
+.dfn-panel li a {
+    white-space: pre;
+    display: inline-block;
+    max-width: calc(300px - 1.5em - 1em);
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.dfn-panel.activated {
+    display: inline-block;
+    position: fixed;
+    left: .5em;
+    bottom: 2em;
+    margin: 0 auto;
+    max-width: calc(100vw - 1.5em - .4em - .5em);
+    max-height: 30vh;
+}
+
+.dfn-paneled[role="button"] { cursor: pointer; }
+</style>
+<style>/* Boilerplate: style-issues */
+a[href].issue-return {
+    float: right;
+    float: inline-end;
+    color: var(--issueheading-text);
+    font-weight: bold;
+    text-decoration: none;
+}
+</style>
+<style>/* Boilerplate: style-md-lists */
+/* This is a weird hack for me not yet following the commonmark spec
+   regarding paragraph and lists. */
+[data-md] > :first-child {
+    margin-top: 0;
+}
+[data-md] > :last-child {
+    margin-bottom: 0;
+}
+</style>
+<style>/* Boilerplate: style-mdn-anno */
+:root {
+	--mdn-bg: #EEE;
+	--mdn-shadow: #999;
+	--mdn-nosupport-text: #ccc;
+}
+@media (prefers-color-scheme: dark) {
+	:root {
+		--mdn-bg: #222;
+		--mdn-shadow: #444;
+		--mdn-nosupport-text: #666;
+	}
+}
+.mdn-anno {
+	background: var(--mdn-bg, #EEE);
+	border-radius: .25em;
+	box-shadow: 0 0 3px var(--mdn-shadow, #999);
+	color: var(--text, black);
+	font: 1em sans-serif;
+	hyphens: none;
+	max-width: min-content;
+	overflow: hidden;
+	padding: 0.2em;
+	position: absolute;
+	right: 0.3em;
+	top: auto;
+	white-space: nowrap;
+	word-wrap: normal;
+	z-index: 8;
+}
+.mdn-anno.unpositioned {
+	display: none;
+}
+.mdn-anno.overlapping-main {
+	opacity: .2;
+	transition: opacity .1s;
+}
+.mdn-anno[open] {
+	opacity: 1;
+	z-index: 9;
+	min-width: 9em;
+}
+.mdn-anno:hover {
+	opacity: 1;
+	outline: var(--text, black) 1px solid;
+}
+.mdn-anno > summary {
+	font-weight: normal;
+	text-align: right;
+	cursor: pointer;
+	display: block;
+}
+.mdn-anno > summary > .less-than-two-engines-flag {
+	color: red;
+	padding-right: 2px;
+}
+.mdn-anno > summary > .all-engines-flag {
+	color: green;
+	padding-right: 2px;
+}
+.mdn-anno > summary > span {
+	color: #fff;
+	background-color: #000;
+	font-weight: normal;
+	font-family: zillaslab, Palatino, "Palatino Linotype", serif;
+	padding: 2px 3px 0px 3px;
+	line-height: 1.3em;
+	vertical-align: top;
+}
+.mdn-anno > .feature {
+	margin-top: 20px;
+}
+.mdn-anno > .feature:not(:first-of-type) {
+	border-top: 1px solid #999;
+	margin-top: 6px;
+	padding-top: 2px;
+}
+.mdn-anno > .feature > .less-than-two-engines-text {
+	color: red;
+}
+.mdn-anno > .feature > .all-engines-text {
+	color: green;
+}
+.mdn-anno > .feature > p {
+	font-size: .75em;
+	margin-top: 6px;
+	margin-bottom: 0;
+}
+.mdn-anno > .feature > p + p {
+	margin-top: 3px;
+}
+.mdn-anno > .feature > .support {
+	display: block;
+	font-size: 0.6em;
+	margin: 0;
+	padding: 0;
+	margin-top: 2px;
+}
+.mdn-anno > .feature > .support + div {
+	padding-top: 0.5em;
+}
+.mdn-anno > .feature > .support > hr {
+	display: block;
+	border: none;
+	border-top: 1px dotted #999;
+	padding: 3px 0px 0px 0px;
+	margin: 2px 3px 0px 3px;
+}
+.mdn-anno > .feature > .support > hr::before {
+	content: "";
+}
+.mdn-anno > .feature > .support > span {
+	padding: 0.2em 0;
+	display: block;
+	display: table;
+}
+.mdn-anno > .feature > .support > span.no {
+	color: var(--mdn-nosupport-text);
+	filter: grayscale(100%);
+}
+.mdn-anno > .feature > .support > span.no::before {
+	opacity: 0.5;
+}
+.mdn-anno > .feature > .support > span:first-of-type {
+	padding-top: 0.5em;
+}
+.mdn-anno > .feature > .support > span > span {
+	padding: 0 0.5em;
+	display: table-cell;
+}
+.mdn-anno > .feature > .support > span > span:first-child {
+	width: 100%;
+}
+.mdn-anno > .feature > .support > span > span:last-child {
+	width: 100%;
+	white-space: pre;
+	padding: 0;
+}
+.mdn-anno > .feature > .support > span::before {
+	content: ' ';
+	display: table-cell;
+	min-width: 1.5em;
+	height: 1.5em;
+	background: no-repeat center center;
+	background-size: contain;
+	text-align: right;
+	font-size: 0.75em;
+	font-weight: bold;
+}
+.mdn-anno > .feature > .support > .chrome_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);
+}
+.mdn-anno > .feature > .support > .firefox_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);
+}
+.mdn-anno > .feature > .support > .chrome::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/chrome.svg);
+}
+.mdn-anno > .feature > .support > .edge_blink::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/edge.svg);
+}
+.mdn-anno > .feature > .support > .edge::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/edge_legacy.svg);
+}
+.mdn-anno > .feature > .support > .firefox::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/firefox.png);
+}
+.mdn-anno > .feature > .support > .ie::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/ie.png);
+}
+.mdn-anno > .feature > .support > .safari_ios::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/safari-ios.svg);
+}
+.mdn-anno > .feature > .support > .nodejs::before {
+	background-image: url(https://nodejs.org/static/images/favicons/favicon.ico);
+}
+.mdn-anno > .feature > .support > .opera_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/opera.svg);
+}
+.mdn-anno > .feature > .support > .opera::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/opera.svg);
+}
+.mdn-anno > .feature > .support > .safari::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/safari.png);
+}
+.mdn-anno > .feature > .support > .samsunginternet_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/samsung.svg);
+}
+.mdn-anno > .feature > .support > .webview_android::before {
+	background-image: url(https://resources.whatwg.org/browser-logos/android-webview.png);
+}
+.name-slug-mismatch {
+	color: red;
+}
+.caniuse-status:hover {
+	z-index: 9;
+}
+/* dt, li, .issue, .note, and .example are "position: relative", so to put annotation at right margin, must move to right of containing block */;
+.h-entry:not(.status-LS) dt > .mdn-anno, .h-entry:not(.status-LS) li > .mdn-anno, .h-entry:not(.status-LS) .issue > .mdn-anno, .h-entry:not(.status-LS) .note > .mdn-anno, .h-entry:not(.status-LS) .example > .mdn-anno {
+	right: -6.7em;
+}
+.h-entry p + .mdn-anno {
+	margin-top: 0;
+}
+ h2 + .mdn-anno.after {
+	margin: -48px 0 0 0;
+}
+ h3 + .mdn-anno.after {
+	margin: -46px 0 0 0;
+}
+ h4 + .mdn-anno.after {
+	margin: -42px 0 0 0;
+}
+ h5 + .mdn-anno.after {
+	margin: -40px 0 0 0;
+}
+ h6 + .mdn-anno.after {
+	margin: -40px 0 0 0;
+}
+</style>
+<style>/* Boilerplate: style-selflinks */
+
+:root {
+    --selflink-text: white;
+    --selflink-bg: gray;
+    --selflink-hover-text: black;
+}
+.heading, .issue, .note, .example, li, dt {
+    position: relative;
+}
+a.self-link {
+    position: absolute;
+    top: 0;
+    left: calc(-1 * (3.5rem - 26px));
+    width: calc(3.5rem - 26px);
+    height: 2em;
+    text-align: center;
+    border: none;
+    transition: opacity .2s;
+    opacity: .5;
+}
+a.self-link:hover {
+    opacity: 1;
+}
+.heading > a.self-link {
+    font-size: 83%;
+}
+.example > a.self-link,
+.note > a.self-link,
+.issue > a.self-link {
+    /* These blocks are overflow:auto, so positioning outside
+       doesn't work. */
+    left: auto;
+    right: 0;
+}
+li > a.self-link {
+    left: calc(-1 * (3.5rem - 26px) - 2em);
+}
+dfn > a.self-link {
+    top: auto;
+    left: auto;
+    opacity: 0;
+    width: 1.5em;
+    height: 1.5em;
+    background: var(--selflink-bg);
+    color: var(--selflink-text);
+    font-style: normal;
+    transition: opacity .2s, background-color .2s, color .2s;
+}
+dfn:hover > a.self-link {
+    opacity: 1;
+}
+dfn > a.self-link:hover {
+    color: var(--selflink-hover-text);
+}
+
+a.self-link::before            { content: "¶"; }
+.heading > a.self-link::before { content: "§"; }
+dfn > a.self-link::before      { content: "#"; }
+</style>
+<style>/* Boilerplate: style-syntax-highlighting */
+
+            pre.idl.highlight {
+                background: var(--borderedblock-bg, var(--def-bg));
+            }
+            
+</style>
+<style>/* Boilerplate: style-syntax-highlighting */
+
+code.highlight { padding: .1em; border-radius: .3em; }
+pre.highlight, pre > code.highlight { display: block; padding: 1em; margin: .5em 0; overflow: auto; border-radius: 0; }
+
+.highlight:not(.idl) { background: rgba(0, 0, 0, .03); }
+c-[a] { color: #990055 } /* Keyword.Declaration */
+c-[b] { color: #990055 } /* Keyword.Type */
+c-[c] { color: #708090 } /* Comment */
+c-[d] { color: #708090 } /* Comment.Multiline */
+c-[e] { color: #0077aa } /* Name.Attribute */
+c-[f] { color: #669900 } /* Name.Tag */
+c-[g] { color: #222222 } /* Name.Variable */
+c-[k] { color: #990055 } /* Keyword */
+c-[l] { color: #000000 } /* Literal */
+c-[m] { color: #000000 } /* Literal.Number */
+c-[n] { color: #0077aa } /* Name */
+c-[o] { color: #999999 } /* Operator */
+c-[p] { color: #999999 } /* Punctuation */
+c-[s] { color: #a67f59 } /* Literal.String */
+c-[t] { color: #a67f59 } /* Literal.String.Single */
+c-[u] { color: #a67f59 } /* Literal.String.Double */
+c-[cp] { color: #708090 } /* Comment.Preproc */
+c-[c1] { color: #708090 } /* Comment.Single */
+c-[cs] { color: #708090 } /* Comment.Special */
+c-[kc] { color: #990055 } /* Keyword.Constant */
+c-[kn] { color: #990055 } /* Keyword.Namespace */
+c-[kp] { color: #990055 } /* Keyword.Pseudo */
+c-[kr] { color: #990055 } /* Keyword.Reserved */
+c-[ld] { color: #000000 } /* Literal.Date */
+c-[nc] { color: #0077aa } /* Name.Class */
+c-[no] { color: #0077aa } /* Name.Constant */
+c-[nd] { color: #0077aa } /* Name.Decorator */
+c-[ni] { color: #0077aa } /* Name.Entity */
+c-[ne] { color: #0077aa } /* Name.Exception */
+c-[nf] { color: #0077aa } /* Name.Function */
+c-[nl] { color: #0077aa } /* Name.Label */
+c-[nn] { color: #0077aa } /* Name.Namespace */
+c-[py] { color: #0077aa } /* Name.Property */
+c-[ow] { color: #999999 } /* Operator.Word */
+c-[mb] { color: #000000 } /* Literal.Number.Bin */
+c-[mf] { color: #000000 } /* Literal.Number.Float */
+c-[mh] { color: #000000 } /* Literal.Number.Hex */
+c-[mi] { color: #000000 } /* Literal.Number.Integer */
+c-[mo] { color: #000000 } /* Literal.Number.Oct */
+c-[sb] { color: #a67f59 } /* Literal.String.Backtick */
+c-[sc] { color: #a67f59 } /* Literal.String.Char */
+c-[sd] { color: #a67f59 } /* Literal.String.Doc */
+c-[se] { color: #a67f59 } /* Literal.String.Escape */
+c-[sh] { color: #a67f59 } /* Literal.String.Heredoc */
+c-[si] { color: #a67f59 } /* Literal.String.Interpol */
+c-[sx] { color: #a67f59 } /* Literal.String.Other */
+c-[sr] { color: #a67f59 } /* Literal.String.Regex */
+c-[ss] { color: #a67f59 } /* Literal.String.Symbol */
+c-[vc] { color: #0077aa } /* Name.Variable.Class */
+c-[vg] { color: #0077aa } /* Name.Variable.Global */
+c-[vi] { color: #0077aa } /* Name.Variable.Instance */
+c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
+
+
 @media (prefers-color-scheme: dark) {
     .highlight:not(.idl) { background: rgba(255, 255, 255, .05); }
 
@@ -641,11 +919,32 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     c-[il] { color: #657b83 } /* Literal.Number.Integer.Long */
 }
 </style>
+<style>/* Boilerplate: style-var-click-highlighting */
+/*
+Colors were chosen in Lab using https://nixsensor.com/free-color-converter/
+D50 2deg illuminant, L in [0,100], a and b in [-128, 128]
+0 = lab(85,0,85)
+1 = lab(85,80,30)
+2 = lab(85,-40,40)
+3 = lab(85,-50,0)
+4 = lab(85,5,15)
+5 = lab(85,-10,-50)
+6 = lab(85,35,-15)
+*/
+var { cursor: pointer; }
+var.selected0 { background-color: #F4D200; box-shadow: 0 0 0 2px #F4D200; }
+var.selected1 { background-color: #FF87A2; box-shadow: 0 0 0 2px #FF87A2; }
+var.selected2 { background-color: #96E885; box-shadow: 0 0 0 2px #96E885; }
+var.selected3 { background-color: #3EEED2; box-shadow: 0 0 0 2px #3EEED2; }
+var.selected4 { background-color: #EACFB6; box-shadow: 0 0 0 2px #EACFB6; }
+var.selected5 { background-color: #82DDFF; box-shadow: 0 0 0 2px #82DDFF; }
+var.selected6 { background-color: #FFBCF2; box-shadow: 0 0 0 2px #FFBCF2; }
+</style>
  <body class="h-entry">
   <div class="head">
    <p data-fill-with="logo"><a class="logo" href="https://www.w3.org/"> <img alt="W3C" height="48" src="https://www.w3.org/StyleSheets/TR/2021/logos/W3C" width="72"> </a> </p>
    <h1 class="p-name no-ref" id="title">WebXR Hand Input Module - Level 1</h1>
-   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2022-04-19">19 April 2022</time></p>
+   <p id="w3c-state"><a href="https://www.w3.org/standards/types#ED">Editor’s Draft</a>, <time class="dt-updated" datetime="2024-02-07">7 February 2024</time></p>
    <details open>
     <summary>More details about this document</summary>
     <div data-fill-with="spec-metadata">
@@ -669,7 +968,7 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
     </div>
    </details>
    <div data-fill-with="warning"></div>
-   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/Consortium/Legal/ipr-notice#Copyright">Copyright</a> © 2022 <a href="https://www.w3.org/"><abbr title="World Wide Web Consortium">W3C</abbr></a><sup>®</sup> (<a href="https://www.csail.mit.edu/"><abbr title="Massachusetts Institute of Technology">MIT</abbr></a>, <a href="https://www.ercim.eu/"><abbr title="European Research Consortium for Informatics and Mathematics">ERCIM</abbr></a>, <a href="https://www.keio.ac.jp/">Keio</a>, <a href="https://ev.buaa.edu.cn/">Beihang</a>). W3C <a href="https://www.w3.org/Consortium/Legal/ipr-notice#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/Consortium/Legal/ipr-notice#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/Consortium/Legal/2015/copyright-software-and-document" rel="license">permissive document license</a> rules apply. </p>
+   <p class="copyright" data-fill-with="copyright"><a href="https://www.w3.org/policies/#copyright">Copyright</a> © 2024 <a href="https://www.w3.org/">World Wide Web Consortium</a>. <abbr title="World Wide Web Consortium">W3C</abbr><sup>®</sup> <a href="https://www.w3.org/policies/#Legal_Disclaimer">liability</a>, <a href="https://www.w3.org/policies/#W3C_Trademarks">trademark</a> and <a href="https://www.w3.org/copyright/software-license/" rel="license" title="W3C Software and Document License">permissive document license</a> rules apply. </p>
    <hr title="Separator for header">
   </div>
   <div class="p-summary" data-fill-with="abstract">
@@ -688,12 +987,12 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
    <p> Publication as an Editors' Draft does not imply endorsement by <abbr title="World Wide Web Consortium">W3C</abbr> and its Members. This is a draft document and may
     be updated, replaced or obsoleted by other documents at any time. It is inappropriate to cite
     this document as other than work in progress. </p>
-   <p> This document was produced by a group operating under the <a href="http://www.w3.org/Consortium/Patent-Policy-20170801/"> 1 August 2017 <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. <abbr title="World Wide Web Consortium">W3C</abbr> maintains a <a href="https://www.w3.org/groups/wg/immersive-web/ipr" rel="disclosure">public list of any
-    patent disclosures</a> made in connection with the deliverables of the group; that page also
-    includes instructions for disclosing a patent. An individual who has actual knowledge of a
-    patent which the individual believes contains <a href="http://www.w3.org/Consortium/Patent-Policy-20170801/#def-essential">Essential
-    Claim(s)</a> must disclose the information in accordance with <a href="http://www.w3.org/Consortium/Patent-Policy-20170801/#sec-Disclosure">section 6 of the <abbr title="World Wide Web Consortium">W3C</abbr> Patent Policy</a>. </p>
-   <p> This document is governed by the <a href="https://www.w3.org/2021/Process-20211102/" id="w3c_process_revision">2 November 2021 W3C Process Document</a>. </p>
+   <p> This document was produced by a group operating under the <a href="https://www.w3.org/Consortium/Patent-Policy/">W3C Patent Policy</a>.
+    W3C maintains a <a href="https://www.w3.org/groups/wg/immersive-web/ipr" rel="disclosure">public list of any patent
+    disclosures</a> made in connection with the deliverables of the group; that page also includes instructions for disclosing a patent. An individual who has actual knowledge of a patent which the individual believes contains <a href="https://www.w3.org/Consortium/Patent-Policy/#def-essential">Essential
+    Claim(s)</a> must disclose the information in accordance with <a href="https://www.w3.org/Consortium/Patent-Policy/#sec-Disclosure">section
+    6 of the W3C Patent Policy</a>. </p>
+   <p> This document is governed by the <a href="https://www.w3.org/2023/Process-20231103/" id="w3c_process_revision">03 November 2023 W3C Process Document</a>. </p>
    <p></p>
    <p>This WebXR Augmented Reality Module is designed as a module to be implemented in addition to <a href="https://www.w3.org/TR/webxr/">WebXR Device API</a>, and is originally included in WebXR Device API which was divided into core and modules.</p>
   </div>
@@ -747,27 +1046,27 @@ c-[il] { color: #000000 } /* Literal.Number.Integer.Long */
   <main>
    <h2 class="heading settled" data-level="1" id="intro"><span class="secno">1. </span><span class="content">Introduction</span><a class="self-link" href="#intro"></a></h2>
    <section class="non-normative">
-     On some <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device">XR devices</a> it is possible to get fully articulated information about the user’s hands when they are used as input sources. 
+     On some <a data-link-type="dfn">XR devices</a> it is possible to get fully articulated information about the user’s hands when they are used as input sources. 
     <p>This API exposes the poses of each of the users' hand <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints">skeleton joints</a>. This can be used to do gesture detection or to render a hand model in VR scenarios.</p>
    </section>
    <h2 class="heading settled" data-level="2" id="initialization"><span class="secno">2. </span><span class="content">Initialization</span><a class="self-link" href="#initialization"></a></h2>
    <p>If an application wants to view articulated hand pose information during a session,
-the session MUST be requested with an appropriate <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor">feature descriptor</a>. The string "<dfn class="dfn-paneled" data-dfn-for="feature descriptor" data-dfn-type="dfn" data-noexport id="feature-descriptor-hand-tracking">hand-tracking</dfn>" is introduced
-by this module as a new valid <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor①">feature descriptor</a> for articulated hand tracking.</p>
-   <p>The "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor②">feature descriptor</a> should only be granted for an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession">XRSession</a></code> when its <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-xr-device" id="ref-for-xrsession-xr-device">XR device</a> has <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source">physical hand input sources</a> that <a data-link-type="dfn" href="#supports-hand-tracking" id="ref-for-supports-hand-tracking">support hand tracking</a>.</p>
-   <p>The user agent MAY gate support for hand based <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource">XRInputSources</a></code> based upon this <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor③">feature descriptor</a>.</p>
-   <p class="note" role="note"><span>NOTE:</span> This means that if an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession①">XRSession</a></code> does not request the "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking①">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor④">feature descriptor</a>, the user agent may choose to not support input controllers that are hand based.</p>
+the session MUST be requested with an appropriate <a data-link-type="dfn">feature descriptor</a>. The string "<dfn class="dfn-paneled" data-dfn-for="feature descriptor" data-dfn-type="dfn" data-noexport id="feature-descriptor-hand-tracking">hand-tracking</dfn>" is introduced
+by this module as a new valid <a data-link-type="dfn">feature descriptor</a> for articulated hand tracking.</p>
+   <p>The "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking">hand-tracking</a>" <a data-link-type="dfn">feature descriptor</a> should only be granted for an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession">XRSession</a></code> when its <a data-link-type="dfn">XR device</a> has <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source">physical hand input sources</a> that <a data-link-type="dfn" href="#supports-hand-tracking" id="ref-for-supports-hand-tracking">support hand tracking</a>.</p>
+   <p>The user agent MAY gate support for hand based <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource">XRInputSources</a></code> based upon this <a data-link-type="dfn">feature descriptor</a>.</p>
+   <p class="note" role="note"><span class="marker">NOTE:</span> This means that if an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession①">XRSession</a></code> does not request the "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking①">hand-tracking</a>" <a data-link-type="dfn">feature descriptor</a>, the user agent may choose to not support input controllers that are hand based.</p>
    <h2 class="heading settled" data-level="3" id="physical-hand"><span class="secno">3. </span><span class="content">Physical Hand Input Sources</span><a class="self-link" href="#physical-hand"></a></h2>
    <p>An <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource①">XRInputSource</a></code> is a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="physical-hand-input-source">physical hand input source</dfn> if it tracks a physical hand. A <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source①">physical hand input source</a> <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="supports-hand-tracking">supports hand tracking</dfn> if it supports reporting the poses of one or more <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①">skeleton joints</a> defined in this specification.</p>
-   <p><a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source②">Physical hand input sources</a> MUST include the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrinputsource-input-profile-name" id="ref-for-xrinputsource-input-profile-name">input profile name</a> of "generic-hand-select" in their <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles" id="ref-for-dom-xrinputsource-profiles">profiles</a></code>.</p>
-   <p>For many <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source③">physical hand input sources</a>, there can be overlap between the gestures used for the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#primary-action" id="ref-for-primary-action">primary action</a> and the squeeze action. For example, a pinch gesture may indicate both a "select" and "squeeze" event, depending on whether you are interacting with nearby or far away objects. Since content may assume that these are independent events, user agents MAY, instead of surfacing the squeeze action as the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#primary-squeeze-action" id="ref-for-primary-squeeze-action">primary squeeze action</a>, surface it as an additional "grasp button", using an input profile derived from the "generic-hand-select-grasp" profile.</p>
+   <p><a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source②">Physical hand input sources</a> MUST include the <a data-link-type="dfn">input profile name</a> of either "generic-hand" or "generic-hand-select" in their <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles" id="ref-for-dom-xrinputsource-profiles">profiles</a></code>. "generic-hand-select" MUST be included if the input source is a <a data-link-type="dfn">primary input source</a>.</p>
+   <p>For many <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source③">physical hand input sources</a>, there can be overlap between the gestures used for the <a data-link-type="dfn">primary action</a> and the squeeze action. For example, a pinch gesture may indicate both a "select" and "squeeze" event, depending on whether you are interacting with nearby or far away objects. Since content may assume that these are independent events, user agents MAY, instead of surfacing the squeeze action as the <a data-link-type="dfn">primary squeeze action</a>, surface it as an additional "grasp button", using an input profile derived from the "generic-hand-select-grasp" profile.</p>
    <h3 class="heading settled" data-level="3.1" id="xrinputsource-interface"><span class="secno">3.1. </span><span class="content">XRInputSource</span><a class="self-link" href="#xrinputsource-interface"></a></h3>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource②"><c- g>XRInputSource</c-></a> {
    [<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#SameObject" id="ref-for-SameObject"><c- g>SameObject</c-></a>] <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#xrhand" id="ref-for-xrhand"><c- n>XRHand</c-></a>? <a class="idl-code" data-link-type="attribute" data-readonly data-type="XRHand?" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand"><c- g>hand</c-></a>;
 };
 </pre>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRInputSource" data-dfn-type="attribute" data-export id="dom-xrinputsource-hand"><code>hand</code></dfn> attribute on a <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source④">physical hand input source</a> that <a data-link-type="dfn" href="#supports-hand-tracking" id="ref-for-supports-hand-tracking①">supports hand tracking</a> will be an <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand①">XRHand</a></code> object giving access to the underlying hand-tracking capabilities. <code class="idl"><a data-link-type="idl" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand①">hand</a></code> will have its <a data-link-type="dfn" href="#xrhand-input-source" id="ref-for-xrhand-input-source">input source</a> set to <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this">this</a>.</p>
-   <p>If the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource③">XRInputSource</a></code> belongs to an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession②">XRSession</a></code> that has not been requested with the "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking②">hand-tracking</a>" <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#feature-descriptor" id="ref-for-feature-descriptor⑤">feature descriptor</a>, <code class="idl"><a data-link-type="idl" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand②">hand</a></code> MUST be <code>null</code>.</p>
+   <p>If the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrinputsource" id="ref-for-xrinputsource③">XRInputSource</a></code> belongs to an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrsession" id="ref-for-xrsession②">XRSession</a></code> that has not been requested with the "<a data-link-type="dfn" href="#feature-descriptor-hand-tracking" id="ref-for-feature-descriptor-hand-tracking②">hand-tracking</a>" <a data-link-type="dfn">feature descriptor</a>, <code class="idl"><a data-link-type="idl" href="#dom-xrinputsource-hand" id="ref-for-dom-xrinputsource-hand②">hand</a></code> MUST be <code>null</code>.</p>
    <h3 class="heading settled" data-level="3.2" id="skeleton-joints-section"><span class="secno">3.2. </span><span class="content">Skeleton Joints</span><a class="self-link" href="#skeleton-joints-section"></a></h3>
    <p>A <a data-link-type="dfn" href="#physical-hand-input-source" id="ref-for-physical-hand-input-source⑤">physical hand input source</a> is made up of many <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="skeleton-joints">skeleton joints</dfn>.</p>
    <p>A <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints②">skeleton joint</a> for a given hand can be uniquely identified by a <dfn class="dfn-paneled" data-dfn-type="dfn" data-noexport id="skeleton-joint-name">skeleton joint name</dfn>, which is an enum of type <code class="idl"><a data-link-type="idl" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint">XRHandJoint</a></code>.</p>
@@ -957,11 +1256,11 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
   <c- b>readonly</c-> <c- b>attribute</c-> <a data-link-type="idl-name" href="#enumdef-xrhandjoint" id="ref-for-enumdef-xrhandjoint⑦"><c- n>XRHandJoint</c-></a> <dfn class="idl-code" data-dfn-for="XRJointSpace" data-dfn-type="attribute" data-export data-readonly data-type="XRHandJoint" id="dom-xrjointspace-jointname"><code><c- g>jointName</c-></code><a class="self-link" href="#dom-xrjointspace-jointname"></a></dfn>;
 };
 </pre>
-   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin">native origin</a> of an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace④">XRJointSpace</a></code> is the position and orientation of the underlying <a data-link-type="dfn" href="#xrjointspace-joint" id="ref-for-xrjointspace-joint">joint</a>.</p>
-   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin①">native origin</a> of the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑤">XRJointSpace</a></code> may only be reported when <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin②">native origins</a> of all other <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑥">XRJointSpace</a></code>s on the same <a data-link-type="dfn" href="#xrjointspace-hand" id="ref-for-xrjointspace-hand">hand</a> are being reported. When a hand is partially obscured the user agent MUST either emulate the obscured joints, or report null poses for all of the joints.</p>
-   <p class="note" role="note"><span>Note:</span> This means that when fetching poses you will either get an entire hand or none of it.</p>
+   <p>The <a data-link-type="dfn">native origin</a> of an <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace④">XRJointSpace</a></code> is the position and orientation of the underlying <a data-link-type="dfn" href="#xrjointspace-joint" id="ref-for-xrjointspace-joint">joint</a>.</p>
+   <p>The <a data-link-type="dfn">native origin</a> of the <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑤">XRJointSpace</a></code> may only be reported when <a data-link-type="dfn">native origins</a> of all other <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑥">XRJointSpace</a></code>s on the same <a data-link-type="dfn" href="#xrjointspace-hand" id="ref-for-xrjointspace-hand">hand</a> are being reported. When a hand is partially obscured the user agent MUST either emulate the obscured joints, or report null poses for all of the joints.</p>
+   <p class="note" role="note"><span class="marker">Note:</span> This means that when fetching poses you will either get an entire hand or none of it.</p>
    <p class="issue" id="issue-9a52d08f"><a class="self-link" href="#issue-9a52d08f"></a> This by default precludes faithfully exposing polydactyl/oligodactyl hands, however for fingerprinting concerns it will likely need to be a separate opt-in, anyway. See <a href="https://github.com/immersive-web/webxr-hand-input/issues/11">Issue 11</a> for more details.</p>
-   <p>The <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-native-origin" id="ref-for-xrspace-native-origin③">native origin</a> has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.</p>
+   <p>The <a data-link-type="dfn">native origin</a> has its <code>-Y</code> direction pointing perpendicular to the skin, outwards from the palm, and <code>-Z</code> direction pointing along their associated bone, away from the wrist.</p>
    <p>For tip <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①①">skeleton joints</a> where there is no <a data-link-type="dfn" href="#associated-bone" id="ref-for-associated-bone②">associated bone</a>, the <code>-Z</code> direction is the same as that for the associated distal joint, i.e. the direction is along that of the previous bone. For wrist <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①②">skeleton joints</a> the <code>-Z</code> direction SHOULD point roughly towards the center of the palm.</p>
    <p>Every <code class="idl"><a data-link-type="idl" href="#xrjointspace" id="ref-for-xrjointspace⑦">XRJointSpace</a></code> has an associated <dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-hand">hand</dfn>, which is the <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑦">XRHand</a></code> that created it.</p>
    <p><dfn class="dfn-paneled" data-dfn-for="XRJointSpace" data-dfn-type="dfn" data-noexport id="xrjointspace-jointname">jointName</dfn> returns the joint name of the joint it tracks.</p>
@@ -976,7 +1275,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
 };
 </pre>
    <div class="algorithm" data-algorithm="get-joint-pose">
-    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="getJointPose(joint, baseSpace)" id="dom-xrframe-getjointpose"><code>getJointPose(XRJointSpace <var>joint</var>, XRSpace <var>baseSpace</var>)</code></dfn> method provides the pose of <var>joint</var> relative to <var>baseSpace</var> as an <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose①">XRJointPose</a></code>, at the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe①">XRFrame</a></code>'s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrframe-time" id="ref-for-xrframe-time">time</a>.</p>
+    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="getJointPose(joint, baseSpace)" id="dom-xrframe-getjointpose"><code>getJointPose(XRJointSpace <var>joint</var>, XRSpace <var>baseSpace</var>)</code></dfn> method provides the pose of <var>joint</var> relative to <var>baseSpace</var> as an <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose①">XRJointPose</a></code>, at the <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe①">XRFrame</a></code>'s <a data-link-type="dfn">time</a>.</p>
     <p>When this method is invoked, the user agent MUST run the following steps:</p>
     <ol>
      <li data-md>
@@ -986,11 +1285,11 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
      <li data-md>
       <p>If <var>frame</var>’s <a data-link-type="dfn" href="https://w3c.github.io/ServiceWorker/#extendableevent-active" id="ref-for-extendableevent-active">active</a> boolean is <code>false</code>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
-      <p>If <var>baseSpace</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session">session</a> or <var>joint</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session①">session</a> are different from <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this④">this</a> <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a></code>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code> and abort these steps.</p>
+      <p>If <var>baseSpace</var>’s <a data-link-type="dfn">session</a> or <var>joint</var>’s <a data-link-type="dfn">session</a> are different from <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#this" id="ref-for-this④">this</a> <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#dom-xrframe-session" id="ref-for-dom-xrframe-session①">session</a></code>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror①">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
       <p>Let <var>pose</var> be a <a data-link-type="dfn" href="https://webidl.spec.whatwg.org/#new" id="ref-for-new">new</a> <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose②">XRJointPose</a></code> object in the <a data-link-type="dfn" href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm" id="ref-for-concept-relevant-realm">relevant realm</a> of <var>session</var>.</p>
      <li data-md>
-      <p><a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#populate-the-pose" id="ref-for-populate-the-pose">Populate the pose</a> of <var>joint</var> in <var>baseSpace</var> at the time represented by <var>frame</var> into <var>pose</var>, with <code>force emulation</code> set to <code>false</code>.</p>
+      <p><a data-link-type="dfn">Populate the pose</a> of <var>joint</var> in <var>baseSpace</var> at the time represented by <var>frame</var> into <var>pose</var>, with <code>force emulation</code> set to <code>false</code>.</p>
      <li data-md>
       <p>If <var>pose</var> is <code>null</code> return <code>null</code>.</p>
      <li data-md>
@@ -1013,7 +1312,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
       <p>For each <var>joint</var> in the <var>jointSpaces</var>:</p>
       <ol>
        <li data-md>
-        <p>If <var>joint</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session②">session</a> is different from <var>session</var>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code> and abort these steps.</p>
+        <p>If <var>joint</var>’s <a data-link-type="dfn">session</a> is different from <var>session</var>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror③">InvalidStateError</a></code> and abort these steps.</p>
       </ol>
      <li data-md>
       <p>If the length of <var>jointSpaces</var> is larger than the number of elements in <var>radii</var>, throw a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror">TypeError</a></code> and abort these steps.</p>
@@ -1040,7 +1339,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
       <p>Return <var>allValid</var>.</p>
     </ol>
    </div>
-   <p class="note" role="note"><span>NOTE:</span> if the user agent can’t determine the pose of any of the spaces belonging to the same <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑧">XRHand</a></code>, all the spaces of that <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑨">XRHand</a></code> must also not have a pose.</p>
+   <p class="note" role="note"><span class="marker">NOTE:</span> if the user agent can’t determine the pose of any of the spaces belonging to the same <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑧">XRHand</a></code>, all the spaces of that <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand⑨">XRHand</a></code> must also not have a pose.</p>
    <div class="algorithm" data-algorithm="fill-poses">
     <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRFrame" data-dfn-type="method" data-export data-lt="fillPoses(spaces, baseSpace, transforms)" id="dom-xrframe-fillposes"><code>fillPoses(sequence&lt;XRSpace> <var>spaces</var>, XRSpace <var>baseSpace</var>, Float32Array <var>transforms</var>)</code></dfn> method populates <var>transforms</var> with the matrices of the poses of the <var>spaces</var> relative to the <var>baseSpace</var>, and returns a boolean indicating whether all of the spaces have a valid pose.</p>
     <p>When this method is invoked on an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrframe" id="ref-for-xrframe③">XRFrame</a></code> <var>frame</var>, the user agent MUST run the following steps:</p>
@@ -1055,10 +1354,10 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
       <p>For each <var>space</var> in the <var>spaces</var> sequence:</p>
       <ol>
        <li data-md>
-        <p>If <var>space</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session③">session</a> is different from <var>session</var>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑤">InvalidStateError</a></code> and abort these steps.</p>
+        <p>If <var>space</var>’s <a data-link-type="dfn">session</a> is different from <var>session</var>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑤">InvalidStateError</a></code> and abort these steps.</p>
       </ol>
      <li data-md>
-      <p>If <var>baseSpace</var>’s <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrspace-session" id="ref-for-xrspace-session④">session</a> is different from <var>session</var>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code> and abort these steps.</p>
+      <p>If <var>baseSpace</var>’s <a data-link-type="dfn">session</a> is different from <var>session</var>, throw an <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#invalidstateerror" id="ref-for-invalidstateerror⑥">InvalidStateError</a></code> and abort these steps.</p>
      <li data-md>
       <p>If the length of <var>spaces</var> multiplied by <code>16</code> is larger than the number of elements in <var>transforms</var>, throw a <code class="idl"><a data-link-type="idl" href="https://webidl.spec.whatwg.org/#exceptiondef-typeerror" id="ref-for-exceptiondef-typeerror①">TypeError</a></code> and abort these steps.</p>
      <li data-md>
@@ -1077,7 +1376,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
       <p>For each <var>space</var> in the <var>spaces</var> sequence:</p>
       <ol>
        <li data-md>
-        <p><a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#populate-the-pose" id="ref-for-populate-the-pose①">Populate the pose</a> of <var>space</var> in <var>baseSpace</var> at the time represented by <var>frame</var> into <var>pose</var>.</p>
+        <p><a data-link-type="dfn">Populate the pose</a> of <var>space</var> in <var>baseSpace</var> at the time represented by <var>frame</var> into <var>pose</var>.</p>
        <li data-md>
         <p>If <var>pose</var> is <code>null</code>, perform the following steps:</p>
        <li data-md>
@@ -1093,7 +1392,7 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
       <p>Return <var>allValid</var>.</p>
     </ol>
    </div>
-   <p class="note" role="note"><span>NOTE:</span> if any of the spaces belonging to the same <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand①⓪">XRHand</a></code> return <code>null</code> when <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#populate-the-pose" id="ref-for-populate-the-pose②">populating the pose</a>, all the spaces of that <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand①①">XRHand</a></code> must also return <code>null</code> when <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#populate-the-pose" id="ref-for-populate-the-pose③">populating the pose</a></p>
+   <p class="note" role="note"><span class="marker">NOTE:</span> if any of the spaces belonging to the same <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand①⓪">XRHand</a></code> return <code>null</code> when <a data-link-type="dfn">populating the pose</a>, all the spaces of that <code class="idl"><a data-link-type="idl" href="#xrhand" id="ref-for-xrhand①①">XRHand</a></code> must also return <code>null</code> when <a data-link-type="dfn">populating the pose</a></p>
    <h3 class="heading settled" data-level="4.2" id="xrjointpose-interface"><span class="secno">4.2. </span><span class="content">XRJointPose</span><a class="self-link" href="#xrjointpose-interface"></a></h3>
    <p>An <code class="idl"><a data-link-type="idl" href="#xrjointpose" id="ref-for-xrjointpose③">XRJointPose</a></code> is an <code class="idl"><a data-link-type="idl" href="https://immersive-web.github.io/webxr/#xrpose" id="ref-for-xrpose①">XRPose</a></code> with additional information about the size of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①④">skeleton joint</a> it represents.</p>
 <pre class="idl highlight def">[<a class="idl-code" data-link-type="extended-attribute" href="https://webidl.spec.whatwg.org/#Exposed" id="ref-for-Exposed②"><c- g>Exposed</c-></a>=<c- n>Window</c->]
@@ -1102,10 +1401,10 @@ by this module as a new valid <a data-link-type="dfn" href="https://immersive-we
 };
 </pre>
    <p>The <dfn class="dfn-paneled idl-code" data-dfn-for="XRJointPose" data-dfn-type="attribute" data-export id="dom-xrjointpose-radius"><code>radius</code></dfn> attribute returns the <a data-link-type="dfn" href="#skeleton-joint-radius" id="ref-for-skeleton-joint-radius②">radius</a> of the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⑤">skeleton joint</a> in meters.</p>
-   <p>The user-agent MUST set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius②">radius</a></code> to an emulated value if the <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xr-device" id="ref-for-xr-device①">XR device</a> does not have the capability of determining this value, either in general or in the current <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#xrsession-animation-frame" id="ref-for-xrsession-animation-frame">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⑥">skeleton joint</a> is partially obscured).</p>
+   <p>The user-agent MUST set <code class="idl"><a data-link-type="idl" href="#dom-xrjointpose-radius" id="ref-for-dom-xrjointpose-radius②">radius</a></code> to an emulated value if the <a data-link-type="dfn">XR device</a> does not have the capability of determining this value, either in general or in the current <a data-link-type="dfn">animation frame</a> (e.g. when the <a data-link-type="dfn" href="#skeleton-joints" id="ref-for-skeleton-joints①⑥">skeleton joint</a> is partially obscured).</p>
    <h2 class="heading settled" data-level="5" id="privacy-security"><span class="secno">5. </span><span class="content">Privacy &amp; Security Considerations</span><a class="self-link" href="#privacy-security"></a></h2>
     The WebXR Hand Input API is a powerful feature that carries significant privacy risks. 
-   <p>Since this feature returns new sensor data, the User Agent MUST ask for <a data-link-type="dfn" href="https://immersive-web.github.io/webxr/#explicit-consent" id="ref-for-explicit-consent">explicit consent</a> from the user at session creation time.</p>
+   <p>Since this feature returns new sensor data, the User Agent MUST ask for <a data-link-type="dfn">explicit consent</a> from the user at session creation time.</p>
    <p>Data returned from this API, MUST NOT be so specific that one can detect individual users.
 If the underlying hardware returns data that is too precise, the User Agent MUST anonymize this data
 before revealing it through the WebXR Hand Input API.</p>
@@ -1158,7 +1457,7 @@ before revealing it through the WebXR Hand Input API.</p>
     However, for readability,
     these words do not appear in all uppercase letters in this specification. </p>
    <p>All of the text of this specification is normative
-    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119">[RFC2119]</a> </p>
+    except sections explicitly marked as non-normative, examples, and notes. <a data-link-type="biblio" href="#biblio-rfc2119" title="Key words for use in RFCs to Indicate Requirement Levels">[RFC2119]</a> </p>
    <p>Examples in this specification are introduced with the words “for example”
     or are set apart from the normative text
     with <code>class="example"</code>,
@@ -1171,21 +1470,23 @@ before revealing it through the WebXR Hand Input API.</p>
     and are set apart from the normative text
     with <code>class="note"</code>,
     like this: </p>
-   <p class="note" role="note">Note, this is an informative note. </p>
-   <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
-   <p>Requirements phrased in the imperative as part of algorithms
+   <p class="note" role="note">Note, this is an informative note.</p>
+   <section>
+    <h3 class="no-ref no-num heading settled" id="w3c-conformant-algorithms"><span class="content">Conformant Algorithms</span><a class="self-link" href="#w3c-conformant-algorithms"></a></h3>
+    <p>Requirements phrased in the imperative as part of algorithms
     (such as "strip any leading space characters"
     or "return false and abort these steps")
     are to be interpreted with the meaning of the key word
     ("must", "should", "may", etc)
     used in introducing the algorithm. </p>
-   <p>Conformance requirements phrased as algorithms or specific steps
+    <p>Conformance requirements phrased as algorithms or specific steps
     can be implemented in any manner,
     so long as the end result is equivalent.
     In particular, the algorithms defined in this specification
     are intended to be easy to understand
     and are not intended to be performant.
     Implementers are encouraged to optimize. </p>
+   </section>
   </div>
 <script src="https://www.w3.org/scripts/TR/2021/fixup.js"></script>
   <h2 class="no-num no-ref heading settled" id="index"><span class="content">Index</span><a class="self-link" href="#index"></a></h2>
@@ -1255,307 +1556,59 @@ before revealing it through the WebXR Hand Input API.</p>
    <li><a href="#xrjointpose">XRJointPose</a><span>, in § 4.2</span>
    <li><a href="#xrjointspace">XRJointSpace</a><span>, in § 3.4</span>
   </ul>
-  <aside class="dfn-panel" data-for="term-for-browsing-context">
-   <a href="https://html.spec.whatwg.org/multipage/browsers.html#browsing-context">https://html.spec.whatwg.org/multipage/browsers.html#browsing-context</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-browsing-context">5. Privacy &amp; Security Considerations</a> <a href="#ref-for-browsing-context①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-concept-relevant-realm">
-   <a href="https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm">https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-concept-relevant-realm">4.1. XRFrame</a> <a href="#ref-for-concept-relevant-realm①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-ordered-map">
-   <a href="https://infra.spec.whatwg.org/#ordered-map">https://infra.spec.whatwg.org/#ordered-map</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-ordered-map">3.3. XRHand</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-extendableevent-active">
-   <a href="https://w3c.github.io/ServiceWorker/#extendableevent-active">https://w3c.github.io/ServiceWorker/#extendableevent-active</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-extendableevent-active">4.1. XRFrame</a> <a href="#ref-for-extendableevent-active①">(2)</a> <a href="#ref-for-extendableevent-active②">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-Exposed">
-   <a href="https://webidl.spec.whatwg.org/#Exposed">https://webidl.spec.whatwg.org/#Exposed</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-Exposed">3.3. XRHand</a>
-    <li><a href="#ref-for-Exposed①">3.4. XRJointSpace</a>
-    <li><a href="#ref-for-Exposed②">4.2. XRJointPose</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-Float32Array">
-   <a href="https://webidl.spec.whatwg.org/#idl-Float32Array">https://webidl.spec.whatwg.org/#idl-Float32Array</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-Float32Array">4.1. XRFrame</a> <a href="#ref-for-idl-Float32Array①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-invalidstateerror">
-   <a href="https://webidl.spec.whatwg.org/#invalidstateerror">https://webidl.spec.whatwg.org/#invalidstateerror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-invalidstateerror">4.1. XRFrame</a> <a href="#ref-for-invalidstateerror①">(2)</a> <a href="#ref-for-invalidstateerror②">(3)</a> <a href="#ref-for-invalidstateerror③">(4)</a> <a href="#ref-for-invalidstateerror④">(5)</a> <a href="#ref-for-invalidstateerror⑤">(6)</a> <a href="#ref-for-invalidstateerror⑥">(7)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-SameObject">
-   <a href="https://webidl.spec.whatwg.org/#SameObject">https://webidl.spec.whatwg.org/#SameObject</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-SameObject">3.1. XRInputSource</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-exceptiondef-typeerror">
-   <a href="https://webidl.spec.whatwg.org/#exceptiondef-typeerror">https://webidl.spec.whatwg.org/#exceptiondef-typeerror</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-exceptiondef-typeerror">4.1. XRFrame</a> <a href="#ref-for-exceptiondef-typeerror①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-boolean">
-   <a href="https://webidl.spec.whatwg.org/#idl-boolean">https://webidl.spec.whatwg.org/#idl-boolean</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-boolean">4.1. XRFrame</a> <a href="#ref-for-idl-boolean①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-float">
-   <a href="https://webidl.spec.whatwg.org/#idl-float">https://webidl.spec.whatwg.org/#idl-float</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-float">4.2. XRJointPose</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-new">
-   <a href="https://webidl.spec.whatwg.org/#new">https://webidl.spec.whatwg.org/#new</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-new">4.1. XRFrame</a> <a href="#ref-for-new①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-sequence">
-   <a href="https://webidl.spec.whatwg.org/#idl-sequence">https://webidl.spec.whatwg.org/#idl-sequence</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-sequence">4.1. XRFrame</a> <a href="#ref-for-idl-sequence①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-this">
-   <a href="https://webidl.spec.whatwg.org/#this">https://webidl.spec.whatwg.org/#this</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-this">3.1. XRInputSource</a>
-    <li><a href="#ref-for-this①">3.3. XRHand</a> <a href="#ref-for-this②">(2)</a>
-    <li><a href="#ref-for-this③">4.1. XRFrame</a> <a href="#ref-for-this④">(2)</a> <a href="#ref-for-this⑤">(3)</a> <a href="#ref-for-this⑥">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-idl-unsigned-long">
-   <a href="https://webidl.spec.whatwg.org/#idl-unsigned-long">https://webidl.spec.whatwg.org/#idl-unsigned-long</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-idl-unsigned-long">3.3. XRHand</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-value-pair">
-   <a href="https://webidl.spec.whatwg.org/#value-pair">https://webidl.spec.whatwg.org/#value-pair</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-value-pair">3.3. XRHand</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dfn-value-pairs-to-iterate-over">
-   <a href="https://webidl.spec.whatwg.org/#dfn-value-pairs-to-iterate-over">https://webidl.spec.whatwg.org/#dfn-value-pairs-to-iterate-over</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dfn-value-pairs-to-iterate-over">3.3. XRHand</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrsessionmode-immersive-vr">
-   <a href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr">https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrsessionmode-immersive-vr">5. Privacy &amp; Security Considerations</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrsessionmode-inline">
-   <a href="https://immersive-web.github.io/webxr/#dom-xrsessionmode-inline">https://immersive-web.github.io/webxr/#dom-xrsessionmode-inline</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrsessionmode-inline">5. Privacy &amp; Security Considerations</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe">
-   <a href="https://immersive-web.github.io/webxr/#xrframe">https://immersive-web.github.io/webxr/#xrframe</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrframe">4.1. XRFrame</a> <a href="#ref-for-xrframe①">(2)</a> <a href="#ref-for-xrframe②">(3)</a> <a href="#ref-for-xrframe③">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrinputsource">
-   <a href="https://immersive-web.github.io/webxr/#xrinputsource">https://immersive-web.github.io/webxr/#xrinputsource</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrinputsource">2. Initialization</a>
-    <li><a href="#ref-for-xrinputsource①">3. Physical Hand Input Sources</a>
-    <li><a href="#ref-for-xrinputsource②">3.1. XRInputSource</a> <a href="#ref-for-xrinputsource③">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrpose">
-   <a href="https://immersive-web.github.io/webxr/#xrpose">https://immersive-web.github.io/webxr/#xrpose</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrpose">4.1. XRFrame</a>
-    <li><a href="#ref-for-xrpose①">4.2. XRJointPose</a> <a href="#ref-for-xrpose②">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsession">
-   <a href="https://immersive-web.github.io/webxr/#xrsession">https://immersive-web.github.io/webxr/#xrsession</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrsession">2. Initialization</a> <a href="#ref-for-xrsession①">(2)</a>
-    <li><a href="#ref-for-xrsession②">3.1. XRInputSource</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrspace">
-   <a href="https://immersive-web.github.io/webxr/#xrspace">https://immersive-web.github.io/webxr/#xrspace</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrspace">3.4. XRJointSpace</a>
-    <li><a href="#ref-for-xrspace①">4.1. XRFrame</a> <a href="#ref-for-xrspace②">(2)</a> <a href="#ref-for-xrspace③">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsession-animation-frame">
-   <a href="https://immersive-web.github.io/webxr/#xrsession-animation-frame">https://immersive-web.github.io/webxr/#xrsession-animation-frame</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrsession-animation-frame">4.2. XRJointPose</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-explicit-consent">
-   <a href="https://immersive-web.github.io/webxr/#explicit-consent">https://immersive-web.github.io/webxr/#explicit-consent</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-explicit-consent">5. Privacy &amp; Security Considerations</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-feature-descriptor">
-   <a href="https://immersive-web.github.io/webxr/#feature-descriptor">https://immersive-web.github.io/webxr/#feature-descriptor</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-feature-descriptor">2. Initialization</a> <a href="#ref-for-feature-descriptor①">(2)</a> <a href="#ref-for-feature-descriptor②">(3)</a> <a href="#ref-for-feature-descriptor③">(4)</a> <a href="#ref-for-feature-descriptor④">(5)</a>
-    <li><a href="#ref-for-feature-descriptor⑤">3.1. XRInputSource</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrinputsource-input-profile-name">
-   <a href="https://immersive-web.github.io/webxr/#xrinputsource-input-profile-name">https://immersive-web.github.io/webxr/#xrinputsource-input-profile-name</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrinputsource-input-profile-name">3. Physical Hand Input Sources</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrrigidtransform-matrix">
-   <a href="https://immersive-web.github.io/webxr/#dom-xrrigidtransform-matrix">https://immersive-web.github.io/webxr/#dom-xrrigidtransform-matrix</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrrigidtransform-matrix">4.1. XRFrame</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrspace-native-origin">
-   <a href="https://immersive-web.github.io/webxr/#xrspace-native-origin">https://immersive-web.github.io/webxr/#xrspace-native-origin</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrspace-native-origin">3.4. XRJointSpace</a> <a href="#ref-for-xrspace-native-origin①">(2)</a> <a href="#ref-for-xrspace-native-origin②">(3)</a> <a href="#ref-for-xrspace-native-origin③">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-populate-the-pose">
-   <a href="https://immersive-web.github.io/webxr/#populate-the-pose">https://immersive-web.github.io/webxr/#populate-the-pose</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-populate-the-pose">4.1. XRFrame</a> <a href="#ref-for-populate-the-pose①">(2)</a> <a href="#ref-for-populate-the-pose②">(3)</a> <a href="#ref-for-populate-the-pose③">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-primary-action">
-   <a href="https://immersive-web.github.io/webxr/#primary-action">https://immersive-web.github.io/webxr/#primary-action</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-primary-action">3. Physical Hand Input Sources</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-primary-squeeze-action">
-   <a href="https://immersive-web.github.io/webxr/#primary-squeeze-action">https://immersive-web.github.io/webxr/#primary-squeeze-action</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-primary-squeeze-action">3. Physical Hand Input Sources</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrinputsource-profiles">
-   <a href="https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles">https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrinputsource-profiles">3. Physical Hand Input Sources</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrspace-session">
-   <a href="https://immersive-web.github.io/webxr/#xrspace-session">https://immersive-web.github.io/webxr/#xrspace-session</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrspace-session">4.1. XRFrame</a> <a href="#ref-for-xrspace-session①">(2)</a> <a href="#ref-for-xrspace-session②">(3)</a> <a href="#ref-for-xrspace-session③">(4)</a> <a href="#ref-for-xrspace-session④">(5)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrframe-time">
-   <a href="https://immersive-web.github.io/webxr/#xrframe-time">https://immersive-web.github.io/webxr/#xrframe-time</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrframe-time">4.1. XRFrame</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-xrsession-xr-device">
-   <a href="https://immersive-web.github.io/webxr/#xrsession-xr-device">https://immersive-web.github.io/webxr/#xrsession-xr-device</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrsession-xr-device">2. Initialization</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="term-for-dom-xrsessionmode-immersive-ar">
-   <a href="https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar">https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar</a><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrsessionmode-immersive-ar">5. Privacy &amp; Security Considerations</a>
-   </ul>
-  </aside>
   <h3 class="no-num no-ref heading settled" id="index-defined-elsewhere"><span class="content">Terms defined by reference</span><a class="self-link" href="#index-defined-elsewhere"></a></h3>
   <ul class="index">
    <li>
     <a data-link-type="biblio">[HTML]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-browsing-context">browsing context</span>
-     <li><span class="dfn-paneled" id="term-for-concept-relevant-realm">relevant realm</span>
+     <li><span class="dfn-paneled" id="faf954d6">browsing context</span>
+     <li><span class="dfn-paneled" id="5991ccfb">relevant realm</span>
     </ul>
    <li>
     <a data-link-type="biblio">[INFRA]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-ordered-map">ordered map</span>
+     <li><span class="dfn-paneled" id="84b454ff">ordered map</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[service-workers-1]</a> defines the following terms:
+    <a data-link-type="biblio">[SERVICE-WORKERS]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-extendableevent-active">active</span>
+     <li><span class="dfn-paneled" id="e2a51d55">active</span>
     </ul>
    <li>
     <a data-link-type="biblio">[WEBIDL]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-Exposed">Exposed</span>
-     <li><span class="dfn-paneled" id="term-for-idl-Float32Array">Float32Array</span>
-     <li><span class="dfn-paneled" id="term-for-invalidstateerror">InvalidStateError</span>
-     <li><span class="dfn-paneled" id="term-for-SameObject">SameObject</span>
-     <li><span class="dfn-paneled" id="term-for-exceptiondef-typeerror">TypeError</span>
-     <li><span class="dfn-paneled" id="term-for-idl-boolean">boolean</span>
-     <li><span class="dfn-paneled" id="term-for-idl-float">float</span>
-     <li><span class="dfn-paneled" id="term-for-new">new</span>
-     <li><span class="dfn-paneled" id="term-for-idl-sequence">sequence</span>
-     <li><span class="dfn-paneled" id="term-for-this">this</span>
-     <li><span class="dfn-paneled" id="term-for-idl-unsigned-long">unsigned long</span>
-     <li><span class="dfn-paneled" id="term-for-value-pair">value pair</span>
-     <li><span class="dfn-paneled" id="term-for-dfn-value-pairs-to-iterate-over">value pairs to iterate over</span>
+     <li><span class="dfn-paneled" id="889e932f">Exposed</span>
+     <li><span class="dfn-paneled" id="0a296dfe">Float32Array</span>
+     <li><span class="dfn-paneled" id="797018a7">InvalidStateError</span>
+     <li><span class="dfn-paneled" id="a5c91173">SameObject</span>
+     <li><span class="dfn-paneled" id="82ca3efc">TypeError</span>
+     <li><span class="dfn-paneled" id="5372cca8">boolean</span>
+     <li><span class="dfn-paneled" id="eec1be2d">float</span>
+     <li><span class="dfn-paneled" id="56f81a8e">new</span>
+     <li><span class="dfn-paneled" id="9cce47fd">sequence</span>
+     <li><span class="dfn-paneled" id="4013a022">this</span>
+     <li><span class="dfn-paneled" id="e97a9688">unsigned long</span>
+     <li><span class="dfn-paneled" id="f4386d3f">value pair</span>
+     <li><span class="dfn-paneled" id="42a03705">value pairs to iterate over</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[webxr]</a> defines the following terms:
+    <a data-link-type="biblio">[WEBXR]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-dom-xrsessionmode-immersive-vr">"immersive-vr"</span>
-     <li><span class="dfn-paneled" id="term-for-dom-xrsessionmode-inline">"inline"</span>
-     <li><span class="dfn-paneled" id="term-for-xrframe">XRFrame</span>
-     <li><span class="dfn-paneled" id="term-for-xrinputsource">XRInputSource</span>
-     <li><span class="dfn-paneled" id="term-for-xrpose">XRPose</span>
-     <li><span class="dfn-paneled" id="term-for-xrsession">XRSession</span>
-     <li><span class="dfn-paneled" id="term-for-xrspace">XRSpace</span>
-     <li><span class="dfn-paneled" id="term-for-xrsession-animation-frame">animation frame</span>
-     <li><span class="dfn-paneled" id="term-for-explicit-consent">explicit consent</span>
-     <li><span class="dfn-paneled" id="term-for-feature-descriptor">feature descriptor</span>
-     <li><span class="dfn-paneled" id="term-for-xrinputsource-input-profile-name">input profile name</span>
-     <li><span class="dfn-paneled" id="term-for-dom-xrrigidtransform-matrix">matrix</span>
-     <li><span class="dfn-paneled" id="term-for-xrspace-native-origin">native origin</span>
-     <li><span class="dfn-paneled" id="term-for-populate-the-pose">populate the pose</span>
-     <li><span class="dfn-paneled" id="term-for-primary-action">primary action</span>
-     <li><span class="dfn-paneled" id="term-for-primary-squeeze-action">primary squeeze action</span>
-     <li><span class="dfn-paneled" id="term-for-dom-xrinputsource-profiles">profiles</span>
-     <li><span class="dfn-paneled" id="term-for-xrspace-session">session <small>(for XRSpace)</small></span>
-     <li><span class="dfn-paneled" id="term-for-xrframe-time">time</span>
-     <li><span class="dfn-paneled" id="term-for-xrsession-xr-device">xr device <small>(for XRSession)</small></span>
+     <li><span class="dfn-paneled" id="79693d31">"immersive-vr"</span>
+     <li><span class="dfn-paneled" id="f8e8ab73">"inline"</span>
+     <li><span class="dfn-paneled" id="7a030114">XRFrame</span>
+     <li><span class="dfn-paneled" id="ea90e02f">XRInputSource</span>
+     <li><span class="dfn-paneled" id="9dfd38d6">XRPose</span>
+     <li><span class="dfn-paneled" id="b23556e5">XRSession</span>
+     <li><span class="dfn-paneled" id="0b566548">XRSpace</span>
+     <li><span class="dfn-paneled" id="b4614182">matrix</span>
+     <li><span class="dfn-paneled" id="4dd97d27">profiles</span>
+     <li><span class="dfn-paneled" id="7c7eccf9">session</span>
     </ul>
    <li>
-    <a data-link-type="biblio">[webxr-ar-module-1]</a> defines the following terms:
+    <a data-link-type="biblio">[WEBXR-AR-MODULE-1]</a> defines the following terms:
     <ul>
-     <li><span class="dfn-paneled" id="term-for-dom-xrsessionmode-immersive-ar">"immersive-ar"</span>
+     <li><span class="dfn-paneled" id="ac906c0c">"immersive-ar"</span>
     </ul>
   </ul>
   <h2 class="no-num no-ref heading settled" id="references"><span class="content">References</span><a class="self-link" href="#references"></a></h2>
@@ -1567,14 +1620,14 @@ before revealing it through the WebXR Hand Input API.</p>
    <dd>Anne van Kesteren; Domenic Denicola. <a href="https://infra.spec.whatwg.org/"><cite>Infra Standard</cite></a>. Living Standard. URL: <a href="https://infra.spec.whatwg.org/">https://infra.spec.whatwg.org/</a>
    <dt id="biblio-rfc2119">[RFC2119]
    <dd>S. Bradner. <a href="https://datatracker.ietf.org/doc/html/rfc2119"><cite>Key words for use in RFCs to Indicate Requirement Levels</cite></a>. March 1997. Best Current Practice. URL: <a href="https://datatracker.ietf.org/doc/html/rfc2119">https://datatracker.ietf.org/doc/html/rfc2119</a>
-   <dt id="biblio-service-workers-1">[SERVICE-WORKERS-1]
-   <dd>Alex Russell; et al. <a href="https://www.w3.org/TR/service-workers-1/"><cite>Service Workers 1</cite></a>. 19 November 2019. CR. URL: <a href="https://www.w3.org/TR/service-workers-1/">https://www.w3.org/TR/service-workers-1/</a>
+   <dt id="biblio-service-workers">[SERVICE-WORKERS]
+   <dd>Jake Archibald; Marijn Kruisselbrink. <a href="https://w3c.github.io/ServiceWorker/"><cite>Service Workers</cite></a>. URL: <a href="https://w3c.github.io/ServiceWorker/">https://w3c.github.io/ServiceWorker/</a>
    <dt id="biblio-webidl">[WEBIDL]
    <dd>Edgar Chen; Timothy Gu. <a href="https://webidl.spec.whatwg.org/"><cite>Web IDL Standard</cite></a>. Living Standard. URL: <a href="https://webidl.spec.whatwg.org/">https://webidl.spec.whatwg.org/</a>
    <dt id="biblio-webxr">[WEBXR]
-   <dd>Brandon Jones; Manish Goregaokar; Rik Cabanier. <a href="https://www.w3.org/TR/webxr/"><cite>WebXR Device API</cite></a>. 31 March 2022. CR. URL: <a href="https://www.w3.org/TR/webxr/">https://www.w3.org/TR/webxr/</a>
+   <dd>Brandon Jones; Manish Goregaokar; Rik Cabanier. <a href="https://immersive-web.github.io/webxr/"><cite>WebXR Device API</cite></a>. URL: <a href="https://immersive-web.github.io/webxr/">https://immersive-web.github.io/webxr/</a>
    <dt id="biblio-webxr-ar-module-1">[WEBXR-AR-MODULE-1]
-   <dd>Brandon Jones; Manish Goregaokar; Rik Cabanier. <a href="https://www.w3.org/TR/webxr-ar-module-1/"><cite>WebXR Augmented Reality Module - Level 1</cite></a>. 17 March 2022. WD. URL: <a href="https://www.w3.org/TR/webxr-ar-module-1/">https://www.w3.org/TR/webxr-ar-module-1/</a>
+   <dd>Brandon Jones; Manish Goregaokar; Rik Cabanier. <a href="https://immersive-web.github.io/webxr-ar-module/"><cite>WebXR Augmented Reality Module - Level 1</cite></a>. URL: <a href="https://immersive-web.github.io/webxr-ar-module/">https://immersive-web.github.io/webxr-ar-module/</a>
   </dl>
   <h2 class="no-num no-ref heading settled" id="idl-index"><span class="content">IDL Index</span><a class="self-link" href="#idl-index"></a></h2>
 <pre class="idl highlight def"><c- b>partial</c-> <c- b>interface</c-> <a class="idl-code" data-link-type="interface" href="https://immersive-web.github.io/webxr/#xrinputsource"><c- g>XRInputSource</c-></a> {
@@ -1644,454 +1697,867 @@ before revealing it through the WebXR Hand Input API.</p>
   <div style="counter-reset:issue">
    <div class="issue"> This by default precludes faithfully exposing polydactyl/oligodactyl hands, however for fingerprinting concerns it will likely need to be a separate opt-in, anyway. See <a href="https://github.com/immersive-web/webxr-hand-input/issues/11">Issue 11</a> for more details. <a class="issue-return" href="#issue-9a52d08f" title="Jump to section">↵</a></div>
   </div>
-  <aside class="dfn-panel" data-for="feature-descriptor-hand-tracking">
-   <b><a href="#feature-descriptor-hand-tracking">#feature-descriptor-hand-tracking</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-feature-descriptor-hand-tracking">2. Initialization</a> <a href="#ref-for-feature-descriptor-hand-tracking①">(2)</a>
-    <li><a href="#ref-for-feature-descriptor-hand-tracking②">3.1. XRInputSource</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="physical-hand-input-source">
-   <b><a href="#physical-hand-input-source">#physical-hand-input-source</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-physical-hand-input-source">2. Initialization</a>
-    <li><a href="#ref-for-physical-hand-input-source①">3. Physical Hand Input Sources</a> <a href="#ref-for-physical-hand-input-source②">(2)</a> <a href="#ref-for-physical-hand-input-source③">(3)</a>
-    <li><a href="#ref-for-physical-hand-input-source④">3.1. XRInputSource</a>
-    <li><a href="#ref-for-physical-hand-input-source⑤">3.2. Skeleton Joints</a>
-    <li><a href="#ref-for-physical-hand-input-source⑥">3.3. XRHand</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="supports-hand-tracking">
-   <b><a href="#supports-hand-tracking">#supports-hand-tracking</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-supports-hand-tracking">2. Initialization</a>
-    <li><a href="#ref-for-supports-hand-tracking①">3.1. XRInputSource</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrinputsource-hand">
-   <b><a href="#dom-xrinputsource-hand">#dom-xrinputsource-hand</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrinputsource-hand">3.1. XRInputSource</a> <a href="#ref-for-dom-xrinputsource-hand①">(2)</a> <a href="#ref-for-dom-xrinputsource-hand②">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="skeleton-joints">
-   <b><a href="#skeleton-joints">#skeleton-joints</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-skeleton-joints">1. Introduction</a>
-    <li><a href="#ref-for-skeleton-joints①">3. Physical Hand Input Sources</a>
-    <li><a href="#ref-for-skeleton-joints②">3.2. Skeleton Joints</a> <a href="#ref-for-skeleton-joints③">(2)</a> <a href="#ref-for-skeleton-joints④">(3)</a> <a href="#ref-for-skeleton-joints⑤">(4)</a> <a href="#ref-for-skeleton-joints⑥">(5)</a> <a href="#ref-for-skeleton-joints⑦">(6)</a> <a href="#ref-for-skeleton-joints⑧">(7)</a>
-    <li><a href="#ref-for-skeleton-joints⑨">3.3. XRHand</a> <a href="#ref-for-skeleton-joints①⓪">(2)</a>
-    <li><a href="#ref-for-skeleton-joints①①">3.4. XRJointSpace</a> <a href="#ref-for-skeleton-joints①②">(2)</a> <a href="#ref-for-skeleton-joints①③">(3)</a>
-    <li><a href="#ref-for-skeleton-joints①④">4.2. XRJointPose</a> <a href="#ref-for-skeleton-joints①⑤">(2)</a> <a href="#ref-for-skeleton-joints①⑥">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="skeleton-joint-name">
-   <b><a href="#skeleton-joint-name">#skeleton-joint-name</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-skeleton-joint-name">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="associated-bone">
-   <b><a href="#associated-bone">#associated-bone</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-associated-bone">3.2. Skeleton Joints</a> <a href="#ref-for-associated-bone①">(2)</a>
-    <li><a href="#ref-for-associated-bone②">3.4. XRJointSpace</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="skeleton-joint-radius">
-   <b><a href="#skeleton-joint-radius">#skeleton-joint-radius</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-skeleton-joint-radius">4.1. XRFrame</a> <a href="#ref-for-skeleton-joint-radius①">(2)</a>
-    <li><a href="#ref-for-skeleton-joint-radius②">4.2. XRJointPose</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="list-of-joints">
-   <b><a href="#list-of-joints">#list-of-joints</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-list-of-joints">3.3. XRHand</a> <a href="#ref-for-list-of-joints①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="enumdef-xrhandjoint">
-   <b><a href="#enumdef-xrhandjoint">#enumdef-xrhandjoint</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-enumdef-xrhandjoint">3.2. Skeleton Joints</a>
-    <li><a href="#ref-for-enumdef-xrhandjoint①">3.3. XRHand</a> <a href="#ref-for-enumdef-xrhandjoint②">(2)</a> <a href="#ref-for-enumdef-xrhandjoint③">(3)</a> <a href="#ref-for-enumdef-xrhandjoint④">(4)</a> <a href="#ref-for-enumdef-xrhandjoint⑤">(5)</a> <a href="#ref-for-enumdef-xrhandjoint⑥">(6)</a>
-    <li><a href="#ref-for-enumdef-xrhandjoint⑦">3.4. XRJointSpace</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-wrist">
-   <b><a href="#dom-xrhandjoint-wrist">#dom-xrhandjoint-wrist</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-wrist">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-thumb-metacarpal">
-   <b><a href="#dom-xrhandjoint-thumb-metacarpal">#dom-xrhandjoint-thumb-metacarpal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-thumb-metacarpal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-thumb-phalanx-proximal">
-   <b><a href="#dom-xrhandjoint-thumb-phalanx-proximal">#dom-xrhandjoint-thumb-phalanx-proximal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-thumb-phalanx-proximal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-thumb-phalanx-distal">
-   <b><a href="#dom-xrhandjoint-thumb-phalanx-distal">#dom-xrhandjoint-thumb-phalanx-distal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-thumb-phalanx-distal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-thumb-tip">
-   <b><a href="#dom-xrhandjoint-thumb-tip">#dom-xrhandjoint-thumb-tip</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-thumb-tip">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-metacarpal">
-   <b><a href="#dom-xrhandjoint-index-finger-metacarpal">#dom-xrhandjoint-index-finger-metacarpal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-index-finger-metacarpal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-phalanx-proximal">
-   <b><a href="#dom-xrhandjoint-index-finger-phalanx-proximal">#dom-xrhandjoint-index-finger-phalanx-proximal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-index-finger-phalanx-proximal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-phalanx-intermediate">
-   <b><a href="#dom-xrhandjoint-index-finger-phalanx-intermediate">#dom-xrhandjoint-index-finger-phalanx-intermediate</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-index-finger-phalanx-intermediate">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-phalanx-distal">
-   <b><a href="#dom-xrhandjoint-index-finger-phalanx-distal">#dom-xrhandjoint-index-finger-phalanx-distal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-index-finger-phalanx-distal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-index-finger-tip">
-   <b><a href="#dom-xrhandjoint-index-finger-tip">#dom-xrhandjoint-index-finger-tip</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-index-finger-tip">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-metacarpal">
-   <b><a href="#dom-xrhandjoint-middle-finger-metacarpal">#dom-xrhandjoint-middle-finger-metacarpal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-metacarpal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-phalanx-proximal">
-   <b><a href="#dom-xrhandjoint-middle-finger-phalanx-proximal">#dom-xrhandjoint-middle-finger-phalanx-proximal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-phalanx-proximal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-phalanx-intermediate">
-   <b><a href="#dom-xrhandjoint-middle-finger-phalanx-intermediate">#dom-xrhandjoint-middle-finger-phalanx-intermediate</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-phalanx-intermediate">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-phalanx-distal">
-   <b><a href="#dom-xrhandjoint-middle-finger-phalanx-distal">#dom-xrhandjoint-middle-finger-phalanx-distal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-phalanx-distal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-middle-finger-tip">
-   <b><a href="#dom-xrhandjoint-middle-finger-tip">#dom-xrhandjoint-middle-finger-tip</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-middle-finger-tip">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-metacarpal">
-   <b><a href="#dom-xrhandjoint-ring-finger-metacarpal">#dom-xrhandjoint-ring-finger-metacarpal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-metacarpal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-phalanx-proximal">
-   <b><a href="#dom-xrhandjoint-ring-finger-phalanx-proximal">#dom-xrhandjoint-ring-finger-phalanx-proximal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-phalanx-proximal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-phalanx-intermediate">
-   <b><a href="#dom-xrhandjoint-ring-finger-phalanx-intermediate">#dom-xrhandjoint-ring-finger-phalanx-intermediate</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-phalanx-intermediate">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-phalanx-distal">
-   <b><a href="#dom-xrhandjoint-ring-finger-phalanx-distal">#dom-xrhandjoint-ring-finger-phalanx-distal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-phalanx-distal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-ring-finger-tip">
-   <b><a href="#dom-xrhandjoint-ring-finger-tip">#dom-xrhandjoint-ring-finger-tip</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-ring-finger-tip">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-metacarpal">
-   <b><a href="#dom-xrhandjoint-pinky-finger-metacarpal">#dom-xrhandjoint-pinky-finger-metacarpal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-metacarpal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-phalanx-proximal">
-   <b><a href="#dom-xrhandjoint-pinky-finger-phalanx-proximal">#dom-xrhandjoint-pinky-finger-phalanx-proximal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-phalanx-proximal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-phalanx-intermediate">
-   <b><a href="#dom-xrhandjoint-pinky-finger-phalanx-intermediate">#dom-xrhandjoint-pinky-finger-phalanx-intermediate</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-phalanx-intermediate">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-phalanx-distal">
-   <b><a href="#dom-xrhandjoint-pinky-finger-phalanx-distal">#dom-xrhandjoint-pinky-finger-phalanx-distal</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-phalanx-distal">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhandjoint-pinky-finger-tip">
-   <b><a href="#dom-xrhandjoint-pinky-finger-tip">#dom-xrhandjoint-pinky-finger-tip</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhandjoint-pinky-finger-tip">3.2. Skeleton Joints</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrhand">
-   <b><a href="#xrhand">#xrhand</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrhand">3.1. XRInputSource</a> <a href="#ref-for-xrhand①">(2)</a>
-    <li><a href="#ref-for-xrhand②">3.3. XRHand</a> <a href="#ref-for-xrhand③">(2)</a> <a href="#ref-for-xrhand④">(3)</a> <a href="#ref-for-xrhand⑤">(4)</a> <a href="#ref-for-xrhand⑥">(5)</a>
-    <li><a href="#ref-for-xrhand⑦">3.4. XRJointSpace</a>
-    <li><a href="#ref-for-xrhand⑧">4.1. XRFrame</a> <a href="#ref-for-xrhand⑨">(2)</a> <a href="#ref-for-xrhand①⓪">(3)</a> <a href="#ref-for-xrhand①①">(4)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrhand-input-source">
-   <b><a href="#xrhand-input-source">#xrhand-input-source</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrhand-input-source">3.1. XRInputSource</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhand-joints-slot">
-   <b><a href="#dom-xrhand-joints-slot">#dom-xrhand-joints-slot</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhand-joints-slot">3.3. XRHand</a> <a href="#ref-for-dom-xrhand-joints-slot①">(2)</a> <a href="#ref-for-dom-xrhand-joints-slot②">(3)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrhand-size">
-   <b><a href="#dom-xrhand-size">#dom-xrhand-size</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrhand-size">3.3. XRHand</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrjointspace">
-   <b><a href="#xrjointspace">#xrjointspace</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrjointspace">3.3. XRHand</a> <a href="#ref-for-xrjointspace①">(2)</a> <a href="#ref-for-xrjointspace②">(3)</a> <a href="#ref-for-xrjointspace③">(4)</a>
-    <li><a href="#ref-for-xrjointspace④">3.4. XRJointSpace</a> <a href="#ref-for-xrjointspace⑤">(2)</a> <a href="#ref-for-xrjointspace⑥">(3)</a> <a href="#ref-for-xrjointspace⑦">(4)</a> <a href="#ref-for-xrjointspace⑧">(5)</a>
-    <li><a href="#ref-for-xrjointspace⑨">4.1. XRFrame</a> <a href="#ref-for-xrjointspace①⓪">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrjointspace-hand">
-   <b><a href="#xrjointspace-hand">#xrjointspace-hand</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrjointspace-hand">3.4. XRJointSpace</a>
-    <li><a href="#ref-for-xrjointspace-hand①">4.1. XRFrame</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrjointspace-jointname">
-   <b><a href="#xrjointspace-jointname">#xrjointspace-jointname</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrjointspace-jointname">3.4. XRJointSpace</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrjointspace-joint">
-   <b><a href="#xrjointspace-joint">#xrjointspace-joint</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrjointspace-joint">3.4. XRJointSpace</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrframe-getjointpose">
-   <b><a href="#dom-xrframe-getjointpose">#dom-xrframe-getjointpose</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrframe-getjointpose">4.1. XRFrame</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrframe-filljointradii">
-   <b><a href="#dom-xrframe-filljointradii">#dom-xrframe-filljointradii</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrframe-filljointradii">4.1. XRFrame</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrframe-fillposes">
-   <b><a href="#dom-xrframe-fillposes">#dom-xrframe-fillposes</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrframe-fillposes">4.1. XRFrame</a> <a href="#ref-for-dom-xrframe-fillposes①">(2)</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="xrjointpose">
-   <b><a href="#xrjointpose">#xrjointpose</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-xrjointpose">4.1. XRFrame</a> <a href="#ref-for-xrjointpose①">(2)</a> <a href="#ref-for-xrjointpose②">(3)</a>
-    <li><a href="#ref-for-xrjointpose③">4.2. XRJointPose</a>
-   </ul>
-  </aside>
-  <aside class="dfn-panel" data-for="dom-xrjointpose-radius">
-   <b><a href="#dom-xrjointpose-radius">#dom-xrjointpose-radius</a></b><b>Referenced in:</b>
-   <ul>
-    <li><a href="#ref-for-dom-xrjointpose-radius">4.1. XRFrame</a>
-    <li><a href="#ref-for-dom-xrjointpose-radius①">4.2. XRJointPose</a> <a href="#ref-for-dom-xrjointpose-radius②">(2)</a>
-   </ul>
-  </aside>
-<script>/* script-dfn-panel */
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrframe-filljointradii">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/fillJointRadii" title="The fillJointRadii() method of the XRFrame interface populates a Float32Array with radii for a list of hand joint spaces and returns true if successful for all spaces.">XRFrame/fillJointRadii</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrframe-fillposes">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/fillPoses" title="The fillPoses() method of the XRFrame interface populates a Float32Array with the matrices of the poses relative to a given base space and returns true if successful for all spaces.">XRFrame/fillPoses</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrframe-getjointpose">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRFrame/getJointPose" title="The getJointPose() method of the XRFrame interface returns an XRJointPose object providing the pose of a hand joint (see XRHand) relative to a given base space.">XRFrame/getJointPose</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="xrhand-interface">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRHand" title="The XRHand interface is pair iterator (an ordered map) with the key being the hand joints and the value being an XRJointSpace.">XRHand</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRJointSpace" title="The XRJointSpace interface is an XRSpace and represents the position and orientation of an XRHand joint.">XRJointSpace</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrinputsource-hand">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRInputSource/hand" title="The read-only hand property of the XRInputSource interface is a XRHand object providing access to a hand-tracking device.">XRInputSource/hand</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrjointpose-radius">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRJointPose/radius" title="The read-only radius property of the XRJointPose interface indicates the radius (distance from skin) for a joint.">XRJointPose/radius</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="xrjointpose-interface">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRJointPose" title="The XRJointPose interface is an XRPose with additional information about the size of the skeleton joint it represents.">XRJointPose</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+  <details class="mdn-anno unpositioned" data-anno-for="dom-xrjointspace-jointname">
+   <summary><b class="less-than-two-engines-flag" title="This feature is in less than two current engines.">⚠</b><span>MDN</span></summary>
+   <div class="feature">
+    <p><a href="https://developer.mozilla.org/en-US/docs/Web/API/XRJointSpace/jointName" title="The read-only jointName property of the XRJointSpace interface contains the name of the joint it tracks.">XRJointSpace/jointName</a></p>
+    <p class="less-than-two-engines-text">In no current engines.</p>
+    <div class="support">
+     <span class="firefox no"><span>Firefox</span><span>None</span></span><span class="safari no"><span>Safari</span><span>None</span></span><span class="chrome no"><span>Chrome</span><span>None</span></span>
+     <hr>
+     <span class="opera no"><span>Opera</span><span>?</span></span><span class="edge_blink no"><span>Edge</span><span>None</span></span>
+     <hr>
+     <span class="edge no"><span>Edge (Legacy)</span><span>None</span></span><span class="ie no"><span>IE</span><span>None</span></span>
+     <hr>
+     <span class="firefox_android no"><span>Firefox for Android</span><span>?</span></span><span class="safari_ios no"><span>iOS Safari</span><span>?</span></span><span class="chrome_android no"><span>Chrome for Android</span><span>?</span></span><span class="webview_android no"><span>Android WebView</span><span>?</span></span><span class="samsunginternet_android no"><span>Samsung Internet</span><span>?</span></span><span class="opera_android no"><span>Opera Mobile</span><span>?</span></span>
+    </div>
+   </div>
+  </details>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+    const dfnsJson = window.dfnsJson || {};
 
-document.body.addEventListener("click", function(e) {
-    var queryAll = function(sel) { return [].slice.call(document.querySelectorAll(sel)); }
-    // Find the dfn element or panel, if any, that was clicked on.
-    var el = e.target;
-    var target;
-    var hitALink = false;
-    while(el.parentElement) {
-        if(el.tagName == "A") {
-            // Clicking on a link in a <dfn> shouldn't summon the panel
-            hitALink = true;
-        }
-        if(el.classList.contains("dfn-paneled")) {
-            target = "dfn";
-            break;
-        }
-        if(el.classList.contains("dfn-panel")) {
-            target = "dfn-panel";
-            break;
-        }
-        el = el.parentElement;
+    function genDfnPanel({dfnID, url, dfnText, refSections, external}) {
+        return mk.aside({
+            class: "dfn-panel",
+            id: `infopanel-for-${dfnID}`,
+            "data-for": dfnID,
+            "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+            },
+            mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+                `Info about the '${dfnText}' ${external?"external":""} reference.`),
+            mk.a({href:url}, url),
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({
+                                    href: `#${ref.id}`
+                                    },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        );
     }
-    if(target != "dfn-panel") {
-        // Turn off any currently "on" or "activated" panels.
-        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(function(el){
-            el.classList.remove("on");
-            el.classList.remove("activated");
-        });
-    }
-    if(target == "dfn" && !hitALink) {
-        // open the panel
-        var dfnPanel = document.querySelector(".dfn-panel[data-for='" + el.id + "']");
-        if(dfnPanel) {
-            dfnPanel.classList.add("on");
-            var rect = el.getBoundingClientRect();
-            dfnPanel.style.left = window.scrollX + rect.right + 5 + "px";
-            dfnPanel.style.top = window.scrollY + rect.top + "px";
-            var panelRect = dfnPanel.getBoundingClientRect();
-            var panelWidth = panelRect.right - panelRect.left;
-            if(panelRect.right > document.body.scrollWidth && (rect.left - (panelWidth + 5)) > 0) {
-                // Reposition, because the panel is overflowing
-                dfnPanel.style.left = window.scrollX + rect.left - (panelWidth + 5) + "px";
+
+    function genAllDfnPanels() {
+        for(const panelData of Object.values(window.dfnpanelData)) {
+            const dfnID = panelData.dfnID;
+            const dfn = document.getElementById(dfnID);
+            if(!dfn) {
+                console.log(`Can't find dfn#${dfnID}.`, panelData);
+            } else {
+                const panel = genDfnPanel(panelData);
+                append(document.body, panel);
+                insertDfnPopupAction(dfn, panel)
             }
-        } else {
-            console.log("Couldn't find .dfn-panel[data-for='" + el.id + "']");
         }
-    } else if(target == "dfn-panel") {
-        // Switch it to "activated" state, which pins it.
-        el.classList.add("activated");
-        el.style.left = null;
-        el.style.top = null;
     }
 
-});
-</script>
-<script>/* script-var-click-highlighting */
+    document.addEventListener("DOMContentLoaded", ()=>{
+        genAllDfnPanels();
 
+        // Add popup behavior to all dfns to show the corresponding dfn-panel.
+        var dfns = queryAll('.dfn-paneled');
+        for(let dfn of dfns) { ; }
+
+        document.body.addEventListener("click", (e) => {
+            // If not handled already, just hide all dfn panels.
+            hideAllDfnPanels();
+        });
+    })
+
+
+    function hideAllDfnPanels() {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>hideDfnPanel(el));
+    }
+
+    function showDfnPanel(dfnPanel, dfn) {
+        hideAllDfnPanels(); // Only display one at this time.
+        dfn.setAttribute("aria-expanded", "true");
+        dfnPanel.classList.add("on");
+        dfnPanel.style.left = "5px";
+        dfnPanel.style.top = "0px";
+        const panelRect = dfnPanel.getBoundingClientRect();
+        const panelWidth = panelRect.right - panelRect.left;
+        if (panelRect.right > document.body.scrollWidth) {
+            // Panel's overflowing the screen.
+            // Just drop it below the dfn and flip it rightward instead.
+            // This still wont' fix things if the screen is *really* wide,
+            // but fixing that's a lot harder without 'anchor()'.
+            dfnPanel.style.top = "1.5em";
+            dfnPanel.style.left = "auto";
+            dfnPanel.style.right = "0px";
+        }
+    }
+
+    function pinDfnPanel(dfnPanel) {
+        // Switch it to "activated" state, which pins it.
+        dfnPanel.classList.add("activated");
+        dfnPanel.style.left = null;
+        dfnPanel.style.top = null;
+    }
+
+    function hideDfnPanel(dfnPanel, dfn) {
+        if(!dfn) {
+            dfn = document.getElementById(dfnPanel.getAttribute("data-for"));
+        }
+        dfn.setAttribute("aria-expanded", "false")
+        dfnPanel.classList.remove("on");
+        dfnPanel.classList.remove("activated");
+    }
+
+    function toggleDfnPanel(dfnPanel, dfn) {
+        if(dfnPanel.classList.contains("on")) {
+            hideDfnPanel(dfnPanel, dfn);
+        } else {
+            showDfnPanel(dfnPanel, dfn);
+        }
+    }
+
+    function insertDfnPopupAction(dfn, dfnPanel) {
+        // Find dfn panel
+        const panelWrapper = document.createElement('span');
+        panelWrapper.appendChild(dfnPanel);
+        panelWrapper.style.position = "relative";
+        panelWrapper.style.height = "0px";
+        dfn.insertAdjacentElement("afterend", panelWrapper);
+        dfn.setAttribute('role', 'button');
+        dfn.setAttribute('aria-expanded', 'false')
+        dfn.tabIndex = 0;
+        dfn.classList.add('has-dfn-panel');
+        dfn.addEventListener('click', (event) => {
+            showDfnPanel(dfnPanel, dfn);
+            event.stopPropagation();
+        });
+        dfn.addEventListener('keypress', (event) => {
+            const kc = event.keyCode;
+            // 32->Space, 13->Enter
+            if(kc == 32 || kc == 13) {
+                toggleDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        });
+
+        dfnPanel.addEventListener('click', (event) => {
+            if (event.target.nodeName == 'A') {
+                pinDfnPanel(dfnPanel);
+            }
+            event.stopPropagation();
+        });
+
+        dfnPanel.addEventListener('keydown', (event) => {
+            if(event.keyCode == 27) { // Escape key
+                hideDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        })
+    }
+}
+</script>
+<script>/* Boilerplate: script-dfn-panel */
+"use strict";
+{
+    const dfnsJson = window.dfnsJson || {};
+
+    function genDfnPanel({dfnID, url, dfnText, refSections, external}) {
+        return mk.aside({
+            class: "dfn-panel",
+            id: `infopanel-for-${dfnID}`,
+            "data-for": dfnID,
+            "aria-labelled-by":`infopaneltitle-for-${dfnID}`,
+            },
+            mk.span({id:`infopaneltitle-for-${dfnID}`, style:"display:none"},
+                `Info about the '${dfnText}' ${external?"external":""} reference.`),
+            mk.a({href:url}, url),
+            mk.b({}, "Referenced in:"),
+            mk.ul({},
+                ...refSections.map(section=>
+                    mk.li({},
+                        ...section.refs.map((ref, refI)=>
+                            [
+                                mk.a({
+                                    href: `#${ref.id}`
+                                    },
+                                    (refI == 0) ? section.title : `(${refI + 1})`
+                                ),
+                                " ",
+                            ]
+                        ),
+                    ),
+                ),
+            ),
+        );
+    }
+
+    function genAllDfnPanels() {
+        for(const panelData of Object.values(window.dfnpanelData)) {
+            const dfnID = panelData.dfnID;
+            const dfn = document.getElementById(dfnID);
+            if(!dfn) {
+                console.log(`Can't find dfn#${dfnID}.`, panelData);
+            } else {
+                const panel = genDfnPanel(panelData);
+                append(document.body, panel);
+                insertDfnPopupAction(dfn, panel)
+            }
+        }
+    }
+
+    document.addEventListener("DOMContentLoaded", ()=>{
+        genAllDfnPanels();
+
+        // Add popup behavior to all dfns to show the corresponding dfn-panel.
+        var dfns = queryAll('.dfn-paneled');
+        for(let dfn of dfns) { ; }
+
+        document.body.addEventListener("click", (e) => {
+            // If not handled already, just hide all dfn panels.
+            hideAllDfnPanels();
+        });
+    })
+
+
+    function hideAllDfnPanels() {
+        // Turn off any currently "on" or "activated" panels.
+        queryAll(".dfn-panel.on, .dfn-panel.activated").forEach(el=>hideDfnPanel(el));
+    }
+
+    function showDfnPanel(dfnPanel, dfn) {
+        hideAllDfnPanels(); // Only display one at this time.
+        dfn.setAttribute("aria-expanded", "true");
+        dfnPanel.classList.add("on");
+        dfnPanel.style.left = "5px";
+        dfnPanel.style.top = "0px";
+        const panelRect = dfnPanel.getBoundingClientRect();
+        const panelWidth = panelRect.right - panelRect.left;
+        if (panelRect.right > document.body.scrollWidth) {
+            // Panel's overflowing the screen.
+            // Just drop it below the dfn and flip it rightward instead.
+            // This still wont' fix things if the screen is *really* wide,
+            // but fixing that's a lot harder without 'anchor()'.
+            dfnPanel.style.top = "1.5em";
+            dfnPanel.style.left = "auto";
+            dfnPanel.style.right = "0px";
+        }
+    }
+
+    function pinDfnPanel(dfnPanel) {
+        // Switch it to "activated" state, which pins it.
+        dfnPanel.classList.add("activated");
+        dfnPanel.style.left = null;
+        dfnPanel.style.top = null;
+    }
+
+    function hideDfnPanel(dfnPanel, dfn) {
+        if(!dfn) {
+            dfn = document.getElementById(dfnPanel.getAttribute("data-for"));
+        }
+        dfn.setAttribute("aria-expanded", "false")
+        dfnPanel.classList.remove("on");
+        dfnPanel.classList.remove("activated");
+    }
+
+    function toggleDfnPanel(dfnPanel, dfn) {
+        if(dfnPanel.classList.contains("on")) {
+            hideDfnPanel(dfnPanel, dfn);
+        } else {
+            showDfnPanel(dfnPanel, dfn);
+        }
+    }
+
+    function insertDfnPopupAction(dfn, dfnPanel) {
+        // Find dfn panel
+        const panelWrapper = document.createElement('span');
+        panelWrapper.appendChild(dfnPanel);
+        panelWrapper.style.position = "relative";
+        panelWrapper.style.height = "0px";
+        dfn.insertAdjacentElement("afterend", panelWrapper);
+        dfn.setAttribute('role', 'button');
+        dfn.setAttribute('aria-expanded', 'false')
+        dfn.tabIndex = 0;
+        dfn.classList.add('has-dfn-panel');
+        dfn.addEventListener('click', (event) => {
+            showDfnPanel(dfnPanel, dfn);
+            event.stopPropagation();
+        });
+        dfn.addEventListener('keypress', (event) => {
+            const kc = event.keyCode;
+            // 32->Space, 13->Enter
+            if(kc == 32 || kc == 13) {
+                toggleDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        });
+
+        dfnPanel.addEventListener('click', (event) => {
+            if (event.target.nodeName == 'A') {
+                pinDfnPanel(dfnPanel);
+            }
+            event.stopPropagation();
+        });
+
+        dfnPanel.addEventListener('keydown', (event) => {
+            if(event.keyCode == 27) { // Escape key
+                hideDfnPanel(dfnPanel, dfn);
+                event.stopPropagation();
+                event.preventDefault();
+            }
+        })
+    }
+}
+</script>
+<script>/* Boilerplate: script-dfn-panel-json */
+window.dfnpanelData = {};
+window.dfnpanelData['faf954d6'] = {"dfnID": "faf954d6", "url": "https://html.spec.whatwg.org/multipage/browsers.html#browsing-context", "dfnText": "browsing context", "refSections": [{"refs": [{"id": "ref-for-browsing-context"}, {"id": "ref-for-browsing-context\u2460"}], "title": "5. Privacy & Security Considerations"}], "external": true};
+window.dfnpanelData['5991ccfb'] = {"dfnID": "5991ccfb", "url": "https://html.spec.whatwg.org/multipage/webappapis.html#concept-relevant-realm", "dfnText": "relevant realm", "refSections": [{"refs": [{"id": "ref-for-concept-relevant-realm"}, {"id": "ref-for-concept-relevant-realm\u2460"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['84b454ff'] = {"dfnID": "84b454ff", "url": "https://infra.spec.whatwg.org/#ordered-map", "dfnText": "ordered map", "refSections": [{"refs": [{"id": "ref-for-ordered-map"}], "title": "3.3. XRHand"}], "external": true};
+window.dfnpanelData['e2a51d55'] = {"dfnID": "e2a51d55", "url": "https://w3c.github.io/ServiceWorker/#extendableevent-active", "dfnText": "active", "refSections": [{"refs": [{"id": "ref-for-extendableevent-active"}, {"id": "ref-for-extendableevent-active\u2460"}, {"id": "ref-for-extendableevent-active\u2461"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['889e932f'] = {"dfnID": "889e932f", "url": "https://webidl.spec.whatwg.org/#Exposed", "dfnText": "Exposed", "refSections": [{"refs": [{"id": "ref-for-Exposed"}], "title": "3.3. XRHand"}, {"refs": [{"id": "ref-for-Exposed\u2460"}], "title": "3.4. XRJointSpace"}, {"refs": [{"id": "ref-for-Exposed\u2461"}], "title": "4.2. XRJointPose"}], "external": true};
+window.dfnpanelData['0a296dfe'] = {"dfnID": "0a296dfe", "url": "https://webidl.spec.whatwg.org/#idl-Float32Array", "dfnText": "Float32Array", "refSections": [{"refs": [{"id": "ref-for-idl-Float32Array"}, {"id": "ref-for-idl-Float32Array\u2460"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['797018a7'] = {"dfnID": "797018a7", "url": "https://webidl.spec.whatwg.org/#invalidstateerror", "dfnText": "InvalidStateError", "refSections": [{"refs": [{"id": "ref-for-invalidstateerror"}, {"id": "ref-for-invalidstateerror\u2460"}, {"id": "ref-for-invalidstateerror\u2461"}, {"id": "ref-for-invalidstateerror\u2462"}, {"id": "ref-for-invalidstateerror\u2463"}, {"id": "ref-for-invalidstateerror\u2464"}, {"id": "ref-for-invalidstateerror\u2465"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['a5c91173'] = {"dfnID": "a5c91173", "url": "https://webidl.spec.whatwg.org/#SameObject", "dfnText": "SameObject", "refSections": [{"refs": [{"id": "ref-for-SameObject"}], "title": "3.1. XRInputSource"}], "external": true};
+window.dfnpanelData['82ca3efc'] = {"dfnID": "82ca3efc", "url": "https://webidl.spec.whatwg.org/#exceptiondef-typeerror", "dfnText": "TypeError", "refSections": [{"refs": [{"id": "ref-for-exceptiondef-typeerror"}, {"id": "ref-for-exceptiondef-typeerror\u2460"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['5372cca8'] = {"dfnID": "5372cca8", "url": "https://webidl.spec.whatwg.org/#idl-boolean", "dfnText": "boolean", "refSections": [{"refs": [{"id": "ref-for-idl-boolean"}, {"id": "ref-for-idl-boolean\u2460"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['eec1be2d'] = {"dfnID": "eec1be2d", "url": "https://webidl.spec.whatwg.org/#idl-float", "dfnText": "float", "refSections": [{"refs": [{"id": "ref-for-idl-float"}], "title": "4.2. XRJointPose"}], "external": true};
+window.dfnpanelData['56f81a8e'] = {"dfnID": "56f81a8e", "url": "https://webidl.spec.whatwg.org/#new", "dfnText": "new", "refSections": [{"refs": [{"id": "ref-for-new"}, {"id": "ref-for-new\u2460"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['9cce47fd'] = {"dfnID": "9cce47fd", "url": "https://webidl.spec.whatwg.org/#idl-sequence", "dfnText": "sequence", "refSections": [{"refs": [{"id": "ref-for-idl-sequence"}, {"id": "ref-for-idl-sequence\u2460"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['4013a022'] = {"dfnID": "4013a022", "url": "https://webidl.spec.whatwg.org/#this", "dfnText": "this", "refSections": [{"refs": [{"id": "ref-for-this"}], "title": "3.1. XRInputSource"}, {"refs": [{"id": "ref-for-this\u2460"}, {"id": "ref-for-this\u2461"}], "title": "3.3. XRHand"}, {"refs": [{"id": "ref-for-this\u2462"}, {"id": "ref-for-this\u2463"}, {"id": "ref-for-this\u2464"}, {"id": "ref-for-this\u2465"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['e97a9688'] = {"dfnID": "e97a9688", "url": "https://webidl.spec.whatwg.org/#idl-unsigned-long", "dfnText": "unsigned long", "refSections": [{"refs": [{"id": "ref-for-idl-unsigned-long"}], "title": "3.3. XRHand"}], "external": true};
+window.dfnpanelData['f4386d3f'] = {"dfnID": "f4386d3f", "url": "https://webidl.spec.whatwg.org/#value-pair", "dfnText": "value pair", "refSections": [{"refs": [{"id": "ref-for-value-pair"}], "title": "3.3. XRHand"}], "external": true};
+window.dfnpanelData['42a03705'] = {"dfnID": "42a03705", "url": "https://webidl.spec.whatwg.org/#dfn-value-pairs-to-iterate-over", "dfnText": "value pairs to iterate over", "refSections": [{"refs": [{"id": "ref-for-dfn-value-pairs-to-iterate-over"}], "title": "3.3. XRHand"}], "external": true};
+window.dfnpanelData['79693d31'] = {"dfnID": "79693d31", "url": "https://immersive-web.github.io/webxr/#dom-xrsessionmode-immersive-vr", "dfnText": "\"immersive-vr\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrsessionmode-immersive-vr"}], "title": "5. Privacy & Security Considerations"}], "external": true};
+window.dfnpanelData['f8e8ab73'] = {"dfnID": "f8e8ab73", "url": "https://immersive-web.github.io/webxr/#dom-xrsessionmode-inline", "dfnText": "\"inline\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrsessionmode-inline"}], "title": "5. Privacy & Security Considerations"}], "external": true};
+window.dfnpanelData['7a030114'] = {"dfnID": "7a030114", "url": "https://immersive-web.github.io/webxr/#xrframe", "dfnText": "XRFrame", "refSections": [{"refs": [{"id": "ref-for-xrframe"}, {"id": "ref-for-xrframe\u2460"}, {"id": "ref-for-xrframe\u2461"}, {"id": "ref-for-xrframe\u2462"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['ea90e02f'] = {"dfnID": "ea90e02f", "url": "https://immersive-web.github.io/webxr/#xrinputsource", "dfnText": "XRInputSource", "refSections": [{"refs": [{"id": "ref-for-xrinputsource"}], "title": "2. Initialization"}, {"refs": [{"id": "ref-for-xrinputsource\u2460"}], "title": "3. Physical Hand Input Sources"}, {"refs": [{"id": "ref-for-xrinputsource\u2461"}, {"id": "ref-for-xrinputsource\u2462"}], "title": "3.1. XRInputSource"}], "external": true};
+window.dfnpanelData['9dfd38d6'] = {"dfnID": "9dfd38d6", "url": "https://immersive-web.github.io/webxr/#xrpose", "dfnText": "XRPose", "refSections": [{"refs": [{"id": "ref-for-xrpose"}], "title": "4.1. XRFrame"}, {"refs": [{"id": "ref-for-xrpose\u2460"}, {"id": "ref-for-xrpose\u2461"}], "title": "4.2. XRJointPose"}], "external": true};
+window.dfnpanelData['b23556e5'] = {"dfnID": "b23556e5", "url": "https://immersive-web.github.io/webxr/#xrsession", "dfnText": "XRSession", "refSections": [{"refs": [{"id": "ref-for-xrsession"}, {"id": "ref-for-xrsession\u2460"}], "title": "2. Initialization"}, {"refs": [{"id": "ref-for-xrsession\u2461"}], "title": "3.1. XRInputSource"}], "external": true};
+window.dfnpanelData['0b566548'] = {"dfnID": "0b566548", "url": "https://immersive-web.github.io/webxr/#xrspace", "dfnText": "XRSpace", "refSections": [{"refs": [{"id": "ref-for-xrspace"}], "title": "3.4. XRJointSpace"}, {"refs": [{"id": "ref-for-xrspace\u2460"}, {"id": "ref-for-xrspace\u2461"}, {"id": "ref-for-xrspace\u2462"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['b4614182'] = {"dfnID": "b4614182", "url": "https://immersive-web.github.io/webxr/#dom-xrrigidtransform-matrix", "dfnText": "matrix", "refSections": [{"refs": [{"id": "ref-for-dom-xrrigidtransform-matrix"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['4dd97d27'] = {"dfnID": "4dd97d27", "url": "https://immersive-web.github.io/webxr/#dom-xrinputsource-profiles", "dfnText": "profiles", "refSections": [{"refs": [{"id": "ref-for-dom-xrinputsource-profiles"}], "title": "3. Physical Hand Input Sources"}], "external": true};
+window.dfnpanelData['7c7eccf9'] = {"dfnID": "7c7eccf9", "url": "https://immersive-web.github.io/webxr/#dom-xrframe-session", "dfnText": "session", "refSections": [{"refs": [{"id": "ref-for-dom-xrframe-session"}, {"id": "ref-for-dom-xrframe-session\u2460"}, {"id": "ref-for-dom-xrframe-session\u2461"}, {"id": "ref-for-dom-xrframe-session\u2462"}], "title": "4.1. XRFrame"}], "external": true};
+window.dfnpanelData['ac906c0c'] = {"dfnID": "ac906c0c", "url": "https://immersive-web.github.io/webxr-ar-module/#dom-xrsessionmode-immersive-ar", "dfnText": "\"immersive-ar\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrsessionmode-immersive-ar"}], "title": "5. Privacy & Security Considerations"}], "external": true};
+window.dfnpanelData['feature-descriptor-hand-tracking'] = {"dfnID": "feature-descriptor-hand-tracking", "url": "#feature-descriptor-hand-tracking", "dfnText": "hand-tracking", "refSections": [{"refs": [{"id": "ref-for-feature-descriptor-hand-tracking"}, {"id": "ref-for-feature-descriptor-hand-tracking\u2460"}], "title": "2. Initialization"}, {"refs": [{"id": "ref-for-feature-descriptor-hand-tracking\u2461"}], "title": "3.1. XRInputSource"}], "external": false};
+window.dfnpanelData['physical-hand-input-source'] = {"dfnID": "physical-hand-input-source", "url": "#physical-hand-input-source", "dfnText": "physical hand input source", "refSections": [{"refs": [{"id": "ref-for-physical-hand-input-source"}], "title": "2. Initialization"}, {"refs": [{"id": "ref-for-physical-hand-input-source\u2460"}, {"id": "ref-for-physical-hand-input-source\u2461"}, {"id": "ref-for-physical-hand-input-source\u2462"}], "title": "3. Physical Hand Input Sources"}, {"refs": [{"id": "ref-for-physical-hand-input-source\u2463"}], "title": "3.1. XRInputSource"}, {"refs": [{"id": "ref-for-physical-hand-input-source\u2464"}], "title": "3.2. Skeleton Joints"}, {"refs": [{"id": "ref-for-physical-hand-input-source\u2465"}], "title": "3.3. XRHand"}], "external": false};
+window.dfnpanelData['supports-hand-tracking'] = {"dfnID": "supports-hand-tracking", "url": "#supports-hand-tracking", "dfnText": "supports hand tracking", "refSections": [{"refs": [{"id": "ref-for-supports-hand-tracking"}], "title": "2. Initialization"}, {"refs": [{"id": "ref-for-supports-hand-tracking\u2460"}], "title": "3.1. XRInputSource"}], "external": false};
+window.dfnpanelData['dom-xrinputsource-hand'] = {"dfnID": "dom-xrinputsource-hand", "url": "#dom-xrinputsource-hand", "dfnText": "hand", "refSections": [{"refs": [{"id": "ref-for-dom-xrinputsource-hand"}, {"id": "ref-for-dom-xrinputsource-hand\u2460"}, {"id": "ref-for-dom-xrinputsource-hand\u2461"}], "title": "3.1. XRInputSource"}], "external": false};
+window.dfnpanelData['skeleton-joints'] = {"dfnID": "skeleton-joints", "url": "#skeleton-joints", "dfnText": "skeleton joints", "refSections": [{"refs": [{"id": "ref-for-skeleton-joints"}], "title": "1. Introduction"}, {"refs": [{"id": "ref-for-skeleton-joints\u2460"}], "title": "3. Physical Hand Input Sources"}, {"refs": [{"id": "ref-for-skeleton-joints\u2461"}, {"id": "ref-for-skeleton-joints\u2462"}, {"id": "ref-for-skeleton-joints\u2463"}, {"id": "ref-for-skeleton-joints\u2464"}, {"id": "ref-for-skeleton-joints\u2465"}, {"id": "ref-for-skeleton-joints\u2466"}, {"id": "ref-for-skeleton-joints\u2467"}], "title": "3.2. Skeleton Joints"}, {"refs": [{"id": "ref-for-skeleton-joints\u2468"}, {"id": "ref-for-skeleton-joints\u2460\u24ea"}], "title": "3.3. XRHand"}, {"refs": [{"id": "ref-for-skeleton-joints\u2460\u2460"}, {"id": "ref-for-skeleton-joints\u2460\u2461"}, {"id": "ref-for-skeleton-joints\u2460\u2462"}], "title": "3.4. XRJointSpace"}, {"refs": [{"id": "ref-for-skeleton-joints\u2460\u2463"}, {"id": "ref-for-skeleton-joints\u2460\u2464"}, {"id": "ref-for-skeleton-joints\u2460\u2465"}], "title": "4.2. XRJointPose"}], "external": false};
+window.dfnpanelData['skeleton-joint-name'] = {"dfnID": "skeleton-joint-name", "url": "#skeleton-joint-name", "dfnText": "skeleton joint name", "refSections": [{"refs": [{"id": "ref-for-skeleton-joint-name"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['associated-bone'] = {"dfnID": "associated-bone", "url": "#associated-bone", "dfnText": "associated bone", "refSections": [{"refs": [{"id": "ref-for-associated-bone"}, {"id": "ref-for-associated-bone\u2460"}], "title": "3.2. Skeleton Joints"}, {"refs": [{"id": "ref-for-associated-bone\u2461"}], "title": "3.4. XRJointSpace"}], "external": false};
+window.dfnpanelData['skeleton-joint-radius'] = {"dfnID": "skeleton-joint-radius", "url": "#skeleton-joint-radius", "dfnText": "radius", "refSections": [{"refs": [{"id": "ref-for-skeleton-joint-radius"}, {"id": "ref-for-skeleton-joint-radius\u2460"}], "title": "4.1. XRFrame"}, {"refs": [{"id": "ref-for-skeleton-joint-radius\u2461"}], "title": "4.2. XRJointPose"}], "external": false};
+window.dfnpanelData['list-of-joints'] = {"dfnID": "list-of-joints", "url": "#list-of-joints", "dfnText": "list of joints", "refSections": [{"refs": [{"id": "ref-for-list-of-joints"}, {"id": "ref-for-list-of-joints\u2460"}], "title": "3.3. XRHand"}], "external": false};
+window.dfnpanelData['enumdef-xrhandjoint'] = {"dfnID": "enumdef-xrhandjoint", "url": "#enumdef-xrhandjoint", "dfnText": "XRHandJoint", "refSections": [{"refs": [{"id": "ref-for-enumdef-xrhandjoint"}], "title": "3.2. Skeleton Joints"}, {"refs": [{"id": "ref-for-enumdef-xrhandjoint\u2460"}, {"id": "ref-for-enumdef-xrhandjoint\u2461"}, {"id": "ref-for-enumdef-xrhandjoint\u2462"}, {"id": "ref-for-enumdef-xrhandjoint\u2463"}, {"id": "ref-for-enumdef-xrhandjoint\u2464"}, {"id": "ref-for-enumdef-xrhandjoint\u2465"}], "title": "3.3. XRHand"}, {"refs": [{"id": "ref-for-enumdef-xrhandjoint\u2466"}], "title": "3.4. XRJointSpace"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-wrist'] = {"dfnID": "dom-xrhandjoint-wrist", "url": "#dom-xrhandjoint-wrist", "dfnText": "\"wrist\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-wrist"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-thumb-metacarpal'] = {"dfnID": "dom-xrhandjoint-thumb-metacarpal", "url": "#dom-xrhandjoint-thumb-metacarpal", "dfnText": "\"thumb-metacarpal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-thumb-metacarpal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-thumb-phalanx-proximal'] = {"dfnID": "dom-xrhandjoint-thumb-phalanx-proximal", "url": "#dom-xrhandjoint-thumb-phalanx-proximal", "dfnText": "\"thumb-phalanx-proximal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-thumb-phalanx-proximal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-thumb-phalanx-distal'] = {"dfnID": "dom-xrhandjoint-thumb-phalanx-distal", "url": "#dom-xrhandjoint-thumb-phalanx-distal", "dfnText": "\"thumb-phalanx-distal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-thumb-phalanx-distal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-thumb-tip'] = {"dfnID": "dom-xrhandjoint-thumb-tip", "url": "#dom-xrhandjoint-thumb-tip", "dfnText": "\"thumb-tip\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-thumb-tip"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-index-finger-metacarpal'] = {"dfnID": "dom-xrhandjoint-index-finger-metacarpal", "url": "#dom-xrhandjoint-index-finger-metacarpal", "dfnText": "\"index-finger-metacarpal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-index-finger-metacarpal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-index-finger-phalanx-proximal'] = {"dfnID": "dom-xrhandjoint-index-finger-phalanx-proximal", "url": "#dom-xrhandjoint-index-finger-phalanx-proximal", "dfnText": "\"index-finger-phalanx-proximal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-index-finger-phalanx-proximal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-index-finger-phalanx-intermediate'] = {"dfnID": "dom-xrhandjoint-index-finger-phalanx-intermediate", "url": "#dom-xrhandjoint-index-finger-phalanx-intermediate", "dfnText": "\"index-finger-phalanx-intermediate\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-index-finger-phalanx-intermediate"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-index-finger-phalanx-distal'] = {"dfnID": "dom-xrhandjoint-index-finger-phalanx-distal", "url": "#dom-xrhandjoint-index-finger-phalanx-distal", "dfnText": "\"index-finger-phalanx-distal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-index-finger-phalanx-distal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-index-finger-tip'] = {"dfnID": "dom-xrhandjoint-index-finger-tip", "url": "#dom-xrhandjoint-index-finger-tip", "dfnText": "\"index-finger-tip\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-index-finger-tip"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-middle-finger-metacarpal'] = {"dfnID": "dom-xrhandjoint-middle-finger-metacarpal", "url": "#dom-xrhandjoint-middle-finger-metacarpal", "dfnText": "\"middle-finger-metacarpal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-middle-finger-metacarpal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-middle-finger-phalanx-proximal'] = {"dfnID": "dom-xrhandjoint-middle-finger-phalanx-proximal", "url": "#dom-xrhandjoint-middle-finger-phalanx-proximal", "dfnText": "\"middle-finger-phalanx-proximal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-middle-finger-phalanx-proximal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-middle-finger-phalanx-intermediate'] = {"dfnID": "dom-xrhandjoint-middle-finger-phalanx-intermediate", "url": "#dom-xrhandjoint-middle-finger-phalanx-intermediate", "dfnText": "\"middle-finger-phalanx-intermediate\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-middle-finger-phalanx-intermediate"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-middle-finger-phalanx-distal'] = {"dfnID": "dom-xrhandjoint-middle-finger-phalanx-distal", "url": "#dom-xrhandjoint-middle-finger-phalanx-distal", "dfnText": "\"middle-finger-phalanx-distal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-middle-finger-phalanx-distal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-middle-finger-tip'] = {"dfnID": "dom-xrhandjoint-middle-finger-tip", "url": "#dom-xrhandjoint-middle-finger-tip", "dfnText": "\"middle-finger-tip\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-middle-finger-tip"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-ring-finger-metacarpal'] = {"dfnID": "dom-xrhandjoint-ring-finger-metacarpal", "url": "#dom-xrhandjoint-ring-finger-metacarpal", "dfnText": "\"ring-finger-metacarpal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-ring-finger-metacarpal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-ring-finger-phalanx-proximal'] = {"dfnID": "dom-xrhandjoint-ring-finger-phalanx-proximal", "url": "#dom-xrhandjoint-ring-finger-phalanx-proximal", "dfnText": "\"ring-finger-phalanx-proximal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-ring-finger-phalanx-proximal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-ring-finger-phalanx-intermediate'] = {"dfnID": "dom-xrhandjoint-ring-finger-phalanx-intermediate", "url": "#dom-xrhandjoint-ring-finger-phalanx-intermediate", "dfnText": "\"ring-finger-phalanx-intermediate\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-ring-finger-phalanx-intermediate"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-ring-finger-phalanx-distal'] = {"dfnID": "dom-xrhandjoint-ring-finger-phalanx-distal", "url": "#dom-xrhandjoint-ring-finger-phalanx-distal", "dfnText": "\"ring-finger-phalanx-distal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-ring-finger-phalanx-distal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-ring-finger-tip'] = {"dfnID": "dom-xrhandjoint-ring-finger-tip", "url": "#dom-xrhandjoint-ring-finger-tip", "dfnText": "\"ring-finger-tip\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-ring-finger-tip"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-pinky-finger-metacarpal'] = {"dfnID": "dom-xrhandjoint-pinky-finger-metacarpal", "url": "#dom-xrhandjoint-pinky-finger-metacarpal", "dfnText": "\"pinky-finger-metacarpal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-pinky-finger-metacarpal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-pinky-finger-phalanx-proximal'] = {"dfnID": "dom-xrhandjoint-pinky-finger-phalanx-proximal", "url": "#dom-xrhandjoint-pinky-finger-phalanx-proximal", "dfnText": "\"pinky-finger-phalanx-proximal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-pinky-finger-phalanx-proximal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-pinky-finger-phalanx-intermediate'] = {"dfnID": "dom-xrhandjoint-pinky-finger-phalanx-intermediate", "url": "#dom-xrhandjoint-pinky-finger-phalanx-intermediate", "dfnText": "\"pinky-finger-phalanx-intermediate\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-pinky-finger-phalanx-intermediate"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-pinky-finger-phalanx-distal'] = {"dfnID": "dom-xrhandjoint-pinky-finger-phalanx-distal", "url": "#dom-xrhandjoint-pinky-finger-phalanx-distal", "dfnText": "\"pinky-finger-phalanx-distal\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-pinky-finger-phalanx-distal"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['dom-xrhandjoint-pinky-finger-tip'] = {"dfnID": "dom-xrhandjoint-pinky-finger-tip", "url": "#dom-xrhandjoint-pinky-finger-tip", "dfnText": "\"pinky-finger-tip\"", "refSections": [{"refs": [{"id": "ref-for-dom-xrhandjoint-pinky-finger-tip"}], "title": "3.2. Skeleton Joints"}], "external": false};
+window.dfnpanelData['xrhand'] = {"dfnID": "xrhand", "url": "#xrhand", "dfnText": "XRHand", "refSections": [{"refs": [{"id": "ref-for-xrhand"}, {"id": "ref-for-xrhand\u2460"}], "title": "3.1. XRInputSource"}, {"refs": [{"id": "ref-for-xrhand\u2461"}, {"id": "ref-for-xrhand\u2462"}, {"id": "ref-for-xrhand\u2463"}, {"id": "ref-for-xrhand\u2464"}, {"id": "ref-for-xrhand\u2465"}], "title": "3.3. XRHand"}, {"refs": [{"id": "ref-for-xrhand\u2466"}], "title": "3.4. XRJointSpace"}, {"refs": [{"id": "ref-for-xrhand\u2467"}, {"id": "ref-for-xrhand\u2468"}, {"id": "ref-for-xrhand\u2460\u24ea"}, {"id": "ref-for-xrhand\u2460\u2460"}], "title": "4.1. XRFrame"}], "external": false};
+window.dfnpanelData['xrhand-input-source'] = {"dfnID": "xrhand-input-source", "url": "#xrhand-input-source", "dfnText": "input source", "refSections": [{"refs": [{"id": "ref-for-xrhand-input-source"}], "title": "3.1. XRInputSource"}], "external": false};
+window.dfnpanelData['dom-xrhand-joints-slot'] = {"dfnID": "dom-xrhand-joints-slot", "url": "#dom-xrhand-joints-slot", "dfnText": "[[joints]]", "refSections": [{"refs": [{"id": "ref-for-dom-xrhand-joints-slot"}, {"id": "ref-for-dom-xrhand-joints-slot\u2460"}, {"id": "ref-for-dom-xrhand-joints-slot\u2461"}], "title": "3.3. XRHand"}], "external": false};
+window.dfnpanelData['dom-xrhand-size'] = {"dfnID": "dom-xrhand-size", "url": "#dom-xrhand-size", "dfnText": "size", "refSections": [{"refs": [{"id": "ref-for-dom-xrhand-size"}], "title": "3.3. XRHand"}], "external": false};
+window.dfnpanelData['xrjointspace'] = {"dfnID": "xrjointspace", "url": "#xrjointspace", "dfnText": "XRJointSpace", "refSections": [{"refs": [{"id": "ref-for-xrjointspace"}, {"id": "ref-for-xrjointspace\u2460"}, {"id": "ref-for-xrjointspace\u2461"}, {"id": "ref-for-xrjointspace\u2462"}], "title": "3.3. XRHand"}, {"refs": [{"id": "ref-for-xrjointspace\u2463"}, {"id": "ref-for-xrjointspace\u2464"}, {"id": "ref-for-xrjointspace\u2465"}, {"id": "ref-for-xrjointspace\u2466"}, {"id": "ref-for-xrjointspace\u2467"}], "title": "3.4. XRJointSpace"}, {"refs": [{"id": "ref-for-xrjointspace\u2468"}, {"id": "ref-for-xrjointspace\u2460\u24ea"}], "title": "4.1. XRFrame"}], "external": false};
+window.dfnpanelData['xrjointspace-hand'] = {"dfnID": "xrjointspace-hand", "url": "#xrjointspace-hand", "dfnText": "hand", "refSections": [{"refs": [{"id": "ref-for-xrjointspace-hand"}], "title": "3.4. XRJointSpace"}, {"refs": [{"id": "ref-for-xrjointspace-hand\u2460"}], "title": "4.1. XRFrame"}], "external": false};
+window.dfnpanelData['xrjointspace-jointname'] = {"dfnID": "xrjointspace-jointname", "url": "#xrjointspace-jointname", "dfnText": "jointName", "refSections": [{"refs": [{"id": "ref-for-xrjointspace-jointname"}], "title": "3.4. XRJointSpace"}], "external": false};
+window.dfnpanelData['xrjointspace-joint'] = {"dfnID": "xrjointspace-joint", "url": "#xrjointspace-joint", "dfnText": "joint", "refSections": [{"refs": [{"id": "ref-for-xrjointspace-joint"}], "title": "3.4. XRJointSpace"}], "external": false};
+window.dfnpanelData['dom-xrframe-getjointpose'] = {"dfnID": "dom-xrframe-getjointpose", "url": "#dom-xrframe-getjointpose", "dfnText": "getJointPose(XRJointSpace joint, XRSpace baseSpace)", "refSections": [{"refs": [{"id": "ref-for-dom-xrframe-getjointpose"}], "title": "4.1. XRFrame"}], "external": false};
+window.dfnpanelData['dom-xrframe-filljointradii'] = {"dfnID": "dom-xrframe-filljointradii", "url": "#dom-xrframe-filljointradii", "dfnText": "fillJointRadii(sequence<XRJointSpace> jointSpaces, Float32Array radii)", "refSections": [{"refs": [{"id": "ref-for-dom-xrframe-filljointradii"}], "title": "4.1. XRFrame"}], "external": false};
+window.dfnpanelData['dom-xrframe-fillposes'] = {"dfnID": "dom-xrframe-fillposes", "url": "#dom-xrframe-fillposes", "dfnText": "fillPoses(sequence<XRSpace> spaces, XRSpace baseSpace, Float32Array transforms)", "refSections": [{"refs": [{"id": "ref-for-dom-xrframe-fillposes"}, {"id": "ref-for-dom-xrframe-fillposes\u2460"}], "title": "4.1. XRFrame"}], "external": false};
+window.dfnpanelData['xrjointpose'] = {"dfnID": "xrjointpose", "url": "#xrjointpose", "dfnText": "XRJointPose", "refSections": [{"refs": [{"id": "ref-for-xrjointpose"}, {"id": "ref-for-xrjointpose\u2460"}, {"id": "ref-for-xrjointpose\u2461"}], "title": "4.1. XRFrame"}, {"refs": [{"id": "ref-for-xrjointpose\u2462"}], "title": "4.2. XRJointPose"}], "external": false};
+window.dfnpanelData['dom-xrjointpose-radius'] = {"dfnID": "dom-xrjointpose-radius", "url": "#dom-xrjointpose-radius", "dfnText": "radius", "refSections": [{"refs": [{"id": "ref-for-dom-xrjointpose-radius"}], "title": "4.1. XRFrame"}, {"refs": [{"id": "ref-for-dom-xrjointpose-radius\u2460"}, {"id": "ref-for-dom-xrjointpose-radius\u2461"}], "title": "4.2. XRJointPose"}], "external": false};
+</script>
+<script>/* Boilerplate: script-dom-helper */
+function query(sel) { return document.querySelector(sel); }
+
+function queryAll(sel) { return [...document.querySelectorAll(sel)]; }
+
+function iter(obj) {
+	if(!obj) return [];
+	var it = obj[Symbol.iterator];
+	if(it) return it;
+	return Object.entries(obj);
+}
+
+function mk(tagname, attrs, ...children) {
+	const el = document.createElement(tagname);
+	for(const [k,v] of iter(attrs)) {
+		if(k.slice(0,3) == "_on") {
+			const eventName = k.slice(3);
+			el.addEventListener(eventName, v);
+		} else if(k[0] == "_") {
+			// property, not attribute
+			el[k.slice(1)] = v;
+		} else {
+			if(v === false || v == null) {
+        continue;
+      } else if(v === true) {
+        el.setAttribute(k, "");
+        continue;
+      } else {
+  			el.setAttribute(k, v);
+      }
+		}
+	}
+	append(el, children);
+	return el;
+}
+
+/* Create shortcuts for every known HTML element */
+[
+  "a",
+  "abbr",
+  "acronym",
+  "address",
+  "applet",
+  "area",
+  "article",
+  "aside",
+  "audio",
+  "b",
+  "base",
+  "basefont",
+  "bdo",
+  "big",
+  "blockquote",
+  "body",
+  "br",
+  "button",
+  "canvas",
+  "caption",
+  "center",
+  "cite",
+  "code",
+  "col",
+  "colgroup",
+  "datalist",
+  "dd",
+  "del",
+  "details",
+  "dfn",
+  "dialog",
+  "div",
+  "dl",
+  "dt",
+  "em",
+  "embed",
+  "fieldset",
+  "figcaption",
+  "figure",
+  "font",
+  "footer",
+  "form",
+  "frame",
+  "frameset",
+  "head",
+  "header",
+  "h1",
+  "h2",
+  "h3",
+  "h4",
+  "h5",
+  "h6",
+  "hr",
+  "html",
+  "i",
+  "iframe",
+  "img",
+  "input",
+  "ins",
+  "kbd",
+  "label",
+  "legend",
+  "li",
+  "link",
+  "main",
+  "map",
+  "mark",
+  "meta",
+  "meter",
+  "nav",
+  "nobr",
+  "noscript",
+  "object",
+  "ol",
+  "optgroup",
+  "option",
+  "output",
+  "p",
+  "param",
+  "pre",
+  "progress",
+  "q",
+  "s",
+  "samp",
+  "script",
+  "section",
+  "select",
+  "small",
+  "source",
+  "span",
+  "strike",
+  "strong",
+  "style",
+  "sub",
+  "summary",
+  "sup",
+  "table",
+  "tbody",
+  "td",
+  "template",
+  "textarea",
+  "tfoot",
+  "th",
+  "thead",
+  "time",
+  "title",
+  "tr",
+  "u",
+  "ul",
+  "var",
+  "video",
+  "wbr",
+  "xmp",
+].forEach(tagname=>{
+	mk[tagname] = (...args) => mk(tagname, ...args);
+});
+
+function* nodesFromChildList(children) {
+	for(const child of children.flat(Infinity)) {
+		if(child instanceof Node) {
+			yield child;
+		} else {
+			yield new Text(child);
+		}
+	}
+}
+function append(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		if(el instanceof Node) el.appendChild(child);
+		else el.push(child);
+	}
+	return el;
+}
+
+function insertAfter(el, ...children) {
+	for(const child of nodesFromChildList(children)) {
+		el.parentNode.insertBefore(child, el.nextSibling);
+	}
+	return el;
+}
+
+function clearContents(el) {
+	el.innerHTML = "";
+	return el;
+}
+
+function parseHTML(markup) {
+	if(markup.toLowerCase().trim().indexOf('<!doctype') === 0) {
+		const doc = document.implementation.createHTMLDocument("");
+		doc.documentElement.innerHTML = markup;
+		return doc;
+	} else {
+		const el = mk.template({});
+		el.innerHTML = markup;
+		return el.content;
+	}
+}
+</script>
+<script>/* Boilerplate: script-position-annos */
+"use strict";
+{
+
+function repositionAnnoPanels(){
+    const panels = [...document.querySelectorAll("[data-anno-for]")];
+    const main = document.querySelector("main");
+    let mainRect;
+    if(main) mainRect = main.getBoundingClientRect();
+    for(const panel of panels) {
+        const dfn = document.getElementById(panel.getAttribute("data-anno-for"));
+        if(!dfn) {
+            console.log("Can't find the annotation panel target:", panel);
+            continue;
+        }
+        const rect = dfn.getBoundingClientRect();
+        const top = window.scrollY + rect.top
+        panel.style.top = top + "px";
+        panel.top = top;
+        panel.height = rect.height;
+        panel.classList.remove("unpositioned");
+        const panelRect = panel.getBoundingClientRect()
+        if(main) {
+            panel.classList.toggle("overlapping-main", panelRect.left < mainRect.right)
+        }
+    }
+    let vSoFar = 0;
+    for(const panel of panels.sort(cmpTops)) {
+        if(panel.top < vSoFar) {
+            panel.top = vSoFar;
+            panel.style.top = vSoFar + "px";
+        }
+        vSoFar = panel.top + panel.height + 15;
+    }
+}
+
+function cmpTops(a,b) {
+    return a.top - b.top;
+}
+
+window.addEventListener("load", repositionAnnoPanels);
+window.addEventListener("resize", repositionAnnoPanels);
+}
+</script>
+<script>/* Boilerplate: script-var-click-highlighting */
+/*
+Color-choosing design:
+
+Colors are ordered by goodness.
+Each color has a usage count (initially zero).
+Each variable has a last-used color.
+
+* If the var has a last-used color, and that color's usage is 0,
+    return that color.
+* Otherwise, return the lowest-indexed color with the lowest usage.
+    Increment the color's usage and set it as the last-used color
+    for that var.
+* On unclicking, decrement usage of the color.
+*/
+"use strict";
+{
     document.addEventListener("click", e=>{
         if(e.target.nodeName == "VAR") {
             highlightSameAlgoVars(e.target);
         }
     });
-    {
-        const indexCounts = new Map();
-        const indexNames = new Map();
-        function highlightSameAlgoVars(v) {
-            // Find the algorithm container.
-            let algoContainer = null;
-            let searchEl = v;
-            while(algoContainer == null && searchEl != document.body) {
-                searchEl = searchEl.parentNode;
-                if(searchEl.hasAttribute("data-algorithm")) {
-                    algoContainer = searchEl;
-                }
-            }
-
-            // Not highlighting document-global vars,
-            // too likely to be unrelated.
-            if(algoContainer == null) return;
-
-            const algoName = algoContainer.getAttribute("data-algorithm");
-            const varName = getVarName(v);
-            const addClass = !v.classList.contains("selected");
-            let highlightClass = null;
-            if(addClass) {
-                const index = chooseHighlightIndex(algoName, varName);
-                indexCounts.get(algoName)[index] += 1;
-                indexNames.set(algoName+"///"+varName, index);
-                highlightClass = nameFromIndex(index);
-            } else {
-                const index = previousHighlightIndex(algoName, varName);
-                indexCounts.get(algoName)[index] -= 1;
-                highlightClass = nameFromIndex(index);
-            }
-
-            // Find all same-name vars, and toggle their class appropriately.
-            for(const el of algoContainer.querySelectorAll("var")) {
-                if(getVarName(el) == varName) {
-                    el.classList.toggle("selected", addClass);
-                    el.classList.toggle(highlightClass, addClass);
-                }
+    const indexCounts = new Map();
+    const indexNames = new Map();
+    function highlightSameAlgoVars(v) {
+        // Find the algorithm container.
+        let algoContainer = null;
+        let searchEl = v;
+        while(algoContainer == null && searchEl != document.body) {
+            searchEl = searchEl.parentNode;
+            if(searchEl.hasAttribute("data-algorithm")) {
+                algoContainer = searchEl;
             }
         }
-        function getVarName(el) {
-            return el.textContent.replace(/(\s|\xa0)+/, " ").trim();
-        }
-        function chooseHighlightIndex(algoName, varName) {
-            let indexes = null;
-            if(indexCounts.has(algoName)) {
-                indexes = indexCounts.get(algoName);
-            } else {
-                // 7 classes right now
-                indexes = [0,0,0,0,0,0,0];
-                indexCounts.set(algoName, indexes);
-            }
 
-            // If the element was recently unclicked,
-            // *and* that color is still unclaimed,
-            // give it back the same color.
-            const lastIndex = previousHighlightIndex(algoName, varName);
-            if(indexes[lastIndex] === 0) return lastIndex;
+        // Not highlighting document-global vars,
+        // too likely to be unrelated.
+        if(algoContainer == null) return;
 
-            // Find the earliest index with the lowest count.
-            const minCount = Math.min.apply(null, indexes);
-            let index = null;
-            for(var i = 0; i < indexes.length; i++) {
-                if(indexes[i] == minCount) {
-                    return i;
-                }
+        const algoName = algoContainer.getAttribute("data-algorithm");
+        const varName = getVarName(v);
+        const addClass = !v.classList.contains("selected");
+        let highlightClass = null;
+        if(addClass) {
+            const index = chooseHighlightIndex(algoName, varName);
+            indexCounts.get(algoName)[index] += 1;
+            indexNames.set(algoName+"///"+varName, index);
+            highlightClass = nameFromIndex(index);
+        } else {
+            const index = previousHighlightIndex(algoName, varName);
+            indexCounts.get(algoName)[index] -= 1;
+            highlightClass = nameFromIndex(index);
+        }
+
+        // Find all same-name vars, and toggle their class appropriately.
+        for(const el of algoContainer.querySelectorAll("var")) {
+            if(getVarName(el) == varName) {
+                el.classList.toggle("selected", addClass);
+                el.classList.toggle(highlightClass, addClass);
             }
-        }
-        function previousHighlightIndex(algoName, varName) {
-            return indexNames.get(algoName+"///"+varName);
-        }
-        function nameFromIndex(index) {
-            return "selected" + index;
         }
     }
-    </script>
+    function getVarName(el) {
+        return el.textContent.replace(/(\s|\xa0)+/, " ").trim();
+    }
+    function chooseHighlightIndex(algoName, varName) {
+        let indexes = null;
+        if(indexCounts.has(algoName)) {
+            indexes = indexCounts.get(algoName);
+        } else {
+            // 7 classes right now
+            indexes = [0,0,0,0,0,0,0];
+            indexCounts.set(algoName, indexes);
+        }
+
+        // If the element was recently unclicked,
+        // *and* that color is still unclaimed,
+        // give it back the same color.
+        const lastIndex = previousHighlightIndex(algoName, varName);
+        if(indexes[lastIndex] === 0) return lastIndex;
+
+        // Find the earliest index with the lowest count.
+        const minCount = Math.min.apply(null, indexes);
+        let index = null;
+        for(var i = 0; i < indexes.length; i++) {
+            if(indexes[i] == minCount) {
+                return i;
+            }
+        }
+    }
+    function previousHighlightIndex(algoName, varName) {
+        return indexNames.get(algoName+"///"+varName);
+    }
+    function nameFromIndex(index) {
+        return "selected" + index;
+    }
+}
+</script>
