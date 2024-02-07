@@ -95,7 +95,6 @@ spec: webxr-1;
     type: dfn; text: input profile name; for: XRInputSource
     type: dfn; text: primary action; for: /
     type: dfn; text: primary squeeze action; for: /
-    type: dfn; text: primary input source; for: /
 spec:infra; type:dfn; text:list
 spec:webxr-ar-module-1; type:enum-value; text:"immersive-ar"
 spec:webidl;
@@ -137,7 +136,7 @@ Physical Hand Input Sources {#physical-hand}
 
 An {{XRInputSource}} is a <dfn>physical hand input source</dfn> if it tracks a physical hand. A [=physical hand input source=] <dfn>supports hand tracking</dfn> if it supports reporting the poses of one or more [=skeleton joints=] defined in this specification.
 
-[=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of either "generic-hand" or "generic-hand-select" in their {{XRInputSource/profiles}}. "generic-hand-select" MUST be included if the input source is a [=primary input source=].
+[=Physical hand input sources=] MUST include the [=XRInputSource/input profile name=] of "generic-hand-select" in their {{XRInputSource/profiles}}.
 
 For many [=physical hand input sources=], there can be overlap between the gestures used for the [=primary action=] and the squeeze action. For example, a pinch gesture may indicate both a "select" and "squeeze" event, depending on whether you are interacting with nearby or far away objects. Since content may assume that these are independent events, user agents MAY, instead of surfacing the squeeze action as the [=primary squeeze action=], surface it as an additional "grasp button", using an input profile derived from the "generic-hand-select-grasp" profile.
 
