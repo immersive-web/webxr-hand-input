@@ -81,7 +81,7 @@ Status Text: This WebXR Augmented Reality Module is designed as a module to be i
 
 
 <pre class="link-defaults">
-spec: webxr-1;
+spec: webxr;
     type: dfn; text: xr device; for: /
     type: dfn; text: xr device; for: XRSession
     type: dfn; text: animation frame; for: XRSession
@@ -89,6 +89,7 @@ spec: webxr-1;
     type: dfn; text: native origin
     type: dfn; text: feature descriptor
     type: dfn; text: populate the pose
+    type: dfn; text: active; for: XRFrame
     type: dfn; text: session; for: XRFrame
     type: dfn; text: time; for: XRFrame
     type: dfn; text: session; for: XRSpace
@@ -130,6 +131,54 @@ The "[=hand-tracking=]" [=feature descriptor=] should only be granted for an {{X
 The user agent MAY gate support for hand based {{XRInputSource|XRInputSources}} based upon this [=feature descriptor=].
 
 NOTE: This means that if an {{XRSession}} does not request the "[=hand-tracking=]" [=feature descriptor=], the user agent may choose to not support input controllers that are hand based.
+
+Hand-tracking configuration {#hand-tracking-configuration}
+---------------------------
+
+<pre class="idl">
+enum XRHandTrackingFrequencyHint {
+  "default",
+  "high"
+};
+
+dictionary XRHandTrackingStateInit {
+  XRHandTrackingFrequencyHint frequencyHint = "default";
+};
+
+partial dictionary XRSessionInit {
+  XRHandTrackingStateInit handTracking;
+};
+</pre>
+
+The {{XRSessionInit/handTracking}} member allows an application to provide hand-tracking configuration when requesting an {{XRSession}}. The user agent MUST NOT treat providing this member as a request for the "[=hand-tracking=]" [=feature descriptor=]. If the feature is not requested or is not granted, the user agent MUST ignore this member.
+
+The {{XRHandTrackingStateInit/frequencyHint}} member indicates the application's preferred hand-tracking update frequency for the session:
+
+ * <dfn enum-value for="XRHandTrackingFrequencyHint">"default"</dfn> indicates that the application prefers the user agent's default hand-tracking update frequency. This will typically provide an appropriate balance between responsiveness, tracking stability, and power consumption for general use cases.
+ * <dfn enum-value for="XRHandTrackingFrequencyHint">"high"</dfn> indicates that the application prefers a higher hand-tracking update frequency when possible. This can improve responsiveness for latency-sensitive applications, but can increase power consumption and reduce the effectiveness of temporal smoothing, resulting in increased jitter.
+
+If {{XRSessionInit/handTracking}} is not present, the user agent MUST behave as though {{XRHandTrackingStateInit/frequencyHint}} were {{XRHandTrackingFrequencyHint/"default"}}.
+
+When the "[=hand-tracking=]" [=feature descriptor=] is granted, the user agent SHOULD use the requested {{XRHandTrackingStateInit/frequencyHint}} when choosing the hand-tracking update frequency for the session. The hint applies to all [=physical hand input sources=] associated with the session.
+
+The user agent MAY ignore the requested {{XRHandTrackingStateInit/frequencyHint}} or change the actual hand-tracking update frequency at any time based on device capabilities, user preferences, system constraints, power or thermal conditions, or privacy considerations. An inability to honor {{XRHandTrackingFrequencyHint/"high"}} MUST NOT cause the session request to fail or prevent the "[=hand-tracking=]" [=feature descriptor=] from being granted. Applications MUST NOT rely on a particular hand-tracking update frequency.
+
+The requested {{XRHandTrackingStateInit/frequencyHint}} MUST NOT affect the frequency at which {{XRSession}} animation frames are delivered and MUST NOT cause additional hand pose samples to be exposed to the application.
+
+<div class="example">
+
+The following example requests hand tracking and indicates that a higher update frequency is preferred for the entire session:
+
+<pre highlight="js">
+const session = await navigator.xr.requestSession("immersive-vr", {
+  requiredFeatures: ["hand-tracking"],
+  handTracking: {
+    frequencyHint: "high",
+  },
+});
+</pre>
+
+</div>
 
 Physical Hand Input Sources {#physical-hand}
 ===========================
@@ -437,6 +486,8 @@ Since this feature returns new sensor data, the User Agent MUST ask for [=explic
 Data returned from this API, MUST NOT be so specific that one can detect individual users.
 If the underlying hardware returns data that is too precise, the User Agent MUST anonymize this data
 before revealing it through the WebXR Hand Input API.
+
+Requesting {{XRHandTrackingFrequencyHint/"high"}} MUST NOT relax any privacy protections required by this specification. A user agent MAY use its default hand-tracking update frequency when a higher frequency would undermine those protections.
 
 This API MUST only be supported in XRSessions created with XRSessionMode of {{XRSessionMode/"immersive-vr"}}
 or {{XRSessionMode/"immersive-ar"}}. {{XRSessionMode/"inline"}} sessions MUST not support this API.
